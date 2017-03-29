@@ -54,6 +54,7 @@ class MainWindow(Gtk.Window):
         url = self.body.get_url()
         body = self.body.get_body()
         headers = self.headers.get_headers()
+        authentication = self.authentication.get_authentication()
 
         # Check if method is selected
         if method == "" or method == None:
@@ -68,16 +69,7 @@ class MainWindow(Gtk.Window):
         self.header_bar.set_subtitle(method + ": " + url)
 
         try:
-            # Setup authentication
-            auth = None
-            '''if self.headers.get_authentication_enabled():
-                auth_username = self.headers.et_auth_username.get_text()
-                auth_password = self.headers.et_auth_password.get_text()
-
-                auth = (auth_username, auth_password)'''
-
-            # Create request
-            request = requests.request(method, url, data=body, headers=headers, auth=auth)
+            request = requests.request(method, url, data=body, headers=headers, auth=authentication)
 
             response_code = request.status_code
             response_reason = request.reason

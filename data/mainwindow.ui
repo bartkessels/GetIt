@@ -26,34 +26,81 @@
                   <item id="no_auth" translatable="yes">No Authentication</item>
                   <item id="basic_auth" translatable="yes">Basic Authentication</item>
                   <item id="digest_auth" translatable="yes">Digest Authentication</item>
-                  <item id="oauth1" translatable="yes">OAuth 1.0</item>
-                  <item id="oauth2" translatable="yes">OAuth 2.0</item>
                 </items>
               </object>
               <packing>
                 <property name="left_attach">0</property>
                 <property name="top_attach">0</property>
-                <property name="width">2</property>
               </packing>
             </child>
             <child>
-              <object class="GtkGrid" id="grd_authentication_values">
-                <property name="visible">True</property>
+              <object class="GtkGrid" id="grd_auth_basic">
                 <property name="can_focus">False</property>
+                <property name="no_show_all">True</property>
                 <property name="row_spacing">5</property>
                 <property name="column_spacing">5</property>
                 <property name="column_homogeneous">True</property>
                 <child>
-                  <placeholder/>
+                  <object class="GtkEntry" id="et_auth_basic_username">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="placeholder_text" translatable="yes">Username</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkEntry" id="et_auth_basic_password">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="placeholder_text" translatable="yes">Password</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                  </packing>
                 </child>
               </object>
               <packing>
                 <property name="left_attach">0</property>
                 <property name="top_attach">1</property>
-                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid" id="grd_auth_digest">
+                <property name="can_focus">False</property>
+                <property name="no_show_all">True</property>
+                <property name="row_spacing">5</property>
+                <property name="column_spacing">5</property>
+                <property name="column_homogeneous">True</property>
+                <child>
+                  <object class="GtkEntry" id="et_auth_digest_username">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="placeholder_text" translatable="yes">Username</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="et_auth_digest_password">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="placeholder_text" translatable="yes">Password</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
           </object>
@@ -174,6 +221,33 @@
             <property name="row_spacing">5</property>
             <property name="column_spacing">5</property>
             <property name="column_homogeneous">True</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
           </object>
         </child>
       </object>
