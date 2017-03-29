@@ -4,10 +4,10 @@ Application to send HTTP requests to test API's.
 
 ## Screenshots
 
-<img title="GetIt Body" src="data/screenshots/body.png" width="40%"/>
-<img title="GetIt Headers" src="data/screenshots/headers.png" width="40%"/>
-<img title="GetIt Authentication" src="data/screenshots/headers.png" width="40%"/>
-<img title="GetIt Response" src="data/screenshots/response.png" width="40%"/>
+<img title="GetIt Body" src="data/screenshots/body.png"/>
+<img title="GetIt Headers" src="data/screenshots/headers.png"/>
+<img title="GetIt Authentication" src="data/screenshots/headers.png"/>
+<img title="GetIt Response" src="data/screenshots/response.png"/>
 
 ## What can I do with it?
 
