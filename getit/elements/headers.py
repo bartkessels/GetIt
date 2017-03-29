@@ -3,7 +3,7 @@ from gi.repository import Gtk
 from .key_value_pair import KeyValuePair
 
 class Headers:
-    UI_FILE = "/home/bkessels/Git-projects/Linux/GetIt/data/mainwindow.ui"
+    UI_FILE = "/usr/share/getit/mainwindow.ui"
 
     key_value_pairs = []
 
