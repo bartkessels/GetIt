@@ -32,9 +32,9 @@ option for authentication, right now only basic auth and digest auth.
 sudo cp data/mainwindow.ui /usr/share/getit.ui
 bash autogen.sh
 ./configure
-make
+sudo make install
 ```
-And then run `./src/getit`
+And then run `./bin/getit`
 
 If you don't copy the mainwindow.ui file the application will crash because
 it can't find the ui file.
