@@ -1,14 +1,19 @@
-Name:		GetIt
+Name:		getit
 Version:	1.0
 Release:	1%{?dist}
 Summary:	Send HTTP requests
 
 License:	GPLv3+
 URL:		https://github.com/bartkessels/GetIt
-Source0:	https://github.com/bartkessels/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+Source:		https://github.com/bartkessels/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:	gtk3-devel
-BuildRequires:	python3
+BuildRequires:	python3-devel
+BuildRequires:	automake
+BuildRequires:	gettext
+BuildRequires:  intltool
+BuildRequires:  itstool
+BuildRequires:	%{_bindir}/desktop-file-install
 
 Requires:	gtk3
 Requires:	pygobject3
@@ -17,7 +22,13 @@ Requires:	python3-requests
 %description
 Application to send HTTP requests to test your own API's
 
+%global debug_package %{nil}
+
+%prep
+%autosetup -p1
+
 %build
+bash autogen.sh
 %configure
 make %{?_smp_mflags}
 
@@ -25,12 +36,12 @@ make %{?_smp_mflags}
 rm -rf $RPM_BUILD_ROOT
 %make_install
 desktop-file-install data/package/%{name}.desktop
-cp data/mainwindow.ui %{buildroot}%{_datadir}/getit.ui
+cp data/mainwindow.ui %{buildroot}%{_datadir}/%{name}.ui
 
 %files
-%{_bindir}/getit
-%{_prefix}/lib/python3.5/site-packages/getit
-%{_datadir}/getit.ui
+%{python3_sitelib}/%{name}
+%{_bindir}/%{name}
+%{_datadir}/%{name}.ui
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
