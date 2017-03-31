@@ -33,6 +33,7 @@ option for authentication, right now only basic auth and digest auth.
 ## Features
 
 - Add multiple form-data elements to the body
+- Add files to a request
 - Add multiple headers
 - Use basic auth or digest auth
 - Response data is displayed with syntax highlighting
@@ -40,22 +41,24 @@ option for authentication, right now only basic auth and digest auth.
 
 ## How to build
 ```
-sudo cp data/mainwindow.ui /usr/share/getit.ui
+sudo mdir -p /usr/share/getit/ui
+sudo cp data/ui/*.ui /usr/share/getit/ui
+
 bash autogen.sh
 ./configure
 sudo make install
 ```
 And then run `./bin/getit`
 
-If you don't copy the mainwindow.ui file the application will crash because
-it can't find the ui file.
+If you don't copy the .ui files the application will crash because
+it can't find the .ui files file.
 
 ## Generate RPM package
 You first need to download the latest
 release of GetIt using wget or your download application of choice.
 
 ```
-wget https://github.com/bartkessels/getit/archive/1.0/getit-1.0.tar.gz
+wget https://github.com/bartkessels/getit/archive/1.1/getit-1.1.tar.gz
 fedpkg --release f25 local
 ```
 
