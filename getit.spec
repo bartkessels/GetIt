@@ -34,6 +34,7 @@ make %{?_smp_mflags}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+mkdir -p %{buildroot}%{_datadir}/%{name}/ui
 %make_install
 desktop-file-install data/package/%{name}.desktop
 cp data/ui/*.ui %{buildroot}%{_datadir}/%{name}/ui
@@ -41,7 +42,7 @@ cp data/ui/*.ui %{buildroot}%{_datadir}/%{name}/ui
 %files
 %{python3_sitelib}/%{name}
 %{_bindir}/%{name}
-%{_datadir}/%{name}/*.ui
+%{_datadir}/%{name}/ui/*.ui
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
