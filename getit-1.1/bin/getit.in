@@ -1,0 +1,17 @@
+#!@PYTHON@
+
+import sys
+import locale
+import gettext
+
+localedir = '@localedir@'
+
+locale.bindtextdomain('getit', localedir)
+locale.textdomain('getit')
+gettext.bindtextdomain('getit', localedir)
+gettext.textdomain('getit')
+
+if __name__ == "__main__":
+    sys.path.insert(1, '@pythondir@')
+    from getit import __main__
+    __main__.main()
