@@ -1,5 +1,5 @@
 Name:		getit
-Version:	1.0
+Version:	1.1
 Release:	1%{?dist}
 Summary:	Send HTTP requests
 
@@ -36,14 +36,17 @@ make %{?_smp_mflags}
 rm -rf $RPM_BUILD_ROOT
 %make_install
 desktop-file-install data/package/%{name}.desktop
-cp data/mainwindow.ui %{buildroot}%{_datadir}/%{name}.ui
+cp data/ui/*.ui %{buildroot}%{_datadir}/%{name}
 
 %files
 %{python3_sitelib}/%{name}
 %{_bindir}/%{name}
-%{_datadir}/%{name}.ui
+%{_datadir}/%{name}/*.ui
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
-* Wed Mar 29 2017 Bart Kessels <bartkessels@outlook.com> - 1-1
+* Wed Mar 29 2017 Bart Kessels <bartkessels@outlook.com> - 1.0-1
 - Initial Packaging
+
+* Fri Mar 31 2017 Bart Kessels <bartkessels@outlook.com> 1.1-1
+- Add ability to add files to request
