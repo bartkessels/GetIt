@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.20.0 -->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkScrolledWindow" id="sw_body">
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <child>
+      <object class="GtkViewport" id="vp_body">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkGrid" id="grd_body">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
+            <property name="row_spacing">5</property>
+            <property name="column_spacing">5</property>
+            <property name="column_homogeneous">True</property>
+            <child>
+              <object class="GtkEntry" id="et_url">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="placeholder_text" translatable="yes">http://...</property>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">0</property>
+                <property name="width">7</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBoxText" id="cb_method">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="active">0</property>
+                <items>
+                  <item translatable="yes">GET</item>
+                  <item translatable="yes">POST</item>
+                  <item translatable="yes">PUT</item>
+                  <item translatable="yes">PATCH</item>
+                  <item translatable="yes">DELETE</item>
+                  <item translatable="yes">COPY</item>
+                  <item translatable="yes">HEAD</item>
+                  <item translatable="yes">OPTIONS</item>
+                </items>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+                <property name="width">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn_add_body">
+                <property name="label" translatable="yes">Add Key Value Pair</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+                <property name="width">10</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
