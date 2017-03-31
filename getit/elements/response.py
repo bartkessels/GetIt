@@ -2,7 +2,7 @@ from gi.repository import Gtk
 from gi.repository import GtkSource
 
 class Response:
-    UI_FILE = "/usr/share/getit.ui"
+    UI_FILE = "/usr/share/getit/ui/response.ui"
 
     def __init__(self):
         builder = Gtk.Builder()

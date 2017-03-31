@@ -2,7 +2,7 @@ from gi.repository import Gtk
 from requests.auth import HTTPBasicAuth, HTTPDigestAuth
 
 class Authentication:
-    UI_FILE = "/usr/share/getit.ui"
+    UI_FILE = "/usr/share/getit/ui/authentication.ui"
 
     def __init__(self):
         builder = Gtk.Builder()

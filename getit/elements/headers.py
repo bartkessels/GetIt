@@ -1,9 +1,9 @@
 from gi.repository import Gtk
 
-from .key_value_pair import KeyValuePair
+from .header_key_value_pair import HeaderKeyValuePair
 
 class Headers:
-    UI_FILE = "/usr/share/getit.ui"
+    UI_FILE = "/usr/share/getit/ui/headers.ui"
 
     key_value_pairs = []
 
@@ -33,14 +33,11 @@ class Headers:
         row = 5 + len(self.key_value_pairs)
 
         # Create key value pair
-        key_value_pair = KeyValuePair()
+        key_value_pair = HeaderKeyValuePair()
         self.key_value_pairs.append(key_value_pair)
 
         # Add key value pair to self
-        self.grd_headers.attach(key_value_pair.cbtn_enabled, 0, row, 1, 1)
-        self.grd_headers.attach_next_to(key_value_pair.et_key, key_value_pair.cbtn_enabled, Gtk.PositionType.RIGHT, 4, 1)
-        self.grd_headers.attach_next_to(key_value_pair.et_value, key_value_pair.et_key, Gtk.PositionType.RIGHT, 4, 1)
-        self.grd_headers.attach_next_to(key_value_pair.btn_remove, key_value_pair.et_value, Gtk.PositionType.RIGHT, 1, 1)
+        self.grd_headers.attach(key_value_pair.grd_key_value_pair, 0, row, 10, 1)
 
         # Set remove button handler
         key_value_pair.btn_remove.connect("clicked", self.btn_remove_clicked, key_value_pair)

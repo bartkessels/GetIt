@@ -53,6 +53,7 @@ class MainWindow(Gtk.Window):
         method = self.body.get_method()
         url = self.body.get_url()
         body = self.body.get_body()
+        files = self.body.get_files()
         headers = self.headers.get_headers()
         authentication = self.authentication.get_authentication()
 
@@ -69,7 +70,7 @@ class MainWindow(Gtk.Window):
         self.header_bar.set_subtitle(method + ": " + url)
 
         try:
-            request = requests.request(method, url, data=body, headers=headers, auth=authentication)
+            request = requests.request(method, url, data=body, files=files, headers=headers, auth=authentication)
 
             response_code = request.status_code
             response_reason = request.reason
