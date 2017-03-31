@@ -16,8 +16,19 @@ option for authentication, right now only basic auth and digest auth.
 
 ## Required packages
 
+### Building
 - gtk3-devel
-- pygobject3-devel
+- python3-devel
+- automake
+- gettext
+- intltool
+- itstool
+- desktop-file-utils
+
+### Installing
+- gtk3
+- pygobject3
+- python3-requests
 
 ## Features
 
@@ -40,7 +51,11 @@ If you don't copy the mainwindow.ui file the application will crash because
 it can't find the ui file.
 
 ## Generate RPM package
+You first need to download the latest
+release of GetIt using wget or your download application of choice.
+
 ```
+wget https://github.com/bartkessels/getit/archive/1.0/getit-1.0.tar.gz
 fedpkg --release f25 local
 ```
 
