@@ -36,7 +36,7 @@ make %{?_smp_mflags}
 rm -rf $RPM_BUILD_ROOT
 %make_install
 desktop-file-install data/package/%{name}.desktop
-cp data/ui/*.ui %{buildroot}%{_datadir}/%{name}
+cp data/ui/*.ui %{buildroot}%{_datadir}/%{name}/ui
 
 %files
 %{python3_sitelib}/%{name}
