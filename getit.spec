@@ -45,8 +45,8 @@ cp data/ui/*.ui %{buildroot}%{_datadir}/%{name}/ui
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
-* Wed Mar 29 2017 Bart Kessels <bartkessels@outlook.com> - 1.0-1
-- Initial Packaging
-
 * Fri Mar 31 2017 Bart Kessels <bartkessels@outlook.com> 1.1-1
 - Add ability to add files to request
+
+* Wed Mar 29 2017 Bart Kessels <bartkessels@outlook.com> - 1.0-1
+- Initial Packaging
