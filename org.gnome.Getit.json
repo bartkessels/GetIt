@@ -1,5 +1,5 @@
 {
-    "app-id": "org.gnome.Getit",
+    "app-id": "org.gnome.getit",
     "runtime": "org.gnome.Platform",
     "runtime-version": "3.22",
     "sdk": "org.gnome.Sdk",
