@@ -40,6 +40,7 @@ desktop-file-install data/package/%{name}.desktop
 cp data/ui/*.ui %{buildroot}%{_datadir}/%{name}/ui
 
 %files
+%license COPYING
 %{python3_sitelib}/%{name}
 %{_bindir}/%{name}
 %{_datadir}/%{name}/ui/*.ui
