@@ -35,7 +35,6 @@ option for authentication, right now only basic auth and digest auth.
 
 - Add multiple form-data elements to the body
 - Add files to a request
-- Add cookies to a request
 - Add multiple headers
 - Use basic auth or digest auth
 - Response data is displayed with syntax highlighting
