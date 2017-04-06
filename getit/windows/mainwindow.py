@@ -5,6 +5,7 @@ import sys
 from .authentication import Authentication
 from .dialog import Dialog
 from .body import Body
+from .cookies import Cookies
 from .headers import Headers
 from .response import Response
 
@@ -15,6 +16,7 @@ class MainWindow(Gtk.Window):
         # Create elements
         self.body = Body()
         self.headers = Headers()
+        self.cookies = Cookies()
         self.authentication = Authentication()
         self.response = Response()
 
@@ -43,6 +45,7 @@ class MainWindow(Gtk.Window):
         # Add elements to stack
         stack.add_titled(self.body.sw_body, "body", "Body")
         stack.add_titled(self.headers.sw_headers, "headers", "Headers")
+        stack.add_titled(self.cookies.sw_cookies, "cookies", "Cookies")
         stack.add_titled(self.authentication.sw_authentication, "authentication", "Authentication")
         stack.add_titled(self.response.sw_response, "response", "Response")
 
@@ -56,6 +59,7 @@ class MainWindow(Gtk.Window):
         files = self.body.get_files()
         headers = self.headers.get_headers()
         authentication = self.authentication.get_authentication()
+        cookies = self.cookies.get_cookies()
 
         # Check if method is selected
         if method == "" or method == None:
@@ -70,7 +74,7 @@ class MainWindow(Gtk.Window):
         self.header_bar.set_subtitle(method + ": " + url)
 
         try:
-            request = requests.request(method, url, data=body, files=files, headers=headers, auth=authentication)
+            request = requests.request(method, url, data=body, files=files, headers=headers, auth=authentication, cookies=cookies)
 
             response_code = request.status_code
             response_reason = request.reason

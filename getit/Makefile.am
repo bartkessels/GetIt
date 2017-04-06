@@ -5,6 +5,7 @@ module_PYTHON = __main__.py \
 		elements/authentication.py \
 		elements/body.py \
 		elements/body_key_value_pair.py \
+		elements/cookies.py \
 		elements/header_key_value_pair.py \
 		elements/headers.py \
 		elements/response.py
