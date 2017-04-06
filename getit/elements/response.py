@@ -53,11 +53,11 @@ class Response:
         language_manager = GtkSource.LanguageManager()
 
         source_buffer = GtkSource.Buffer.new_with_language(language_manager.get_language(mime_type))
-        source_buffer.set_text(body)
         tv_body = GtkSource.View.new_with_buffer(source_buffer)
         tv_body.set_indent(True)
         tv_body.set_show_line_numbers(True)
         tv_body.set_wrap_mode(Gtk.WrapMode.WORD)
+        source_buffer.set_text(body)
 
         # Add body to self
         self.grd_response.add(tv_body)
