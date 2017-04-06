@@ -18,7 +18,7 @@
             <property name="column_spacing">5</property>
             <property name="column_homogeneous">True</property>
             <child>
-              <object class="GtkComboBoxText" id="cb_authentication_method">
+              <object class="GtkComboBoxText" id="cb_method">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="active">0</property>
@@ -34,7 +34,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkGrid" id="grd_basi">
+              <object class="GtkGrid" id="grd_basic">
                 <property name="can_focus">False</property>
                 <property name="no_show_all">True</property>
                 <property name="row_spacing">5</property>

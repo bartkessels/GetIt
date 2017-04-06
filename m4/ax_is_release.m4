@@ -1,5 +1,5 @@
 # ===========================================================================
-#       http://www.gnu.org/software/autoconf-archive/ax_is_release.html
+#      https://www.gnu.org/software/autoconf-archive/ax_is_release.html
 # ===========================================================================
 #
 # SYNOPSIS
@@ -26,6 +26,10 @@
 #    * micro-version:  ax_is_release will be 'no' if the micro version number
 #                      in $PACKAGE_VERSION is odd; this assumes
 #                      $PACKAGE_VERSION follows the 'major.minor.micro' scheme
+#    * dash-version:   ax_is_release will be 'no' if there is a dash '-'
+#                      in $PACKAGE_VERSION, for example 1.2-pre3, 1.2.42-a8b9
+#                      or 2.0-dirty (in particular this is suitable for use
+#                      with git-version-gen)
 #    * always:         ax_is_release will always be 'yes'
 #    * never:          ax_is_release will always be 'no'
 #
@@ -34,12 +38,13 @@
 # LICENSE
 #
 #   Copyright (c) 2015 Philip Withnall <philip@tecnocode.co.uk>
+#   Copyright (c) 2016 Collabora Ltd.
 #
 #   Copying and distribution of this file, with or without modification, are
 #   permitted in any medium without royalty provided the copyright notice
 #   and this notice are preserved.
 
-#serial 4
+#serial 7
 
 AC_DEFUN([AX_IS_RELEASE],[
     AC_BEFORE([AC_INIT],[$0])
@@ -47,7 +52,7 @@ AC_DEFUN([AX_IS_RELEASE],[
     m4_case([$1],
       [git-directory],[
         # $is_release = (.git directory does not exist)
-        AS_IF([test -d ${top_srcdir}/.git],[ax_is_release=no],[ax_is_release=yes])
+        AS_IF([test -d ${srcdir}/.git],[ax_is_release=no],[ax_is_release=yes])
       ],
       [minor-version],[
         # $is_release = ($minor_version is even)
@@ -61,9 +66,15 @@ AC_DEFUN([AX_IS_RELEASE],[
         AS_IF([test "$(( $micro_version % 2 ))" -ne 0],
               [ax_is_release=no],[ax_is_release=yes])
       ],
+      [dash-version],[
+        # $is_release = ($PACKAGE_VERSION has a dash)
+        AS_CASE([$PACKAGE_VERSION],
+                [*-*], [ax_is_release=no],
+                [*], [ax_is_release=yes])
+      ],
       [always],[ax_is_release=yes],
       [never],[ax_is_release=no],
       [
-        AC_MSG_ERROR([Invalid policy. Valid policies: git-directory, minor-version.])
+        AC_MSG_ERROR([Invalid policy. Valid policies: git-directory, minor-version, micro-version, dash-version, always, never.])
       ])
 ])

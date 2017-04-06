@@ -1,0 +1,17 @@
+#!/usr/bin/python3
+
+import sys
+import locale
+import gettext
+
+localedir = '/home/bkessels/.cache/gnome-builder/install/GetIt/host/share/locale'
+
+locale.bindtextdomain('getit', localedir)
+locale.textdomain('getit')
+gettext.bindtextdomain('getit', localedir)
+gettext.textdomain('getit')
+
+if __name__ == "__main__":
+    sys.path.insert(1, '/home/bkessels/.cache/gnome-builder/install/GetIt/host/lib/python3.5/site-packages')
+    from getit import __main__
+    __main__.main()
