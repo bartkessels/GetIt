@@ -1,11 +1,11 @@
 Name:		getit
-Version:	1.1
+Version:	1.2
 Release:	1%{?dist}
 Summary:	Send HTTP requests
 
 License:	GPLv3+
 URL:		https://github.com/bartkessels/GetIt
-Source:		https://github.com/bartkessels/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:	https://github.com/bartkessels/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:	gtk3-devel
 BuildRequires:	python3-devel
@@ -47,6 +47,10 @@ cp data/ui/*.ui %{buildroot}%{_datadir}/%{name}/ui
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Fri Apr 7 2017 Bart Kessels <bartkessels@outlook.com> 1.2-1
+- Add ability to add cookies to a requests
+- Fix endless scrolling bug on response stack
+
 * Fri Mar 31 2017 Bart Kessels <bartkessels@outlook.com> 1.1-1
 - Add ability to add files to request
 

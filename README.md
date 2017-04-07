@@ -60,7 +60,7 @@ You first need to download the latest
 release of GetIt using wget or your download application of choice.
 
 ```
-wget https://github.com/bartkessels/getit/archive/1.1/getit-1.1.tar.gz
+wget https://github.com/bartkessels/getit/archive/1.2/getit-1.2.tar.gz
 fedpkg --release f25 local
 ```
 
