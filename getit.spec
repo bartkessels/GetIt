@@ -43,7 +43,7 @@ cp -r data/ui/* %{buildroot}%{_datadir}/%{name}/ui
 %license COPYING
 %{python3_sitelib}/%{name}
 %{_bindir}/%{name}
-%{_datadir}/%{name}/ui/*.ui
+%{_datadir}/%{name}/ui/*
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
