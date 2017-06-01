@@ -2,15 +2,23 @@ from gi.repository import Gtk
 from urllib import parse
 from mimetypes import MimeTypes
 
-class BodyKeyValuePair:
-    UI_FILE = "/usr/share/getit/ui/body_key_value_pair.ui"
+class FormData:
+    UI_FILE = "/usr/share/getit/ui/elements/form_data.ui"
 
     def __init__(self):
+        """
+            Load widgets from UI file
+        """
+
         builder = Gtk.Builder()
         builder.add_from_file(self.UI_FILE)
 
-        # Load elements from UI file
-        self.grd_key_value_pair = builder.get_object("grd_key_value_pair")
+        '''
+            --------------------------------------------------------------------
+            GET WIDGETS FROM UI FILE
+            --------------------------------------------------------------------
+        '''
+        self.root_view = builder.get_object("grd_form_data")
         self.cbtn_enabled = builder.get_object("cbtn_enabled")
         self.et_key = builder.get_object("et_key")
         self.et_value = builder.get_object("et_value")
@@ -18,10 +26,18 @@ class BodyKeyValuePair:
         self.cb_type = builder.get_object("cb_type")
         self.btn_remove = builder.get_object("btn_remove")
 
-        # Connect signals
+        '''
+            --------------------------------------------------------------------
+            CONNECT SIGNALS
+            --------------------------------------------------------------------
+        '''
         self.cb_type.connect("changed", self.cb_type_changed)
 
     def cb_type_changed(self, widget):
+        """
+            Change visibility of widgets based on selected type
+        """
+
         if self.get_type() == "text":
             self.et_value.show()
             self.fcbtn_file.hide()
@@ -30,26 +46,48 @@ class BodyKeyValuePair:
             self.fcbtn_file.show()
 
     def is_active(self):
-        if self.get_type() == "text":
-            return self.cbtn_enabled.get_active() and self.et_key.get_text() != "" and self.et_value.get_text() != ""
+        """
+            Get state of enabled check button
+        """
 
-        return self.cbtn_enabled.get_active() and self.et_key.get_text() != "" and self.fcbtn_file.get_uri() != ""
+        if self.get_type() == "text":
+            return self.cbtn_enabled.get_active() and self.get_key() != "" and self.get_value() != ""
+
+        return self.cbtn_enabled.get_active() and self.get_key() != "" and self.fcbtn_file.get_uri() != ""
 
     def get_type(self):
+        """
+            Get selected type
+        """
+
         tree_iter = self.cb_type.get_active_iter()
+
         if tree_iter == None:
             return None
 
         model = self.cb_type.get_model()
+
         return model[tree_iter][1]
 
     def get_key(self):
+        """
+            Get text from et_key
+        """
+
         return parse.quote_plus(self.et_key.get_text())
 
     def get_value(self):
+        """
+            Get text from et_value
+        """
+
         return parse.quote_plus(self.et_value.get_text())
 
     def get_file(self):
+        """
+            Get file from self if file is selected as type
+        """
+
         mime = MimeTypes()
 
         return (
@@ -61,16 +99,23 @@ class BodyKeyValuePair:
         )
 
     def show(self):
-        self.grd_key_value_pair.show()
+        """
+            Show all widgets
+        """
+
+        self.root_view.show()
         self.cbtn_enabled.show()
         self.et_key.show()
         self.et_value.show()
         self.btn_remove.show()
 
-    def hide(self):
-        self.grd_key_value_pair.hide()
-        self.cbtn_enabled.hide()
-        self.et_key.hide()
-        self.et_value.hide()
-        self.fcbtn_file.hide()
-        self.btn_remove.hide()
+    def btn_delete_clicked(self, caller, widget, parent, request):
+        """
+            Remove self from request cookies list
+            Remove widget from parent
+            Destroy widget
+        """
+
+        parent.remove(self.root_view)
+        request.remove_body_item(self)
+        self.root_view.destroy()

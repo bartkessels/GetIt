@@ -57,11 +57,20 @@ it can't find the .ui files file.
 
 ## Generate RPM package
 You first need to download the latest
-release of GetIt using wget or your download application of choice.
+release of GetIt using spectool.
 
 ```
-wget https://github.com/bartkessels/getit/archive/1.2/getit-1.2.tar.gz
+spectool -g getit.spec
 fedpkg --release f25 local
 ```
 
 This will create a RPM file which you can install using your package manager.
+
+## COPR
+
+If you have Fedora and don't want to build GetIt from source you can easily install it using dnf copr.
+
+```
+sudo dnf copr enable bartkessels/GetIt
+sudo dnf install getit
+```

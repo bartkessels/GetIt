@@ -1,13 +1,11 @@
 moduledir = $(pythondir)/getit
-module_PYTHON = __main__.py \
-		dialogs/dialog.py \
-		windows/mainwindow.py \
-		elements/authentication.py \
-		elements/body.py \
-		elements/body_key_value_pair.py \
-		elements/cookies.py \
-		elements/header_key_value_pair.py \
-		elements/headers.py \
-		elements/response.py
+module_PYTHON = \
+		elements/cookie.py \
+		elements/form_data.py \
+		elements/header.py \
+		dialog.py \
+		__main__.py \
+		mainwindow.py \
+		request.py
 
 -include $(top_srcdir)/git.mk

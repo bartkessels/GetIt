@@ -1,5 +1,4 @@
 *.o
-*.tar.gz
 .deps
 /**/*.swp
 /*.bak
@@ -25,7 +24,6 @@
 /TAGS
 /aclocal.m4
 /autom4te.cache
-/bin/getit
 /build-aux
 /config
 /config.cache

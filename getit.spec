@@ -37,7 +37,7 @@ rm -rf $RPM_BUILD_ROOT
 mkdir -p %{buildroot}%{_datadir}/%{name}/ui
 %make_install
 desktop-file-install data/package/%{name}.desktop
-cp data/ui/*.ui %{buildroot}%{_datadir}/%{name}/ui
+cp -r data/ui/* %{buildroot}%{_datadir}/%{name}/ui
 
 %files
 %license COPYING
@@ -47,6 +47,10 @@ cp data/ui/*.ui %{buildroot}%{_datadir}/%{name}/ui
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Thu Jun 1 2017 Bart Kessels <bartkessels@outlook.com> 1.3-1
+- Refactor codebase
+- Add ability to create raw body instead of form-data
+
 * Fri Apr 7 2017 Bart Kessels <bartkessels@outlook.com> 1.2-1
 - Add ability to add cookies to a requests
 - Fix endless scrolling bug on response stack
