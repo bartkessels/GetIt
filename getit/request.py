@@ -1,9 +1,6 @@
 import requests
-import sys
 
-from .dialog import Dialog
-
-class Request:
+class Request():
     body = []
     files = []
     cookies = []
@@ -114,31 +111,27 @@ class Request:
 
         return headers
 
-    def send_request(self):
+    def send_request(self, queue, callback):
         """
             Send request using the requests library
-        """
+            in another thread to avoid locking the UI thread
 
-        # Check if url is given
-        if self.url == "" or self.url == None:
-            Dialog("Warning", "Please enter a valid URL")
-            return
+            When the request is sent run the callback method
+        """
 
         body = self.get_body_form_data()
         if self.body_type == "body_data_raw":
             body = self.body_raw
 
-        try:
-            request = requests.request(self.method, self.url, data = body,
-                                        files = self.get_body_files(),
-                                        headers = self.get_headers(),
-                                        auth = self.authentication,
-                                        cookies = self.get_cookies())
+        request = requests.request(self.method, self.url, data = body,
+                                    files = self.get_body_files(),
+                                    headers = self.get_headers(),
+                                    auth = self.authentication,
+                                    cookies = self.get_cookies())
 
-            self.response_code = request.status_code
-            self.response_reason = request.reason
-            self.response_headers = request.headers
-            self.response_body = request.text
-        except:
-            print(sys.exc_info())
-            Dialog("Error", "Something went wrong sending the request...")
+        self.response_code = request.status_code
+        self.response_reason = request.reason
+        self.response_headers = request.headers
+        self.response_body = request.text
+
+        queue.put(callback())

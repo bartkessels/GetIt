@@ -3,8 +3,12 @@ from gi.repository import GtkSource
 from gi.repository import GObject
 from requests.auth import HTTPBasicAuth
 from requests.auth import HTTPDigestAuth
+from threading import Thread
+from multiprocessing import Queue
+import sys
 
 from .cookie import Cookie
+from .dialog import Dialog
 from .form_data import FormData
 from .header import Header
 from .request import Request
@@ -17,12 +21,15 @@ class MainWindow(Gtk.Window):
             Add all widgets from UI file to self, connect the signals and
             set properties for window
         """
+
         Gtk.Window.__init__(self, title = "GetIt")
 
         GObject.type_register(GtkSource.View)
         builder = Gtk.Builder()
         builder.add_from_file(self.UI_FILE)
 
+        # Create queue for threads
+        self.queue = Queue()
 
         '''
             --------------------------------------------------------------------
@@ -30,8 +37,6 @@ class MainWindow(Gtk.Window):
             --------------------------------------------------------------------
         '''
         # Main
-        self.grd_main = builder.get_object("grd_main")
-        self.mb_main = builder.get_object("mb_main")
         self.lb_recent_requests = builder.get_object("lb_recent_requests")
         self.stack_main_content = builder.get_object("stack_main_content")
 
@@ -62,10 +67,13 @@ class MainWindow(Gtk.Window):
         self.btn_headers_add = builder.get_object("btn_headers_add")
 
         # Response
-        self.grd_content_response = builder.get_object("grd_content_response")
+        self.sw_content_response = builder.get_object("sw_content_response")
+        self.grd_response_headers = builder.get_object("grd_response_headers")
+        self.sv_response_output = builder.get_object("sv_response_output")
 
         # Add root widget to window
-        self.add(self.grd_main)
+        self.stack_main_content.unparent()
+        self.add(self.stack_main_content)
 
         '''
             --------------------------------------------------------------------
@@ -100,12 +108,15 @@ class MainWindow(Gtk.Window):
         self.ss_main_content = Gtk.StackSwitcher()
         self.ss_main_content.set_stack(self.stack_main_content)
 
+        self.sp_sending = Gtk.Spinner()
+
         # Headerbar
         self.header_bar = Gtk.HeaderBar()
         self.header_bar.set_show_close_button(True)
         self.header_bar.set_title("GetIt")
-        self.header_bar.pack_start(self.ss_main_content);
+        self.header_bar.pack_start(self.ss_main_content)
         self.header_bar.pack_end(self.btn_send_request)
+        self.header_bar.pack_end(self.sp_sending)
 
         self.set_titlebar(self.header_bar)
 
@@ -248,9 +259,25 @@ class MainWindow(Gtk.Window):
         text_buffer = self.sv_body_data_raw_input.get_buffer()
         self.request.body_raw = text_buffer.get_text(text_buffer.get_start_iter(), text_buffer.get_end_iter(), True)
 
+        # Check if url is given
+        if self.request.url == None or self.request.url == "":
+            Dialog(self, "Warning", "Please enter a valid URL")
+            return
+
+        # Start loading spinner and disable button
+        self.sp_sending.start()
+        self.btn_send_request.set_sensitive(False)
+
         self.header_bar.set_subtitle(self.request.method + ": " + self.request.url)
 
-        self.request.send_request()
+        # Run the request
+        self.thread = Thread(target = self.request.send_request, args=(self.queue, self.request_done,))
+        self.thread.start()
+
+    def request_done(self):
+        """
+            Method is being called when the request has been sent
+        """
 
         if hasattr(self.request, 'response_code') == False:
             return
@@ -261,8 +288,8 @@ class MainWindow(Gtk.Window):
             --------------------------------------------------------------------
         '''
         # Remove widgets
-        for widget in self.grd_content_response.get_children():
-            self.grd_content_response.remove(widget)
+        for widget in self.grd_response_headers.get_children():
+            self.grd_response_headers.remove(widget)
             widget.destroy()
 
         # Set status code
@@ -272,7 +299,7 @@ class MainWindow(Gtk.Window):
         lbl_status_code.set_margin_bottom(2)
 
         # Add statuscode to self
-        self.grd_content_response.add(lbl_status_code)
+        self.grd_response_headers.add(lbl_status_code)
         lbl_status_code.show()
 
         # Loop through headers
@@ -283,16 +310,9 @@ class MainWindow(Gtk.Window):
             lbl_header.set_margin_top(2)
             lbl_header.set_margin_bottom(2)
 
-            self.grd_content_response.add(lbl_header)
+            self.grd_response_headers.add(lbl_header)
             lbl_header.set_justify(Gtk.Justification.LEFT)
             lbl_header.show()
-
-        # Add another separator
-        separator = Gtk.Separator()
-        separator.set_orientation(Gtk.Orientation.HORIZONTAL)
-
-        self.grd_content_response.add(separator)
-        separator.show()
 
         # Response body
         if self.request.response_body != None:
@@ -307,12 +327,13 @@ class MainWindow(Gtk.Window):
             if language != None:
                 source_buffer = GtkSource.Buffer.new_with_language(language)
 
-            tv_body = GtkSource.View.new_with_buffer(source_buffer)
-            tv_body.set_indent(True)
-            tv_body.set_show_line_numbers(True)
-            tv_body.set_wrap_mode(Gtk.WrapMode.WORD)
             source_buffer.set_text(self.request.response_body)
+            self.sv_response_output.set_buffer(source_buffer)
 
-            # Add body to self
-            self.grd_content_response.add(tv_body)
-            tv_body.show()
+
+        # Stop loading spinner and enable send button
+        self.sp_sending.stop()
+        self.btn_send_request.set_sensitive(True)
+
+        # Go to response stack
+        self.stack_main_content.set_visible_child(self.sw_content_response)

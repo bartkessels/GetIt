@@ -2,8 +2,8 @@ from gi.repository import Gtk
 
 class Dialog(Gtk.Dialog):
 
-    def __init__(self, title, message):
-        Gtk.Dialog.__init__(self, title, None, Gtk.DialogFlags.MODAL, (
+    def __init__(self, parent, title, message):
+        Gtk.Dialog.__init__(self, title, parent, Gtk.DialogFlags.MODAL, (
             Gtk.STOCK_CLOSE, Gtk.ResponseType.CLOSE
         ))
 
