@@ -271,7 +271,7 @@ class MainWindow(Gtk.Window):
 
         self.header_bar.set_subtitle(self.request.method + ": " + self.request.url)
 
-        # Run the request
+        # Send request
         self.thread = Thread(target = self.request.send_request, args=(self.queue, self.request_done,))
         self.thread.start()
 

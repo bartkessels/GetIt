@@ -1,5 +1,5 @@
 Name:		getit
-Version:	1.3
+Version:	1.4
 Release:	1%{?dist}
 Summary:	Send HTTP requests
 
@@ -47,6 +47,10 @@ cp -r data/ui/* %{buildroot}%{_datadir}/%{name}/ui
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Fri Jun 9 2017 Bart Kessels <bartkessels@outlook.com> 1.4-1
+- Add spinner to indicate the request is still being sent
+- Add shortcut to send request
+
 * Thu Jun 1 2017 Bart Kessels <bartkessels@outlook.com> 1.3-1
 - Refactor codebase
 - Add ability to create raw body instead of form-data
