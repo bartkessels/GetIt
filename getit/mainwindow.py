@@ -103,6 +103,7 @@ class MainWindow(Gtk.Window):
         # Headerbar widgets
         self.btn_send_request = Gtk.Button(label = "Send")
         self.btn_send_request.get_style_context().add_class("suggested-action")
+        self.btn_send_request.set_tooltip_text("Send Request (Ctrl + Return)")
         self.btn_send_request.connect("clicked", self.btn_send_request_clicked)
 
         self.ss_main_content = Gtk.StackSwitcher()
