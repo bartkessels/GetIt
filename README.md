@@ -25,11 +25,13 @@ option for authentication, right now only basic auth and digest auth.
 - intltool
 - itstool
 - desktop-file-utils
+- libnotify-devel
 
 ### Installing
 - gtk3
 - pygobject3
 - python3-requests
+- libnotify
 
 ## Features
 

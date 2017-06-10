@@ -14,10 +14,12 @@ BuildRequires:	gettext
 BuildRequires:  intltool
 BuildRequires:  itstool
 BuildRequires:	%{_bindir}/desktop-file-install
+BuildRequires:	libnotify-devel
 
 Requires:	gtk3
 Requires:	pygobject3
 Requires:	python3-requests
+Requires:	libnotify
 
 %description
 Application to send HTTP requests to test your own API's
