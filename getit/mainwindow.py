@@ -11,6 +11,7 @@ from .cookie import Cookie
 from .dialog import Dialog
 from .form_data import FormData
 from .header import Header
+from .notification import Notification
 from .request import Request
 
 class MainWindow(Gtk.Window):
@@ -360,6 +361,10 @@ class MainWindow(Gtk.Window):
         # Stop loading animation
         self.stop_loading()
         self.response_screen_output()
+
+        # Display notification
+        notification_message = self.request.method + ": " + self.request.url
+        Notification.send("Request Sent", notification_message)
 
     def start_loading(self):
         """

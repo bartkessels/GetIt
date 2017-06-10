@@ -6,6 +6,7 @@ module_PYTHON = \
 		dialog.py \
 		__main__.py \
 		mainwindow.py \
+		notification.py \
 		request.py
 
 -include $(top_srcdir)/git.mk

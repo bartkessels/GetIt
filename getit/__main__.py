@@ -1,10 +1,14 @@
 import sys
 import gi
+
 gi.require_version('Gtk', '3.0')
 gi.require_version('GtkSource', '3.0')
+gi.require_version('Notify', '0.7')
+
 from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GObject
+from gi.repository import Notify
 
 from .mainwindow import MainWindow
 
@@ -16,6 +20,9 @@ def main():
 
     # Bind keys
     main_window.connect("key-press-event", key_press_events)
+
+    # Initialize notifications
+    Notify.init("GetIt")
 
     Gtk.main()
 
