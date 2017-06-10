@@ -30,6 +30,10 @@ def key_press_events(widget, event):
 
     ctrl = (state & Gdk.ModifierType.CONTROL_MASK)
 
-    # CTRL + Return: send request
-    if ctrl and keyval_name == 'Return':
+    # CTRL + Return / Enter: send request
+    if ctrl and (keyval_name == 'Return' or keyval_name == 'KP_Enter'):
         widget.btn_send_request_clicked(widget)
+
+    # Escape: Cancel request
+    elif keyval_name == 'Escape':
+        widget.btn_cancel_request_clicked(widget)

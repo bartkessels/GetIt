@@ -5,6 +5,7 @@ class Request():
     files = []
     cookies = []
     headers = []
+    stop = False
 
     def __init__(self):
         """
@@ -111,6 +112,17 @@ class Request():
 
         return headers
 
+    def stop_request(self, queue, callback):
+        """
+            Stop sending request if one is being sent
+        """
+
+        if hasattr(self, 'request') and self.request != None:
+            self.request.close()
+
+        self.stop = True
+        queue.put(callback())
+
     def send_request(self, queue, callback):
         """
             Send request using the requests library
@@ -119,19 +131,29 @@ class Request():
             When the request is sent run the callback method
         """
 
+        # Set stop to false for the callback call
+        self.stop = False
+
+        # Check if body should be form-data or raw
         body = self.get_body_form_data()
         if self.body_type == "body_data_raw":
             body = self.body_raw
 
-        request = requests.request(self.method, self.url, data = body,
+        try:
+            self.request = requests.request(self.method, self.url, data = body,
                                     files = self.get_body_files(),
                                     headers = self.get_headers(),
                                     auth = self.authentication,
                                     cookies = self.get_cookies())
 
-        self.response_code = request.status_code
-        self.response_reason = request.reason
-        self.response_headers = request.headers
-        self.response_body = request.text
+            self.response_code = self.request.status_code
+            self.response_reason = self.request.reason
+            self.response_headers = self.request.headers
+            self.response_body = self.request.text
+        except Exception as ex:
+            print(ex)
+        finally:
+            self.response = None
 
-        queue.put(callback())
+        if not self.stop:
+            queue.put(callback())

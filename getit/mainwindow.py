@@ -70,6 +70,8 @@ class MainWindow(Gtk.Window):
         self.sw_content_response = builder.get_object("sw_content_response")
         self.grd_response_headers = builder.get_object("grd_response_headers")
         self.sv_response_output = builder.get_object("sv_response_output")
+        self.lbl_response_default_message = builder.get_object("lbl_response_default_message")
+        self.grd_response_sending = builder.get_object("grd_response_sending")
 
         # Add root widget to window
         self.stack_main_content.unparent()
@@ -106,6 +108,11 @@ class MainWindow(Gtk.Window):
         self.btn_send_request.set_tooltip_text("Send Request (Ctrl + Return)")
         self.btn_send_request.connect("clicked", self.btn_send_request_clicked)
 
+        self.btn_cancel_request = Gtk.Button(label = "Cancel")
+        self.btn_cancel_request.get_style_context().add_class("destructive-action")
+        self.btn_cancel_request.set_tooltip_text("Cancel Request (Esc)")
+        self.btn_cancel_request.connect("clicked", self.btn_cancel_request_clicked)
+
         self.ss_main_content = Gtk.StackSwitcher()
         self.ss_main_content.set_stack(self.stack_main_content)
 
@@ -116,6 +123,7 @@ class MainWindow(Gtk.Window):
         self.header_bar.set_show_close_button(True)
         self.header_bar.set_title("GetIt")
         self.header_bar.pack_start(self.ss_main_content)
+        self.header_bar.pack_end(self.btn_cancel_request)
         self.header_bar.pack_end(self.btn_send_request)
         self.header_bar.pack_end(self.sp_sending)
 
@@ -139,8 +147,10 @@ class MainWindow(Gtk.Window):
         # Create new request object
         self.request = Request()
 
-        # Hide all authentication methods
+        # Hide widgets
         self.cb_authentication_method_changed(self.cb_authentication_method)
+        self.response_screen_default()
+        self.stop_loading()
 
     def cb_body_method_changed(self, widget):
         """
@@ -265,22 +275,37 @@ class MainWindow(Gtk.Window):
             Dialog(self, "Warning", "Please enter a valid URL")
             return
 
-        # Start loading spinner and disable button
-        self.sp_sending.start()
-        self.btn_send_request.set_sensitive(False)
+        # Start loading animation
+        self.stack_main_content.set_visible_child(self.sw_content_response)
+        self.start_loading()
+        self.response_screen_sending()
 
         self.header_bar.set_subtitle(self.request.method + ": " + self.request.url)
 
         # Send request
         self.thread = Thread(target = self.request.send_request, args=(self.queue, self.request_done,))
+        self.thread.setDaemon(True)
         self.thread.start()
+
+    def btn_cancel_request_clicked(self, widget):
+        """
+            Cancel sending request
+
+            Stop loading and remove subtitle and set response stack to display
+            default message
+        """
+        self.request.stop_request(self.queue, self.request_done)
+        self.stop_loading()
+
+        self.header_bar.set_subtitle("")
+        self.response_screen_default()
 
     def request_done(self):
         """
             Method is being called when the request has been sent
         """
 
-        if hasattr(self.request, 'response_code') == False:
+        if not hasattr(self.request, 'response_code'):
             return
 
         '''
@@ -332,9 +357,57 @@ class MainWindow(Gtk.Window):
             self.sv_response_output.set_buffer(source_buffer)
 
 
-        # Stop loading spinner and enable send button
-        self.sp_sending.stop()
-        self.btn_send_request.set_sensitive(True)
+        # Stop loading animation
+        self.stop_loading()
+        self.response_screen_output()
 
-        # Go to response stack
-        self.stack_main_content.set_visible_child(self.sw_content_response)
+    def start_loading(self):
+        """
+            Setup headerbar to let user know it's doing something
+            Display loading spinner, hide send button and show cancel button
+        """
+
+        self.btn_send_request.set_visible(False)
+        self.btn_cancel_request.set_visible(True)
+        self.sp_sending.start()
+
+    def stop_loading(self):
+        """
+            Setup headerbar to let user know it's not doing anything
+            Hide loading spinner, display send button and hide cancel button
+        """
+
+        self.btn_send_request.set_visible(True)
+        self.btn_cancel_request.set_visible(False)
+        self.sp_sending.stop()
+
+    def response_screen_default(self):
+        """
+            Change widgets response screen to display default message
+        """
+
+        self.sv_response_output.set_visible(False)
+        self.grd_response_headers.set_visible(False)
+        self.lbl_response_default_message.set_visible(True)
+        self.grd_response_sending.set_visible(False)
+
+    def response_screen_output(self):
+        """
+            Change widgets response screen to hide default message
+        """
+
+        self.sv_response_output.set_visible(True)
+        self.grd_response_headers.set_visible(True)
+        self.lbl_response_default_message.set_visible(False)
+        self.grd_response_sending.set_visible(False)
+
+    def response_screen_sending(self):
+        """
+            Change widgets response screen to display sending message
+        """
+
+        self.sv_response_output.set_visible(False)
+        self.grd_response_headers.set_visible(False)
+        self.lbl_response_default_message.set_visible(False)
+        self.grd_response_sending.set_visible(True)
+        
