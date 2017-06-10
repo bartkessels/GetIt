@@ -47,6 +47,11 @@ cp -r data/ui/* %{buildroot}%{_datadir}/%{name}/ui
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Sun Jun 11 2017 Bart Kessels <bartkessels@outlook.com> 1.4.1-1
+- Add cancel request button
+- Add shortcuts for send and cancel button
+- Display notification when request is processed
+
 * Fri Jun 9 2017 Bart Kessels <bartkessels@outlook.com> 1.4-1
 - Add spinner to indicate the request is still being sent
 - Add shortcut to send request
