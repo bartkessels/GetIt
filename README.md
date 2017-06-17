@@ -59,17 +59,6 @@ And then run `./bin/getit`
 If you don't copy the .ui files the application will crash because
 it can't find the .ui files file.
 
-## Generate RPM package
-You first need to download the latest
-release of GetIt using spectool.
-
-```
-spectool -g getit.spec
-fedpkg --release f25 local
-```
-
-This will create a RPM file which you can install using your package manager.
-
 ## COPR
 
 If you have Fedora and don't want to build GetIt from source you can easily install it using dnf copr.
