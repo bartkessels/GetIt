@@ -47,7 +47,7 @@ option for authentication, right now only basic auth and digest auth.
 
 ## How to build
 ```
-sudo mdir -p /usr/share/getit/ui
+sudo mkdir -p /usr/share/getit/ui
 sudo cp -r data/ui/* /usr/share/getit/ui
 
 bash autogen.sh
