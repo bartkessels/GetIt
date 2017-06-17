@@ -64,6 +64,6 @@ it can't find the .ui files file.
 If you have Fedora and don't want to build GetIt from source you can easily install it using dnf copr.
 
 ```
-sudo dnf copr enable bartkessels/GetIt
+sudo dnf copr enable bartkessels/getit
 sudo dnf install getit
 ```
