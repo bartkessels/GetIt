@@ -44,6 +44,10 @@ option for authentication, right now only basic auth and digest auth.
 - Use basic auth or digest auth
 - Response data is displayed with syntax highlighting
 - All headers from the response are shown
+- Save a request
+- Open a request
+
+[GetIt features playlist](https://www.youtube.com/playlist?list=PLP-QZD6Cd0MWh7969cLZg31gO71s44Bk4)
 
 ## How to build
 ```
