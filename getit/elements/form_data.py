@@ -109,7 +109,9 @@ class FormData:
         self.et_value.show()
         self.btn_remove.show()
 
-    def btn_delete_clicked(self, caller, widget, parent, request):
+        self.cb_type_changed(self.cb_type)
+
+    def btn_remove_clicked(self, caller, widget, parent, request):
         """
             Remove self from request cookies list
             Remove widget from parent

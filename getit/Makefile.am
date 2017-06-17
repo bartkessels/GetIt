@@ -4,6 +4,8 @@ module_PYTHON = \
 		elements/form_data.py \
 		elements/header.py \
 		dialog.py \
+		getit.py \
+		jsonparser.py \
 		__main__.py \
 		mainwindow.py \
 		notification.py \

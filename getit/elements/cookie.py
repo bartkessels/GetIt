@@ -56,7 +56,7 @@ class Cookie:
         self.et_value.show()
         self.btn_remove.show()
 
-    def btn_delete_clicked(self, caller, widget, parent, request):
+    def btn_remove_clicked(self, caller, widget, parent, request):
         """
             Remove self from request cookies list
             Remove widget from parent

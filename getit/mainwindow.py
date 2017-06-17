@@ -14,16 +14,16 @@ from .header import Header
 from .notification import Notification
 from .request import Request
 
-class MainWindow(Gtk.Window):
+class MainWindow(Gtk.ApplicationWindow):
     UI_FILE = "/usr/share/getit/ui/mainwindow.ui"
 
-    def __init__(self):
+    def __init__(self, application):
         """
             Add all widgets from UI file to self, connect the signals and
             set properties for window
         """
 
-        Gtk.Window.__init__(self, title = "GetIt")
+        Gtk.Window.__init__(self, title = "GetIt", application = application)
 
         GObject.type_register(GtkSource.View)
         builder = Gtk.Builder()
@@ -45,7 +45,10 @@ class MainWindow(Gtk.Window):
         self.stack_body_data = builder.get_object("stack_body_data")
         self.cb_body_method = builder.get_object("cb_body_method")
         self.et_body_url = builder.get_object("et_body_url")
+        self.sw_body_data = builder.get_object("sw_body_data")
+        self.stack_body_data = builder.get_object("stack_body_data")
         self.grd_body_data_form_data = builder.get_object("grd_body_data_form_data")
+        self.grd_body_data_raw = builder.get_object("grd_body_data_raw")
         self.btn_body_data_form_data_add = builder.get_object("btn_body_data_form_data_add")
         self.cb_body_data_raw_syntax = builder.get_object("cb_body_data_raw_syntax")
         self.sv_body_data_raw_input = builder.get_object("sv_body_data_raw_input")
@@ -73,6 +76,8 @@ class MainWindow(Gtk.Window):
         self.sv_response_output = builder.get_object("sv_response_output")
         self.lbl_response_default_message = builder.get_object("lbl_response_default_message")
         self.grd_response_sending = builder.get_object("grd_response_sending")
+        self.grd_response_error = builder.get_object("grd_response_error")
+        self.lbl_response_error_message = builder.get_object("lbl_response_error_message")
 
         # Add root widget to window
         self.stack_main_content.unparent()
@@ -166,13 +171,27 @@ class MainWindow(Gtk.Window):
             method = model[tree_iter][0]
             self.request.method = method
 
-    def btn_body_data_form_data_add_clicked(self, widget):
+    def btn_body_data_form_data_add_clicked(self, widget, **kwargs):
         """
             Add new form_data key value pair to request
         """
 
         form_data = FormData()
-        form_data.btn_remove.connect("clicked", form_data.btn_delete_clicked, form_data, self.grd_body_data_form_data, self.request)
+        form_data.btn_remove.connect("clicked", form_data.btn_remove_clicked, form_data, self.grd_body_data_form_data, self.request)
+
+        # Get values from kwargs
+        enabled = kwargs.get('enabled', True)
+        key = kwargs.get('key', '')
+        value = kwargs.get('value', '')
+        file = kwargs.get('file', '')
+        type = kwargs.get('type', 0)
+
+        form_data.cbtn_enabled.set_active(enabled)
+        form_data.et_key.set_text(key)
+        form_data.et_value.set_text(value)
+        form_data.fcbtn_file.set_filename(file)
+        form_data.cb_type.set_active(type)
+
         self.request.add_body_item(form_data)
 
         self.grd_body_data_form_data.add(form_data.root_view)
@@ -234,24 +253,44 @@ class MainWindow(Gtk.Window):
 
         return None
 
-    def btn_cookies_add_clicked(self, widget):
+    def btn_cookies_add_clicked(self, widget, **kwargs):
         """
             Add cookie key value pair to request
         """
         cookie = Cookie()
-        cookie.btn_remove.connect("clicked", cookie.btn_delete_clicked, cookie, self.grd_content_cookies, self.request)
+        cookie.btn_remove.connect("clicked", cookie.btn_remove_clicked, cookie, self.grd_content_cookies, self.request)
+
+        # Get values from kwargs
+        enabled = kwargs.get('enabled', True)
+        key = kwargs.get('key', '')
+        value = kwargs.get('value', '')
+
+        cookie.cbtn_enabled.set_active(enabled)
+        cookie.et_key.set_text(key)
+        cookie.et_value.set_text(value)
+
         self.request.add_cookie(cookie)
 
         self.grd_content_cookies.add(cookie.root_view)
         cookie.show()
 
-    def btn_headers_add_clicked(self, widget):
+    def btn_headers_add_clicked(self, widget, **kwargs):
         """
             Add header key value pair to request
         """
 
         header = Header()
-        header.btn_remove.connect("clicked", header.btn_delete_clicked, header, self.grd_content_headers, self.request)
+        header.btn_remove.connect("clicked", header.btn_remove_clicked, header, self.grd_content_headers, self.request)
+
+        # Get values from kwargs
+        enabled = kwargs.get('enabled', True)
+        key = kwargs.get('key', '')
+        value = kwargs.get('value', '')
+
+        header.cbtn_enabled.set_active(enabled)
+        header.et_key.set_text(key)
+        header.et_value.set_text(value)
+
         self.request.add_header(header)
 
         self.grd_content_headers.add(header.root_view)
@@ -284,7 +323,7 @@ class MainWindow(Gtk.Window):
         self.header_bar.set_subtitle(self.request.method + ": " + self.request.url)
 
         # Send request
-        self.thread = Thread(target = self.request.send_request, args=(self.queue, self.request_done,))
+        self.thread = Thread(target = self.request.send_request, args=(self.queue, self.request_done, self.request_error,))
         self.thread.setDaemon(True)
         self.thread.start()
 
@@ -298,7 +337,7 @@ class MainWindow(Gtk.Window):
         self.request.stop_request(self.queue, self.request_done)
         self.stop_loading()
 
-        self.header_bar.set_subtitle("")
+        self.header_bar.set_subtitle('')
         self.response_screen_default()
 
     def request_done(self):
@@ -354,7 +393,7 @@ class MainWindow(Gtk.Window):
             if language != None:
                 source_buffer = GtkSource.Buffer.new_with_language(language)
 
-            source_buffer.set_text(self.request.response_body)
+            source_buffer.set_text(self.request.response_body, len(self.request.response_body))
             self.sv_response_output.set_buffer(source_buffer)
 
 
@@ -365,6 +404,19 @@ class MainWindow(Gtk.Window):
         # Display notification
         notification_message = self.request.method + ": " + self.request.url
         Notification.send("Request Sent", notification_message)
+
+    def request_error(self, error_message):
+        """
+            Method is being called when an exception has occured trying to send the request
+        """
+
+        # Stop loading animation
+        self.stop_loading()
+        self.response_screen_error(str(error_message))
+
+        # Display notification
+        notification_message = self.request.method + ": " + self.request.url
+        Notification.send("Error Sending Request", notification_message)
 
     def start_loading(self):
         """
@@ -395,6 +447,20 @@ class MainWindow(Gtk.Window):
         self.grd_response_headers.set_visible(False)
         self.lbl_response_default_message.set_visible(True)
         self.grd_response_sending.set_visible(False)
+        self.grd_response_error.set_visible(False)
+
+    def response_screen_error(self, error_message):
+        """
+            Change widgets response screen to display that an error has occured
+        """
+
+        self.sv_response_output.set_visible(False)
+        self.grd_response_headers.set_visible(False)
+        self.lbl_response_default_message.set_visible(False)
+        self.grd_response_sending.set_visible(False)
+        self.grd_response_error.set_visible(True)
+
+        self.lbl_response_error_message.set_text(error_message)
 
     def response_screen_output(self):
         """
@@ -405,6 +471,7 @@ class MainWindow(Gtk.Window):
         self.grd_response_headers.set_visible(True)
         self.lbl_response_default_message.set_visible(False)
         self.grd_response_sending.set_visible(False)
+        self.grd_response_error.set_visible(False)
 
     def response_screen_sending(self):
         """
@@ -415,4 +482,4 @@ class MainWindow(Gtk.Window):
         self.grd_response_headers.set_visible(False)
         self.lbl_response_default_message.set_visible(False)
         self.grd_response_sending.set_visible(True)
-        
+        self.grd_response_error.set_visible(False)

@@ -123,7 +123,7 @@ class Request():
         self.stop = True
         queue.put(callback())
 
-    def send_request(self, queue, callback):
+    def send_request(self, queue, callback, error_callback):
         """
             Send request using the requests library
             in another thread to avoid locking the UI thread
@@ -151,9 +151,9 @@ class Request():
             self.response_headers = self.request.headers
             self.response_body = self.request.text
         except Exception as ex:
-            print(ex)
+            queue.put(error_callback(ex))
         finally:
-            self.response = None
+            self.request = None
 
         if not self.stop:
             queue.put(callback())

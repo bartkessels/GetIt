@@ -1,5 +1,5 @@
 Name:		getit
-Version:	1.4.1
+Version:	2.0
 Release:	1%{?dist}
 Summary:	Send HTTP requests
 
@@ -19,6 +19,7 @@ BuildRequires:	libnotify-devel
 Requires:	gtk3
 Requires:	pygobject3
 Requires:	python3-requests
+Requires:	python3-jsonpickle
 Requires:	libnotify
 
 %description
@@ -49,6 +50,12 @@ cp -r data/ui/* %{buildroot}%{_datadir}/%{name}/ui
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Sat Jun 17 2017 Bart Kessels <bartkessels@outlook.com> 2.0-1
+- Display message when something has wrong while sending the request
+- Add ability to save a request
+- Add ability to open a request
+- Add ability to clear the current request
+
 * Sun Jun 11 2017 Bart Kessels <bartkessels@outlook.com> 1.4.1-1
 - Add cancel request button
 - Add shortcuts for send and cancel button

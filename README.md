@@ -31,6 +31,7 @@ option for authentication, right now only basic auth and digest auth.
 - gtk3
 - pygobject3
 - python3-requests
+- python3-jsonpickle
 - libnotify
 
 ## Features
