@@ -334,7 +334,11 @@ class MainWindow(Gtk.ApplicationWindow):
             Stop loading and remove subtitle and set response stack to display
             default message
         """
-        self.request.stop_request(self.queue, self.request_done)
+
+        if not self.btn_cancel_request.get_visible():
+            return
+
+        self.request.stop_request()
         self.stop_loading()
 
         self.header_bar.set_subtitle('')

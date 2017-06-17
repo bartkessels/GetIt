@@ -112,7 +112,7 @@ class Request():
 
         return headers
 
-    def stop_request(self, queue, callback):
+    def stop_request(self):
         """
             Stop sending request if one is being sent
         """
@@ -121,7 +121,6 @@ class Request():
             self.request.close()
 
         self.stop = True
-        queue.put(callback())
 
     def send_request(self, queue, callback, error_callback):
         """
