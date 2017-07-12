@@ -29,10 +29,10 @@ Application to send HTTP requests to test your own API endpoints
 %global debug_package %{nil}
 
 %prep
-autoreconf --install
 %autosetup -p1
 
 %build
+autoreconf --install
 %configure
 make %{?_smp_mflags}
 
