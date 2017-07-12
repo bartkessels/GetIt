@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gresources>
+  <gresource prefix="/net/bartkessels/getit">
+  	<!-- Content -->
+  	<file alias="content-body.ui" preprocess="xml-stripblanks">ui/ui_content_body.ui</file>
+  	<file alias="content-cookies.ui" preprocess="xml-stripblanks">ui/ui_content_cookies.ui</file>
+  	<file alias="content-headers.ui" preprocess="xml-stripblanks">ui/ui_content_headers.ui</file>
+  	<file alias="content-response.ui" preprocess="xml-stripblanks">ui/ui_content_response.ui</file>
+  	
+  	<!-- Elements -->
+  	<file alias="element-cookie.ui" preprocess="xml-stripblanks">ui/ui_element_cookie.ui</file>
+  	<file alias="element-formdata.ui" preprocess="xml-stripblanks">ui/ui_element_formdata.ui</file>
+  	<file alias="element-header.ui" preprocess="xml-stripblanks">ui/ui_element_header.ui</file>
+  </gresource>
+</gresources>

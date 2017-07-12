@@ -1,2 +1,2 @@
-
--include $(top_srcdir)/git.mk
+desktopdir = $(datadir)/applications
+desktop_DATA = getit.desktop

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.20.0 -->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <requires lib="gtksourceview" version="3.0"/>
+  <object class="GtkGrid" id="grd_main">
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <property name="row_spacing">5</property>
+    <property name="column_spacing">5</property>
+    <property name="column_homogeneous">True</property>
+    <child>
+      <object class="GtkEntry" id="et_uri">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="placeholder_text" translatable="yes">http://...</property>
+      </object>
+      <packing>
+        <property name="left_attach">2</property>
+        <property name="top_attach">0</property>
+        <property name="width">3</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkStackSwitcher" id="sw_data">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="stack">stack_data</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">1</property>
+        <property name="width">5</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkStack" id="stack_data">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="hexpand">True</property>
+        <property name="vexpand">True</property>
+        <property name="transition_type">slide-left-right</property>
+        <child>
+          <object class="GtkGrid" id="grd_data_formdata">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
+            <property name="row_spacing">5</property>
+            <property name="column_spacing">5</property>
+            <property name="column_homogeneous">True</property>
+            <child>
+              <object class="GtkButton" id="btn_data_formdata_add">
+                <property name="label" translatable="yes">Add Key Value Pair</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="name">BODY_TYPE_FORMDATA</property>
+            <property name="title" translatable="yes">Form Data</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid" id="grd_data_raw">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="row_spacing">5</property>
+            <property name="column_spacing">5</property>
+            <property name="column_homogeneous">True</property>
+            <child>
+              <object class="GtkComboBoxText" id="cb_data_raw_syntax">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="active">0</property>
+                <items>
+                  <item id="text" translatable="yes">Text</item>
+                  <item id="json" translatable="yes">JSON</item>
+                  <item id="xml" translatable="yes">XML</item>
+                </items>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSourceView" id="sv_data_raw_input">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="vexpand">True</property>
+                <property name="hscroll_policy">natural</property>
+                <property name="wrap_mode">char</property>
+                <property name="monospace">True</property>
+                <property name="show_line_numbers">True</property>
+                <property name="show_line_marks">True</property>
+                <property name="tab_width">4</property>
+                <property name="auto_indent">True</property>
+                <property name="insert_spaces_instead_of_tabs">True</property>
+                <property name="smart_home_end">always</property>
+                <property name="highlight_current_line">True</property>
+                <property name="smart_backspace">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="name">BODY_TYPE_RAW</property>
+            <property name="title" translatable="yes">Raw</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">2</property>
+        <property name="width">5</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkComboBoxText" id="cb_method">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="active">0</property>
+        <items>
+          <item id="GET" translatable="yes">GET</item>
+          <item id="POST" translatable="yes">POST</item>
+          <item id="PUT" translatable="yes">PUT</item>
+          <item id="PATCH" translatable="yes">PATCH</item>
+          <item id="DELETE" translatable="yes">DELETE</item>
+          <item id="COPY" translatable="yes">COPY</item>
+          <item id="HEAD" translatable="yes">HEAD</item>
+          <item id="OPTIONS" translatable="yes">OPTIONS</item>
+        </items>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">0</property>
+        <property name="width">2</property>
+      </packing>
+    </child>
+  </object>
+</interface>

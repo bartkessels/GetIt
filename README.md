@@ -1,13 +1,12 @@
 # GetIt
 
-Application to send HTTP requests to test API's.
+Application to send HTTP requests to test your API endpoints.
 
 ## Screenshots
 
 ![GetIt Body](data/screenshots/body.png)
-![GetIt Headers](data/screenshots/headers.png)
 ![GetIt Cookies](data/screenshots/cookies.png)
-![GetIt Authentication](data/screenshots/authentication.png)
+![GetIt Headers](data/screenshots/headers.png)
 ![GetIt Response](data/screenshots/response.png)
 
 ## What can I do with it?
@@ -18,20 +17,21 @@ option for authentication, right now only basic auth and digest auth.
 ## Required packages
 
 ### Building
+- gcc
+- autoconf
 - gtk3-devel
-- python3-devel
-- automake
-- gettext
-- intltool
-- itstool
-- desktop-file-utils
+- gtksourceview3-devl
+- json-glib-devel
+- glib-devel
+- libsoup-devel
 - libnotify-devel
 
 ### Installing
 - gtk3
-- pygobject3
-- python3-requests
-- python3-jsonpickle
+- gtksourceview3
+- json-glib
+- glib
+- libsoup
 - libnotify
 
 ## Features
@@ -41,7 +41,6 @@ option for authentication, right now only basic auth and digest auth.
 - Add files to a request
 - Add cookies to a request
 - Add multiple headers
-- Use basic auth or digest auth
 - Response data is displayed with syntax highlighting
 - All headers from the response are shown
 - Save a request
@@ -50,24 +49,31 @@ option for authentication, right now only basic auth and digest auth.
 [GetIt features playlist](https://www.youtube.com/playlist?list=PLP-QZD6Cd0MWh7969cLZg31gO71s44Bk4)
 
 ## How to build
-```
-sudo mkdir -p /usr/share/getit/ui
-sudo cp -r data/ui/* /usr/share/getit/ui
 
-bash autogen.sh
-./configure
-sudo make install
 ```
-And then run `./bin/getit`
+$ autoreconf --install
+$ ./configure
+$ make install
+```
+And then run `getit`
 
-If you don't copy the .ui files the application will crash because
-it can't find the .ui files file.
+## Generate RPM package
+
+You first need to download the latest release of GetIt using spectool.
+
+```
+$ cd packaging/RPM
+$ spectool -g getit.spec
+$ fedpkg --release f26 local
+```
+
+This will create a RPM file which can install using your package manager.
 
 ## COPR
 
 If you have Fedora and don't want to build GetIt from source you can easily install it using dnf copr.
 
 ```
-sudo dnf copr enable bartkessels/getit
-sudo dnf install getit
+$ dnf copr enable bartkessels/getit
+$ dnf install getit
 ```

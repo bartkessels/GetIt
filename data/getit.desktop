@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=GetIt
+Comment=Send HTTP requests to your API endpoints
+Exec=getit
+Icon=network-transmit
+Type=Application
+Categories=Development;Tools
