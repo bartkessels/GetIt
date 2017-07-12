@@ -42,7 +42,6 @@ rm -rf $RPM_BUILD_ROOT
 %make_install
 
 %files
-%license COPYING
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 
