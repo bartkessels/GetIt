@@ -9,6 +9,7 @@ Source0:		https://github.com/bartkessels/%{name}/archive/%{version}/%{name}-%{ve
 
 BuildRequires:	gcc
 BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gtk3-devel
 BuildRequires:	gtksourceview3-devel
 BuildRequires:	json-glib-devel

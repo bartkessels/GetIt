@@ -19,6 +19,7 @@ option for authentication, right now only basic auth and digest auth.
 ### Building
 - gcc
 - autoconf
+- automake
 - gtk3-devel
 - gtksourceview3-devl
 - json-glib-devel
