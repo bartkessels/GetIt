@@ -68,7 +68,7 @@ $ spectool -g getit.spec
 $ fedpkg --release f26 local
 ```
 
-This will create a RPM file which can install using your package manager.
+This will create a RPM file which you can install using your package manager.
 
 ## COPR
 
