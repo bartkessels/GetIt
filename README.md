@@ -60,8 +60,6 @@ And then run `getit`
 
 ## Generate RPM package
 
-You first need to download the latest release of GetIt using spectool.
-
 ```
 $ cd packaging/RPM
 $ spectool -g getit.spec
