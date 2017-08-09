@@ -61,15 +61,13 @@ And then run `getit`
 
 ## Generate RPM package
 
-You first need to download the latest release of GetIt using spectool.
-
 ```
 $ cd packaging/RPM
 $ spectool -g getit.spec
 $ fedpkg --release f26 local
 ```
 
-This will create a RPM file which can install using your package manager.
+This will create a RPM file which you can install using your package manager.
 
 ## COPR
 
