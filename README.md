@@ -18,15 +18,13 @@ option for authentication, right now only basic auth and digest auth.
 
 ### Building
 - gcc
-- autoconf
-- automake
+- meson
 - gtk3-devel
 - gtksourceview3-devl
 - json-glib-devel
 - glib-devel
 - libsoup-devel
 - libnotify-devel
-- Python
 
 ### Installing
 - gtk3
