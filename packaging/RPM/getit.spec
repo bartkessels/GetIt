@@ -8,8 +8,7 @@ URL:			https://getit.bartkessels.net
 Source0:		https://github.com/bartkessels/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:	gcc
-BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:  meson
 BuildRequires:	gtk3-devel
 BuildRequires:	gtksourceview3-devel
 BuildRequires:	json-glib-devel
@@ -30,16 +29,15 @@ Application to send HTTP requests to test your own API endpoints
 %global debug_package %{nil}
 
 %prep
-%autosetup -p1
+%autosetup -c
 
 %build
-autoreconf --install
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%make_install
+%meson_install
 
 %files
 %{_bindir}/%{name}

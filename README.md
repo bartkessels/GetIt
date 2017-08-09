@@ -26,6 +26,7 @@ option for authentication, right now only basic auth and digest auth.
 - glib-devel
 - libsoup-devel
 - libnotify-devel
+- Python
 
 ### Installing
 - gtk3
@@ -52,9 +53,9 @@ option for authentication, right now only basic auth and digest auth.
 ## How to build
 
 ```
-$ autoreconf --install
-$ ./configure
-$ make install
+$ meson build
+$ cd build
+$ ninja install
 ```
 And then run `getit`
 
