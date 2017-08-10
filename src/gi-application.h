@@ -26,33 +26,6 @@
 #include <gtk/gtk.h>
 
 #define APPLICATION_ID "net.bartkessels.getit"
-#define FILE_EXTENSION ".getit"
-
-#define JSON_BODY_NAME "body"
-#define JSON_BODY_METHOD_KEY "method"
-#define JSON_BODY_URI_KEY "uri"
-#define JSON_BODY_DATA_TYPE_KEY "data_type"
-#define JSON_BODY_RAW_LANGUAGE_KEY "raw_language"
-#define JSON_BODY_RAW_INPUT_KEY "raw"
-
-#define JSON_FORMDATA_NAME "form"
-#define JSON_FORMDATA_ENABLED_KEY "enabled"
-#define JSON_FORMDATA_KEY_KEY "key"
-#define JSON_FORMDATA_VALUE_KEY "value"
-#define JSON_FORMDATA_FILE_KEY "file"
-#define JSON_FORMDATA_TYPE_KEY "type"
-
-#define JSON_COOKIES_NAME "cookies"
-
-#define JSON_COOKIE_ENABLED_KEY "enabled"
-#define JSON_COOKIE_KEY_KEY "key"
-#define JSON_COOKIE_VALUE_KEY "value"
-
-#define JSON_HEADERS_NAME "headers"
-
-#define JSON_HEADER_ENABLED_KEY "enabled"
-#define JSON_HEADER_KEY_KEY "key"
-#define JSON_HEADER_VALUE_KEY "value"
 
 G_BEGIN_DECLS
 

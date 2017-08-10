@@ -34,6 +34,7 @@ src = [
     'src/gi-element-formdata.c',
     'src/gi-element-header-bar.c',
     'src/gi-element-header.c',
+    'src/gi-json.c',
     'src/gi-stack.c',
     'src/gi-window-main.c',
     'src/main.c'
