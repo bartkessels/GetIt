@@ -37,7 +37,7 @@ static void gi_content_body_data_formdata_btn_remove_clicked(GtkWidget* caller, 
     GiElementFormdata* formdata = GI_ELEMENT_FORMDATA(user_data);
 
     self->list_formdata = g_slist_remove(self->list_formdata, formdata);
-    gi_element_formdata_destroy(formdata);
+    gtk_widget_destroy(GTK_WIDGET(formdata));
 }
 
 static void gi_content_body_btn_data_formdata_add_clicked(GtkWidget* caller, gpointer user_data)

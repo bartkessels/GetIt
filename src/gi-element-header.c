@@ -58,16 +58,3 @@ gboolean gi_element_header_get_enabled(GiElementHeader* self)
 {
     return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(self->cbtn_enabled)) && strlen(gtk_entry_get_text(GTK_ENTRY(self->et_key))) > 0;
 }
-
-void gi_element_header_destroy(GiElementHeader* self)
-{
-    // Destroy all children
-    GList *children, *iter;
-    children = gtk_container_get_children(GTK_CONTAINER(self));
-    for (iter = children; iter != NULL; iter = g_list_next(iter))
-        gtk_widget_destroy(GTK_WIDGET(iter->data));
-    g_list_free(children);
-
-    // Destroy self
-    gtk_widget_destroy(GTK_WIDGET(self));
-}

@@ -35,7 +35,7 @@ static void gi_content_cookies_cookie_btn_remove_clicked(GtkWidget* caller, gpoi
     GiElementCookie* cookie = GI_ELEMENT_COOKIE(user_data);
 
     self->list_cookies = g_slist_remove(self->list_cookies, cookie);
-    gi_element_cookie_destroy(cookie);
+    gtk_widget_destroy(GTK_WIDGET(cookie));
 }
 
 static void gi_content_cookies_btn_add_clicked(GtkWidget* caller, gpointer user_data)

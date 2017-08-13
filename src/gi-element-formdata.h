@@ -55,7 +55,6 @@ struct _GiElementFormdata {
 GiElementFormdata* gi_element_formdata_new();
 gboolean gi_element_formdata_get_enabled(GiElementFormdata* self);
 const gchar* gi_element_formdata_get_data_type(GiElementFormdata* self);
-void gi_element_formdata_destroy(GiElementFormdata* self);
 
 G_END_DECLS
 

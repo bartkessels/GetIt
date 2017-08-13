@@ -84,16 +84,3 @@ const gchar* gi_element_formdata_get_data_type(GiElementFormdata* self)
 {
     return gtk_combo_box_get_active_id(GTK_COMBO_BOX(self->cb_type));
 }
-
-void gi_element_formdata_destroy(GiElementFormdata* self)
-{
-    // Destroy all children
-    GList *children, *iter;
-    children = gtk_container_get_children(GTK_CONTAINER(self));
-    for (iter = children; iter != NULL; iter = g_list_next(iter))
-        gtk_widget_destroy(GTK_WIDGET(iter->data));
-    g_list_free(children);
-
-    // Destroy self
-    gtk_widget_destroy(GTK_WIDGET(self));
-}

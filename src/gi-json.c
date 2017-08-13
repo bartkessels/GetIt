@@ -122,11 +122,22 @@ void gi_json_save_file(GiWindowMain* window_main, const gchar* filename)
     json_node_set_object(root_node, root_object);
 
     // Save the file
-    GError** write_error;
+    GError** write_error = NULL;
     JsonGenerator* generator = json_generator_new();
     json_generator_set_root(generator, root_node);
     json_generator_set_pretty(generator, TRUE);
     json_generator_to_file(generator, filename, write_error);
+
+    // Check if file has been succesfully saved
+    if (write_error != NULL) {
+        const gchar* error_message = g_strconcat("Something went wrong saving the file...\n\n", write_error->message, NULL);
+        GtkWidget* message_dialog = gtk_message_dialog_new(GTK_WINDOW(window_main), GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, error_message, NULL);
+        gtk_dialog_run(GTK_DIALOG(message_dialog));
+        gtk_widget_destroy(message_dialog);
+
+        g_error_free(write_error);
+        return;
+    }
 }
 
 void gi_json_open_file(GiWindowMain* window_main, const gchar* filename)

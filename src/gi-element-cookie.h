@@ -49,7 +49,6 @@ struct _GiElementCookie {
 */
 GiElementCookie* gi_element_cookie_new();
 gboolean gi_element_cookie_get_enabled(GiElementCookie* self);
-void gi_element_cookie_destroy(GiElementCookie* self);
 
 G_END_DECLS
 

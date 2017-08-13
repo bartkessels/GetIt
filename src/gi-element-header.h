@@ -49,7 +49,6 @@ struct _GiElementHeader {
 */
 GiElementHeader* gi_element_header_new();
 gboolean gi_element_header_get_enabled(GiElementHeader* self);
-void gi_element_header_destroy(GiElementHeader* self);
 
 G_END_DECLS
 

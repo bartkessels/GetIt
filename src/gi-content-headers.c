@@ -35,7 +35,7 @@ static void gi_content_headers_header_btn_remove_clicked(GtkWidget* caller, gpoi
     GiElementHeader* header = GI_ELEMENT_HEADER(user_data);
 
     self->list_headers = g_slist_remove(self->list_headers, header);
-    gi_element_header_destroy(header);
+    gtk_widget_destroy(GTK_WIDGET(header));
 }
 
 static void gi_content_headers_btn_add_clicked(GtkWidget* caller, gpointer user_data)
