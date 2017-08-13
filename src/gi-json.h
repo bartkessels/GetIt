@@ -53,7 +53,7 @@
 #define JSON_HEADER_KEY_KEY "key"
 #define JSON_HEADER_VALUE_KEY "value"
 
-void gi_json_save_file(GiWindowMain* window_main, const gchar* filename);
-void gi_json_open_file(GiWindowMain* window_main, const gchar* filename);
+gboolean gi_json_save_file(GiWindowMain* window_main, const gchar* filename);
+gboolean gi_json_open_file(GiWindowMain* window_main, const gchar* filename);
 
 #endif /* GI_JSON_H */

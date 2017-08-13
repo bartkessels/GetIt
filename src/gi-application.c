@@ -37,7 +37,7 @@ struct _GiApplication {
         Member Variables
     */
     GiWindowMain* window_main;
-    const gchar* filename;
+    const GFile* file;
 };
 
 G_DEFINE_TYPE(GiApplication, gi_application, GTK_TYPE_APPLICATION)
@@ -62,9 +62,10 @@ static void gi_application_mi_save_as_activated(GtkWidget* caller, gpointer user
     GtkWidget* file_chooser = gtk_file_chooser_dialog_new("Save request", GTK_WINDOW(self->window_main), GTK_FILE_CHOOSER_ACTION_SAVE, "Cancel", GTK_RESPONSE_CANCEL, "Save", GTK_RESPONSE_ACCEPT, NULL);
     gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(file_chooser), gi_application_get_file_filter());
 
-    // Set folder to current file if there is one
-    if (self->filename != NULL) {
-        gtk_file_chooser_set_current_folder(file_chooser, self->filename);
+    // Set file chooser dialog to current file if there is one
+    if (self->file != NULL) {
+        const gchar* filename = g_file_get_path(self->file);
+        gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(file_chooser), filename);
     }
 
     gint result = gtk_dialog_run(GTK_DIALOG(file_chooser));
@@ -75,48 +76,49 @@ static void gi_application_mi_save_as_activated(GtkWidget* caller, gpointer user
         return;
     }
 
-    self->filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(file_chooser));
+    const gchar* filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(file_chooser));
     gtk_widget_destroy(file_chooser);
     gi_element_header_bar_set_save_sensitive(self->window_main->header_bar, TRUE);
 
     // Check if extension is added
-    if (!g_str_has_suffix(self->filename, FILE_EXTENSION)) {
-        self->filename = g_strconcat(self->filename, FILE_EXTENSION, NULL);
+    if (!g_str_has_suffix(filename, FILE_EXTENSION)) {
+        filename = g_strconcat(filename, FILE_EXTENSION, NULL);
     }
 
-    gi_json_save_file(self->window_main, self->filename);
+    if (gi_json_save_file(self->window_main, filename)) {
+        const gchar* file_label = g_strconcat("File: ", filename, NULL);
+        gtk_label_set_text(GTK_LABEL(self->window_main->lbl_file), file_label);
 
-    const gchar* file_label = g_strconcat("File: ", self->filename, NULL);
-    gtk_label_set_text(GTK_LABEL(self->window_main->lbl_file), file_label);
+        self->file = g_file_new_for_uri(filename);
+    }
 }
 
 static void gi_application_mi_save_activated(GtkWidget* caller, gpointer user_data)
 {
     GiApplication* self = GI_APPLICATION(user_data);
 
-    if (self->filename == NULL) {
+    if (self->file == NULL) {
         gi_application_mi_save_as_activated(caller, user_data);
 
         return;
     }
 
-    gi_json_save_file(self, self->filename);
+    const gchar* filename = g_file_get_path(self->file);
+    gi_json_save_file(self, filename);
 }
 
 static void gi_application_mi_open_activated(GtkWidget* caller, gpointer user_data)
 {
     GiApplication* self = GI_APPLICATION(user_data);
 
-    // Clear current request
-    gi_application_mi_clear_activated(caller, user_data);
-
     // Display open file dialog
     GtkWidget* file_chooser = gtk_file_chooser_dialog_new("Open Request", GTK_WINDOW(self->window_main), GTK_FILE_CHOOSER_ACTION_OPEN, "Cancel", GTK_RESPONSE_CANCEL, "Open", GTK_RESPONSE_ACCEPT, NULL);
     gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(file_chooser), gi_application_get_file_filter());
 
-    // Set folder to current file if there is one
-    if (self->filename != NULL) {
-        gtk_file_chooser_set_current_folder(file_chooser, self->filename);
+    // Set file chooser dialog to current file if there is one
+    if (self->file != NULL) {
+        const gchar* filename = g_file_get_path(self->file);
+        gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(file_chooser), filename);
     }
 
     // Check if user didn't press cancel
@@ -127,14 +129,22 @@ static void gi_application_mi_open_activated(GtkWidget* caller, gpointer user_da
         return;
     }
 
-    self->filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(file_chooser));
+
+    // Clear current request
+    gi_application_mi_clear_activated(caller, user_data);
+
+    const gchar* filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(file_chooser));
     gtk_widget_destroy(file_chooser);
-    gi_element_header_bar_set_save_sensitive(self->window_main->header_bar, TRUE);
 
-    const gchar* file_label = g_strconcat("File: ", self->filename, NULL);
-    gtk_label_set_text(GTK_LABEL(self->window_main->lbl_file), file_label);
+    if (gi_json_open_file(self->window_main, filename)) {
+        gi_element_header_bar_set_save_sensitive(self->window_main->header_bar, TRUE);
 
-    gi_json_open_file(self->window_main, self->filename);
+        // Change file_label
+        const gchar* file_label = g_strconcat("File: ", filename, NULL);
+        gtk_label_set_text(GTK_LABEL(self->window_main->lbl_file), file_label);
+
+        self->file = g_file_new_for_path(filename);
+    }
 }
 
 static void gi_application_mi_clear_activated(GtkWidget* caller, gpointer user_data)
@@ -172,7 +182,7 @@ static void gi_application_mi_clear_activated(GtkWidget* caller, gpointer user_d
     gtk_stack_set_visible_child(GTK_STACK(self->window_main->stack), GTK_WIDGET(self->window_main->stack->content_body));
     gi_element_header_bar_set_subtitle(self->window_main->header_bar, NULL);
     gi_element_header_bar_set_save_sensitive(self->window_main->header_bar, FALSE);
-    self->filename = NULL;
+    self->file = NULL;
     gtk_label_set_text(GTK_LABEL(self->window_main->lbl_file), "File: (null)");
 }
 
@@ -206,7 +216,7 @@ static gboolean gi_application_key_pressed(GtkWidget* caller, GdkEventKey* event
     return FALSE;
 }
 
-static void gi_application_activate(GApplication* application)
+static void gi_application_startup(GApplication* application, gpointer user_data)
 {
     GiApplication* self = GI_APPLICATION(application);
 
@@ -221,19 +231,41 @@ static void gi_application_activate(GApplication* application)
     g_signal_connect(self->window_main->header_bar->mi_request_clear, "activate", G_CALLBACK(gi_application_mi_clear_activated), self);
 }
 
+static void gi_application_open(GApplication* application, GFile** files, gint n_files, const gchar* hint)
+{
+    GiApplication* self = GI_APPLICATION(application);
+    GFile* file = NULL;
+
+    if (n_files > 0) {
+        file = files[0];
+        const gchar* filename = g_file_get_path(file);
+
+        if (gi_json_open_file(self->window_main, filename)) {
+            self->file = file;
+        }
+    }
+}
+
+static void gi_application_activate(GApplication* application, gpointer user_data) {}
+
 static void gi_application_init(GiApplication* self) {}
 
 static void gi_application_class_init(GiApplicationClass* class)
 {
     GApplicationClass* parent_class = G_APPLICATION_CLASS(class);
-
-    parent_class->activate = gi_application_activate;
 }
 
-GiApplication* gi_application_new()
+GiApplication* gi_application_new(int argc, char** argv)
 {
-    return g_object_new(GI_TYPE_APPLICATION,
+    GiApplication* application = g_object_new(GI_TYPE_APPLICATION,
         "application-id", APPLICATION_ID,
-        "flags", G_APPLICATION_FLAGS_NONE,
+        "flags", G_APPLICATION_HANDLES_OPEN,
         NULL);
+
+    // Connect signals
+    g_signal_connect(application, "activate", G_CALLBACK(gi_application_activate), NULL);
+    g_signal_connect(application, "startup", G_CALLBACK(gi_application_startup), NULL);
+    g_signal_connect(application, "open", G_CALLBACK(gi_application_open), NULL);
+
+    return application;
 }

@@ -28,7 +28,7 @@
 #include "gi-json.h"
 #include "gi-window-main.h"
 
-void gi_json_save_file(GiWindowMain* window_main, const gchar* filename)
+gboolean gi_json_save_file(GiWindowMain* window_main, const gchar* filename)
 {
     // Get request data
     GSList* formdata_list = window_main->stack->content_body->list_formdata;
@@ -122,11 +122,11 @@ void gi_json_save_file(GiWindowMain* window_main, const gchar* filename)
     json_node_set_object(root_node, root_object);
 
     // Save the file
-    GError** write_error = NULL;
+    GError* write_error = NULL;
     JsonGenerator* generator = json_generator_new();
     json_generator_set_root(generator, root_node);
     json_generator_set_pretty(generator, TRUE);
-    json_generator_to_file(generator, filename, write_error);
+    json_generator_to_file(generator, filename, &write_error);
 
     // Check if file has been succesfully saved
     if (write_error != NULL) {
@@ -136,11 +136,13 @@ void gi_json_save_file(GiWindowMain* window_main, const gchar* filename)
         gtk_widget_destroy(message_dialog);
 
         g_error_free(write_error);
-        return;
+        return FALSE;
     }
+
+    return TRUE;
 }
 
-void gi_json_open_file(GiWindowMain* window_main, const gchar* filename)
+gboolean gi_json_open_file(GiWindowMain* window_main, const gchar* filename)
 {
     JsonParser* parser = json_parser_new();
     GError* error = NULL;
@@ -156,7 +158,7 @@ void gi_json_open_file(GiWindowMain* window_main, const gchar* filename)
         gtk_widget_destroy(message_dialog);
 
         g_error_free(error);
-        return;
+        return FALSE;
     }
 
     // Body
@@ -212,4 +214,6 @@ void gi_json_open_file(GiWindowMain* window_main, const gchar* filename)
 
         gi_content_headers_add_header_with_values(window_main->stack->content_headers, enabled, key, value);
     }
+
+    return TRUE;
 }
