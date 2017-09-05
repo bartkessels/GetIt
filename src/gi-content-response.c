@@ -48,10 +48,7 @@ static void gi_content_response_init(GiContentResponse* self)
     g_object_unref(builder);
 }
 
-static void gi_content_response_class_init(GiContentResponseClass* class)
-{
-    GtkScrolledWindowClass* parent_class = GTK_SCROLLED_WINDOW_CLASS(class);
-}
+static void gi_content_response_class_init(GiContentResponseClass* class) {}
 
 static void gi_content_response_add_header(const gchar* name, const gchar* value, gpointer user_data)
 {
