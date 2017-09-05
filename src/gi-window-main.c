@@ -54,10 +54,22 @@ static void gi_window_main_request_finished(SoupSession* session, SoupMessage* m
         return;
     }
 
-    // Get language for source view
-    GtkSourceLanguageManager* language_manager = gtk_source_language_manager_new();
+    // Get mimetype from response
     const gchar* mime_type = soup_message_headers_get_one(message->response_headers, "Content-Type");
-    GtkSourceLanguage* language = gtk_source_language_manager_guess_language(language_manager, NULL, mime_type);
+    const gchar* response_language = NULL;
+
+    if (mime_type != NULL) {
+        // Split mimetype on ';' character
+        const gchar** mime_type_split = g_strsplit(mime_type, ";", 2);
+
+        if (g_strv_length(mime_type_split) > 1) {
+            response_language = mime_type_split[0];
+        }
+    }
+
+    // Let GtkSourceLanguageManager guess the language
+    GtkSourceLanguageManager* language_manager = gtk_source_language_manager_new();
+    GtkSourceLanguage* language = gtk_source_language_manager_guess_language(language_manager, NULL, response_language);
 
     // Get headers and body
     SoupMessageHeaders* headers = message->response_headers;
