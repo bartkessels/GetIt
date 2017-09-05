@@ -37,7 +37,7 @@ struct _GiApplication {
         Member Variables
     */
     GiWindowMain* window_main;
-    const GFile* file;
+    GFile* file;
 };
 
 G_DEFINE_TYPE(GiApplication, gi_application, GTK_TYPE_APPLICATION)
@@ -103,8 +103,8 @@ static void gi_application_mi_save_activated(GtkWidget* caller, gpointer user_da
         return;
     }
 
-    const gchar* filename = g_file_get_path(self->file);
-    gi_json_save_file(self, filename);
+    const gchar* filename = g_file_get_uri(self->file);
+    gi_json_save_file(self->window_main, filename);
 }
 
 static void gi_application_mi_open_activated(GtkWidget* caller, gpointer user_data)
@@ -129,7 +129,6 @@ static void gi_application_mi_open_activated(GtkWidget* caller, gpointer user_da
         return;
     }
 
-
     // Clear current request
     gi_application_mi_clear_activated(caller, user_data);
 
@@ -143,7 +142,7 @@ static void gi_application_mi_open_activated(GtkWidget* caller, gpointer user_da
         const gchar* file_label = g_strconcat("File: ", filename, NULL);
         gtk_label_set_text(GTK_LABEL(self->window_main->lbl_file), file_label);
 
-        self->file = g_file_new_for_path(filename);
+        self->file = g_file_new_for_uri(filename);
     }
 }
 
