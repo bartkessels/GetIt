@@ -27,7 +27,17 @@
 #include "gi-content-response.h"
 
 G_DEFINE_TYPE(GiContentResponse, gi_content_response, GTK_TYPE_SCROLLED_WINDOW)
+static void gi_content_response_class_init(GiContentResponseClass* class) {}
 
+/**
+ * gi_content_response_init
+ *
+ * @self: Pointer to self
+ *
+ * Build the UI from the .ui file in the resources
+ *
+ * Return value: void
+ */
 static void gi_content_response_init(GiContentResponse* self)
 {
     // Load elements from resource
@@ -48,8 +58,17 @@ static void gi_content_response_init(GiContentResponse* self)
     g_object_unref(builder);
 }
 
-static void gi_content_response_class_init(GiContentResponseClass* class) {}
-
+/**
+ * gi_content_response_add_header
+ *
+ * @name: Name of the header
+ * @value: Value of the header
+ * @user_data: Pointer to self
+ *
+ * Add a header with the given values to the UI
+ *
+ * Return value: void
+ */
 static void gi_content_response_add_header(const gchar* name, const gchar* value, gpointer user_data)
 {
     GiContentResponse* self = GI_CONTENT_RESPONSE(user_data);
@@ -77,11 +96,27 @@ static void gi_content_response_add_header(const gchar* name, const gchar* value
     gtk_grid_attach(GTK_GRID(self->grd_headers), lbl_header_value, 2, row_index, 1, 1);
 }
 
+/**
+ * gi_content_response_new
+ *
+ * Create new instance of GiContentResponse
+ *
+ * Return value: GiContentResponse
+ */
 GiContentResponse* gi_content_response_new()
 {
     return g_object_new(GI_TYPE_CONTENT_RESPONSE, NULL);
 }
 
+/**
+ * gi_content_response_show_default
+ *
+ * @self: Pointer to self
+ *
+ * Show default message on the UI
+ *
+ * Return value: void
+ */
 void gi_content_response_show_default(GiContentResponse* self)
 {
     gtk_widget_show(self->lbl_default_message);
@@ -90,6 +125,15 @@ void gi_content_response_show_default(GiContentResponse* self)
     gtk_widget_hide(self->grd_error);
 }
 
+/**
+ * gi_content_response_show_sending
+ *
+ * @self: Pointer to self
+ *
+ * Display loading circle and loading message
+ *
+ * Return value: void
+ */
 void gi_content_response_show_sending(GiContentResponse* self)
 {
     gtk_widget_hide(self->lbl_default_message);
@@ -98,6 +142,20 @@ void gi_content_response_show_sending(GiContentResponse* self)
     gtk_widget_hide(self->grd_error);
 }
 
+/**
+ * gi_content_response_show_response
+ *
+ * @self: Pointer to self
+ * @language: Language of the message body
+ * @headers: List with all the headers
+ * @body: The message body
+ * @status_code: Status code of the request
+ * @status_message: String representation of the status
+ *
+ * Display the response results in the UI
+ *
+ * Return value: void
+ */
 void gi_content_response_show_response(GiContentResponse* self, GtkSourceLanguage* language, SoupMessageHeaders* headers, const gchar* body, guint status_code, const gchar* status_message)
 {
     gtk_widget_hide(self->lbl_default_message);
@@ -143,6 +201,18 @@ void gi_content_response_show_response(GiContentResponse* self, GtkSourceLanguag
     gtk_widget_show_all(GTK_WIDGET(self->grd_output));
 }
 
+/**
+ * gi_content_response_show_error
+ *
+ * @self: Pointer to self
+ * @error_message: Error message (may be NULL)
+ *
+ * Display the given error message in the UI
+ * If no error message is given show the default
+ * error message as specified in the header file
+ *
+ * Return value: void
+ */
 void gi_content_response_show_error(GiContentResponse* self, const gchar* error_message)
 {
     gtk_widget_hide(self->lbl_default_message);

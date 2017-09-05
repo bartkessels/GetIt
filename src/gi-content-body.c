@@ -28,9 +28,21 @@
 #include "gi-element-formdata.h"
 
 G_DEFINE_TYPE(GiContentBody, gi_content_body, GTK_TYPE_SCROLLED_WINDOW)
+static void gi_content_body_class_init(GiContentBodyClass* class) {}
 
 static GiContentBody* gi_content_body;
 
+/**
+ * gi_content_body_data_formdata_btn_remove_clicked
+ * 
+ * @caller: The GtkWidget which is calling this function
+ * @user_data: Pointer to GiElementFormdata object
+ *
+ * Remove the given GiElementFormdata object from the UI and from
+ * the formdata list
+ *
+ * Return value: void
+ */
 static void gi_content_body_data_formdata_btn_remove_clicked(GtkWidget* caller, gpointer user_data)
 {
     GiContentBody* self = gi_content_body;
@@ -40,6 +52,16 @@ static void gi_content_body_data_formdata_btn_remove_clicked(GtkWidget* caller, 
     gtk_widget_destroy(GTK_WIDGET(formdata));
 }
 
+/**
+ * gi_content_body_btn_data_formdata_add_clicked
+ *
+ * @caller: The GtkWidget which is calling this function
+ * @user_data: Pointer to self
+ *
+ * Add a new GiElementFormdata object to the UI and to the list
+ *
+ * Return value: void
+ */
 static void gi_content_body_btn_data_formdata_add_clicked(GtkWidget* caller, gpointer user_data)
 {
     GiContentBody* self = GI_CONTENT_BODY(user_data);
@@ -50,6 +72,17 @@ static void gi_content_body_btn_data_formdata_add_clicked(GtkWidget* caller, gpo
     gtk_container_add(GTK_CONTAINER(self->grd_data_formdata), GTK_WIDGET(formdata));
 }
 
+/**
+ * gi_content_body_cb_data_raw_syntax_changed
+ *
+ * @caller: The GtkWidget which is calling this function
+ * @user_data: Pointer to self
+ *
+ * Change the syntax highlighting on the SourceView input
+ * to the selected language
+ *
+ * Return value: void
+ */
 static void gi_content_body_cb_data_raw_syntax_changed(GtkWidget* caller, gpointer user_data)
 {
     GiContentBody* self = GI_CONTENT_BODY(user_data);
@@ -64,6 +97,15 @@ static void gi_content_body_cb_data_raw_syntax_changed(GtkWidget* caller, gpoint
     gtk_source_buffer_set_language(GTK_SOURCE_BUFFER(buffer), source_language);
 }
 
+/**
+ * gi_content_body_init
+ *
+ * @self: Pointer to self
+ *
+ * Build the UI from the .ui file in the resources
+ *
+ * Return value: void
+ */
 static void gi_content_body_init(GiContentBody* self)
 {
     // Load elements from resource
@@ -90,11 +132,19 @@ static void gi_content_body_init(GiContentBody* self)
     g_object_unref(builder);
 }
 
-static void gi_content_body_class_init(GiContentBodyClass* class)
-{
-    GtkScrolledWindowClass* parent_class = GTK_SCROLLED_WINDOW_CLASS(class);
-}
-
+/**
+ * gi_content_body_add_formdata_items_to_request
+ *
+ * @data: Pointer to GiElementFormdata object
+ * @user_data: Pointer to self
+ *
+ * Add a GiElementFormdata to a Soup request.
+ *
+ * Check wheter to add a string formdata item or
+ * a file to the request
+ *
+ * Return value: void
+ */
 static void gi_content_body_add_formdata_items_to_request(gpointer data, gpointer user_data)
 {
     GiElementFormdata* formdata = GI_ELEMENT_FORMDATA(data);
@@ -119,8 +169,8 @@ static void gi_content_body_add_formdata_items_to_request(gpointer data, gpointe
         const gchar* filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(formdata->fcbtn_file));
 
         // Get file
-        GError** error;
-        GMappedFile* file = g_mapped_file_new(filename, FALSE, error);
+        GError* error;
+        GMappedFile* file = g_mapped_file_new(filename, FALSE, &error);
         gsize filelength = g_mapped_file_get_length(file);
         const gchar* filecontents = g_mapped_file_get_contents(file);
 
@@ -131,6 +181,13 @@ static void gi_content_body_add_formdata_items_to_request(gpointer data, gpointe
     }
 }
 
+/**
+ * gi_content_body_new
+ *
+ * Create new instance of GiContentBody
+ *
+ * Return value: GiContentBody
+ */
 GiContentBody* gi_content_body_new()
 {
     GiContentBody* content_body = g_object_new(GI_TYPE_CONTENT_BODY, NULL);
@@ -139,6 +196,16 @@ GiContentBody* gi_content_body_new()
     return content_body;
 }
 
+/**
+ * gi_content_body_add_to_request
+ *
+ * @self: Pointer to self
+ * @message: Pointer to SoupMessage
+ *
+ * All all elements of self to the SoupMessage request
+ *
+ * Return value: void
+ */
 void gi_content_body_add_to_request(GiContentBody* self, SoupMessage* message)
 {
     // Check wheter to add formdata or raw to the request
@@ -170,6 +237,15 @@ void gi_content_body_add_to_request(GiContentBody* self, SoupMessage* message)
     }
 }
 
+/**
+ * gi_content_body_get_data_raw
+ *
+ * @self: Pointer to self
+ *
+ * Get the content of the raw SourceView
+ *
+ * Return value: void
+ */
 const gchar* gi_content_body_get_data_raw(GiContentBody* self)
 {
     // Read input from sourceview
@@ -182,6 +258,16 @@ const gchar* gi_content_body_get_data_raw(GiContentBody* self)
     return gtk_text_buffer_get_text(buffer, &iter_start, &iter_end, FALSE);
 }
 
+/**
+ * gi_content_body_set_data_raw
+ *
+ * @self: Pointer to self
+ * @data: String to be put into SourceView
+ *
+ * Insert the given string into the raw SourceView
+ *
+ * Return value: void
+ */
 void gi_content_body_set_data_raw(GiContentBody* self, const gchar* data)
 {
     if (data == NULL) {
@@ -192,6 +278,21 @@ void gi_content_body_set_data_raw(GiContentBody* self, const gchar* data)
     gtk_text_buffer_set_text(buffer, data, strlen(data));
 }
 
+/**
+ * gi_content_body_add_formdata_with_values
+ *
+ * @self: Pointer to self
+ * @enabled: Wheter or not the GiElementFormdata object is enabled
+ * @key: Key of the pair
+ * @value: String value of the pair
+ * @file: String of the file
+ * @type: Type of the GiElementFormdata object
+ *
+ * Add a new GiElementFormdata element with the given elements
+ * filled in
+ *
+ * Return value: void
+ */
 void gi_content_body_add_formdata_with_values(GiContentBody* self, const gboolean enabled, const gchar* key, const gchar* value, const gchar* file, const gint type)
 {
     GiElementFormdata* formdata = gi_element_formdata_new();

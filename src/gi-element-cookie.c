@@ -25,7 +25,17 @@
 #include "gi-element-cookie.h"
 
 G_DEFINE_TYPE(GiElementCookie, gi_element_cookie, GTK_TYPE_GRID)
+static void gi_element_cookie_class_init(GiElementCookieClass* class) {}
 
+/**
+ * gi_element_cookie_init
+ *
+ * @self: Pointer to self
+ *
+ * Build the UI from the .ui file in the resources
+ *
+ * Return value: void
+ */
 static void gi_element_cookie_init(GiElementCookie* self)
 {
     // Load elements from resource
@@ -44,16 +54,27 @@ static void gi_element_cookie_init(GiElementCookie* self)
     g_object_unref(builder);
 }
 
-static void gi_element_cookie_class_init(GiElementCookieClass* class)
-{
-    GtkGridClass* parent_class = GTK_GRID_CLASS(class);
-}
-
+/**
+ * gi_element_cookie_new
+ *
+ * Create new instance of GiElementCookie
+ *
+ * Return value: GiElementCookie
+ */
 GiElementCookie* gi_element_cookie_new()
 {
     return g_object_new(GI_TYPE_ELEMENT_COOKIE, NULL);
 }
 
+/**
+ * gi_element_get_enabled
+ *
+ * @self: Pointer to self
+ *
+ * Check if the cbtn_enabled toggle button is toggled or not
+ *
+ * Return value: gboolean
+ */
 gboolean gi_element_cookie_get_enabled(GiElementCookie* self)
 {
     return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(self->cbtn_enabled)) && strlen(gtk_entry_get_text(GTK_ENTRY(self->et_key))) > 0;

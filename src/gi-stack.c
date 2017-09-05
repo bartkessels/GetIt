@@ -28,7 +28,17 @@
 #include "gi-stack.h"
 
 G_DEFINE_TYPE(GiStack, gi_stack, GTK_TYPE_STACK)
+static void gi_stack_class_init(GiStackClass* class) {}
 
+/**
+ * gi_stack_init
+ *
+ * @self: Pointer to self
+ *
+ * Add all the content UI's to the stack
+ *
+ * Return value: void
+ */
 static void gi_stack_init(GiStack* self)
 {
     // Self properties
@@ -46,11 +56,13 @@ static void gi_stack_init(GiStack* self)
     gtk_stack_add_titled(GTK_STACK(self), GTK_WIDGET(self->content_response), STACK_NAME_CONTENT_RESPONSE, STACK_TITLE_CONTENT_RESPONSE);
 }
 
-static void gi_stack_class_init(GiStackClass* class)
-{
-    GtkStackClass* parent_class = GTK_STACK_CLASS(class);
-}
-
+/**
+ * gi_stack_new
+ *
+ * Create new instance of GiStack
+ *
+ * Return value: GiStack
+ */
 GiStack* gi_stack_new()
 {
     return g_object_new(GI_TYPE_STACK, NULL);

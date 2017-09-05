@@ -25,7 +25,17 @@
 #include "gi-element-header.h"
 
 G_DEFINE_TYPE(GiElementHeader, gi_element_header, GTK_TYPE_GRID)
+static void gi_element_header_class_init(GiElementHeaderClass* class) {}
 
+/**
+ * gi_element_header_init
+ *
+ * @self: Pointer to self
+ *
+ * Build the UI from the .ui file in the resources
+ *
+ * Return value: void
+ */
 static void gi_element_header_init(GiElementHeader* self)
 {
     // Load elements from resource
@@ -44,16 +54,27 @@ static void gi_element_header_init(GiElementHeader* self)
     g_object_unref(builder);
 }
 
-static void gi_element_header_class_init(GiElementHeaderClass* class)
-{
-    GtkGridClass* parent_class = GTK_GRID_CLASS(class);
-}
-
+/**
+ * gi_element_header_new
+ *
+ * Create new instance of GiElementHeader
+ *
+ * Return value: GiElementHeader
+ */
 GiElementHeader* gi_element_header_new()
 {
     return g_object_new(GI_TYPE_ELEMENT_HEADER, NULL);
 }
 
+/**
+ * gi_element_header_get_enabled
+ *
+ * @self: Pointer to self
+ *
+ * Check if the cbtn_enabled toggle button is toggled or not
+ *
+ * Return value: gboolean
+ */
 gboolean gi_element_header_get_enabled(GiElementHeader* self)
 {
     return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(self->cbtn_enabled)) && strlen(gtk_entry_get_text(GTK_ENTRY(self->et_key))) > 0;

@@ -25,7 +25,17 @@
 #include "gi-stack.h"
 
 G_DEFINE_TYPE(GiElementHeaderBar, gi_element_header_bar, GTK_TYPE_HEADER_BAR)
+static void gi_element_header_bar_class_init(GiElementHeaderBarClass* class) {}
 
+/**
+ * gi_element_header_bar_init
+ *
+ * @self: Pointer to self
+ *
+ * Build the UI from the .ui file in the resources
+ *
+ * Return value: void
+ */
 static void gi_element_header_bar_init(GiElementHeaderBar* self)
 {
     // Initialize widgets
@@ -91,36 +101,88 @@ static void gi_element_header_bar_init(GiElementHeaderBar* self)
     gtk_widget_show_all(self->menu);
 }
 
-static void gi_element_header_bar_class_init(GiElementHeaderBarClass* class)
-{
-    GtkHeaderBarClass* parent_class = GTK_HEADER_BAR_CLASS(class);
-}
-
+/**
+ * gi_element_header_bar_new
+ *
+ * Create new instance of GiElementHeaderBar
+ *
+ * Return value: GiElementHeaderBar
+ */
 GiElementHeaderBar* gi_element_header_bar_new()
 {
     return g_object_new(GI_TYPE_ELEMENT_HEADER_BAR, NULL);
 }
 
+/**
+ * gi_element_header_bar_set_save_sensitive
+ *
+ * @self: Pointer to self
+ * @sensitive: Show or hide the save menu item
+ *
+ * Enable the save menu entry based on the given sensitivity
+ *
+ * Return value: void
+ */
 void gi_element_header_bar_set_save_sensitive(GiElementHeaderBar* self, gboolean sensitive)
 {
     gtk_widget_set_sensitive(self->mi_request_save, sensitive);
 }
 
+/**
+ * gi_element_header_bar_set_stack
+ *
+ * @self: Pointer to self
+ * @stack: Stack
+ *
+ * Change the stackswitcher stack to the given stack
+ *
+ * Return value: void
+ */
 void gi_element_header_bar_set_stack(GiElementHeaderBar* self, GiStack* stack)
 {
     gtk_stack_switcher_set_stack(GTK_STACK_SWITCHER(self->ss_main), GTK_STACK(stack));
 }
 
+/**
+ * gi_element_header_bar_set_title
+ *
+ * @self: Pointer to self
+ * @title: Title
+ *
+ * Change the window title to the given title
+ *
+ * Return value: void
+ */
 void gi_element_header_bar_set_title(GiElementHeaderBar* self, const gchar* title)
 {
     gtk_header_bar_set_title(GTK_HEADER_BAR(self), title);
 }
 
+/**
+ * gi_element_header_bar_set_subtitle
+ *
+ * @self: Pointer to self
+ * @subtitle: Subtitle
+ *
+ * Change the window subtitle to the given subtitle
+ *
+ * Return value: void
+ */
 void gi_element_header_bar_set_subtitle(GiElementHeaderBar* self, const gchar* subtitle)
 {
     gtk_header_bar_set_subtitle(GTK_HEADER_BAR(self), subtitle);
 }
 
+/**
+ * gi_element_header_bar_start_loading
+ *
+ * @self: Pointer to self
+ *
+ * Display loading circle and cancel button while hiding
+ * the send button
+ *
+ * Return value: void
+ */
 void gi_element_header_bar_start_loading(GiElementHeaderBar* self)
 {
     gtk_spinner_start(GTK_SPINNER(self->sp_loading));
@@ -128,6 +190,16 @@ void gi_element_header_bar_start_loading(GiElementHeaderBar* self)
     gtk_widget_show(self->btn_cancel);
 }
 
+/**
+ * gi_element_header_bar_stop_loading
+ *
+ * @self: Pointer to self
+ *
+ * Hide loading circle and cancel button while displaying
+ * the send button
+ *
+ * Return value: void
+ */
 void gi_element_header_bar_stop_loading(GiElementHeaderBar* self)
 {
     gtk_spinner_stop(GTK_SPINNER(self->sp_loading));

@@ -28,6 +28,18 @@
 #include "gi-json.h"
 #include "gi-window-main.h"
 
+/**
+ * gi_json_save_file
+ *
+ * @window_main: Pointer to the GiWindowMain object where this function is being called
+ * @filename: The filename
+ *
+ * Save the data from the request to the given filename
+ * If something goes wrong saving the request an error message
+ * will be displayed
+ *
+ * Return value: gboolean
+ */
 gboolean gi_json_save_file(GiWindowMain* window_main, const gchar* filename)
 {
     // Get request data
@@ -142,6 +154,18 @@ gboolean gi_json_save_file(GiWindowMain* window_main, const gchar* filename)
     return TRUE;
 }
 
+/**
+ * gi_json_open_file
+ *
+ * @window_main: Pointer to the GiWindowMain object where this function is being called
+ * @filename: The filename
+ *
+ * Read the data from the file in the given filename
+ * If something goes wrong opening the request an error message
+ * will be displayed
+ *
+ * Return value: gboolean
+ */
 gboolean gi_json_open_file(GiWindowMain* window_main, const gchar* filename)
 {
     JsonParser* parser = json_parser_new();

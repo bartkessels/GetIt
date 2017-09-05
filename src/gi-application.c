@@ -41,9 +41,20 @@ struct _GiApplication {
 };
 
 G_DEFINE_TYPE(GiApplication, gi_application, GTK_TYPE_APPLICATION)
+static void gi_application_activate(GApplication* application, gpointer user_data) {}
+static void gi_application_init(GiApplication* self) {}
+static void gi_application_class_init(GiApplicationClass* class) {}
 
 static void gi_application_mi_clear_activated(GtkWidget* caller, gpointer user_data);
 
+/**
+ * gi_application_get_file_filter
+ *
+ * Setup the file filter used by the save and
+ * open file dialogs
+ *
+ * Return value: GtkFileFilter
+ */
 static GtkFileFilter* gi_application_get_file_filter()
 {
     GtkFileFilter* filter = gtk_file_filter_new();
@@ -54,6 +65,19 @@ static GtkFileFilter* gi_application_get_file_filter()
     return filter;
 }
 
+/**
+ * gi_application_mi_save_as_activated
+ *
+ * @caller: The GtkWidget which is calling this function
+ * @user_data: Pointer to self
+ *
+ * Save the file to a new location.
+ * Displays the save as dialog and saves
+ * the file to the chosen location and sets
+ * this->file to the new file location.
+ *
+ * Return value: void
+ */
 static void gi_application_mi_save_as_activated(GtkWidget* caller, gpointer user_data)
 {
     GiApplication* self = GI_APPLICATION(user_data);
@@ -64,7 +88,7 @@ static void gi_application_mi_save_as_activated(GtkWidget* caller, gpointer user
 
     // Set file chooser dialog to current file if there is one
     if (self->file != NULL) {
-        const gchar* filename = g_file_get_path(self->file);
+        const gchar* filename = g_file_get_uri(self->file);
         gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(file_chooser), filename);
     }
 
@@ -93,6 +117,18 @@ static void gi_application_mi_save_as_activated(GtkWidget* caller, gpointer user
     }
 }
 
+/**
+ * gi_application_mi_save_activated
+ *
+ * @caller: The GtkWidget which is calling this function
+ * @user_data: Pointer to self
+ *
+ * Checks wheter or not the request has already been saved and
+ * if it has not been saved calls the save_as function otherwise
+ * it'll save the request to the known location
+ *
+ * Return value: void
+ */
 static void gi_application_mi_save_activated(GtkWidget* caller, gpointer user_data)
 {
     GiApplication* self = GI_APPLICATION(user_data);
@@ -107,6 +143,21 @@ static void gi_application_mi_save_activated(GtkWidget* caller, gpointer user_da
     gi_json_save_file(self->window_main, filename);
 }
 
+/**
+ * gi_application_mi_open_activated
+ *
+ * @caller: The GtkWidget which is calling this function
+ * @user_data: Pointer to self
+ *
+ * Let the user open a request file
+ *
+ * If the user selects a wrong file (or in the wrong format) GetIt will
+ * show an error message and not clear the current request.
+ * If a good file has been selected the current request will be cleared
+ * and the request from the file will be loaded
+ *
+ * Return value: void
+ */
 static void gi_application_mi_open_activated(GtkWidget* caller, gpointer user_data)
 {
     GiApplication* self = GI_APPLICATION(user_data);
@@ -117,7 +168,7 @@ static void gi_application_mi_open_activated(GtkWidget* caller, gpointer user_da
 
     // Set file chooser dialog to current file if there is one
     if (self->file != NULL) {
-        const gchar* filename = g_file_get_path(self->file);
+        const gchar* filename = g_file_get_uri(self->file);
         gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(file_chooser), filename);
     }
 
@@ -146,6 +197,16 @@ static void gi_application_mi_open_activated(GtkWidget* caller, gpointer user_da
     }
 }
 
+/**
+ * gi_application_mi_clear_activated
+ *
+ * @caller: The GtkWidget which is calling this function
+ * @user_data: Pointer to self
+ *
+ * Clear the current request
+ *
+ * Return value: void
+ */
 static void gi_application_mi_clear_activated(GtkWidget* caller, gpointer user_data)
 {
     GiApplication* self = GI_APPLICATION(user_data);
@@ -185,6 +246,19 @@ static void gi_application_mi_clear_activated(GtkWidget* caller, gpointer user_d
     gtk_label_set_text(GTK_LABEL(self->window_main->lbl_file), "File: (null)");
 }
 
+/**
+ * Function name
+ *
+ * @[param_name]: [Param description]
+ * @caller: The GtkWidget which is calling this function
+ * @event: The keys that are pressed
+ * @user_data: Pointer to self
+ *
+ * Checks which shortcuts are being pressed and calls
+ * the expected function
+ *
+ * Return value: gboolean
+ */
 static gboolean gi_application_key_pressed(GtkWidget* caller, GdkEventKey* event, gpointer user_data)
 {
     GiApplication* self = GI_APPLICATION(user_data);
@@ -215,6 +289,17 @@ static gboolean gi_application_key_pressed(GtkWidget* caller, GdkEventKey* event
     return FALSE;
 }
 
+/**
+ * Function name
+ *
+ * @application: The current application
+ * @user_data: NULL
+ *
+ * Display main window and connect all signals for the 
+ * shortcut keys
+ *
+ * Return value: void
+ */
 static void gi_application_startup(GApplication* application, gpointer user_data)
 {
     GiApplication* self = GI_APPLICATION(application);
@@ -230,6 +315,20 @@ static void gi_application_startup(GApplication* application, gpointer user_data
     g_signal_connect(self->window_main->header_bar->mi_request_clear, "activate", G_CALLBACK(gi_application_mi_clear_activated), self);
 }
 
+/**
+ * gi_application_open
+ *
+ * @application: Current application
+ * @files: Files that are selected to be opened with GetIt
+ * @n_files: Number of files that are selected to be opened with GetIt
+ * @hint: Hint or emty string
+ *
+ * Check wheter the user opened GetIt by trying to open a file.
+ * If the user wants to open GetIt by opening a file then call
+ * the json_open_file function
+ *
+ * Return value: void
+ */
 static void gi_application_open(GApplication* application, GFile** files, gint n_files, const gchar* hint)
 {
     GiApplication* self = GI_APPLICATION(application);
@@ -245,15 +344,16 @@ static void gi_application_open(GApplication* application, GFile** files, gint n
     }
 }
 
-static void gi_application_activate(GApplication* application, gpointer user_data) {}
-
-static void gi_application_init(GiApplication* self) {}
-
-static void gi_application_class_init(GiApplicationClass* class)
-{
-    GApplicationClass* parent_class = G_APPLICATION_CLASS(class);
-}
-
+/**
+ * gi_application_new
+ *
+ * @argc: Number of given arguments
+ * @argv: Arguments
+ *
+ * Create new instance of a GiApplication
+ *
+ * Return value: GiApplication
+ */
 GiApplication* gi_application_new(int argc, char** argv)
 {
     GiApplication* application = g_object_new(GI_TYPE_APPLICATION,

@@ -26,9 +26,21 @@
 #include "gi-element-cookie.h"
 
 G_DEFINE_TYPE(GiContentCookies, gi_content_cookies, GTK_TYPE_SCROLLED_WINDOW)
+static void gi_content_cookies_class_init(GiContentCookiesClass* class) {}
 
 static GiContentCookies* gi_content_cookies;
 
+/**
+ * gi_content_cookies_cookie_btn_remove_clicked
+ *
+ * @caller: The GtkWidget which is calling this function
+ * @user_data: Pointer to GiElementCookie object
+ *
+ * Remove the given GiElementCookie object from the UI and from
+ * the cookies list
+ *
+ * Return value: void
+ */
 static void gi_content_cookies_cookie_btn_remove_clicked(GtkWidget* caller, gpointer user_data)
 {
     GiContentCookies* self = gi_content_cookies;
@@ -38,6 +50,16 @@ static void gi_content_cookies_cookie_btn_remove_clicked(GtkWidget* caller, gpoi
     gtk_widget_destroy(GTK_WIDGET(cookie));
 }
 
+/**
+ * gi_content_cookies_btn_add_clicked
+ *
+ * @caller: The GtkWidget which is calling this function
+ * @user_data: Pointer to self
+ *
+ * Add a new GiElementCookie object to the UI and to the list
+ *
+ * Return value: void
+ */
 static void gi_content_cookies_btn_add_clicked(GtkWidget* caller, gpointer user_data)
 {
     GiContentCookies* self = GI_CONTENT_COOKIES(user_data);
@@ -48,6 +70,15 @@ static void gi_content_cookies_btn_add_clicked(GtkWidget* caller, gpointer user_
     gtk_container_add(GTK_CONTAINER(self->grd_main), GTK_WIDGET(cookie));
 }
 
+/**
+ * gi_content_cookies_init
+ *
+ * @self: Pointer to self
+ *
+ * Build the UI from the .ui file in the resources
+ *
+ * Return value: void
+ */
 static void gi_content_cookies_init(GiContentCookies* self)
 {
     // Load elements from resource
@@ -65,11 +96,13 @@ static void gi_content_cookies_init(GiContentCookies* self)
     g_object_unref(builder);
 }
 
-static void gi_content_cookies_class_init(GiContentCookiesClass* class)
-{
-    GtkScrolledWindowClass* parent_class = GTK_SCROLLED_WINDOW_CLASS(class);
-}
-
+/**
+ * gi_content_cookies_new
+ *
+ * Create new instance of GiContentCookies
+ *
+ * Return value: GiContentCookies
+ */
 GiContentCookies* gi_content_cookies_new()
 {
     GiContentCookies* content_cookies = g_object_new(GI_TYPE_CONTENT_COOKIES, NULL);
@@ -78,6 +111,17 @@ GiContentCookies* gi_content_cookies_new()
     return content_cookies;
 }
 
+/**
+ * gi_content_cookies_add_to_request
+ *
+ * @self: Pointer to self
+ * @message: Pointer to SoupMessage
+ * @uri: Pointer to the used SoupURI
+ *
+ * All all elements of self to the SoupMessage request
+ *
+ * Return value: void
+ */
 void gi_content_cookies_add_to_request(GiContentCookies* self, SoupMessage* message, SoupURI* uri)
 {
     // Empty list_soup_cookies
@@ -105,6 +149,19 @@ void gi_content_cookies_add_to_request(GiContentCookies* self, SoupMessage* mess
     soup_cookies_to_request(self->list_soup_cookies, message);
 }
 
+/**
+ * gi_content_cookies_add_cookie_with_values
+ *
+ * @self: Pointer to self
+ * @enabled: Wheter or not the GiElementCookie object is enabled
+ * @key: Key of the pair
+ * @value: Value of the pair
+ *
+ * Add a new GiElementCookie to the UI and list with
+ * values filled in
+ *
+ * Return value: void
+ */
 void gi_content_cookies_add_cookie_with_values(GiContentCookies* self, const gboolean enabled, const gchar* key, const gchar* value)
 {
     GiElementCookie* cookie = gi_element_cookie_new();

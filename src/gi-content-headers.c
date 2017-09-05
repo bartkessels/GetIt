@@ -26,9 +26,21 @@
 #include "gi-element-header.h"
 
 G_DEFINE_TYPE(GiContentHeaders, gi_content_headers, GTK_TYPE_SCROLLED_WINDOW)
+static void gi_content_headers_class_init(GiContentHeadersClass* class) {}
 
 static GiContentHeaders* gi_content_headers;
 
+/**
+ * gi_content_headers_header_btn_remove_clicked
+ *
+ * @caller: The GtkWidget which is calling this function
+ * @user_data: Pointer to GiElementHeader object
+ *
+ * Remove the given GiElementHeader object from the UI and from
+ * the cookies list
+ *
+ * Return value: void
+ */
 static void gi_content_headers_header_btn_remove_clicked(GtkWidget* caller, gpointer user_data)
 {
     GiContentHeaders* self = gi_content_headers;
@@ -38,6 +50,16 @@ static void gi_content_headers_header_btn_remove_clicked(GtkWidget* caller, gpoi
     gtk_widget_destroy(GTK_WIDGET(header));
 }
 
+/**
+ * gi_content_headers_btn_add_clicked
+ *
+ * @caller: The GtkWidget which is calling this function
+ * @user_data: Pointer to self
+ *
+ * Add a new GiElementHeader object to the UI and to the list
+ *
+ * Return value: void
+ */
 static void gi_content_headers_btn_add_clicked(GtkWidget* caller, gpointer user_data)
 {
     GiContentHeaders* self = GI_CONTENT_HEADERS(user_data);
@@ -48,6 +70,15 @@ static void gi_content_headers_btn_add_clicked(GtkWidget* caller, gpointer user_
     gtk_container_add(GTK_CONTAINER(self->grd_main), GTK_WIDGET(header));
 }
 
+/**
+ * gi_content_headers_init
+ *
+ * @self: Pointer to self
+ *
+ * Build the UI from the .ui file in the resources
+ *
+ * Return value: void
+ */
 static void gi_content_headers_init(GiContentHeaders* self)
 {
     // Load elements from resources
@@ -65,11 +96,13 @@ static void gi_content_headers_init(GiContentHeaders* self)
     g_object_unref(builder);
 }
 
-static void gi_content_headers_class_init(GiContentHeadersClass* class)
-{
-    GtkScrolledWindowClass* parent_class = GTK_SCROLLED_WINDOW_CLASS(class);
-}
-
+/**
+ * gi_content_headers_new
+ *
+ * Create new instance of GiContentCookies
+ *
+ * Return value: GiContentHeaders
+ */
 GiContentHeaders* gi_content_headers_new()
 {
     GiContentHeaders* content_headers = g_object_new(GI_TYPE_CONTENT_HEADERS, NULL);
@@ -78,6 +111,16 @@ GiContentHeaders* gi_content_headers_new()
     return content_headers;
 }
 
+/**
+ * gi_content_headers_add_to_request
+ *
+ * @self: Pointer to self
+ * @message: Pointer to SoupMessage
+ *
+ * All all elements of self to the SoupMessage request
+ *
+ * Return value: void
+ */
 void gi_content_headers_add_to_request(GiContentHeaders* self, SoupMessage* message)
 {
     // Add headers to request
@@ -97,6 +140,19 @@ void gi_content_headers_add_to_request(GiContentHeaders* self, SoupMessage* mess
     }
 }
 
+/**
+ * gi_content_headers_add_header_with_values
+ *
+ * @self: Pointer to self
+ * @enabled: Wheter or not the GiElementHeader object is enabled
+ * @key: Key of the pair
+ * @value: Value of the pair
+ *
+ * Add a new GiElementHeader to the UI and list with
+ * values filled in
+ *
+ * Return value: void
+ */
 void gi_content_headers_add_header_with_values(GiContentHeaders* self, const gboolean enabled, const gchar* key, const gchar* value)
 {
     GiElementHeader* header = gi_element_header_new();

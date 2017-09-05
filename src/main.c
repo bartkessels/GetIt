@@ -23,6 +23,16 @@
 
 #include "gi-application.h"
 
+/**
+ * main
+ *
+ * @argc: The number of arguments
+ * @argv: The arguments
+ *
+ * Create a new instance of GiApplication and launch it
+ *
+ * Return value: int
+ */
 int main(int argc, char** argv)
 {
     GiApplication* application = gi_application_new();

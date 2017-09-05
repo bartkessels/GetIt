@@ -35,7 +35,20 @@
 #include "gi-window-main.h"
 
 G_DEFINE_TYPE(GiWindowMain, gi_window_main, GTK_TYPE_APPLICATION_WINDOW)
+static void gi_window_main_class_init(GiWindowMainClass* class) {}
 
+/**
+ * gi_window_main_request_finished
+ *
+ * @session: Pointer to the SoupSession object
+ * @message: Pointer to the SoupMessage object
+ * @user_data: Pointer to self
+ *
+ * Display the request in the UI if the request has not been
+ * cancelled
+ *
+ * Return value: void
+ */
 static void gi_window_main_request_finished(SoupSession* session, SoupMessage* message, gpointer user_data)
 {
     GiWindowMain* self = GI_WINDOW_MAIN(user_data);
@@ -60,7 +73,7 @@ static void gi_window_main_request_finished(SoupSession* session, SoupMessage* m
 
     if (mime_type != NULL) {
         // Split mimetype on ';' character
-        const gchar** mime_type_split = g_strsplit(mime_type, ";", 2);
+        gchar** mime_type_split = g_strsplit(mime_type, ";", 2);
 
         if (g_strv_length(mime_type_split) > 1) {
             response_language = mime_type_split[0];
@@ -82,12 +95,21 @@ static void gi_window_main_request_finished(SoupSession* session, SoupMessage* m
     gi_content_response_show_response(self->stack->content_response, language, headers, body, status_code, status_message);
 
     // Display notification
-    GError** error;
+    GError* error = NULL;
     SoupURI* soup_uri = soup_message_get_uri(message);
     NotifyNotification* notification = notify_notification_new("Request finished", soup_uri_to_string(soup_uri, FALSE), "network-transmit");
-    notify_notification_show(notification, error);
+    notify_notification_show(notification, &error);
 }
 
+/**
+ * gi_window_main_request_cancel
+ *
+ * @self: Pointer to self
+ *
+ * Cancel the current request
+ *
+ * Return value: void
+ */
 static void gi_window_main_request_cancel(GiWindowMain* self)
 {
     self->request_cancelled = TRUE;
@@ -105,6 +127,18 @@ static void gi_window_main_request_cancel(GiWindowMain* self)
     gi_element_header_bar_set_subtitle(self->header_bar, NULL);
 }
 
+/**
+ * gi_window_main_request_send
+ *
+ * @self: Pointer to self
+ * @method: Method used for the request
+ * @uri: URI to send the request to
+ *
+ * Send a request with the given method to the
+ * given URI
+ *
+ * Return value: void
+ */
 static void gi_window_main_request_send(GiWindowMain* self, const gchar* method, const gchar* uri)
 {
     // Create new soup message
@@ -121,50 +155,90 @@ static void gi_window_main_request_send(GiWindowMain* self, const gchar* method,
     soup_session_queue_message(self->session, message, gi_window_main_request_finished, self);
 }
 
+/**
+ * gi_window_main_btn_send_callback
+ *
+ * @caller: The GtkWidget which is calling this function
+ * @user_data: Pointer to self
+ *
+ * Create a new SoupRequest and add all the values
+ * entered in the UI to the request and then
+ * send the request
+ *
+ * Return value: void
+ */
 static void gi_window_main_btn_send_callback(GtkWidget* caller, gpointer user_data)
 {
     GiWindowMain* self = GI_WINDOW_MAIN(user_data);
 
-    if (gtk_widget_is_visible(caller)) {
-        // Get information from body
-        const gchar* method = gtk_combo_box_get_active_id(GTK_COMBO_BOX(self->stack->content_body->cb_method));
-        const gchar* uri = gtk_entry_get_text(GTK_ENTRY(self->stack->content_body->et_uri));
-        SoupURI* soup_uri = soup_uri_new(uri);
-
-        // Check if uri is valid
-        if (!SOUP_URI_IS_VALID(soup_uri)) {
-            GtkWidget* message_dialog = gtk_message_dialog_new(GTK_WINDOW(self), GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE, "Please enter a valid URI...", NULL);
-            gtk_dialog_run(GTK_DIALOG(message_dialog));
-            gtk_widget_destroy(message_dialog);
-
-            return;
-        }
-
-        // Display loading animations
-        gi_element_header_bar_start_loading(self->header_bar);
-        gi_content_response_show_sending(self->stack->content_response);
-
-        // Display response stack
-        gtk_stack_set_visible_child(GTK_STACK(self->stack), GTK_WIDGET(self->stack->content_response));
-
-        // Set subtitle to current request URI
-        const gchar* subtitle = g_strconcat(method, ": ", uri, NULL);
-        gi_element_header_bar_set_subtitle(self->header_bar, subtitle);
-
-        // Send the request
-        gi_window_main_request_send(self, method, uri);
+    // Make sure we don't continue if a request
+    // is already being sent
+    if (!gtk_widget_is_visible(caller)) {
+        return;
     }
+
+    // Get information from body
+    const gchar* method = gtk_combo_box_get_active_id(GTK_COMBO_BOX(self->stack->content_body->cb_method));
+    const gchar* uri = gtk_entry_get_text(GTK_ENTRY(self->stack->content_body->et_uri));
+    SoupURI* soup_uri = soup_uri_new(uri);
+
+    // Check if uri is valid
+    if (!SOUP_URI_IS_VALID(soup_uri)) {
+        GtkWidget* message_dialog = gtk_message_dialog_new(GTK_WINDOW(self), GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE, "Please enter a valid URI...");
+        gtk_dialog_run(GTK_DIALOG(message_dialog));
+        gtk_widget_destroy(message_dialog);
+
+        return;
+    }
+
+    // Display loading animations
+    gi_element_header_bar_start_loading(self->header_bar);
+    gi_content_response_show_sending(self->stack->content_response);
+
+    // Display response stack
+    gtk_stack_set_visible_child(GTK_STACK(self->stack), GTK_WIDGET(self->stack->content_response));
+
+    // Set subtitle to current request URI
+    const gchar* subtitle = g_strconcat(method, ": ", uri, NULL);
+    gi_element_header_bar_set_subtitle(self->header_bar, subtitle);
+
+    // Send the request
+    gi_window_main_request_send(self, method, uri);
 }
 
+/**
+ * gi_window_main_btn_cancel_callback
+ *
+ * @caller: The GtkWidget which is calling this function
+ * @user_data: Pointer to self
+ *
+ * Cancel a running request
+ *
+ * Return value: void
+ */
 static void gi_window_main_btn_cancel_callback(GtkWidget* caller, gpointer user_data)
 {
     GiWindowMain* self = GI_WINDOW_MAIN(user_data);
 
-    if (gtk_widget_is_visible(caller)) {
-        gi_window_main_request_cancel(self);
+    // Make sure we don't continue if no requests
+    // are being sent
+    if (!gtk_widget_is_visible(caller)) {
+        return;
     }
+
+    gi_window_main_request_cancel(self);
 }
 
+/**
+ * gi_window_main_init
+ *
+ * @self: Pointer to self
+ *
+ * Build the UI by creating all the necessary 
+ * objects and adding them to self
+ *
+ * Return value: void
+ */
 static void gi_window_main_init(GiWindowMain* self)
 {
     // Setup self
@@ -203,11 +277,13 @@ static void gi_window_main_init(GiWindowMain* self)
     gi_content_response_show_default(self->stack->content_response);
 }
 
-static void gi_window_main_class_init(GiWindowMainClass* class)
-{
-    GtkApplicationWindowClass* parent_class = GTK_APPLICATION_WINDOW_CLASS(class);
-}
-
+/**
+ * gi_window_main_new
+ *
+ * Create new instance of GiWindowMain
+ *
+ * Return value: GiWindowMain
+ */
 GiWindowMain* gi_window_main_new(GiApplication* application)
 {
     return g_object_new(GI_TYPE_WINDOW_MAIN, "application", application, NULL);
