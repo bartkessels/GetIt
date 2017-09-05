@@ -1,4 +1,4 @@
-project('GetIt', 'c', version: '3.1')
+project('GetIt', 'c', version: '3.2')
 
 # Imports
 gnome = import('gnome')

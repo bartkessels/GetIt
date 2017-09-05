@@ -1,5 +1,5 @@
 Name:			getit
-Version:		3.1
+Version:		3.2
 Release:		1%{?dist}
 Summary:		Send HTTP requests to your API endpoints
 
@@ -44,6 +44,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Tue Sep 05 2017 Bart Kessels <bartkessels@bk-mail.com> 3.2
+- Fix non-highlighting bug in response
+- Fix bug application crash on re-save
+
 * Sun Aug 13 2017 Bart Kessels <bartkessels@bk-mail.com> 3.1
 - Move to Meson build system
 - Allow opening files at startup
