@@ -180,9 +180,6 @@ static void gi_application_mi_open_activated(GtkWidget* caller, gpointer user_da
         return;
     }
 
-    // Clear current request
-    gi_application_mi_clear_activated(caller, user_data);
-
     const gchar* filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(file_chooser));
     gtk_widget_destroy(file_chooser);
 
@@ -247,9 +244,8 @@ static void gi_application_mi_clear_activated(GtkWidget* caller, gpointer user_d
 }
 
 /**
- * Function name
+ * gi_application_key_pressed
  *
- * @[param_name]: [Param description]
  * @caller: The GtkWidget which is calling this function
  * @event: The keys that are pressed
  * @user_data: Pointer to self
@@ -290,7 +286,7 @@ static gboolean gi_application_key_pressed(GtkWidget* caller, GdkEventKey* event
 }
 
 /**
- * Function name
+ * gi_application_startup
  *
  * @application: The current application
  * @user_data: NULL

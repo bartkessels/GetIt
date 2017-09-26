@@ -164,6 +164,9 @@ gboolean gi_json_save_file(GiWindowMain* window_main, const gchar* filename)
  * If something goes wrong opening the request an error message
  * will be displayed
  *
+ * If the request can be loaded the current request will be cleared
+ * by calling the clear menu item activate method
+ *
  * Return value: gboolean
  */
 gboolean gi_json_open_file(GiWindowMain* window_main, const gchar* filename)
@@ -184,6 +187,9 @@ gboolean gi_json_open_file(GiWindowMain* window_main, const gchar* filename)
         g_error_free(error);
         return FALSE;
     }
+
+    // Clear current request
+    gtk_menu_item_activate(GTK_MENU_ITEM(window_main->header_bar->mi_request_clear));
 
     // Body
     JsonObject* body_object = json_object_get_object_member(root_object, JSON_BODY_NAME);
