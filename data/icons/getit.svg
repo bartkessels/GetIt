@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="getit.svg"
+   inkscape:export-xdpi="270"
+   inkscape:export-ydpi="270"
+   height="512"
+   id="svg7384"
+   style="enable-background:new"
+   version="1.1"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   width="512"
+   inkscape:export-filename="/home/bkessels/Projects/GetIt/data/icons/getit.svg.png">
+  <title
+     id="title3718">GetIt Icon</title>
+  <sodipodi:namedview
+     inkscape:bbox-nodes="true"
+     inkscape:bbox-paths="true"
+     bordercolor="#666666"
+     borderlayer="false"
+     borderopacity="1"
+     inkscape:current-layer="layer9"
+     inkscape:cx="120.93438"
+     inkscape:cy="-30.414238"
+     gridtolerance="10"
+     inkscape:guide-bbox="true"
+     guidetolerance="10"
+     id="namedview88"
+     inkscape:object-nodes="true"
+     inkscape:object-paths="true"
+     objecttolerance="10"
+     pagecolor="#fff7f7"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     showborder="false"
+     showgrid="false"
+     showguides="false"
+     inkscape:showpageshadow="false"
+     inkscape:snap-bbox="true"
+     inkscape:snap-bbox-edge-midpoints="false"
+     inkscape:snap-bbox-midpoints="false"
+     inkscape:snap-center="false"
+     inkscape:snap-global="true"
+     inkscape:snap-grids="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-nodes="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-others="true"
+     inkscape:snap-page="false"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-to-guides="true"
+     inkscape:window-height="1052"
+     inkscape:window-maximized="1"
+     inkscape:window-width="1920"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:zoom="0.45254834"
+     inkscape:pagecheckerboard="true">
+    <inkscape:grid
+       color="#000000"
+       dotted="false"
+       empcolor="#0800ff"
+       empopacity="0.4627451"
+       empspacing="4"
+       enabled="true"
+       id="grid4866"
+       opacity="0.16470588"
+       originx="-264.0002"
+       originy="-668.00336"
+       snapvisiblegridlinesonly="true"
+       spacingx="0.25"
+       spacingy="0.25"
+       type="xygrid"
+       visible="true" />
+    <sodipodi:guide
+       position="-768.97863,285.05242"
+       orientation="0,1"
+       id="guide3714"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata90">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>GetIt Icon</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs7386">
+    <linearGradient
+       id="linearGradient5606"
+       osb:paint="solid">
+      <stop
+         id="stop5608"
+         offset="0"
+         style="stop-color:#000000;stop-opacity:1;" />
+    </linearGradient>
+    <filter
+       inkscape:collect="always"
+       id="filter7554"
+       style="color-interpolation-filters:sRGB">
+      <feBlend
+         inkscape:collect="always"
+         id="feBlend7556"
+         in2="BackgroundImage"
+         mode="darken" />
+    </filter>
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer9"
+     inkscape:label="status"
+     style="display:inline"
+     transform="translate(-505.0004,947.00336)">
+    <path
+       inkscape:connector-curvature="0"
+       d="M 841.2576,-653.24059 988.3958,-766.52917 841.2576,-879.81785 c 0.1073,0.0712 0,33.567 0,50.35048 -26.7524,0 -53.5047,0 -80.2572,0 0,41.95885 0,83.91755 0,125.87633 26.7525,0 53.5048,0 80.2572,0 0,16.78366 0,50.35045 0,50.35045 z"
+       id="path9628"
+       sodipodi:nodetypes="cccccccc"
+       style="color:#000000;fill:#555555;fill-opacity:1;stroke:none;stroke-width:25.95185471" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 680.7432,-728.76613 -147.1382,113.28858 147.1382,113.28868 c -0.1072,-0.0712 0,-33.567 0,-50.35048 26.7525,0 80.2572,0 80.2572,0 v -55.07105 -20.45484 -50.35044 c 0,0 -53.5047,0 -80.2572,0 0,-16.78366 0,-50.35045 0,-50.35045 z"
+       id="path9632"
+       sodipodi:nodetypes="cccccccccc"
+       style="color:#000000;opacity:0.35;fill:#729fcf;fill-opacity:1;stroke:none;stroke-width:25.95185471" />
+    <path
+       style="fill:#4e9a06;stroke-width:2.20970869"
+       d="m 337.48583,265.75871 v -24.3068 h -39.77475 -39.77476 v -61.87184 -61.87185 h 39.77476 39.77475 V 94.506281 c 0,-12.761068 0.55176,-23.201941 1.22613,-23.201941 0.67436,0 33.07062,24.495854 71.99167,54.43523 57.18143,43.98587 70.20151,54.95192 67.82727,57.1269 -5.4746,5.01512 -138.9046,107.19903 -139.97865,107.19903 -0.58653,0 -1.06642,-10.93806 -1.06642,-24.30679 z"
+       id="path3716"
+       inkscape:connector-curvature="0"
+       transform="translate(505.0004,-947.00336)" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer10"
+     inkscape:label="devices"
+     style="display:inline;filter:url(#filter7554)"
+     transform="translate(-505.0004,947.00336)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="places"
+     style="display:inline"
+     transform="translate(-264.0002,330.00336)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer14"
+     inkscape:label="mimetypes"
+     style="display:inline"
+     transform="translate(-505.0004,947.00336)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer15"
+     inkscape:label="emblems"
+     style="display:inline"
+     transform="translate(-505.0004,947.00336)" />
+  <g
+     inkscape:groupmode="layer"
+     id="g71291"
+     inkscape:label="emotes"
+     style="display:inline"
+     transform="translate(-505.0004,947.00336)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="categories"
+     style="display:inline"
+     transform="translate(-264.0002,480.00336)" />
+  <g
+     inkscape:groupmode="layer"
+     id="g6058"
+     inkscape:label="apps"
+     style="display:inline"
+     transform="translate(-264.0002,480.00336)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer12"
+     inkscape:label="actions"
+     style="display:inline"
+     transform="translate(-505.0004,947.00336)" />
+</svg>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+	<gresource prefix="/net/bartkessels/getit">
+
+		<!-- Content -->
+		<file alias="content-body.ui" preprocess="xml-stripblanks">ui/content_body.ui</file>
+		<file alias="content-cookies.ui" preprocess="xml-stripblanks">ui/content_cookies.ui</file>
+		<file alias="content-headers.ui" preprocess="xml-stripblanks">ui/content_headers.ui</file>
+		<file alias="content-response.ui" preprocess="xml-stripblanks">ui/content_response.ui</file>
+
+		<!-- Dialogs -->
+		<file alias="dialog-about.ui" preprocess="xml-stripblanks">ui/dialog_about.ui</file>
+
+		<!-- Elements -->
+		<file alias="element-cookie.ui" preprocess="xml-stripblanks">ui/element_cookie.ui</file>
+		<file alias="element-formdata.ui" preprocess="xml-stripblanks">ui/element_formdata.ui</file>
+		<file alias="element-header.ui" preprocess="xml-stripblanks">ui/element_header.ui</file>
+
+		<!-- Menu's -->
+		<file alias="menu-app.ui" preprocess="xml-stripblanks">ui/menu_app.ui</file>
+
+		<!-- Windows -->
+		<file alias="window-main.ui" preprocess="xml-stripblanks">ui/window_main.ui</file>
+		<file alias="window-shortcuts.ui" preprocess="xml-stripblanks">ui/window_shortcuts.ui</file>
+
+	</gresource>
+</gresources>

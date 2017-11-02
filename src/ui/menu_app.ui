@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<interface>
+	<menu id="app-menu">
+		<section id="app-menu-preferences-section">
+			<item>
+				<attribute name="label" translatable="yes">_Shortcuts</attribute>
+				<attribute name="action">app.shortcuts</attribute>
+			</item>
+		</section>
+		<section id="app-menu-about-section">
+			<item>
+				<attribute name="label" translatable="yes">_About</attribute>
+				<attribute name="action">app.about</attribute>
+			</item>
+		</section>
+		<section>
+			<item>
+				<attribute name="label" translatable="yes">_Quit</attribute>
+				<attribute name="action">app.quit</attribute>
+			</item>
+		</section>
+	</menu>
+</interface>

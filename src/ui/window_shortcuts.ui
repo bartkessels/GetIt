@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<requires lib="gtk+" version="3.20"/>
+	<!-- interface-license-type gplv3 -->
+	<!-- interface-name GetIt -->
+	<!-- interface-copyright Bart Kessels -->
+	<!-- interface-authors Bart Kessels <bartkessels@bk-mai.com> -->
+	<template class="GetitWindowShortcuts" parent="GtkShortcutsWindow">
+		<property name="modal">true</property>
+		<child>
+			<object class="GtkShortcutsSection">
+				<property name="visible">1</property>
+				<property name="section-name">shortcuts</property>
+				<property name="title" translatable="yes">Shortcuts</property>
+
+				<!-- Request -->
+				<child>
+					<object class="GtkShortcutsGroup">
+						<property name="visible">1</property>
+						<property name="title" translatable="yes">Request</property>
+
+						<!-- Send -->
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="visible">1</property>
+								<property name="accelerator">&lt;ctrl&gt;Return</property>
+								<property name="title" translatable="yes">Send request</property>
+							</object>
+						</child>
+
+						<!-- Cancel -->
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="visible">1</property>
+								<property name="accelerator">&lt;ctrl&gt;Escape</property>
+								<property name="title" translatable="yes">Cancel running request</property>
+							</object>
+						</child>
+
+					</object>
+				</child>
+
+				<!-- File -->
+				<child>
+					<object class="GtkShortcutsGroup">
+						<property name="visible">1</property>
+						<property name="title" translatable="yes">File</property>
+
+						<!-- Save as -->
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="visible">1</property>
+								<property name="accelerator">&lt;ctrl&gt;&lt;alt&gt;s</property>
+								<property name="title" translatable="yes">Save the request as</property>
+							</object>
+						</child>
+
+						<!-- Save -->
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="visible">1</property>
+								<property name="accelerator">&lt;ctrl&gt;s</property>
+								<property name="title" translatable="yes">Save the request</property>
+							</object>
+						</child>
+
+						<!-- Open -->
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="visible">1</property>
+								<property name="accelerator">&lt;ctrl&gt;o</property>
+								<property name="title" translatable="yes">Open a request</property>
+							</object>
+						</child>
+
+					</object>
+				</child>
+
+				<!-- Touchpad gestures -->
+				<child>
+					<object class="GtkShortcutsGroup">
+						<property name="visible">1</property>
+						<property name="title" translatable="yes">Touchpad gestures</property>
+
+						<!-- Save as -->
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="visible">1</property>
+								<property name="shortcut-type">gesture-two-finger-swipe-left</property>
+								<property name="title" translatable="yes">Move to stack on the right</property>
+							</object>
+						</child>
+
+						<!-- Save -->
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="visible">1</property>
+								<property name="shortcut-type">gesture-two-finger-swipe-right</property>
+								<property name="title" translatable="yes">Move to stack on the left</property>
+							</object>
+						</child>
+
+					</object>
+				</child>
+
+			</object>
+		</child>
+	</template>
+</interface>

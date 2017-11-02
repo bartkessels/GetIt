@@ -1,0 +1,25 @@
+Build started at 2017-11-02T22:37:44.996878
+Python binary: /usr/bin/python3
+Python system: Linux
+The Meson build system
+Version: 0.43.0
+Source dir: /home/bkessels/Projects/GetIt
+Build dir: /home/bkessels/Projects/GetIt/build
+Build type: native build
+Project name: getit
+Native C compiler: cc (gcc 7.2.1)
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Configuring getit-config.h using configuration
+Program desktop-file-validate found: YES (/usr/bin/desktop-file-validate)
+Adding test "Validate desktop file".
+Program appstream-util found: YES (/usr/bin/appstream-util)
+Adding test "Validate appstream file".
+Program glib-compile-schemas found: YES (/usr/bin/glib-compile-schemas)
+Adding test "Validate schema file".
+Found pkg-config: /usr/bin/pkg-config (1.3.9)
+Determining dependency 'glib-2.0' with pkg-config executable '/usr/bin/pkg-config'
+Native dependency glib-2.0 found: YES 2.54.1
+Program build-aux/meson/postinstall.py found: YES (/home/bkessels/Projects/GetIt/build-aux/meson/postinstall.py)
+Build targets in project: 8
+Found ninja-1.8.2 at /usr/bin/ninja
