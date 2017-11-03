@@ -3,6 +3,10 @@
 	<menu id="app-menu">
 		<section id="app-menu-preferences-section">
 			<item>
+				<attribute name="label" translatable="yes">_Preferences</attribute>
+				<attribute name="action">app.preferences</attribute>
+			</item>
+			<item>
 				<attribute name="label" translatable="yes">_Shortcuts</attribute>
 				<attribute name="action">app.shortcuts</attribute>
 			</item>

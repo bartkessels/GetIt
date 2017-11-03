@@ -29,7 +29,7 @@ if appstream_util.found()
   )
 endif
 
-install_data('org.gnome.Getit.gschema.xml',
+install_data('net.bartkessels.getit.gschema.xml',
   install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas')
 )
 

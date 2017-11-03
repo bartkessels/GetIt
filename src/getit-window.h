@@ -24,6 +24,8 @@
 #include "getit-content-body.h"
 #include "getit-dialog-about.h"
 #include "getit-messages.h"
+#include "getit-notification.h"
+#include "getit-settings.h"
 #include "getit-stack.h"
 #include "getit-json.h"
 

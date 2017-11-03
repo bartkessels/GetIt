@@ -21,6 +21,7 @@
 
 		<!-- Windows -->
 		<file alias="window-main.ui" preprocess="xml-stripblanks">ui/window_main.ui</file>
+		<file alias="window-settings.ui" preprocess="xml-stripblanks">ui/window_settings.ui</file>
 		<file alias="window-shortcuts.ui" preprocess="xml-stripblanks">ui/window_shortcuts.ui</file>
 
 	</gresource>

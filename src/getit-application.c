@@ -39,12 +39,15 @@ static void getit_application_cb_open (GApplication  *app,
                                        GFile        **files,
                                        gint           n_files,
                                        const gchar   *hint);
-static void getit_application_cb_about (GSimpleAction *action,
-                                        GVariant      *parameter,
-                                        gpointer       user_data);
+static void getit_application_cb_preferences (GSimpleAction *action,
+                                              GVariant      *parameter,
+                                              gpointer       user_data);
 static void getit_application_cb_shortcuts (GSimpleAction *action,
                                             GVariant      *parameter,
                                             gpointer       user_data);
+static void getit_application_cb_about (GSimpleAction *action,
+                                        GVariant      *parameter,
+                                        gpointer       user_data);
 static void getit_application_cb_quit (GSimpleAction *action,
                                        GVariant      *parameter,
                                        gpointer       user_data);
@@ -55,8 +58,9 @@ static void getit_application_cb_quit (GSimpleAction *action,
  *
  */
 const GActionEntry app_actions[] = {
-        { "about", getit_application_cb_about },
         { "shortcuts", getit_application_cb_shortcuts },
+        { "preferences", getit_application_cb_preferences },
+        { "about", getit_application_cb_about },
         { "quit", getit_application_cb_quit }
 };
 
@@ -167,6 +171,24 @@ getit_application_cb_open (GApplication  *app,
 
         getit_window_open_file (GETIT_WINDOW (window), file_name);
     }
+}
+
+static void
+getit_application_cb_preferences (GSimpleAction *action,
+                                  GVariant      *parameter,
+                                  gpointer       user_data)
+{
+    g_assert (GTK_IS_APPLICATION (user_data));
+
+    GtkApplication *app;
+    GtkWindow *window;
+    GetitWindowSettings *window_settings;
+
+    app = GTK_APPLICATION (user_data);
+    window = gtk_application_get_active_window (app);
+    window_settings = getit_window_settings_new (window);
+
+    gtk_window_present (GTK_WINDOW (window_settings));
 }
 
 static void

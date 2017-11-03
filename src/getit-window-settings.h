@@ -1,4 +1,4 @@
-/* getit-application.h
+/* getit-window-settings.h
  *
  * Copyright (C) 2017 Bart Kessels <bartkessels@bk-mail.com>
  *
@@ -20,20 +20,15 @@
 
 #include <gtk/gtk.h>
 
-#include "getit-window.h"
-#include "getit-window-settings.h"
-#include "getit-window-shortcuts.h"
-
-/* Application information */
-#define APPLICATION_ID "net.bartkessels.getit"
+#include "getit-settings.h"
 
 G_BEGIN_DECLS
 
-#define GETIT_TYPE_APPLICATION (getit_application_get_type())
+#define GETIT_TYPE_WINDOW_SETTINGS (getit_window_settings_get_type())
 
-G_DECLARE_FINAL_TYPE (GetitApplication, getit_application, GETIT, APPLICATION, GtkApplication);
+G_DECLARE_FINAL_TYPE (GetitWindowSettings, getit_window_settings, GETIT, WINDOW_SETTINGS, GtkWindow)
 
 /* Public function signatures */
-GetitApplication *getit_application_new ();
+GetitWindowSettings *getit_window_settings_new (GtkWindow *parent_window);
 
 G_END_DECLS

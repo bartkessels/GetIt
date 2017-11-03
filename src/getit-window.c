@@ -292,10 +292,20 @@ getit_window_request_finished (SoupSession *session,
     GtkSourceLanguage *language;
 
     self = GETIT_WINDOW (user_data);
-
     content_response = getit_stack_get_content_response (self->stack);
 
-    /* Checks */
+    /* Check if connection was timed out */
+    if (message->status_code == 7) {
+        getit_notification_display ("Request timed out",
+                                    soup_uri_to_string (soup_message_get_uri (message), FALSE),
+                                    "network-transmit");
+        getit_content_response_show_timeout (content_response);
+        getit_window_set_loading (self, FALSE);
+
+        return;
+    }
+
+    /* Other checks */
     g_return_if_fail (!self->request_canceled);
     g_return_if_fail (message != NULL);
 
@@ -321,6 +331,10 @@ getit_window_request_finished (SoupSession *session,
                                           message->status_code,
                                           message->reason_phrase);
     getit_window_set_loading (self, FALSE);
+
+    getit_notification_display ("Request sent",
+                                    soup_uri_to_string (soup_message_get_uri (message), FALSE),
+                                    "network-transmit");
 }
 
 /**
@@ -402,17 +416,10 @@ getit_window_request_send (GetitWindow *self)
     getit_window_set_subtitle (self, g_strconcat (method, ": ", uri, NULL));
     gtk_stack_set_visible_child (GTK_STACK (self->stack), GTK_WIDGET (content_response));
 
-    // -----------------------------------------------------------------------------------------------------------------------------------------------
-    // -----------------------------------------------------------------------------------------------------------------------------------------------
-    // -----------------------------------------------------------------------------------------------------------------------------------------------
-    // TODO: Load actual settings
     /* Send the request */
-    self->soup_session = soup_session_new_with_options ("timeout", 10,
-                                                        "user-agent", "GetIt http request application",
+    self->soup_session = soup_session_new_with_options ("timeout", getit_settings_get_timeout (),
+                                                        "user-agent", getit_settings_get_user_agent (),
                                                         NULL);
-    // -----------------------------------------------------------------------------------------------------------------------------------------------
-    // -----------------------------------------------------------------------------------------------------------------------------------------------
-    // -----------------------------------------------------------------------------------------------------------------------------------------------
     soup_message = soup_message_new_from_uri (method, soup_uri);
 
     getit_content_body_add_to_request (content_body, soup_message);

@@ -29,6 +29,7 @@ struct _GetitContentResponse {
     GtkGrid *grd_output;
     GtkGrid *grd_headers;
     GtkSourceView *sv_output;
+    GtkGrid *grd_timeout;
 };
 
 G_DEFINE_TYPE (GetitContentResponse, getit_content_response, GTK_TYPE_SCROLLED_WINDOW)
@@ -47,7 +48,8 @@ static void getit_content_response_show_screen (GetitContentResponse *self,
                                                 const gboolean        show_default,
                                                 const gboolean        show_sending,
                                                 const gboolean        show_response,
-                                                const gboolean        show_error);
+                                                const gboolean        show_error,
+                                                const gboolean        show_timeout);
 
 /*
  * =============================================================================
@@ -73,6 +75,7 @@ getit_content_response_show_default (GetitContentResponse *self)
                                         TRUE,
                                         FALSE,
                                         FALSE,
+                                        FALSE,
                                         FALSE);
 }
 
@@ -84,6 +87,7 @@ getit_content_response_show_sending (GetitContentResponse *self)
     getit_content_response_show_screen (self,
                                         FALSE,
                                         TRUE,
+                                        FALSE,
                                         FALSE,
                                         FALSE);
 }
@@ -106,6 +110,7 @@ getit_content_response_show_response (GetitContentResponse *self,
                                         FALSE,
                                         FALSE,
                                         TRUE,
+                                        FALSE,
                                         FALSE);
 
     /* Clear headers grid */
@@ -152,13 +157,27 @@ getit_content_response_show_error (GetitContentResponse *self,
                                         FALSE,
                                         FALSE,
                                         FALSE,
-                                        TRUE);
+                                        TRUE,
+                                        FALSE);
 
     if (error_message == NULL || strlen (error_message) < 1) {
         error_message = RESPONSE_ERROR_MESSAGE;
     }
 
     gtk_label_set_text (self->lbl_error_message, error_message);
+}
+
+void
+getit_content_response_show_timeout (GetitContentResponse *self)
+{
+    g_assert (GETIT_IS_CONTENT_RESPONSE (self));
+
+    getit_content_response_show_screen (self,
+                                        FALSE,
+                                        FALSE,
+                                        FALSE,
+                                        FALSE,
+                                        TRUE);
 }
 
  /*
@@ -187,6 +206,7 @@ getit_content_response_class_init (GetitContentResponseClass *klass)
     gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, grd_output);
     gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, grd_headers);
     gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, sv_output);
+    gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, grd_timeout);
 }
 
 static void
@@ -233,7 +253,8 @@ getit_content_response_show_screen (GetitContentResponse *self,
                                     const gboolean        show_default,
                                     const gboolean        show_sending,
                                     const gboolean        show_response,
-                                    const gboolean        show_error)
+                                    const gboolean        show_error,
+                                    const gboolean        show_timeout)
 {
     g_assert (GETIT_IS_CONTENT_RESPONSE (self));
 
@@ -241,4 +262,5 @@ getit_content_response_show_screen (GetitContentResponse *self,
     gtk_widget_set_visible (GTK_WIDGET (self->grd_sending), show_sending);
     gtk_widget_set_visible (GTK_WIDGET (self->grd_output), show_response);
     gtk_widget_set_visible (GTK_WIDGET (self->grd_error), show_error);
+    gtk_widget_set_visible (GTK_WIDGET (self->grd_timeout), show_timeout);
 }

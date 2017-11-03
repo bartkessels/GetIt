@@ -9,17 +9,22 @@ getit_sources = [
   'getit-element-formdata.c',
   'getit-element-header.c',
   'getit-json.c',
+  'getit-notification.c',
+  'getit-settings.c',
   'getit-stack.c',
   'getit-window.c',
+  'getit-window-settings.c',
   'getit-window-shortcuts.c',
   'main.c'
 ]
 
 getit_deps = [
   dependency('gio-2.0', version: '>= 2.50'),
+  dependency('glib-2.0', version: '>= 2.50'),
   dependency('gtk+-3.0', version: '>= 3.22'),
   dependency('libsoup-2.4', version: '>= 2.40'),
   dependency('gtksourceview-3.0', version: '>= 3.22'),
+  dependency('libnotify'),
   dependency('json-glib-1.0')
 ]
 

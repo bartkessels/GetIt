@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<schemalist gettext-domain="getit">
-	<schema id="org.gnome.Getit" path="/org/gnome/Getit/">
-	</schema>
-</schemalist>

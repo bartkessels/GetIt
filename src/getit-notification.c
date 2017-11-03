@@ -1,4 +1,4 @@
-/* getit-application.h
+/* getit-notification.c
  *
  * Copyright (C) 2017 Bart Kessels <bartkessels@bk-mail.com>
  *
@@ -16,24 +16,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+#include "getit-notification.h"
 
-#include <gtk/gtk.h>
+void
+getit_notification_display (const gchar *title,
+                            const gchar *body,
+                            const gchar *icon)
+{
+    gboolean show_notifications;
+    GError *error_notification = NULL;
+    NotifyNotification *notification;
 
-#include "getit-window.h"
-#include "getit-window-settings.h"
-#include "getit-window-shortcuts.h"
+    show_notifications = getit_settings_get_show_notifications ();
 
-/* Application information */
-#define APPLICATION_ID "net.bartkessels.getit"
+    if (!show_notifications) {
+        return;
+    }
 
-G_BEGIN_DECLS
+    notification = notify_notification_new (title, body, icon);
+    notify_notification_show (notification, &error_notification);
 
-#define GETIT_TYPE_APPLICATION (getit_application_get_type())
-
-G_DECLARE_FINAL_TYPE (GetitApplication, getit_application, GETIT, APPLICATION, GtkApplication);
-
-/* Public function signatures */
-GetitApplication *getit_application_new ();
-
-G_END_DECLS
+    if (error_notification != NULL) {
+        g_error_free (error_notification);
+    }
+}

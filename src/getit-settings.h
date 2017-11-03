@@ -1,4 +1,4 @@
-/* getit-application.h
+/* getit-settings.h
  *
  * Copyright (C) 2017 Bart Kessels <bartkessels@bk-mail.com>
  *
@@ -18,22 +18,18 @@
 
 #pragma once
 
-#include <gtk/gtk.h>
+#include <gio/gio.h>
+#include <glib.h>
 
-#include "getit-window.h"
-#include "getit-window-settings.h"
-#include "getit-window-shortcuts.h"
+/* Setting keys */
+#define SETTINGS_KEY_SHOW_NOTIFICATIONS "app-show-notifications"
+#define SETTINGS_KEY_TIMEOUT "request-timeout"
+#define SETTINGS_KEY_USER_AGENT "request-user-agent"
 
-/* Application information */
-#define APPLICATION_ID "net.bartkessels.getit"
+void getit_settings_set_show_notifications (gboolean show_notifications);
+void getit_settings_set_timeout (gint timeout);
+void getit_settings_set_user_agent (const gchar *user_agent);
 
-G_BEGIN_DECLS
-
-#define GETIT_TYPE_APPLICATION (getit_application_get_type())
-
-G_DECLARE_FINAL_TYPE (GetitApplication, getit_application, GETIT, APPLICATION, GtkApplication);
-
-/* Public function signatures */
-GetitApplication *getit_application_new ();
-
-G_END_DECLS
+gboolean getit_settings_get_show_notifications ();
+gint getit_settings_get_timeout ();
+const gchar *getit_settings_get_user_agent ();
