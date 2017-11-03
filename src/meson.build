@@ -1,4 +1,5 @@
 getit_sources = [
+  'getit-application.c',
   'getit-content-body.c',
   'getit-content-cookies.c',
   'getit-content-headers.c',

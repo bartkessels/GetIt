@@ -18,8 +18,6 @@
 
 #include "getit-content-body.h"
 
-typedef struct _GetitContentBody GetitContentBody;
-
 struct _GetitContentBody {
     GtkScrolledWindow parent_instance;
 
@@ -33,9 +31,6 @@ struct _GetitContentBody {
     GtkButton *btn_data_formdata_add;
     GtkComboBoxText *cb_data_raw_syntax;
     GtkSourceView *sv_data_raw_input;
-
-    /* Member variables */
-    //GSList *list_formdata;
 };
 
 G_DEFINE_TYPE (GetitContentBody, getit_content_body, GTK_TYPE_SCROLLED_WINDOW)

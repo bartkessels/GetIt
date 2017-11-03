@@ -1,6 +1,6 @@
-/* main.c
+/* getit-application.h
  *
- * Copyright (C) 2017 Bart Kessels
+ * Copyright (C) 2017 Bart Kessels <bartkessels@bk-mail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,31 +16,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <glib/gi18n.h>
+#pragma once
 
-#include "getit-application.h"
-#include "getit-config.h"
+#include <gtk/gtk.h>
 
+#include "getit-window.h"
+#include "getit-window-shortcuts.h"
 
+/* Application information */
+#define APPLICATION_ID "net.bartkessels.getit"
 
-int
-main (int   argc,
-      char *argv[])
-{
-    GetitApplication *app;
-    int return_status;
+G_BEGIN_DECLS
 
-    /* Set up gettext translations */
-    bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
+#define GETIT_TYPE_APPLICATION (getit_application_get_type())
 
-    /* Create and launch application */
-    app = getit_application_new ();
+G_DECLARE_FINAL_TYPE (GetitApplication, getit_application, GETIT, APPLICATION, GtkApplication);
 
-    return_status = g_application_run (G_APPLICATION (app), argc, argv);
+/* Public function signatures */
+GetitApplication *getit_application_new ();
 
-    return return_status;
-}
-
-
+G_END_DECLS
