@@ -1,0 +1,307 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-03 20:37+0100\n"
+"PO-Revision-Date: 2017-11-03 20:38+0100\n"
+"Last-Translator: Bart Kessels <bartkessels@bk-mail.com>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../data/net.bartkessels.getit.gschema.xml.h:1
+msgid "Display notifications when a request has been sent"
+msgstr "Notificatie tonen als een request is verzonden"
+
+#: ../data/net.bartkessels.getit.gschema.xml.h:2
+msgid ""
+"When this setting is enabled GetIt will show a notification everytime a "
+"request has been sent or when the timeout has been reached."
+msgstr ""
+"Als deze instelling is ingeschakeld weergeeft GetIt een notificatie iedere "
+"keer als een request is verzonden of als er een time-out heeft plaats "
+"gevonden."
+
+#: ../data/net.bartkessels.getit.gschema.xml.h:3
+msgid "Timeout request after given seconds"
+msgstr "Time-out een request na gegeven seconden"
+
+#: ../data/net.bartkessels.getit.gschema.xml.h:4
+msgid ""
+"When a request is taking too long to get a response from the server it can "
+"be cancled within the given timeout. When timeout is set to 0 the request "
+"will go on forever."
+msgstr ""
+"Als een request er te lang over doet om een antwoord van de server te "
+"krijgen kan de request automatisch worden geannuleerd door een time-out. Als "
+"de time-out wordt ingesteld op 0 dan zal het request oneindig doorgaan."
+
+#: ../data/net.bartkessels.getit.gschema.xml.h:5
+msgid "User agent to send along with each request"
+msgstr "User agent die wordt meegegeven met een request"
+
+#: ../data/net.bartkessels.getit.gschema.xml.h:6
+msgid "The given user agent will be sent along with each request."
+msgstr "De gegeven user agent wordt met ieder request meegestuurd."
+
+#: ../src/ui/content_body.glade.h:1
+msgid "Add Key Value Pair"
+msgstr "Key Value waardes toevoegen"
+
+#: ../src/ui/content_body.glade.h:2
+msgid "Form Data"
+msgstr "Formdata"
+
+#: ../src/ui/content_body.glade.h:3 ../src/ui/element_formdata.glade.h:4
+msgid "Text"
+msgstr "Tekst"
+
+#: ../src/ui/content_body.glade.h:4
+msgid "JSON"
+msgstr "JSON"
+
+#: ../src/ui/content_body.glade.h:5
+msgid "XML"
+msgstr "XML"
+
+#: ../src/ui/content_body.glade.h:6
+msgid "Raw"
+msgstr "Ruwe data"
+
+#: ../src/ui/content_cookies.glade.h:1
+msgid "Add Cookie"
+msgstr "Cookie Toevoegen"
+
+#: ../src/ui/content_headers.glade.h:1
+msgid "Add Header"
+msgstr "Header Toevoegen"
+
+#: ../src/ui/content_response.glade.h:1
+msgid "<big>Please send a request...</big>"
+msgstr "<big>Verstuur een request...</big>"
+
+#: ../src/ui/content_response.glade.h:2
+msgid "<big>Sending request...</big>"
+msgstr "<big>Request aan het versturen...</big>"
+
+#: ../src/ui/content_response.glade.h:3
+msgid "<big>An error has occured</big>"
+msgstr "<big>Er is een error opgetreden...</big>"
+
+#: ../src/ui/content_response.glade.h:4
+msgid "Something went wrong sending your request..."
+msgstr "Er is iets misgegaan tijdens het versturen van je request..."
+
+#: ../src/ui/content_response.glade.h:5
+msgid "<big>The request has timed out</big>"
+msgstr "<big>De request heeft is ge-timed-out</big>"
+
+#: ../src/ui/content_response.glade.h:6
+msgid ""
+"The timeout of a request can be set in the preferences window. To disable "
+"the timeout completly set the value to 0."
+msgstr ""
+"De time-out van een request kan worden aangepast in het instellingenscherm. "
+"Om de time-out compleet uit te schakelen zet deze dan op 0."
+
+#: ../src/ui/dialog_about.glade.h:1
+msgid "Copyright © 2016 - 2017 Bart Kessels"
+msgstr "Copyright © 2016 - 2017 Bart Kessels"
+
+#: ../src/ui/dialog_about.glade.h:2
+msgid "GetIt is a small application to send HTTP requests"
+msgstr "GetIt is een applicatie om HTTP requests te versturen"
+
+#: ../src/ui/element_cookie.glade.h:1 ../src/ui/element_formdata.glade.h:1
+#: ../src/ui/element_header.glade.h:1
+msgid "Key"
+msgstr "Key"
+
+#: ../src/ui/element_cookie.glade.h:2 ../src/ui/element_formdata.glade.h:2
+#: ../src/ui/element_header.glade.h:2
+msgid "Value"
+msgstr "Waarde"
+
+#: ../src/ui/element_formdata.glade.h:3
+msgid "Choose File..."
+msgstr "Kies Bestand..."
+
+#: ../src/ui/element_formdata.glade.h:5 ../src/ui/window_shortcuts.glade.h:5
+msgid "File"
+msgstr "Bestand"
+
+#: ../src/ui/menu_app.glade.h:1
+msgid "_Preferences"
+msgstr "_Instellingen"
+
+#: ../src/ui/menu_app.glade.h:2
+msgid "_Shortcuts"
+msgstr "_Sneltoetsen"
+
+#: ../src/ui/menu_app.glade.h:3
+msgid "_About"
+msgstr "_Over"
+
+#: ../src/ui/menu_app.glade.h:4
+msgid "_Quit"
+msgstr "_Sluiten"
+
+#: ../src/ui/window_main.glade.h:1 ../src/getit-window.c:505
+msgid "Open"
+msgstr "Openen"
+
+#: ../src/ui/window_main.glade.h:2
+msgid "Save As"
+msgstr "Opslaan Als"
+
+#: ../src/ui/window_main.glade.h:3 ../src/getit-window.c:543
+msgid "Save"
+msgstr "Opslaan"
+
+#: ../src/ui/window_main.glade.h:4
+msgid "Clear Request"
+msgstr "Request Legen"
+
+#: ../src/ui/window_main.glade.h:5 ../src/getit-window.c:624
+msgid "File: (null)"
+msgstr "Bestand: (null)"
+
+#: ../src/ui/window_main.glade.h:6
+msgid "Send"
+msgstr "Verstuur"
+
+#: ../src/ui/window_main.glade.h:7
+msgid "Send request (ctrl + return)"
+msgstr "Verstuur request (ctrl + enter)"
+
+#: ../src/ui/window_main.glade.h:8 ../src/getit-window.c:504
+#: ../src/getit-window.c:542
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: ../src/ui/window_main.glade.h:9
+msgid "Cancel running request (esc)"
+msgstr "Annuleer huidige request (esc)"
+
+#: ../src/ui/window_settings.glade.h:1
+msgid "Display notifications"
+msgstr "Notificaties weergeven"
+
+#: ../src/ui/window_settings.glade.h:2
+msgid "Timeout"
+msgstr "Time-out"
+
+#: ../src/ui/window_settings.glade.h:3
+msgid "User Agent"
+msgstr "User Agent"
+
+#: ../src/ui/window_settings.glade.h:4
+msgid "Apply"
+msgstr "Toepassen"
+
+#: ../src/ui/window_shortcuts.glade.h:1
+msgid "Shortcuts"
+msgstr "Sneltoetsen"
+
+#: ../src/ui/window_shortcuts.glade.h:2
+msgid "Request"
+msgstr "Request"
+
+#: ../src/ui/window_shortcuts.glade.h:3
+msgid "Send request"
+msgstr "Request versturen"
+
+#: ../src/ui/window_shortcuts.glade.h:4
+msgid "Cancel running request"
+msgstr "Annuleer het lopende request"
+
+#: ../src/ui/window_shortcuts.glade.h:6
+msgid "Save the request as"
+msgstr "Request opslaan als"
+
+#: ../src/ui/window_shortcuts.glade.h:7
+msgid "Save the request"
+msgstr "Request opslaan"
+
+#: ../src/ui/window_shortcuts.glade.h:8
+msgid "Open a request"
+msgstr "Request openen"
+
+#: ../src/ui/window_shortcuts.glade.h:9
+msgid "Touchpad gestures"
+msgstr "Touchpad gebaren"
+
+#: ../src/ui/window_shortcuts.glade.h:10
+msgid "Move to stack on the right"
+msgstr "Verplaats naar de stack rechts"
+
+#: ../src/ui/window_shortcuts.glade.h:11
+msgid "Move to stack on the left"
+msgstr "Verplaats naar de stack links"
+
+#: ../src/getit-content-response.c:129
+msgid "Status"
+msgstr "Status"
+
+#. Default messages
+#: ../src/getit-messages.h:24
+msgid "Are you sure you want to clear the request?"
+msgstr "Weet je zeker dat je het huidige request wilt legen?"
+
+#. Error messages
+#: ../src/getit-messages.h:27
+msgid "Something went wrong saving the file&#8230;"
+msgstr "Er is iets misgegaan tijdens het opslaan van het bestand&#8230;"
+
+#: ../src/getit-messages.h:28
+msgid "Something went wrong opening the file&#8230;"
+msgstr "Er is iets misgegaan tijdens het openen van het bestand&#8230;"
+
+#: ../src/getit-messages.h:29
+msgid "Something went wrong sending your request&#8230;"
+msgstr "Er is iets misgegaan tijdens het versturen van je request&#8230;"
+
+#: ../src/getit-stack.h:41
+msgid "Body"
+msgstr "Body"
+
+#: ../src/getit-stack.h:42
+msgid "Cookies"
+msgstr "Cookies"
+
+#: ../src/getit-stack.h:43
+msgid "Headers"
+msgstr "Headers"
+
+#: ../src/getit-stack.h:44
+msgid "Response"
+msgstr "Response"
+
+#: ../src/getit-window.c:141 ../src/getit-window.c:185
+msgid "File: "
+msgstr "Bestand:"
+
+#: ../src/getit-window.c:278
+msgid "Request timed out"
+msgstr "Request is ge-timed-out"
+
+#: ../src/getit-window.c:315
+msgid "Request sent"
+msgstr "Request is verzonden"
+
+#: ../src/getit-window.c:501
+msgid "Open Request"
+msgstr "Request openen"
+
+#: ../src/getit-window.c:539
+msgid "Save Request"
+msgstr "Request opslaan"

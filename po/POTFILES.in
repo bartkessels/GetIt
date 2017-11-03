@@ -3,6 +3,7 @@
 data/net.bartkessels.getit.appdata.xml.in
 data/net.bartkessels.getit.desktop.in
 data/net.bartkessels.getit.gschema.xml
+src/ui/content_body.glade
 src/ui/content_cookies.glade
 src/ui/content_headers.glade
 src/ui/content_response.glade
