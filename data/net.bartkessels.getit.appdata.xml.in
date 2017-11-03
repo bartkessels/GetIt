@@ -49,6 +49,22 @@
 	</provides>
 
 	<releases>
+		<release version="4.0" date="2017-11-04">
+			<description>
+				<p>
+					<ul>
+						<li>Add recent files support</li>
+						<li>Add ability to set timeout for request</li>
+						<li>Add ability to set user agent for request</li>
+						<li>Add preferences window</li>
+						<li>Add shortcuts window</li>
+						<li>Add support for translations</li>
+						<li>Add support for flatpak</li>
+					</ul>
+				</p>
+			</description>
+		</release>
+
 		<release version="3.2" date="2017-09-05">
 			<description>
 				<p>
