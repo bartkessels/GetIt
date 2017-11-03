@@ -138,7 +138,7 @@ getit_window_save_file (GetitWindow *self,
     }
 
     self->file = g_file_new_for_uri (file_name);
-    file_label = g_strconcat ("File: ", file_name, NULL);
+    file_label = g_strconcat (_("File: "), file_name, NULL);
 
     gtk_label_set_text (self->lbl_file, file_label);
 }
@@ -182,7 +182,7 @@ getit_window_open_file (GetitWindow *self,
     }
 
     self->file = g_file_new_for_uri (file_name);
-    file_label = g_strconcat ("File: ", file_name, NULL);
+    file_label = g_strconcat (_("File: "), file_name, NULL);
     gtk_label_set_text (self->lbl_file, file_label);
 }
 
@@ -214,15 +214,6 @@ getit_window_class_init (GetitWindowClass *klass)
     gtk_widget_class_bind_template_child (widget_class, GetitWindow, mi_clear);
 }
 
-/**
- * getit_window_init
- *
- * @self: Pointer to self
- *
- * Build the UI of the window
- *
- * Return value: void
- */
 static void
 getit_window_init (GetitWindow *self)
 {
@@ -260,18 +251,6 @@ getit_window_init (GetitWindow *self)
     gtk_widget_show (GTK_WIDGET (self->stack));
 }
 
-/**
- * getit_window_request_finished
- *
- * @session: Pointer to the SoupSession object
- * @message: Pointer to the SoupMessage object
- * @user_data: Pointer to self
- *
- * Display the request in the UI if the request has not been
- * cancelled
- *
- * Return value: void
- */
 static void
 getit_window_request_finished (SoupSession *session,
                                SoupMessage *message,
@@ -296,7 +275,7 @@ getit_window_request_finished (SoupSession *session,
 
     /* Check if connection was timed out */
     if (message->status_code == 7) {
-        getit_notification_display ("Request timed out",
+        getit_notification_display (_("Request timed out"),
                                     soup_uri_to_string (soup_message_get_uri (message), FALSE),
                                     "network-transmit");
         getit_content_response_show_timeout (content_response);
@@ -333,20 +312,11 @@ getit_window_request_finished (SoupSession *session,
                                           message->reason_phrase);
     getit_window_set_loading (self, FALSE);
 
-    getit_notification_display ("Request sent",
+    getit_notification_display (_("Request sent"),
                                     soup_uri_to_string (soup_message_get_uri (message), FALSE),
                                     "network-transmit");
 }
 
-/**
- * getit_window_request_cancel
- *
- * @self: Pointer to self
- *
- * Cancel the current request
- *
- * Return value: void
- */
 static void
 getit_window_request_cancel (GetitWindow *self)
 {
@@ -368,18 +338,6 @@ getit_window_request_cancel (GetitWindow *self)
     soup_session_abort (self->soup_session);
 }
 
-/**
- * getit_window_request_send
- *
- * @self: Pointer to self
- * @method: Method used for the request
- * @uri: URI to send the request to
- *
- * Send a request with the given method to the
- * given URI
- *
- * Return value: void
- */
 static void
 getit_window_request_send (GetitWindow *self)
 {
@@ -495,18 +453,6 @@ getit_window_register_shortcuts (GtkWidget   *caller,
     return FALSE;
 }
 
-/**
- * getit_window_cb_btn_send_clicked
- *
- * @caller: The GtkWidget which is calling this function
- * @user_data: Pointer to self
- *
- * Create a new SoupRequest and add all the values
- * entered in the UI to the request and then
- * send the request
- *
- * Return value: void
- */
 static void
 getit_window_cb_btn_send_clicked (GtkWidget *caller,
                                   gpointer   user_data)
@@ -522,16 +468,6 @@ getit_window_cb_btn_send_clicked (GtkWidget *caller,
     getit_window_request_send (self);
 }
 
-/**
- * getit_window_cb_btn_cancel_clicked
- *
- * @caller: The GtkWidget which is calling this function
- * @user_data: Pointer to self
- *
- * Cancel a running request
- *
- * Return value: void
- */
 static void
 getit_window_cb_btn_cancel_clicked (GtkWidget *caller,
                                     gpointer   user_data)
@@ -562,11 +498,11 @@ getit_window_cb_mi_open_clicked (GtkWidget *caller,
 
     self = GETIT_WINDOW (user_data);
     file_filter = gtk_file_filter_new ();
-    file_chooser = gtk_file_chooser_dialog_new ("Open Request",
+    file_chooser = gtk_file_chooser_dialog_new (_("Open Request"),
                                                 GTK_WINDOW (self),
                                                 GTK_FILE_CHOOSER_ACTION_OPEN,
-                                                "Cancel", GTK_RESPONSE_CANCEL,
-                                                "Open", GTK_RESPONSE_ACCEPT,
+                                                _("Cancel"), GTK_RESPONSE_CANCEL,
+                                                _("Open"), GTK_RESPONSE_ACCEPT,
                                                 NULL);
 
     gtk_file_filter_add_pattern (file_filter, "*.getit");
@@ -600,11 +536,11 @@ getit_window_cb_mi_save_as_clicked (GtkWidget *caller,
 
     self = GETIT_WINDOW (user_data);
     file_filter = gtk_file_filter_new ();
-    file_chooser = gtk_file_chooser_dialog_new ("Save Request",
+    file_chooser = gtk_file_chooser_dialog_new (_("Save Request"),
                                                 GTK_WINDOW (self),
                                                 GTK_FILE_CHOOSER_ACTION_SAVE,
-                                                "Cancel", GTK_RESPONSE_CANCEL,
-                                                "Save", GTK_RESPONSE_ACCEPT,
+                                                _("Cancel"), GTK_RESPONSE_CANCEL,
+                                                _("Save"), GTK_RESPONSE_ACCEPT,
                                                 NULL);
 
     gtk_file_filter_add_pattern (file_filter, "*.getit");
@@ -685,6 +621,6 @@ getit_window_cb_mi_clear_clicked (GtkWidget *caller,
         getit_content_response_show_default (content_response);
 
         self->file = NULL;
-        gtk_label_set_text (self->lbl_file, "File: (null)");
+        gtk_label_set_text (self->lbl_file, _("File: (null)"));
     }
 }

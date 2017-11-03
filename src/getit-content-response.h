@@ -18,12 +18,13 @@
 
 #pragma once
 
+#include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <gtksourceview/gtksource.h>
 #include <libsoup/soup.h>
 #include <string.h>
 
-#include "getit-messages.h":/
+#include "getit-messages.h"
 
 G_BEGIN_DECLS
 

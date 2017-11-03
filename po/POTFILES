@@ -1,9 +1,0 @@
-data/org.gnome.Getit.desktop.in
-data/org.gnome.Getit.appdata.xml.in
-data/org.gnome.Getit.gschema.xml
-src/getit-window.ui
-src/main.c
-src/getit-window.c
-
-
-

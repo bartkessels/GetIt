@@ -25,7 +25,7 @@
               <object class="GtkEntry" id="et_uri">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="placeholder_text" translatable="yes">http://...</property>
+                <property name="placeholder_text" translatable="no">http://...</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -144,14 +144,14 @@
                 <property name="can_focus">False</property>
                 <property name="active">0</property>
                 <items>
-                  <item id="GET" translatable="yes">GET</item>
-                  <item id="POST" translatable="yes">POST</item>
-                  <item id="PUT" translatable="yes">PUT</item>
-                  <item id="PATCH" translatable="yes">PATCH</item>
-                  <item id="DELETE" translatable="yes">DELETE</item>
-                  <item id="COPY" translatable="yes">COPY</item>
-                  <item id="HEAD" translatable="yes">HEAD</item>
-                  <item id="OPTIONS" translatable="yes">OPTIONS</item>
+                  <item id="GET">GET</item>
+                  <item id="POST">POST</item>
+                  <item id="PUT">PUT</item>
+                  <item id="PATCH">PATCH</item>
+                  <item id="DELETE">DELETE</item>
+                  <item id="COPY">COPY</item>
+                  <item id="HEAD">HEAD</item>
+                  <item id="OPTIONS">OPTIONS</item>
                 </items>
               </object>
               <packing>

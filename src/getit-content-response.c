@@ -126,7 +126,7 @@ getit_content_response_show_response (GetitContentResponse *self,
 
     /* Add headers */
     status_value = g_strdup_printf ("%i (%s)", status_code, status_message);
-    getit_content_response_add_header ("Status", status_value, self);
+    getit_content_response_add_header (_("Status"), status_value, self);
 
     soup_message_headers_foreach (headers, getit_content_response_add_header, self);
 

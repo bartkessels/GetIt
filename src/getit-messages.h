@@ -18,10 +18,12 @@
 
 #pragma once
 
+#include <glib/gi18n.h>
+
 /* Default messages */
-#define MSG_QUESTION_CLEAR "Are you sure you want to clear the request?"
+#define MSG_QUESTION_CLEAR _("Are you sure you want to clear the request?")
 
 /* Error messages */
-#define MSG_ERROR_SAVING "Something went wrong saving the file..."
-#define MSG_ERROR_OPENING "Something went wrong opening the file..."
-#define MSG_ERROR_SENDING "Something went wrong sending your request..."
+#define MSG_ERROR_SAVING _("Something went wrong saving the file&#8230;")
+#define MSG_ERROR_OPENING _("Something went wrong opening the file&#8230;")
+#define MSG_ERROR_SENDING _("Something went wrong sending your request&#8230;")

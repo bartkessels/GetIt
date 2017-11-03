@@ -18,6 +18,7 @@
 
 #pragma once
 
+#include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
 #include "getit-content-body.h"
@@ -37,10 +38,10 @@ G_DECLARE_FINAL_TYPE (GetitStack, getit_stack, GETIT, STACK, GtkStack)
 #define STACK_NAME_CONTENT_HEADERS "content_headers"
 #define STACK_NAME_CONTENT_RESPONSE "content_response"
 
-#define STACK_TITLE_CONTENT_BODY "Body"
-#define STACK_TITLE_CONTENT_COOKIES "Cookies"
-#define STACK_TITLE_CONTENT_HEADERS "Headers"
-#define STACK_TITLE_CONTENT_RESPONSE "Response"
+#define STACK_TITLE_CONTENT_BODY _("Body")
+#define STACK_TITLE_CONTENT_COOKIES _("Cookies")
+#define STACK_TITLE_CONTENT_HEADERS _("Headers")
+#define STACK_TITLE_CONTENT_RESPONSE _("Response")
 
 /* Public function signatures */
 GetitStack *getit_stack_new ();

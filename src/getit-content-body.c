@@ -402,10 +402,7 @@ getit_content_body_add_formdata_to_request (GetitContentBody *self,
         }
 
         /* Check if the user wants to upload a file or send a regular request */
-        g_print ("datatype: %s\n", datatype);
         if (g_str_equal (datatype, DATATYPE_STRING)) {
-            g_print ("Is string\n");
-            g_print ("%s: %s\n", key, value);
             soup_multipart_append_form_string (multipart, key, value);
         } else if (g_str_equal (datatype, DATATYPE_FILE)) {
             file = g_mapped_file_new (file_name, FALSE, &error);
