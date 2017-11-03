@@ -161,7 +161,7 @@ getit_content_response_show_error (GetitContentResponse *self,
                                         FALSE);
 
     if (error_message == NULL || strlen (error_message) < 1) {
-        error_message = RESPONSE_ERROR_MESSAGE;
+        error_message = MSG_ERROR_SENDING;
     }
 
     gtk_label_set_text (self->lbl_error_message, error_message);

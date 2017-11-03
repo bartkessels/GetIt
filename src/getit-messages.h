@@ -24,3 +24,4 @@
 /* Error messages */
 #define MSG_ERROR_SAVING "Something went wrong saving the file..."
 #define MSG_ERROR_OPENING "Something went wrong opening the file..."
+#define MSG_ERROR_SENDING "Something went wrong sending your request..."

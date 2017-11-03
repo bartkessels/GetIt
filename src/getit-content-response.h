@@ -23,14 +23,13 @@
 #include <libsoup/soup.h>
 #include <string.h>
 
+#include "getit-messages.h":/
+
 G_BEGIN_DECLS
 
 #define GETIT_TYPE_CONTENT_RESPONSE (getit_content_response_get_type())
 
 G_DECLARE_FINAL_TYPE (GetitContentResponse, getit_content_response, GETIT, CONTENT_RESPONSE, GtkScrolledWindow)
-
-/* Default messages */
-#define RESPONSE_ERROR_MESSAGE "Something went wrong sending your request..."
 
 /* Public function signatures */
 GetitContentResponse *getit_content_response_new ();
