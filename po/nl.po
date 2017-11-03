@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-03 20:37+0100\n"
-"PO-Revision-Date: 2017-11-03 20:38+0100\n"
+"POT-Creation-Date: 2017-11-04 00:23+0100\n"
+"PO-Revision-Date: 2017-11-04 00:25+0100\n"
 "Last-Translator: Bart Kessels <bartkessels@bk-mail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -19,10 +19,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../data/net.bartkessels.getit.gschema.xml.h:1
+msgid "Display screen with recent requests on application startup"
+msgstr ""
+"Scherm met recente requests weergeven als de applicatie wordt opgestart"
+
+#: ../data/net.bartkessels.getit.gschema.xml.h:2
+msgid ""
+"When set to true the recent requests window will always be shown when the "
+"application is launched. Either way it can still be launched from the "
+"application menu."
+msgstr ""
+"Als deze instelling aan wordt gezet dan wordt het venster met recente "
+"requests getoond als de applicatie wordt gestart. Het recente requests "
+"scherm kan hoe dan ook gestart worden via het applicatiemenu."
+
+#: ../data/net.bartkessels.getit.gschema.xml.h:3
 msgid "Display notifications when a request has been sent"
 msgstr "Notificatie tonen als een request is verzonden"
 
-#: ../data/net.bartkessels.getit.gschema.xml.h:2
+#: ../data/net.bartkessels.getit.gschema.xml.h:4
 msgid ""
 "When this setting is enabled GetIt will show a notification everytime a "
 "request has been sent or when the timeout has been reached."
@@ -31,11 +46,11 @@ msgstr ""
 "keer als een request is verzonden of als er een time-out heeft plaats "
 "gevonden."
 
-#: ../data/net.bartkessels.getit.gschema.xml.h:3
+#: ../data/net.bartkessels.getit.gschema.xml.h:5
 msgid "Timeout request after given seconds"
 msgstr "Time-out een request na gegeven seconden"
 
-#: ../data/net.bartkessels.getit.gschema.xml.h:4
+#: ../data/net.bartkessels.getit.gschema.xml.h:6
 msgid ""
 "When a request is taking too long to get a response from the server it can "
 "be cancled within the given timeout. When timeout is set to 0 the request "
@@ -45,11 +60,11 @@ msgstr ""
 "krijgen kan de request automatisch worden geannuleerd door een time-out. Als "
 "de time-out wordt ingesteld op 0 dan zal het request oneindig doorgaan."
 
-#: ../data/net.bartkessels.getit.gschema.xml.h:5
+#: ../data/net.bartkessels.getit.gschema.xml.h:7
 msgid "User agent to send along with each request"
 msgstr "User agent die wordt meegegeven met een request"
 
-#: ../data/net.bartkessels.getit.gschema.xml.h:6
+#: ../data/net.bartkessels.getit.gschema.xml.h:8
 msgid "The given user agent will be sent along with each request."
 msgstr "De gegeven user agent wordt met ieder request meegestuurd."
 
@@ -140,22 +155,26 @@ msgid "File"
 msgstr "Bestand"
 
 #: ../src/ui/menu_app.glade.h:1
+msgid "_Recent"
+msgstr "_Recent"
+
+#: ../src/ui/menu_app.glade.h:2
 msgid "_Preferences"
 msgstr "_Instellingen"
 
-#: ../src/ui/menu_app.glade.h:2
+#: ../src/ui/menu_app.glade.h:3
 msgid "_Shortcuts"
 msgstr "_Sneltoetsen"
 
-#: ../src/ui/menu_app.glade.h:3
+#: ../src/ui/menu_app.glade.h:4
 msgid "_About"
 msgstr "_Over"
 
-#: ../src/ui/menu_app.glade.h:4
+#: ../src/ui/menu_app.glade.h:5
 msgid "_Quit"
 msgstr "_Sluiten"
 
-#: ../src/ui/window_main.glade.h:1 ../src/getit-window.c:505
+#: ../src/ui/window_main.glade.h:1 ../src/getit-window.c:503
 msgid "Open"
 msgstr "Openen"
 
@@ -163,7 +182,7 @@ msgstr "Openen"
 msgid "Save As"
 msgstr "Opslaan Als"
 
-#: ../src/ui/window_main.glade.h:3 ../src/getit-window.c:543
+#: ../src/ui/window_main.glade.h:3 ../src/getit-window.c:541
 msgid "Save"
 msgstr "Opslaan"
 
@@ -171,7 +190,7 @@ msgstr "Opslaan"
 msgid "Clear Request"
 msgstr "Request Legen"
 
-#: ../src/ui/window_main.glade.h:5 ../src/getit-window.c:624
+#: ../src/ui/window_main.glade.h:5 ../src/getit-window.c:622
 msgid "File: (null)"
 msgstr "Bestand: (null)"
 
@@ -183,8 +202,8 @@ msgstr "Verstuur"
 msgid "Send request (ctrl + return)"
 msgstr "Verstuur request (ctrl + enter)"
 
-#: ../src/ui/window_main.glade.h:8 ../src/getit-window.c:504
-#: ../src/getit-window.c:542
+#: ../src/ui/window_main.glade.h:8 ../src/getit-window.c:502
+#: ../src/getit-window.c:540
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -207,6 +226,10 @@ msgstr "User Agent"
 #: ../src/ui/window_settings.glade.h:4
 msgid "Apply"
 msgstr "Toepassen"
+
+#: ../src/ui/window_settings.glade.h:5
+msgid "Show recents on startup"
+msgstr "Recente requests tijdens opstarten"
 
 #: ../src/ui/window_shortcuts.glade.h:1
 msgid "Shortcuts"
@@ -247,6 +270,18 @@ msgstr "Verplaats naar de stack rechts"
 #: ../src/ui/window_shortcuts.glade.h:11
 msgid "Move to stack on the left"
 msgstr "Verplaats naar de stack links"
+
+#: ../src/getit-application.c:213
+msgid "GetIt Files"
+msgstr "GetIt Bestanden"
+
+#: ../src/getit-application.c:215
+msgid "Recent Requests"
+msgstr "Recente requests"
+
+#: ../src/getit-application.c:218 ../src/getit-window.c:499
+msgid "Open Request"
+msgstr "Request openen"
 
 #: ../src/getit-content-response.c:129
 msgid "Status"
@@ -290,18 +325,14 @@ msgstr "Response"
 msgid "File: "
 msgstr "Bestand:"
 
-#: ../src/getit-window.c:278
+#: ../src/getit-window.c:276
 msgid "Request timed out"
 msgstr "Request is ge-timed-out"
 
-#: ../src/getit-window.c:315
+#: ../src/getit-window.c:313
 msgid "Request sent"
 msgstr "Request is verzonden"
 
-#: ../src/getit-window.c:501
-msgid "Open Request"
-msgstr "Request openen"
-
-#: ../src/getit-window.c:539
+#: ../src/getit-window.c:537
 msgid "Save Request"
 msgstr "Request opslaan"
