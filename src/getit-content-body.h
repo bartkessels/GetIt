@@ -38,10 +38,13 @@ G_DECLARE_FINAL_TYPE (GetitContentBody, getit_content_body, GETIT, CONTENT_BODY,
 
 /* Public function signatures */
 GetitContentBody *getit_content_body_new ();
+void getit_content_body_clear (GetitContentBody *self);
 const gchar *getit_content_body_get_uri (GetitContentBody *self);
 const gchar *getit_content_body_get_method (GetitContentBody *self);
 const gchar *getit_content_body_get_data_raw (GetitContentBody *self);
 const gchar *getit_content_body_get_data_type (GetitContentBody *self);
+void getit_content_body_set_raw_input (GetitContentBody *self,
+                                       const gchar      *input);
 void getit_content_body_add_to_request (GetitContentBody *self,
                                         SoupMessage      *soup_message);
 void getit_content_body_add_to_json_object (GetitContentBody *self,
@@ -63,5 +66,11 @@ void getit_content_body_add_formdata_with_values (GetitContentBody *self,
                                                   const gchar      *value,
                                                   const gchar      *file,
                                                   const gint        type);
+void getit_content_body_set_values (GetitContentBody *self,
+                                    const gint        method,
+                                    const gchar      *uri,
+                                    const gchar      *data_type,
+                                    const gint        raw_language,
+                                    const gchar      *raw_input);
 
 G_END_DECLS

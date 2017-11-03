@@ -73,6 +73,40 @@ getit_content_body_new()
     return content_body;
 }
 
+void
+getit_content_body_clear (GetitContentBody *self)
+{
+    g_assert (GETIT_IS_CONTENT_BODY (self));
+
+    gint total_list_size;
+    GtkTextBuffer *raw_text_buffer;
+
+    /* Clear method */
+    gtk_combo_box_set_active (GTK_COMBO_BOX (self->cb_method), 0);
+
+    /* Clear uri */
+    gtk_entry_set_text (self->et_uri, "");
+
+    /* Clear formdata */
+    total_list_size = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_data_formdata))) - 1;
+
+    /*
+     * Start iteration at 1 'cause the first element
+     * in the grid is the 'Add' button
+     */
+    for (int list_iterator = 1; list_iterator <= total_list_size; list_iterator++) {
+        GetitElementFormdata *formdata;
+
+        formdata = GETIT_ELEMENT_FORMDATA (gtk_grid_get_child_at (self->grd_data_formdata, 0, list_iterator));
+        g_object_run_dispose (G_OBJECT (formdata));
+    }
+
+    /* Clear raw */
+    gtk_combo_box_set_active (GTK_COMBO_BOX (self->cb_data_raw_syntax), 0);
+    raw_text_buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->sv_data_raw_input));
+    gtk_text_buffer_set_text (raw_text_buffer, "", 0);
+}
+
 const gchar *
 getit_content_body_get_uri (GetitContentBody *self)
 {
@@ -122,6 +156,20 @@ getit_content_body_get_data_type (GetitContentBody *self)
     data_type = gtk_stack_get_visible_child_name (self->stack_data);
 
     return data_type;
+}
+
+void
+getit_content_body_set_raw_input (GetitContentBody *self,
+                                  const gchar      *input)
+{
+    g_assert (GETIT_IS_CONTENT_BODY (self));
+    g_return_if_fail (input != NULL);
+
+    GtkTextBuffer *text_buffer;
+
+    text_buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->sv_data_raw_input));
+
+    gtk_text_buffer_set_text (text_buffer, input, strlen (input));
 }
 
 void
@@ -242,6 +290,23 @@ getit_content_body_add_formdata_with_values (GetitContentBody *self,
                                                                            value,
                                                                            file,
                                                                            type)));
+}
+
+void
+getit_content_body_set_values (GetitContentBody *self,
+                               const gint        method,
+                               const gchar      *uri,
+                               const gchar      *data_type,
+                               const gint        raw_language,
+                               const gchar      *raw_input)
+{
+    g_assert (GETIT_IS_CONTENT_BODY (self));
+
+    gtk_combo_box_set_active (GTK_COMBO_BOX (self->cb_method), method);
+    gtk_entry_set_text (self->et_uri, uri);
+    gtk_stack_set_visible_child_name (self->stack_data, data_type);
+    gtk_combo_box_set_active (GTK_COMBO_BOX (self->cb_data_raw_syntax), raw_language);
+    getit_content_body_set_raw_input (self, raw_input);
 }
 
 /*

@@ -23,6 +23,7 @@
 
 #include "getit-content-body.h"
 #include "getit-dialog-about.h"
+#include "getit-messages.h"
 #include "getit-stack.h"
 #include "getit-json.h"
 
@@ -42,5 +43,9 @@ void getit_window_set_title (GetitWindow *self,
                              const gchar *title);
 void getit_window_set_subtitle (GetitWindow *self,
                                 const gchar *subtitle);
+void getit_window_save_file (GetitWindow *self,
+                             const gchar *file_name);
+void getit_window_open_file (GetitWindow *self,
+                             const gchar *file_name);
 
 G_END_DECLS

@@ -56,6 +56,28 @@ getit_content_cookies_new ()
 }
 
 void
+getit_content_cookies_clear (GetitContentCookies *self)
+{
+    g_assert (GETIT_IS_CONTENT_COOKIES (self));
+
+    gint total_list_size;
+
+    /* Clear cookies */
+    total_list_size = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_main))) - 1;
+
+    /*
+     * Start iteration at 1 'cause the first element
+     * in the grid is the 'Add' button
+     */
+    for (int list_iterator = 1; list_iterator <= total_list_size; list_iterator++) {
+        GetitElementCookie *cookie;
+
+        cookie = GETIT_ELEMENT_COOKIE (gtk_grid_get_child_at (self->grd_main, 0, list_iterator));
+        g_object_run_dispose (G_OBJECT (cookie));
+    }
+}
+
+void
 getit_content_cookies_add_to_request (GetitContentCookies *self,
                                       SoupMessage         *soup_message,
                                       SoupURI             *uri)

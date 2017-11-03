@@ -32,6 +32,7 @@ G_DECLARE_FINAL_TYPE (GetitContentHeaders, getit_content_headers, GETIT, CONTENT
 
 /* Public function signatures */
 GetitContentHeaders *getit_content_headers_new ();
+void getit_content_headers_clear (GetitContentHeaders *self);
 void getit_content_headers_add_to_request (GetitContentHeaders *self,
                                            SoupMessage         *soup_message);
 void getit_content_headers_add_to_json_object (GetitContentHeaders *self,

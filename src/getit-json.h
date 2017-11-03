@@ -23,6 +23,7 @@
 #include "getit-content-body.h"
 #include "getit-content-cookies.h"
 #include "getit-content-headers.h"
+#include "getit-content-response.h"
 
 #define FILE_EXTENSION ".getit"
 
@@ -56,7 +57,8 @@ gboolean getit_json_save_file (GetitContentBody    *content_body,
                                GetitContentCookies *content_cookies,
                                GetitContentHeaders *content_headers,
                                const gchar         *file_name);
-gboolean getit_json_open_file (GetitContentBody    *content_body,
-                               GetitContentCookies *content_cookies,
-                               GetitContentHeaders *content_headers,
-                               const gchar         *file_name);
+gboolean getit_json_open_file (GetitContentBody     *content_body,
+                               GetitContentCookies  *content_cookies,
+                               GetitContentHeaders  *content_headers,
+                               GetitContentResponse *content_response,
+                               const gchar          *file_name);

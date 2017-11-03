@@ -61,8 +61,6 @@ static void getit_window_request_cancel (GetitWindow *self);
 static void getit_window_request_send (GetitWindow *self);
 static void getit_window_set_loading (GetitWindow *self,
                                       gboolean     loading);
-static void getit_window_save_file (GetitWindow *self,
-                                    const gchar *file_name);
 
 /* Callback functions */
 static gboolean getit_window_register_shortcuts (GtkWidget   *caller,
@@ -102,6 +100,90 @@ getit_window_set_subtitle (GetitWindow *self,
     g_assert (GETIT_IS_WINDOW (self));
 
     gtk_header_bar_set_subtitle (self->header_bar, subtitle);
+}
+
+void
+getit_window_save_file (GetitWindow *self,
+                        const gchar *file_name)
+{
+    g_assert (GETIT_IS_WINDOW (self));
+    g_assert_nonnull (file_name);
+
+    GetitContentBody *content_body;
+    GetitContentCookies *content_cookies;
+    GetitContentHeaders *content_headers;
+    GtkWidget *dialog_error;
+    const gchar *file_label;
+    gboolean file_saved;
+
+    content_body = getit_stack_get_content_body (self->stack);
+    content_cookies = getit_stack_get_content_cookies (self->stack);
+    content_headers = getit_stack_get_content_headers (self->stack);
+
+    file_saved = getit_json_save_file (content_body,
+                                       content_cookies,
+                                       content_headers,
+                                       file_name);
+
+    if (!file_saved) {
+        dialog_error = gtk_message_dialog_new_with_markup (GTK_WINDOW (self),
+                                                           GTK_DIALOG_MODAL,
+                                                           GTK_MESSAGE_ERROR,
+                                                           GTK_BUTTONS_CLOSE,
+                                                           MSG_ERROR_SAVING);
+        gtk_dialog_run (GTK_DIALOG (dialog_error));
+        gtk_widget_destroy (dialog_error);
+
+        return;
+    }
+
+    self->file = g_file_new_for_uri (file_name);
+    file_label = g_strconcat ("File: ", file_name, NULL);
+
+    gtk_label_set_text (self->lbl_file, file_label);
+}
+
+void
+getit_window_open_file (GetitWindow *self,
+                        const gchar *file_name)
+{
+    g_assert (GETIT_IS_WINDOW (self));
+    g_assert_nonnull (file_name);
+
+    GetitContentBody *content_body;
+    GetitContentCookies *content_cookies;
+    GetitContentHeaders *content_headers;
+    GetitContentResponse *content_response;
+    gboolean file_opened;
+    GtkWidget *dialog_error;
+    const gchar *file_label;
+
+    content_body = getit_stack_get_content_body (self->stack);
+    content_cookies = getit_stack_get_content_cookies (self->stack);
+    content_headers = getit_stack_get_content_headers (self->stack);
+    content_response = getit_stack_get_content_response (self->stack);
+
+    file_opened = getit_json_open_file (content_body,
+                                        content_cookies,
+                                        content_headers,
+                                        content_response,
+                                        file_name);
+
+    if (!file_opened) {
+        dialog_error = gtk_message_dialog_new_with_markup (GTK_WINDOW (self),
+                                                           GTK_DIALOG_MODAL,
+                                                           GTK_MESSAGE_ERROR,
+                                                           GTK_BUTTONS_CLOSE,
+                                                           MSG_ERROR_OPENING);
+        gtk_dialog_run (GTK_DIALOG (dialog_error));
+        gtk_widget_destroy (dialog_error);
+
+        return;
+    }
+
+    self->file = g_file_new_for_uri (file_name);
+    file_label = g_strconcat ("Filename: ", file_name, NULL);
+    gtk_label_set_text (self->lbl_file, file_label);
 }
 
 /*
@@ -320,8 +402,17 @@ getit_window_request_send (GetitWindow *self)
     getit_window_set_subtitle (self, g_strconcat (method, ": ", uri, NULL));
     gtk_stack_set_visible_child (GTK_STACK (self->stack), GTK_WIDGET (content_response));
 
+    // -----------------------------------------------------------------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------------------------------------------------------
+    // TODO: Load actual settings
     /* Send the request */
-    self->soup_session = soup_session_new ();
+    self->soup_session = soup_session_new_with_options ("timeout", 10,
+                                                        "user-agent", "GetIt http request application",
+                                                        NULL);
+    // -----------------------------------------------------------------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------------------------------------------------------
     soup_message = soup_message_new_from_uri (method, soup_uri);
 
     getit_content_body_add_to_request (content_body, soup_message);
@@ -341,48 +432,6 @@ getit_window_set_loading (GetitWindow *self,
     gtk_widget_set_visible (GTK_WIDGET (self->btn_send), !loading);
     gtk_widget_set_visible (GTK_WIDGET (self->btn_cancel), loading);
     gtk_widget_set_visible (GTK_WIDGET (self->sp_loading), loading);
-}
-
-static void
-getit_window_save_file (GetitWindow *self,
-                        const gchar *file_name)
-{
-    g_assert (GETIT_IS_WINDOW (self));
-    g_assert_nonnull (file_name);
-
-    GetitContentBody *content_body;
-    GetitContentCookies *content_cookies;
-    GetitContentHeaders *content_headers;
-    GtkWidget *dialog_error;
-    const gchar *file_label;
-    gboolean file_saved;
-
-    content_body = getit_stack_get_content_body (self->stack);
-    content_cookies = getit_stack_get_content_cookies (self->stack);
-    content_headers = getit_stack_get_content_headers (self->stack);
-
-    file_saved = getit_json_save_file (content_body,
-                                       content_cookies,
-                                       content_headers,
-                                       file_name);
-
-    if (!file_saved) {
-        dialog_error = gtk_message_dialog_new (GTK_WINDOW (self),
-                                               GTK_DIALOG_MODAL,
-                                               GTK_MESSAGE_ERROR,
-                                               GTK_BUTTONS_CLOSE,
-                                               "Something went wrong saving the file...",
-                                               NULL);
-        gtk_dialog_run (GTK_DIALOG (dialog_error));
-        gtk_widget_destroy (dialog_error);
-
-        return;
-    }
-
-    self->file = g_file_new_for_uri (file_name);
-    file_label = g_strconcat ("File: ", file_name, NULL);
-
-    gtk_label_set_text (self->lbl_file, file_label);
 }
 
 /*
@@ -498,8 +547,34 @@ getit_window_cb_mi_open_clicked (GtkWidget *caller,
     g_assert (GETIT_IS_WINDOW (user_data));
 
     GetitWindow *self;
+    GtkFileFilter *file_filter;
+    GtkWidget *file_chooser;
+    gint file_chooser_result;
+    const gchar *file_name;
 
-    g_print ("Open\n");
+    self = GETIT_WINDOW (user_data);
+    file_filter = gtk_file_filter_new ();
+    file_chooser = gtk_file_chooser_dialog_new ("Open Request",
+                                                GTK_WINDOW (self),
+                                                GTK_FILE_CHOOSER_ACTION_OPEN,
+                                                "Cancel", GTK_RESPONSE_CANCEL,
+                                                "Open", GTK_RESPONSE_ACCEPT,
+                                                NULL);
+
+    gtk_file_filter_add_pattern (file_filter, "*.getit");
+    gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (file_chooser), file_filter);
+
+    file_chooser_result = gtk_dialog_run (GTK_DIALOG (file_chooser));
+    file_name = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (file_chooser));
+    gtk_widget_destroy (file_chooser);
+
+    /* User canceled open action */
+    if (file_chooser_result != GTK_RESPONSE_ACCEPT) {
+        return;
+    }
+
+    getit_window_open_file (self,
+                            file_name);
 }
 
 static void
@@ -573,8 +648,35 @@ getit_window_cb_mi_clear_clicked (GtkWidget *caller,
     g_assert (GETIT_IS_WINDOW (user_data));
 
     GetitWindow *self;
+    GetitContentBody *content_body;
+    GetitContentCookies *content_cookies;
+    GetitContentHeaders *content_headers;
+    GetitContentResponse *content_response;
+    GtkWidget *dialog_question;
+    gint dialog_result;
 
     self = GETIT_WINDOW (user_data);
+    content_body = getit_stack_get_content_body (self->stack);
+    content_cookies = getit_stack_get_content_cookies (self->stack);
+    content_headers = getit_stack_get_content_headers (self->stack);
+    content_response = getit_stack_get_content_response (self->stack);
 
-    g_print ("Clear\n");
+    /* Ask if the user really wants to clear the request */
+    dialog_question = gtk_message_dialog_new_with_markup (GTK_WINDOW (self),
+                                                          GTK_DIALOG_MODAL,
+                                                          GTK_MESSAGE_QUESTION,
+                                                          GTK_BUTTONS_YES_NO,
+                                                          MSG_QUESTION_CLEAR);
+    dialog_result = gtk_dialog_run (GTK_DIALOG (dialog_question));
+    gtk_widget_destroy (dialog_question);
+
+    if (dialog_result == GTK_RESPONSE_YES) {
+        getit_content_body_clear (content_body);
+        getit_content_cookies_clear (content_cookies);
+        getit_content_headers_clear (content_headers);
+        getit_content_response_show_default (content_response);
+
+        self->file = NULL;
+        gtk_label_set_text (self->lbl_file, "File: (null)");
+    }
 }

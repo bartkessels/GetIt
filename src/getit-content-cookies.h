@@ -32,6 +32,7 @@ G_DECLARE_FINAL_TYPE (GetitContentCookies, getit_content_cookies, GETIT, CONTENT
 
 /* Public function signatures */
 GetitContentCookies *getit_content_cookies_new ();
+void getit_content_cookies_clear (GetitContentCookies *self);
 void getit_content_cookies_add_to_request (GetitContentCookies *self,
                                            SoupMessage         *soup_message,
                                            SoupURI             *uri);
