@@ -23,6 +23,7 @@ struct _GetitWindowSettings {
 
     /* Template widgets */
     GtkSwitch *switch_display_notifications;
+    GtkSwitch *switch_show_recents_on_startup;
     GtkSpinButton *spbtn_timeout;
     GtkEntry *et_user_agent;
     GtkButton *btn_save;
@@ -76,6 +77,7 @@ getit_window_settings_class_init (GetitWindowSettingsClass *klass)
     gtk_widget_class_set_template_from_resource (widget_class, "/net/bartkessels/getit/window-settings.ui");
 
     gtk_widget_class_bind_template_child (widget_class, GetitWindowSettings, switch_display_notifications);
+    gtk_widget_class_bind_template_child (widget_class, GetitWindowSettings, switch_show_recents_on_startup);
     gtk_widget_class_bind_template_child (widget_class, GetitWindowSettings, spbtn_timeout);
     gtk_widget_class_bind_template_child (widget_class, GetitWindowSettings, et_user_agent);
     gtk_widget_class_bind_template_child (widget_class, GetitWindowSettings, btn_save);
@@ -86,6 +88,7 @@ getit_window_settings_init (GetitWindowSettings *self)
 {
     g_assert (GTK_IS_WIDGET (self));
 
+    gboolean show_recents_on_startup;
     gboolean show_notifications;
     gint timeout;
     const gchar *user_agent;
@@ -97,11 +100,13 @@ getit_window_settings_init (GetitWindowSettings *self)
 
     /* Load settings */
     show_notifications = getit_settings_get_show_notifications ();
+    show_recents_on_startup = getit_settings_get_show_recents_on_startup ();
     timeout = getit_settings_get_timeout ();
     user_agent = getit_settings_get_user_agent ();
 
     /* Display settings in UI */
     gtk_switch_set_active (self->switch_display_notifications, show_notifications);
+    gtk_switch_set_active (self->switch_show_recents_on_startup, show_recents_on_startup);
     gtk_spin_button_set_value (self->spbtn_timeout, timeout);
     gtk_entry_set_text (self->et_user_agent, user_agent);
 }
@@ -120,15 +125,18 @@ getit_window_settings_cb_btn_save (GtkWidget *caller,
 
     GetitWindowSettings *self;
     gboolean show_notifications;
+    gboolean show_recents_on_startup;
     gint timeout;
     const gchar *user_agent;
 
     self = GETIT_WINDOW_SETTINGS (user_data);
     show_notifications = gtk_switch_get_state (self->switch_display_notifications);
+    show_recents_on_startup = gtk_switch_get_state (self->switch_show_recents_on_startup);
     timeout = gtk_spin_button_get_value_as_int (self->spbtn_timeout);
     user_agent = gtk_entry_get_text (self->et_user_agent);
 
     getit_settings_set_show_notifications (show_notifications);
+    getit_settings_set_show_recents_on_startup (show_recents_on_startup);
     getit_settings_set_timeout (timeout);
     getit_settings_set_user_agent (user_agent);
 

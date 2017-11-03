@@ -41,6 +41,16 @@ getit_settings_set_show_notifications (gboolean show_notifications)
 }
 
 void
+getit_settings_set_show_recents_on_startup (gboolean show_recents_on_startup)
+{
+    GSettings *settings;
+
+    settings = getit_settings_get_g_settings ();
+
+    g_settings_set_boolean (settings, SETTINGS_KEY_SHOW_RECENTS_ON_STARTUP, show_recents_on_startup);
+}
+
+void
 getit_settings_set_timeout (gint timeout)
 {
     GSettings *settings;
@@ -70,6 +80,18 @@ getit_settings_get_show_notifications ()
     show_notifications = g_settings_get_boolean (settings, SETTINGS_KEY_SHOW_NOTIFICATIONS);
 
     return show_notifications;
+}
+
+gboolean
+getit_settings_get_show_recents_on_startup ()
+{
+    GSettings *settings;
+    gboolean show_recents_on_startup;
+
+    settings = getit_settings_get_g_settings ();
+    show_recents_on_startup = g_settings_get_boolean (settings, SETTINGS_KEY_SHOW_RECENTS_ON_STARTUP);
+
+    return show_recents_on_startup;
 }
 
 gint

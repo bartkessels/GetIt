@@ -22,14 +22,17 @@
 #include <glib.h>
 
 /* Setting keys */
+#define SETTINGS_KEY_SHOW_RECENTS_ON_STARTUP "app-show-recents-on-startup"
 #define SETTINGS_KEY_SHOW_NOTIFICATIONS "app-show-notifications"
 #define SETTINGS_KEY_TIMEOUT "request-timeout"
 #define SETTINGS_KEY_USER_AGENT "request-user-agent"
 
 void getit_settings_set_show_notifications (gboolean show_notifications);
+void getit_settings_set_show_recents_on_startup (gboolean show_recents_on_startup);
 void getit_settings_set_timeout (gint timeout);
 void getit_settings_set_user_agent (const gchar *user_agent);
 
 gboolean getit_settings_get_show_notifications ();
+gboolean getit_settings_get_show_recents_on_startup ();
 gint getit_settings_get_timeout ();
 const gchar *getit_settings_get_user_agent ();

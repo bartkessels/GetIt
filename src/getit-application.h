@@ -21,6 +21,7 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
+#include "getit-settings.h"
 #include "getit-string.h"
 #include "getit-window.h"
 #include "getit-window-settings.h"

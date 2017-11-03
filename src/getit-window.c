@@ -221,8 +221,6 @@ getit_window_init (GetitWindow *self)
     g_assert (GTK_IS_WINDOW (self));
     g_assert (GTK_IS_WIDGET (self));
 
-    //GetitStack *stack;
-
     gtk_widget_init_template (GTK_WIDGET (self));
 
     /* Create stack */

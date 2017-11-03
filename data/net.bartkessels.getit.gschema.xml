@@ -2,6 +2,16 @@
 <schemalist gettext-domain="getit">
 	<schema id="net.bartkessels.getit" path="/net/bartkessels/getit/">
 
+		<key name="app-show-recents-on-startup" type="b">
+			<default>false</default>
+			<summary>Display screen with recent requests on application startup</summary>
+			<description>
+				When set to true the recent requests window will always be shown
+				when the application is launched. Either way it can still be
+				launched from the application menu.
+			</description>
+		</key>
+
 		<key name="app-show-notifications" type="b">
 			<default>true</default>
 			<summary>Display notifications when a request has been sent</summary>
