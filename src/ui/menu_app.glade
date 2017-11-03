@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <interface>
 	<menu id="app-menu">
+		<section id="app-menu-action-section">
+			<item>
+				<attribute name="label" translatable="yes">_Recent</attribute>
+				<attribute name="action">app.recent</attribute>
+			</item>
+		</section>
 		<section id="app-menu-preferences-section">
 			<item>
 				<attribute name="label" translatable="yes">_Preferences</attribute>

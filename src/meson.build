@@ -12,6 +12,7 @@ getit_sources = [
   'getit-notification.c',
   'getit-settings.c',
   'getit-stack.c',
+  'getit-string.c',
   'getit-window.c',
   'getit-window-settings.c',
   'getit-window-shortcuts.c',

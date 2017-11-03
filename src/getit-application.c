@@ -39,12 +39,15 @@ static void getit_application_cb_open (GApplication  *app,
                                        GFile        **files,
                                        gint           n_files,
                                        const gchar   *hint);
-static void getit_application_cb_preferences (GSimpleAction *action,
-                                              GVariant      *parameter,
-                                              gpointer       user_data);
+static void getit_application_cb_recent (GSimpleAction *action,
+                                         GVariant      *parameter,
+                                         gpointer       user_data);
 static void getit_application_cb_shortcuts (GSimpleAction *action,
                                             GVariant      *parameter,
                                             gpointer       user_data);
+static void getit_application_cb_preferences (GSimpleAction *action,
+                                              GVariant      *parameter,
+                                              gpointer       user_data);
 static void getit_application_cb_about (GSimpleAction *action,
                                         GVariant      *parameter,
                                         gpointer       user_data);
@@ -58,6 +61,7 @@ static void getit_application_cb_quit (GSimpleAction *action,
  *
  */
 const GActionEntry app_actions[] = {
+        { "recent", getit_application_cb_recent },
         { "shortcuts", getit_application_cb_shortcuts },
         { "preferences", getit_application_cb_preferences },
         { "about", getit_application_cb_about },
@@ -179,6 +183,45 @@ getit_application_cb_open (GApplication  *app,
     }
 
     gtk_window_present (window);
+}
+
+static void
+getit_application_cb_recent (GSimpleAction *action,
+                             GVariant      *parameter,
+                             gpointer       user_data)
+{
+    g_assert (GETIT_IS_APPLICATION (user_data));
+
+    GetitApplication *self;
+    GtkWindow *parent_window;
+    GtkRecentManager *recent_manager;
+    GtkRecentFilter *recent_filter;
+    GtkWidget *recent_chooser_dialog;
+    gint recent_chooser_dialog_result;
+    const gchar *selected_file;
+
+    self = GETIT_APPLICATION (user_data);
+    parent_window = gtk_application_get_active_window (GTK_APPLICATION (self));
+    recent_manager = gtk_recent_manager_get_default ();
+    recent_filter = gtk_recent_filter_new ();
+    gtk_recent_filter_set_name (recent_filter, _("GetIt Files"));
+    gtk_recent_filter_add_pattern (recent_filter, "*.getit");
+    recent_chooser_dialog = gtk_recent_chooser_dialog_new_for_manager (_("Recent Requests"),
+                                                                       parent_window,
+                                                                       recent_manager,
+                                                                       _("Open Request"), GTK_RESPONSE_ACCEPT,
+                                                                       NULL);
+
+    gtk_recent_chooser_add_filter (GTK_RECENT_CHOOSER (recent_chooser_dialog), recent_filter);
+    recent_chooser_dialog_result = gtk_dialog_run (GTK_DIALOG (recent_chooser_dialog));
+    selected_file = gtk_recent_chooser_get_current_uri (GTK_RECENT_CHOOSER (recent_chooser_dialog));
+
+    gtk_widget_destroy (recent_chooser_dialog);
+
+    if (recent_chooser_dialog_result == GTK_RESPONSE_ACCEPT && selected_file != NULL) {
+        selected_file = getit_string_remove (selected_file, "file://");
+        getit_window_open_file (GETIT_WINDOW (parent_window), selected_file);
+    }
 }
 
 static void

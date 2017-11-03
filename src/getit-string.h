@@ -1,4 +1,4 @@
-/* getit-application.h
+/* getit-string.h
  *
  * Copyright (C) 2017 Bart Kessels <bartkessels@bk-mail.com>
  *
@@ -18,24 +18,9 @@
 
 #pragma once
 
-#include <glib/gi18n.h>
-#include <gtk/gtk.h>
-
-#include "getit-string.h"
-#include "getit-window.h"
-#include "getit-window-settings.h"
-#include "getit-window-shortcuts.h"
-
-/* Application information */
-#define APPLICATION_ID "net.bartkessels.getit"
-
-G_BEGIN_DECLS
-
-#define GETIT_TYPE_APPLICATION (getit_application_get_type())
-
-G_DECLARE_FINAL_TYPE (GetitApplication, getit_application, GETIT, APPLICATION, GtkApplication);
+#include <glib.h>
+#include <string.h>
 
 /* Public function signatures */
-GetitApplication *getit_application_new ();
-
-G_END_DECLS
+const gchar *getit_string_remove (const gchar *complete_string,
+                                  const char  *remove_string);

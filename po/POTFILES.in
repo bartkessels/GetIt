@@ -15,6 +15,7 @@ src/ui/menu_app.glade
 src/ui/window_main.glade
 src/ui/window_settings.glade
 src/ui/window_shortcuts.glade
+src/getit-application.c
 src/getit-content-response.c
 src/getit-messages.h
 src/getit-stack.h
