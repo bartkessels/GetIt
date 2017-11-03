@@ -5,5 +5,5 @@ runtime=host
 config-opts=
 run-opts=
 prefix=/app
-app-id=
+app-id=net.bartkessels.getit
 default=true

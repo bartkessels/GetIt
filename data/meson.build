@@ -1,6 +1,6 @@
 desktop_file = i18n.merge_file(
-  input: 'org.gnome.Getit.desktop.in',
-  output: 'org.gnome.Getit.desktop',
+  input: 'net.bartkessels.getit.desktop.in',
+  output: 'net.bartkessels.getit.desktop',
   type: 'desktop',
   po_dir: '../po',
   install: true,
@@ -15,8 +15,8 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-  input: 'org.gnome.Getit.appdata.xml.in',
-  output: 'org.gnome.Getit.appdata.xml',
+  input: 'net.bartkessels.getit.appdata.xml.in',
+  output: 'net.bartkessels.getit.appdata.xml',
   po_dir: '../po',
   install: true,
   install_dir: join_paths(get_option('datadir'), 'appdata')

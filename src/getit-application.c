@@ -165,12 +165,20 @@ getit_application_cb_open (GApplication  *app,
     const gchar *file_name;
 
     window = gtk_application_get_active_window (GTK_APPLICATION (app));
+    if (window == NULL)
+        window = g_object_new (GETIT_TYPE_WINDOW,
+                               "application", app,
+                               "default-width", WINDOW_WIDTH,
+                               "default-height", WINDOW_HEIGHT,
+                               NULL);
 
     if (n_files > 0) {
         file_name = g_file_get_path (files[0]);
 
         getit_window_open_file (GETIT_WINDOW (window), file_name);
     }
+
+    gtk_window_present (window);
 }
 
 static void

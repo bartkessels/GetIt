@@ -1,7 +1,7 @@
 {
-  "app-id": "org.gnome.Getit",
+  "app-id": "net.bartkessels.getit",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "3.24",
+  "runtime-version": "master",
   "sdk": "org.gnome.Sdk",
   "command": "getit",
   "finish-args": [
@@ -35,19 +35,28 @@
   ],
   "modules": [
     {
+      "name": "gtksourceview-3.0",
+      "config-opts": ["--disable-Werror" ],
+      "builddir": true,
+      "sources": [
+         {
+            "type": "git",
+            "branch": "gnome-3-24",
+            "url": "https://git.gnome.org/browse/gtksourceview"
+         }
+       ]
+     },
+     {
       "name": "getit",
       "buildsystem": "meson",
-      "config-opts": [
-        "--libdir=lib"
-      ],
       "builddir": true,
       "sources": [
         {
           "type": "git",
-          "url": "file:///home/bkessels/Projects/GetIt"
+          "branch": "development",
+          "url": "https://github.com/bartkessels/getit"
         }
-      ],
-      "config-opts": ["--libdir=/lib"]
+      ]
     }
   ]
 }
