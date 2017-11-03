@@ -182,7 +182,7 @@ getit_window_open_file (GetitWindow *self,
     }
 
     self->file = g_file_new_for_uri (file_name);
-    file_label = g_strconcat ("Filename: ", file_name, NULL);
+    file_label = g_strconcat ("File: ", file_name, NULL);
     gtk_label_set_text (self->lbl_file, file_label);
 }
 
@@ -311,6 +311,7 @@ getit_window_request_finished (SoupSession *session,
 
     /* Guess the language based on the mime type */
     mime_type = soup_message_headers_get_one (message->response_headers, "Content-Type");
+    response_language = "text/plain";
 
     if (mime_type != NULL) {
         mime_type_split = g_strsplit (mime_type, ";", 2);
