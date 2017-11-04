@@ -239,13 +239,14 @@ getit_application_cb_preferences (GSimpleAction *action,
 
     GtkApplication *app;
     GtkWindow *window;
-    GetitWindowSettings *window_settings;
+    GetitDialogSettings *dialog_settings;
 
     app = GTK_APPLICATION (user_data);
     window = gtk_application_get_active_window (app);
-    window_settings = getit_window_settings_new (window);
+    dialog_settings = getit_dialog_settings_new (window);
 
-    gtk_window_present (GTK_WINDOW (window_settings));
+    gtk_dialog_run (GTK_DIALOG (dialog_settings));
+    gtk_widget_destroy (GTK_WIDGET (dialog_settings));
 }
 
 static void

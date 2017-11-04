@@ -1,4 +1,4 @@
-/* getit-window-settings.h
+/* getit-dialog-settings.h
  *
  * Copyright (C) 2017 Bart Kessels <bartkessels@bk-mail.com>
  *
@@ -24,11 +24,11 @@
 
 G_BEGIN_DECLS
 
-#define GETIT_TYPE_WINDOW_SETTINGS (getit_window_settings_get_type())
+#define GETIT_TYPE_DIALOG_SETTINGS (getit_dialog_settings_get_type())
 
-G_DECLARE_FINAL_TYPE (GetitWindowSettings, getit_window_settings, GETIT, WINDOW_SETTINGS, GtkWindow)
+G_DECLARE_FINAL_TYPE (GetitDialogSettings, getit_dialog_settings, GETIT, DIALOG_SETTINGS, GtkDialog)
 
 /* Public function signatures */
-GetitWindowSettings *getit_window_settings_new (GtkWindow *parent_window);
+GetitDialogSettings *getit_dialog_settings_new (GtkWindow *parent_window);
 
 G_END_DECLS

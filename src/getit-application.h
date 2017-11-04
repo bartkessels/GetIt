@@ -21,10 +21,10 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
+#include "getit-dialog-settings.h"
 #include "getit-settings.h"
 #include "getit-string.h"
 #include "getit-window.h"
-#include "getit-window-settings.h"
 #include "getit-window-shortcuts.h"
 
 /* Application information */
