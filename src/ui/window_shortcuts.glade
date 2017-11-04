@@ -76,33 +76,6 @@
 					</object>
 				</child>
 
-				<!-- Touchpad gestures -->
-				<child>
-					<object class="GtkShortcutsGroup">
-						<property name="visible">1</property>
-						<property name="title" translatable="yes">Touchpad gestures</property>
-
-						<!-- Save as -->
-						<child>
-							<object class="GtkShortcutsShortcut">
-								<property name="visible">1</property>
-								<property name="shortcut-type">gesture-two-finger-swipe-left</property>
-								<property name="title" translatable="yes">Move to stack on the right</property>
-							</object>
-						</child>
-
-						<!-- Save -->
-						<child>
-							<object class="GtkShortcutsShortcut">
-								<property name="visible">1</property>
-								<property name="shortcut-type">gesture-two-finger-swipe-right</property>
-								<property name="title" translatable="yes">Move to stack on the left</property>
-							</object>
-						</child>
-
-					</object>
-				</child>
-
 			</object>
 		</child>
 	</template>
