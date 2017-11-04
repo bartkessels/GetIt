@@ -54,7 +54,7 @@ option for authentication, right now only basic auth and digest auth.
 ## How to build
 
 ```
-$ meson build
+$ meson --prefix=/usr build
 $ cd build
 $ ninja install
 ```
