@@ -97,7 +97,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
-                <property name="text" translatable="yes">0</property>
+                <property name="text" translatable="no">0</property>
                 <property name="progress_pulse_step">1</property>
                 <property name="adjustment">adjust_spbtn_timeout</property>
                 <property name="snap_to_ticks">True</property>
