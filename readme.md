@@ -41,6 +41,9 @@ option for authentication, right now only basic auth and digest auth.
 - Add files to a request
 - Add cookies to a request
 - Add multiple headers
+- Set timeout for request
+- Set user agent for request
+- Keep track of recent requests
 - Response data is displayed with syntax highlighting
 - All headers from the response are shown
 - Save a request
@@ -53,7 +56,7 @@ option for authentication, right now only basic auth and digest auth.
 ```
 $ meson build
 $ cd build
-# ninja install
+$ ninja install
 ```
 And then run `getit`
 
