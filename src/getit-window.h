@@ -42,6 +42,7 @@ G_DECLARE_FINAL_TYPE (GetitWindow, getit_window, GETIT, WINDOW, GtkApplicationWi
 #define WINDOW_HEIGHT 600
 
 /* Public function signatures */
+GetitWindow *getit_window_new (GApplication *app);
 void getit_window_set_title (GetitWindow *self,
                              const gchar *title);
 void getit_window_set_subtitle (GetitWindow *self,

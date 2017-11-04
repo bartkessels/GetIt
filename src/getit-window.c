@@ -84,6 +84,22 @@ static void getit_window_cb_mi_clear_clicked (GtkWidget *caller,
  * Public function implementations
  *
  */
+GetitWindow *
+getit_window_new (GApplication *app)
+{
+    g_assert (G_IS_APPLICATION (app));
+
+    GetitWindow *window;
+
+    window = g_object_new (GETIT_TYPE_WINDOW,
+                           "application", app,
+                           "default-width", WINDOW_WIDTH,
+                           "default-height", WINDOW_HEIGHT,
+                           NULL);
+
+    return window;
+}
+
 void
 getit_window_set_title (GetitWindow *self,
                         const gchar *title)

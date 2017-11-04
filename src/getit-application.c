@@ -120,19 +120,10 @@ getit_application_cb_activate (GApplication *app)
 {
     g_assert (G_IS_APPLICATION (app));
 
-    GtkWindow *window;
+    GetitWindow *window;
 
-    /* Get the current window or create one if necessary. */
-    window = gtk_application_get_active_window (GTK_APPLICATION (app));
-    if (window == NULL)
-        window = g_object_new (GETIT_TYPE_WINDOW,
-                               "application", app,
-                               "default-width", WINDOW_WIDTH,
-                               "default-height", WINDOW_HEIGHT,
-                               NULL);
-
-    /* Ask the window manager/compositor to present the window. */
-    gtk_window_present (window);
+    window = getit_window_new (app);
+    gtk_window_present (GTK_WINDOW (window));
 
     /* Check if user wants to open the recents window */
     if (getit_settings_get_show_recents_on_startup ()) {
@@ -170,25 +161,17 @@ getit_application_cb_open (GApplication  *app,
 {
     g_assert (G_IS_APPLICATION (app));
 
-    GtkWindow *window;
+    GetitWindow *window;
     const gchar *file_name;
 
-    window = gtk_application_get_active_window (GTK_APPLICATION (app));
-    if (window == NULL) {
-        window = g_object_new (GETIT_TYPE_WINDOW,
-                               "application", app,
-                               "default-width", WINDOW_WIDTH,
-                               "default-height", WINDOW_HEIGHT,
-                               NULL);
-    }
+    window = getit_window_new (app);
+    gtk_window_present (GTK_WINDOW (window));
 
     if (n_files > 0) {
         file_name = g_file_get_path (files[0]);
 
         getit_window_open_file (GETIT_WINDOW (window), file_name);
     }
-
-    gtk_window_present (window);
 }
 
 static void
@@ -283,7 +266,7 @@ getit_application_cb_shortcuts (GSimpleAction *action,
     window = gtk_application_get_active_window (app);
     window_shortcuts = getit_window_shortcuts_new (window);
 
-    gtk_window_present (GTK_WINDOW (window_shortcuts));
+    gtk_widget_show (GTK_WIDGET (window_shortcuts));
 }
 
 static void

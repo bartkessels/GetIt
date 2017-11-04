@@ -8,3 +8,7 @@ Type=Application
 MimeType=application/x-getit
 Categories=Development;Tools;Network
 StartupNotify=true
+
+[Desktop Action new-window]
+_Name=New Window
+Exec=getit
