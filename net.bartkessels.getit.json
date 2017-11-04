@@ -54,7 +54,7 @@
 			"sources": [
 				{
 					"type": "git",
-					"branch": "development",
+					"branch": "master",
 					"url": "https://github.com/bartkessels/getit"
 				}
 			]
