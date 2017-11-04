@@ -8,12 +8,12 @@ src/ui/content_cookies.glade
 src/ui/content_headers.glade
 src/ui/content_response.glade
 src/ui/dialog_about.glade
+src/ui/dialog_settings.glade
 src/ui/element_cookie.glade
 src/ui/element_formdata.glade
 src/ui/element_header.glade
 src/ui/menu_app.glade
 src/ui/window_main.glade
-src/ui/window_settings.glade
 src/ui/window_shortcuts.glade
 src/getit-application.c
 src/getit-content-response.c
