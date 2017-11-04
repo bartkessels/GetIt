@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="getit">
+	<schema id="net.bartkessels.getit" path="/net/bartkessels/getit/">
+
+		<key name="app-show-recents-on-startup" type="b">
+			<default>false</default>
+			<summary>Display screen with recent requests on application startup</summary>
+			<description>
+				When set to true the recent requests window will always be shown
+				when the application is launched. Either way it can still be
+				launched from the application menu.
+			</description>
+		</key>
+
+		<key name="app-show-notifications" type="b">
+			<default>true</default>
+			<summary>Display notifications when a request has been sent</summary>
+			<description>
+				When this setting is enabled GetIt will show a notification
+				everytime a request has been sent or when the timeout has been
+				reached.
+			</description>
+		</key>
+
+		<key name="request-timeout" type="i">
+			<default>0</default>
+			<summary>Timeout request after given seconds</summary>
+			<description>
+				When a request is taking too long to get a response from
+				the server it can be cancled within the given timeout.
+				When timeout is set to 0 the request will go on forever.
+			</description>
+		</key>
+
+		<key name="request-user-agent" type="s">
+			<default>"Mozilla/5.0 (X11; Linux x86_64) Gecko Firefox"</default>
+			<summary>User agent to send along with each request</summary>
+			<description>
+				The given user agent will be sent along with each request.
+			</description>
+		</key>
+
+	</schema>
+</schemalist>

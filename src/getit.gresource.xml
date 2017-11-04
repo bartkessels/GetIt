@@ -1,15 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/net/bartkessels/getit">
-  	<!-- Content -->
-  	<file alias="content-body.ui" preprocess="xml-stripblanks">ui/ui_content_body.ui</file>
-  	<file alias="content-cookies.ui" preprocess="xml-stripblanks">ui/ui_content_cookies.ui</file>
-  	<file alias="content-headers.ui" preprocess="xml-stripblanks">ui/ui_content_headers.ui</file>
-  	<file alias="content-response.ui" preprocess="xml-stripblanks">ui/ui_content_response.ui</file>
-  	
-  	<!-- Elements -->
-  	<file alias="element-cookie.ui" preprocess="xml-stripblanks">ui/ui_element_cookie.ui</file>
-  	<file alias="element-formdata.ui" preprocess="xml-stripblanks">ui/ui_element_formdata.ui</file>
-  	<file alias="element-header.ui" preprocess="xml-stripblanks">ui/ui_element_header.ui</file>
-  </gresource>
+	<gresource prefix="/net/bartkessels/getit">
+
+		<!-- Content -->
+		<file alias="content-body.ui" preprocess="xml-stripblanks">ui/content_body.glade</file>
+		<file alias="content-cookies.ui" preprocess="xml-stripblanks">ui/content_cookies.glade</file>
+		<file alias="content-headers.ui" preprocess="xml-stripblanks">ui/content_headers.glade</file>
+		<file alias="content-response.ui" preprocess="xml-stripblanks">ui/content_response.glade</file>
+
+		<!-- Dialogs -->
+		<file alias="dialog-about.ui" preprocess="xml-stripblanks">ui/dialog_about.glade</file>
+		<file alias="dialog-settings.ui" preprocess="xml-stripblanks">ui/dialog_settings.glade</file>
+
+		<!-- Elements -->
+		<file alias="element-cookie.ui" preprocess="xml-stripblanks">ui/element_cookie.glade</file>
+		<file alias="element-formdata.ui" preprocess="xml-stripblanks">ui/element_formdata.glade</file>
+		<file alias="element-header.ui" preprocess="xml-stripblanks">ui/element_header.glade</file>
+
+		<!-- Menu's -->
+		<file alias="menu-app.ui" preprocess="xml-stripblanks">ui/menu_app.glade</file>
+
+		<!-- Windows -->
+		<file alias="window-main.ui" preprocess="xml-stripblanks">ui/window_main.glade</file>
+		<file alias="window-shortcuts.ui" preprocess="xml-stripblanks">ui/window_shortcuts.glade</file>
+
+	</gresource>
 </gresources>

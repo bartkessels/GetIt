@@ -1,7 +1,6 @@
-/*
- * main.c
+/* main.c
  *
- * Copyright (C) 2017 Bart Kessels <bartkessels@bk-mail.com>
+ * Copyright (C) 2017 Bart Kessels
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,33 +14,40 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
  */
 
-#include <gtk/gtk.h>
+#include <glib/gi18n.h>
 #include <libnotify/notify.h>
 
-#include "gi-application.h"
+#include "getit-application.h"
+#include "getit-config.h"
 
-/**
- * main
- *
- * @argc: The number of arguments
- * @argv: The arguments
- *
- * Create a new instance of GiApplication and launch it
- *
- * Return value: int
- */
-int main(int argc, char** argv)
+
+
+int
+main (int   argc,
+      char *argv[])
 {
-    GiApplication* application = gi_application_new();
-    int status = 0;
+    GetitApplication *app;
+    int return_status;
 
-    notify_init(APPLICATION_ID);
-    status = g_application_run(G_APPLICATION(application), argc, argv);
-    notify_uninit();
-    g_object_unref(application);
+    /* Set up gettext translations */
+    bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+    textdomain (GETTEXT_PACKAGE);
 
-    return status;
+    /* Setup libnotify */
+    notify_init (APPLICATION_ID);
+
+    /* Create and launch application */
+    app = getit_application_new ();
+
+    return_status = g_application_run (G_APPLICATION (app), argc, argv);
+
+    notify_uninit ();
+    g_object_unref (G_OBJECT (app));
+
+    return return_status;
 }
+
+
