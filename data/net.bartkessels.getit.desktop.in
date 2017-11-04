@@ -5,6 +5,6 @@ Exec=getit %f
 Terminal=false
 Icon=network-transmit
 Type=Application
-MimeType=text/plain
+MimeType=application/x-getit
 Categories=Development;Tools;Network
 StartupNotify=true
