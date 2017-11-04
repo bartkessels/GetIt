@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-04 00:23+0100\n"
-"PO-Revision-Date: 2017-11-04 00:25+0100\n"
+"POT-Creation-Date: 2017-11-04 16:49+0100\n"
+"PO-Revision-Date: 2017-11-04 16:49+0100\n"
 "Last-Translator: Bart Kessels <bartkessels@bk-mail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../data/net.bartkessels.getit.desktop.in.h:1
+msgid "New Window"
+msgstr "Nieuw Scherm"
 
 #: ../data/net.bartkessels.getit.gschema.xml.h:1
 msgid "Display screen with recent requests on application startup"
@@ -136,6 +140,26 @@ msgstr "Copyright © 2016 - 2017 Bart Kessels"
 msgid "GetIt is a small application to send HTTP requests"
 msgstr "GetIt is een applicatie om HTTP requests te versturen"
 
+#: ../src/ui/dialog_settings.glade.h:1
+msgid "Apply"
+msgstr "Toepassen"
+
+#: ../src/ui/dialog_settings.glade.h:2
+msgid "Display notifications"
+msgstr "Notificaties weergeven"
+
+#: ../src/ui/dialog_settings.glade.h:3
+msgid "Timeout"
+msgstr "Time-out"
+
+#: ../src/ui/dialog_settings.glade.h:4
+msgid "User Agent"
+msgstr "User Agent"
+
+#: ../src/ui/dialog_settings.glade.h:5
+msgid "Show recents on startup"
+msgstr "Recente requests tijdens opstarten"
+
 #: ../src/ui/element_cookie.glade.h:1 ../src/ui/element_formdata.glade.h:1
 #: ../src/ui/element_header.glade.h:1
 msgid "Key"
@@ -174,7 +198,7 @@ msgstr "_Over"
 msgid "_Quit"
 msgstr "_Sluiten"
 
-#: ../src/ui/window_main.glade.h:1 ../src/getit-window.c:503
+#: ../src/ui/window_main.glade.h:1 ../src/getit-window.c:519
 msgid "Open"
 msgstr "Openen"
 
@@ -182,7 +206,7 @@ msgstr "Openen"
 msgid "Save As"
 msgstr "Opslaan Als"
 
-#: ../src/ui/window_main.glade.h:3 ../src/getit-window.c:541
+#: ../src/ui/window_main.glade.h:3 ../src/getit-window.c:557
 msgid "Save"
 msgstr "Opslaan"
 
@@ -190,7 +214,7 @@ msgstr "Opslaan"
 msgid "Clear Request"
 msgstr "Request Legen"
 
-#: ../src/ui/window_main.glade.h:5 ../src/getit-window.c:622
+#: ../src/ui/window_main.glade.h:5 ../src/getit-window.c:638
 msgid "File: (null)"
 msgstr "Bestand: (null)"
 
@@ -202,34 +226,14 @@ msgstr "Verstuur"
 msgid "Send request (ctrl + return)"
 msgstr "Verstuur request (ctrl + enter)"
 
-#: ../src/ui/window_main.glade.h:8 ../src/getit-window.c:502
-#: ../src/getit-window.c:540
+#: ../src/ui/window_main.glade.h:8 ../src/getit-window.c:518
+#: ../src/getit-window.c:556
 msgid "Cancel"
 msgstr "Annuleren"
 
 #: ../src/ui/window_main.glade.h:9
 msgid "Cancel running request (esc)"
 msgstr "Annuleer huidige request (esc)"
-
-#: ../src/ui/window_settings.glade.h:1
-msgid "Display notifications"
-msgstr "Notificaties weergeven"
-
-#: ../src/ui/window_settings.glade.h:2
-msgid "Timeout"
-msgstr "Time-out"
-
-#: ../src/ui/window_settings.glade.h:3
-msgid "User Agent"
-msgstr "User Agent"
-
-#: ../src/ui/window_settings.glade.h:4
-msgid "Apply"
-msgstr "Toepassen"
-
-#: ../src/ui/window_settings.glade.h:5
-msgid "Show recents on startup"
-msgstr "Recente requests tijdens opstarten"
 
 #: ../src/ui/window_shortcuts.glade.h:1
 msgid "Shortcuts"
@@ -271,15 +275,15 @@ msgstr "Verplaats naar de stack rechts"
 msgid "Move to stack on the left"
 msgstr "Verplaats naar de stack links"
 
-#: ../src/getit-application.c:213
+#: ../src/getit-application.c:196
 msgid "GetIt Files"
 msgstr "GetIt Bestanden"
 
-#: ../src/getit-application.c:215
+#: ../src/getit-application.c:198
 msgid "Recent Requests"
 msgstr "Recente requests"
 
-#: ../src/getit-application.c:218 ../src/getit-window.c:499
+#: ../src/getit-application.c:201 ../src/getit-window.c:515
 msgid "Open Request"
 msgstr "Request openen"
 
@@ -321,18 +325,18 @@ msgstr "Headers"
 msgid "Response"
 msgstr "Response"
 
-#: ../src/getit-window.c:141 ../src/getit-window.c:185
+#: ../src/getit-window.c:157 ../src/getit-window.c:201
 msgid "File: "
 msgstr "Bestand:"
 
-#: ../src/getit-window.c:276
+#: ../src/getit-window.c:292
 msgid "Request timed out"
 msgstr "Request is ge-timed-out"
 
-#: ../src/getit-window.c:313
+#: ../src/getit-window.c:329
 msgid "Request sent"
 msgstr "Request is verzonden"
 
-#: ../src/getit-window.c:537
+#: ../src/getit-window.c:553
 msgid "Save Request"
 msgstr "Request opslaan"
