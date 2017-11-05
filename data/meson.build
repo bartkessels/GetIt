@@ -40,6 +40,6 @@ if compile_schemas.found()
   )
 endif
 
-install_data('getit.xml',
+install_data('net.bartkessels.getit.xml',
   install_dir: join_paths(get_option('datadir'), 'mime/packages')
 )
