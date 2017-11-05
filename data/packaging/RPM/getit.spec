@@ -28,7 +28,6 @@ Requires:		libnotify
 Application to send HTTP requests to test your own API endpoints
 
 %global debug_package %{nil}
-%find_lang %{name}
 
 %prep
 %autosetup -p1
@@ -40,6 +39,7 @@ Application to send HTTP requests to test your own API endpoints
 %install
 rm -rf $RPM_BUILD_ROOT
 %meson_install
+%find_lang %{name}
 
 %files -f %{name}.lang
 %{_bindir}/%{name}
