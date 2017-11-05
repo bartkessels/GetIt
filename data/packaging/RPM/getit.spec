@@ -28,6 +28,7 @@ Requires:		libnotify
 Application to send HTTP requests to test your own API endpoints
 
 %global debug_package %{nil}
+%find_lang %{name}
 
 %prep
 %autosetup -p1
@@ -40,11 +41,13 @@ Application to send HTTP requests to test your own API endpoints
 rm -rf $RPM_BUILD_ROOT
 %meson_install
 
-%files
+%files -f %{name}.lang
 %{_bindir}/%{name}
 %{_datadir}/applications/net.bartkessels.%{name}.desktop
 %{_datadir}/glib-2.0/schemas/net.bartkessels.getit.gschema.xml
 %{_datadir}/mime/packages/getit.xml
+%{_datadir}/appdata/net.bartkessels.%{name}.appdata.xml
+%{_datadir}/locale/*/*/getit.mo
 
 %changelog
 * Sat Nov 04 2017 Bart Kessels <bartkessels@bk-mail.com> 4.0
