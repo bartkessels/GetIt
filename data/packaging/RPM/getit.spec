@@ -15,6 +15,7 @@ BuildRequires:	json-glib-devel
 BuildRequires:	glib-devel
 BuildRequires:	libsoup-devel
 BuildRequires:	libnotify-devel
+BuildRequires:	gettext
 
 Requires:		gtk3
 Requires:		gtksourceview3
