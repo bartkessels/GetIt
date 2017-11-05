@@ -47,7 +47,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/glib-2.0/schemas/net.bartkessels.getit.gschema.xml
 %{_datadir}/mime/packages/getit.xml
 %{_datadir}/appdata/net.bartkessels.%{name}.appdata.xml
-%{_datadir}/locale/*/*/getit.mo
 
 %changelog
 * Sat Nov 04 2017 Bart Kessels <bartkessels@bk-mail.com> 4.0
