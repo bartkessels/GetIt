@@ -41,5 +41,5 @@ if compile_schemas.found()
 endif
 
 install_data('getit.xml',
-	install_dir: join_paths('/usr/share', 'mime/packages')
+  install_dir: join_paths(get_option('datadir'), 'mime/packages')
 )
