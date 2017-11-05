@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-04 16:49+0100\n"
+"POT-Creation-Date: 2017-11-05 21:45+0100\n"
 "PO-Revision-Date: 2017-11-04 16:49+0100\n"
 "Last-Translator: Bart Kessels <bartkessels@bk-mail.com>\n"
 "Language-Team: \n"
@@ -263,18 +263,6 @@ msgstr "Request opslaan"
 msgid "Open a request"
 msgstr "Request openen"
 
-#: ../src/ui/window_shortcuts.glade.h:9
-msgid "Touchpad gestures"
-msgstr "Touchpad gebaren"
-
-#: ../src/ui/window_shortcuts.glade.h:10
-msgid "Move to stack on the right"
-msgstr "Verplaats naar de stack rechts"
-
-#: ../src/ui/window_shortcuts.glade.h:11
-msgid "Move to stack on the left"
-msgstr "Verplaats naar de stack links"
-
 #: ../src/getit-application.c:196
 msgid "GetIt Files"
 msgstr "GetIt Bestanden"
@@ -340,3 +328,12 @@ msgstr "Request is verzonden"
 #: ../src/getit-window.c:553
 msgid "Save Request"
 msgstr "Request opslaan"
+
+#~ msgid "Touchpad gestures"
+#~ msgstr "Touchpad gebaren"
+
+#~ msgid "Move to stack on the right"
+#~ msgstr "Verplaats naar de stack rechts"
+
+#~ msgid "Move to stack on the left"
+#~ msgstr "Verplaats naar de stack links"
