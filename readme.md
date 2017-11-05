@@ -25,6 +25,7 @@ option for authentication, right now only basic auth and digest auth.
 - glib-devel
 - libsoup-devel
 - libnotify-devel
+- gettext
 
 ### Installing
 - gtk3
