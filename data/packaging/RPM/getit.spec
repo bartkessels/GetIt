@@ -42,7 +42,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/net.bartkessels.%{name}.desktop
+%{_datadir}/applications/glib-2.0/schemas/net.bartkessels.getit.gschema.xml
+%{_datadir}/applications/mime/packages/getit.xml
 
 %changelog
 * Sat Nov 04 2017 Bart Kessels <bartkessels@bk-mail.com> 4.0
