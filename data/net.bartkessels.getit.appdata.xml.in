@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2017 Bart Kessels <bartkessels@bk-mail.com> -->
 <component type="desktop-application">
-	<id>net.bartkessels.getit</id>
+	<id>net.bartkessels.GetIt</id>
 	<metadata_license>CC0</metadata_license>
 	<project_license>GPL3.0+-</project_license>
 	<name>GetIt</name>
