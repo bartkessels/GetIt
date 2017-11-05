@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2017 Bart Kessels <bartkessels@bk-mail.com> -->
-<component type="desktop-application">
-	<id>net.bartkessels.GetIt</id>
+<component type="desktop">
+	<id>net.bartkessels.getit.desktop</id>
 	<metadata_license>CC0</metadata_license>
-	<project_license>GPL3.0+-</project_license>
+	<project_license>GPL-3.0+</project_license>
 	<name>GetIt</name>
 	<summary>Send HTTP requests to API endpoints</summary>
+	<translation type="gettext">getit</translation>
 
 	<description>
 		<p>
@@ -24,25 +25,30 @@
 	<screenshots>
 		<screenshot type="default">
 			<caption>Add default information about the request</caption>
-			<image>https://github.com/bartkessels/getit/blob/master/data/screenshots/body.png</image>
+			<image>https://github.com/bartkessels/getit/raw/master/data/screenshots/body.png</image>
 		</screenshot>
 		<screenshot>
 			<caption>Add cookies to the request</caption>
-			<image>https://github.com/bartkessels/getit/blob/master/data/screenshots/cookies.png</image>
+			<image>https://github.com/bartkessels/getit/raw/master/data/screenshots/cookies.png</image>
 		</screenshot>
 		<screenshot>
 			<caption>Add headers to the request</caption>
-			<image>https://github.com/bartkessels/getit/blob/master/data/screenshots/headers.png</image>
+			<image>https://github.com/bartkessels/getit/raw/master/data/screenshots/headers.png</image>
 		</screenshot>
 		<screenshot>
 			<caption>Display the response of the request</caption>
-			<image>https://github.com/bartkessels/getit/blob/master/data/screenshots/response.png</image>
+			<image>https://github.com/bartkessels/getit/raw/master/data/screenshots/response.png</image>
 		</screenshot>
 	</screenshots>
 
 	<url type="homepage">https://getit.bartkessels.net</url>
 	<developer_name>Bart Kessels</developer_name>
 	<update_contact>bartkessels_AT_bk-mail.com</update_contact>
+
+	<languages>
+		<lang>en_US</lang>
+		<lang percentage="100">nl_NL</lang>
+	</languages>
 
 	<provides>
 		<binary>getit</binary>
@@ -52,6 +58,7 @@
 		<release version="4.0" date="2017-11-04">
 			<description>
 				<p>
+					This release added the following items.
 					<ul>
 						<li>Add recent files support</li>
 						<li>Add ability to set timeout for request</li>
@@ -68,6 +75,7 @@
 		<release version="3.2" date="2017-09-05">
 			<description>
 				<p>
+					This release fixed the following items.
 					<ul>
 						<li>Fix non-highlighting bug in response stack</li>
 						<li>Fix bug application crash on re-save</li>
@@ -79,6 +87,7 @@
 		<release version="3.1" date="2017-08-13">
 			<description>
 				<p>
+					This release added the following items.
 					<ul>
 						<li>Move to Meson build system</li>
 						<li>Allow opening files on application startup</li>
@@ -90,6 +99,7 @@
 		<release version="3.0" date="2017-07-11">
 			<description>
 				<p>
+					This release fixed the following items.
 					<ul>
 						<li>Rewrite application in C</li>
 					</ul>
@@ -100,6 +110,7 @@
 		<release version="2.0" date="2017-06-17">
 			<description>
 				<p>
+					This release added the following items.
 					<ul>
 						<li>Display message when something has gone wrong while sending the request</li>
 						<li>Add ability to save a request</li>
@@ -113,6 +124,7 @@
 		<release version="1.4.1" date="2017-06-11">
 			<description>
 				<p>
+					This release added the following items.
 					<ul>
 						<li>Add cancel request button</li>
 						<li>Add shortcuts for send and cancel button</li>
@@ -125,6 +137,7 @@
 		<release version="1.4" date="2017-06-09">
 			<description>
 				<p>
+					This release added the following items.
 					<ul>
 						<li>Add spinner to indicate the request is still being sent</li>
 						<li>Add shortcut to send request</li>
@@ -136,6 +149,7 @@
 		<release version="1.3" date="2017-06-01">
 			<description>
 				<p>
+					This release fixed/added the following items.
 					<ul>
 						<li>Refactor codebase</li>
 						<li>Add ability to create raw body instead of formdata</li>
@@ -147,6 +161,7 @@
 		<release version="1.2" date="2017-04-07">
 			<description>
 				<p>
+					This release fixed/added the following items.
 					<ul>
 						<li>Add ability to add cookies to a request</li>
 						<li>Fix endless scrolling bug on response stack</li>
@@ -158,6 +173,7 @@
 		<release version="1.1" date="2017-03-31">
 			<description>
 				<p>
+					This release added the following items.
 					<ul>
 						<li>Add ability to add files to a request</li>
 					</ul>
