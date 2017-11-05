@@ -70,6 +70,20 @@ $ fedpkg --release f26 local
 
 This will create a RPM file which you can install using your package manager.
 
+# Generate flatpak bundle
+
+```
+$ flatpak-builder --repo=getit_repo getit net.bartkessels.getit.json
+$ flatpak build-bundle getit_repo getit.flatpak net.bartkessels.getit
+```
+
+This will create a flatpak bundle called `getit.flatpak`. To install the flatpak bundle
+just run the flatpak install command.
+
+```
+$ flatpak install getit.flatpak
+```
+
 ## COPR
 
 If you have Fedora and don't want to build GetIt from source you can easily install it using dnf copr.
