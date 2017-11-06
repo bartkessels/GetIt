@@ -11,7 +11,7 @@
     <property name="comments" translatable="yes">GetIt is a small application to send HTTP requests</property>
     <property name="website">https://getit.bartkessels.net</property>
     <property name="authors">Bart Kessels &lt;bartkessels@bk-mail.com&gt;</property>
-    <property name="logo_icon_name">network-transmit</property>
+    <property name="logo_icon_name">net.bartkessels.getit</property>
     <property name="license_type">gpl-3-0</property>
     <child internal-child="vbox">
       <object class="GtkBox">
