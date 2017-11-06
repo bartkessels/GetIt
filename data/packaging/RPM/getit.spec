@@ -45,7 +45,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/%{name}
 %{_datadir}/applications/net.bartkessels.%{name}.desktop
 %{_datadir}/glib-2.0/schemas/net.bartkessels.getit.gschema.xml
-%{_datadir}/mime/packages/getit.xml
+%{_datadir}/mime/packages/net.bartkessels.getit.xml
 %{_datadir}/appdata/net.bartkessels.%{name}.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/net.bartkessels.getit.png
 %{_datadir}/icons/hicolor/*/apps/net.bartkessels.getit-symbolic.png
