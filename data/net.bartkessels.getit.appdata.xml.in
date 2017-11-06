@@ -11,12 +11,10 @@
 	<description>
 		<p>
 			Send HTTP requests to API endpoints and display the response of
-			the server. GetIt offers many features such as:
-			<ul>
-				<li>Saving and opening requests</li>
-				<li>Sending custom POST data</li>
-				<li>Syntax Highlighting</li>
-			</ul>
+			the server. GetIt offers many features such as:<br/>
+			- Saving and opening requests<br/>
+			- Sending custom POST data<br/>
+			- Syntax highlighting<br/>
 		</p>
 	</description>
 
@@ -55,19 +53,27 @@
 	</provides>
 
 	<releases>
+		<release version="4.0.1" date="2017-11-06">
+			<description>
+				<p>
+					This release added the following items<br/>
+					- Ship own icons<br/>
+					- Add action to launch new instance from applications overview
+				</p>
+			</description>
+		</release>
+
 		<release version="4.0" date="2017-11-04">
 			<description>
 				<p>
-					This release added the following items.
-					<ul>
-						<li>Add recent files support</li>
-						<li>Add ability to set timeout for request</li>
-						<li>Add ability to set user agent for request</li>
-						<li>Add preferences window</li>
-						<li>Add shortcuts window</li>
-						<li>Add support for translations</li>
-						<li>Add support for flatpak</li>
-					</ul>
+					This release added the following items<br/>
+					- Add recent files support<br/>
+					- Add ability to set timeout for request<br/>
+					- Add ability to set user agent for request<br/>
+					- Add preferences window<br/>
+					- Add shortcuts window<br/>
+					- Add support for translations<br/>
+					- Add support for flatpak
 				</p>
 			</description>
 		</release>
@@ -75,11 +81,9 @@
 		<release version="3.2" date="2017-09-05">
 			<description>
 				<p>
-					This release fixed the following items.
-					<ul>
-						<li>Fix non-highlighting bug in response stack</li>
-						<li>Fix bug application crash on re-save</li>
-					</ul>
+					This release fixed the following items.<br/>
+					- Fix non-highlighting bug in response stack<br/>
+					- Fix bug application crash on re-save
 				</p>
 			</description>
 		</release>
@@ -87,11 +91,9 @@
 		<release version="3.1" date="2017-08-13">
 			<description>
 				<p>
-					This release added the following items.
-					<ul>
-						<li>Move to Meson build system</li>
-						<li>Allow opening files on application startup</li>
-					</ul>
+					This release added the following items.<br/>
+					- Move to Meson build system<br/>
+					- Allow opening files on application startup
 				</p>
 			</description>
 		</release>
@@ -99,10 +101,8 @@
 		<release version="3.0" date="2017-07-11">
 			<description>
 				<p>
-					This release fixed the following items.
-					<ul>
-						<li>Rewrite application in C</li>
-					</ul>
+					This release fixed the following items.<br/>
+					- Rewrite to C
 				</p>
 			</description>
 		</release>
@@ -110,13 +110,11 @@
 		<release version="2.0" date="2017-06-17">
 			<description>
 				<p>
-					This release added the following items.
-					<ul>
-						<li>Display message when something has gone wrong while sending the request</li>
-						<li>Add ability to save a request</li>
-						<li>Add ability to open a request</li>
-						<li>Add ability to clear the current request</li>
-					</ul>
+					This release added the following items.<br/>
+					- Display message when something has gone wrong while sending the request<br/>
+					- Add ability to save a request<br/>
+					- Add ability to open a request<br/>
+					- Add ability to clear the current request
 				</p>
 			</description>
 		</release>
@@ -137,11 +135,9 @@
 		<release version="1.4" date="2017-06-09">
 			<description>
 				<p>
-					This release added the following items.
-					<ul>
-						<li>Add spinner to indicate the request is still being sent</li>
-						<li>Add shortcut to send request</li>
-					</ul>
+					This release added the following items.<br/>
+					- Add spinner to indicate the request is still being sent<br/>
+					- Add shortcut to send a request
 				</p>
 			</description>
 		</release>
@@ -149,11 +145,9 @@
 		<release version="1.3" date="2017-06-01">
 			<description>
 				<p>
-					This release fixed/added the following items.
-					<ul>
-						<li>Refactor codebase</li>
-						<li>Add ability to create raw body instead of formdata</li>
-					</ul>
+					This release fixed/added the following items.<br/>
+					- Refactor codebase<br/>
+					- Add ability to create raw body instead of formdata
 				</p>
 			</description>
 		</release>
@@ -161,11 +155,9 @@
 		<release version="1.2" date="2017-04-07">
 			<description>
 				<p>
-					This release fixed/added the following items.
-					<ul>
-						<li>Add ability to add cookies to a request</li>
-						<li>Fix endless scrolling bug on response stack</li>
-					</ul>
+					This release fixed/added the following items.<br/>
+					- Add ability to add cookies to a request<br/>
+					- Fix endless scrolling bug on response stack
 				</p>
 			</description>
 		</release>
@@ -173,10 +165,8 @@
 		<release version="1.1" date="2017-03-31">
 			<description>
 				<p>
-					This release added the following items.
-					<ul>
-						<li>Add ability to add files to a request</li>
-					</ul>
+					This release added the following items.<br/>
+					- Add ability to add files to a request
 				</p>
 			</description>
 		</release>
