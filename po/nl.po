@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-05 21:45+0100\n"
-"PO-Revision-Date: 2017-11-04 16:49+0100\n"
+"POT-Creation-Date: 2017-11-06 19:50+0100\n"
+"PO-Revision-Date: 2017-11-06 19:52+0100\n"
 "Last-Translator: Bart Kessels <bartkessels@bk-mail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -18,9 +18,29 @@ msgstr ""
 "X-Generator: Poedit 2.0.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/net.bartkessels.getit.desktop.in.h:1
-msgid "New Window"
-msgstr "Nieuw Scherm"
+#: ../data/net.bartkessels.getit.appdata.xml.in.h:1
+msgid ""
+"GetIt&#39;s main focus is to make your life a lot easier when you have to "
+"test APIs or use somebody elses API. We know it can be hard to find a great, "
+"simple and open source application for this task that&#39;s not command line "
+"based."
+msgstr ""
+"GetIt&#39;s hoofdtaak is om jouw leven gemakkelijker te maken als je API&#39;"
+"s moet testen of de API van iemand ander gebruikt. Wij weten dat het "
+"moeilijk kan zijn om een goede, simpele en ook open source applicatie te "
+"vinden voor deze taak die niet gebaseerd is op de command line."
+
+#: ../data/net.bartkessels.getit.appdata.xml.in.h:2
+msgid ""
+"Some features you can expect in GetIt include: sending HTTP requests to API "
+"endpoints and display the response of the server, saving and opening "
+"requests, easily open recent saved/opened requests, sending custom POST "
+"data, syntax highlighting."
+msgstr ""
+"Verschillende features van GetIt zijn onder andere: HTTP requests versturen "
+"naar API endpoints en het resultaat van de server weergeven, opslaan en "
+"openen van requests, gemakkelijk recent opgeslagen/geopende requests openen, "
+"eigen POST data versturen, syntax highlighting"
 
 #: ../data/net.bartkessels.getit.gschema.xml.h:1
 msgid "Display screen with recent requests on application startup"
@@ -198,7 +218,7 @@ msgstr "_Over"
 msgid "_Quit"
 msgstr "_Sluiten"
 
-#: ../src/ui/window_main.glade.h:1 ../src/getit-window.c:519
+#: ../src/ui/window_main.glade.h:1 ../src/getit-window.c:522
 msgid "Open"
 msgstr "Openen"
 
@@ -206,7 +226,7 @@ msgstr "Openen"
 msgid "Save As"
 msgstr "Opslaan Als"
 
-#: ../src/ui/window_main.glade.h:3 ../src/getit-window.c:557
+#: ../src/ui/window_main.glade.h:3 ../src/getit-window.c:560
 msgid "Save"
 msgstr "Opslaan"
 
@@ -214,7 +234,7 @@ msgstr "Opslaan"
 msgid "Clear Request"
 msgstr "Request Legen"
 
-#: ../src/ui/window_main.glade.h:5 ../src/getit-window.c:638
+#: ../src/ui/window_main.glade.h:5 ../src/getit-window.c:641
 msgid "File: (null)"
 msgstr "Bestand: (null)"
 
@@ -226,8 +246,8 @@ msgstr "Verstuur"
 msgid "Send request (ctrl + return)"
 msgstr "Verstuur request (ctrl + enter)"
 
-#: ../src/ui/window_main.glade.h:8 ../src/getit-window.c:518
-#: ../src/getit-window.c:556
+#: ../src/ui/window_main.glade.h:8 ../src/getit-window.c:521
+#: ../src/getit-window.c:559
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -271,7 +291,7 @@ msgstr "GetIt Bestanden"
 msgid "Recent Requests"
 msgstr "Recente requests"
 
-#: ../src/getit-application.c:201 ../src/getit-window.c:515
+#: ../src/getit-application.c:201 ../src/getit-window.c:518
 msgid "Open Request"
 msgstr "Request openen"
 
@@ -317,17 +337,20 @@ msgstr "Response"
 msgid "File: "
 msgstr "Bestand:"
 
-#: ../src/getit-window.c:292
+#: ../src/getit-window.c:295
 msgid "Request timed out"
 msgstr "Request is ge-timed-out"
 
-#: ../src/getit-window.c:329
+#: ../src/getit-window.c:332
 msgid "Request sent"
 msgstr "Request is verzonden"
 
-#: ../src/getit-window.c:553
+#: ../src/getit-window.c:556
 msgid "Save Request"
 msgstr "Request opslaan"
+
+#~ msgid "New Window"
+#~ msgstr "Nieuw Scherm"
 
 #~ msgid "Touchpad gestures"
 #~ msgstr "Touchpad gebaren"
