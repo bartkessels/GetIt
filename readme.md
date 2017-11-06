@@ -71,7 +71,7 @@ $ fedpkg --release f26 local
 
 This will create a RPM file which you can install using your package manager.
 
-# Generate flatpak bundle
+## Generate flatpak bundle
 
 ```
 $ flatpak-builder --repo=getit_repo getit net.bartkessels.getit.json
