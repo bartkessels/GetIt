@@ -289,6 +289,9 @@ getit_window_request_finished (SoupSession *session,
 
     /* Check if connection was timed out */
     if (message->status_code == 7) {
+        /* Abort session */
+        soup_session_abort (self->soup_session);
+
         getit_notification_display (_("Request timed out"),
                                     soup_uri_to_string (soup_message_get_uri (message), FALSE),
                                     "network-transmit");
