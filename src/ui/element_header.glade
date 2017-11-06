@@ -5,7 +5,7 @@
   <object class="GtkImage" id="img_delete">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-delete</property>
+    <property name="icon_name">getit-remove-symbolic</property>
   </object>
   <template class="GetitElementHeader" parent="GtkGrid">
     <property name="visible">True</property>
