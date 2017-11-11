@@ -226,6 +226,7 @@ getit_window_open_file (GetitWindow *self,
     self->file = g_file_new_for_uri (file_name);
     file_label = g_strconcat (_("File: "), file_name, NULL);
     gtk_label_set_text (self->lbl_file, file_label);
+    getit_window_set_subtitle (self, "");
 }
 
 /*
