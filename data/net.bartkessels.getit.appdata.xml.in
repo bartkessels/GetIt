@@ -9,19 +9,22 @@
 	<translation type="gettext">getit</translation>
 
 	<description>
-		<_p>
+		<p>
 			GetIt&#39;s main focus is to make your life a lot easier when you have to test APIs or use somebody elses API.
 			We know it can be hard to find a great, simple and open source application for this task that&#39;s not command
 			line based.
-		</_p>
-		<_p>
-			Some features you can expect in GetIt include:
-			sending HTTP requests to API endpoints and display the response of the server,
-			saving and opening requests,
-			easily open recent saved/opened requests,
-			sending custom POST data,
-			syntax highlighting.
-		</_p>
+		</p>
+		<p>
+			Features of GetIt include:
+		</p>
+
+		<ul>
+			<li>sending HTTP requests to API endpoints and display the response of the server</li>
+			<li>saving and opening requests</li>
+			<li>easily open recent saved/opened requests</li>
+			<li>sending custom POST data</li>
+			<li>syntax highlighting</li>
+		</ul>
 	</description>
 
 	<launchable type="desktop-id">net.bartkessels.getit.desktop</launchable>
