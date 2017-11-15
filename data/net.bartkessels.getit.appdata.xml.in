@@ -49,6 +49,7 @@
 	</screenshots>
 
 	<url type="homepage">https://getit.bartkessels.net</url>
+	<url type="bugtracker">https://github.com/bartkessels/getit</url>
 	<developer_name>Bart Kessels</developer_name>
 	<update_contact>bartkessels_AT_bk-mail.com</update_contact>
 
