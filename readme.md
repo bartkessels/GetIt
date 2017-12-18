@@ -64,7 +64,7 @@ And then run `getit`
 ## Generate RPM package
 
 ```
-$ cd packaging/RPM
+$ cd data/packaging/RPM
 $ spectool -g getit.spec
 $ fedpkg --release f26 local
 ```
@@ -74,6 +74,7 @@ This will create a RPM file which you can install using your package manager.
 ## Generate flatpak bundle
 
 ```
+$ cd data/packaging/flatpak
 $ flatpak-builder --repo=getit_repo getit net.bartkessels.getit.json
 $ flatpak build-bundle getit_repo getit.flatpak net.bartkessels.getit
 ```

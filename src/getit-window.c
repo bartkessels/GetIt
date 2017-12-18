@@ -101,6 +101,32 @@ getit_window_new (GApplication *app)
 }
 
 void
+getit_window_clear (GetitWindow *self)
+{
+    g_assert (GETIT_IS_WINDOW (self));
+
+    GetitContentBody *content_body;
+    GetitContentCookies *content_cookies;
+    GetitContentHeaders *content_headers;
+    GetitContentResponse *content_response;
+
+    content_body = getit_stack_get_content_body (self->stack);
+    content_cookies = getit_stack_get_content_cookies (self->stack);
+    content_headers = getit_stack_get_content_headers (self->stack);
+    content_response = getit_stack_get_content_response (self->stack);
+
+    getit_content_body_clear (content_body);
+    getit_content_cookies_clear (content_cookies);
+    getit_content_headers_clear (content_headers);
+    getit_content_response_show_default (content_response);
+
+    getit_window_set_subtitle (self, "");
+
+    self->file = NULL;
+    gtk_label_set_text (self->lbl_file, _("File: (null)"));
+}
+
+void
 getit_window_set_title (GetitWindow *self,
                         const gchar *title)
 {
@@ -200,6 +226,7 @@ getit_window_open_file (GetitWindow *self,
     self->file = g_file_new_for_uri (file_name);
     file_label = g_strconcat (_("File: "), file_name, NULL);
     gtk_label_set_text (self->lbl_file, file_label);
+    getit_window_set_subtitle (self, "");
 }
 
 /*
@@ -289,6 +316,9 @@ getit_window_request_finished (SoupSession *session,
 
     /* Check if connection was timed out */
     if (message->status_code == 7) {
+        /* Abort session */
+        soup_session_abort (self->soup_session);
+
         getit_notification_display (_("Request timed out"),
                                     soup_uri_to_string (soup_message_get_uri (message), FALSE),
                                     "network-transmit");
@@ -606,18 +636,10 @@ getit_window_cb_mi_clear_clicked (GtkWidget *caller,
     g_assert (GETIT_IS_WINDOW (user_data));
 
     GetitWindow *self;
-    GetitContentBody *content_body;
-    GetitContentCookies *content_cookies;
-    GetitContentHeaders *content_headers;
-    GetitContentResponse *content_response;
     GtkWidget *dialog_question;
     gint dialog_result;
 
     self = GETIT_WINDOW (user_data);
-    content_body = getit_stack_get_content_body (self->stack);
-    content_cookies = getit_stack_get_content_cookies (self->stack);
-    content_headers = getit_stack_get_content_headers (self->stack);
-    content_response = getit_stack_get_content_response (self->stack);
 
     /* Ask if the user really wants to clear the request */
     dialog_question = gtk_message_dialog_new_with_markup (GTK_WINDOW (self),
@@ -629,12 +651,6 @@ getit_window_cb_mi_clear_clicked (GtkWidget *caller,
     gtk_widget_destroy (dialog_question);
 
     if (dialog_result == GTK_RESPONSE_YES) {
-        getit_content_body_clear (content_body);
-        getit_content_cookies_clear (content_cookies);
-        getit_content_headers_clear (content_headers);
-        getit_content_response_show_default (content_response);
-
-        self->file = NULL;
-        gtk_label_set_text (self->lbl_file, _("File: (null)"));
+        getit_window_clear (self);
     }
 }

@@ -10,14 +10,21 @@
 
 	<description>
 		<p>
-			Send HTTP requests to API endpoints and display the response of
-			the server. GetIt offers many features such as:
-			<ul>
-				<li>Saving and opening requests</li>
-				<li>Sending custom POST data</li>
-				<li>Syntax Highlighting</li>
-			</ul>
+			GetIt&#39;s main focus is to make your life a lot easier when you have to test APIs or use somebody elses API.
+			We know it can be hard to find a great, simple and open source application for this task that&#39;s not command
+			line based.
 		</p>
+		<p>
+			Features of GetIt include:
+		</p>
+
+		<ul>
+			<li>sending HTTP requests to API endpoints and display the response of the server</li>
+			<li>saving and opening requests</li>
+			<li>easily open recent saved/opened requests</li>
+			<li>sending custom POST data</li>
+			<li>syntax highlighting</li>
+		</ul>
 	</description>
 
 	<launchable type="desktop-id">net.bartkessels.getit.desktop</launchable>
@@ -42,6 +49,7 @@
 	</screenshots>
 
 	<url type="homepage">https://getit.bartkessels.net</url>
+	<url type="bugtracker">https://github.com/bartkessels/getit</url>
 	<developer_name>Bart Kessels</developer_name>
 	<update_contact>bartkessels_AT_bk-mail.com</update_contact>
 
@@ -55,19 +63,25 @@
 	</provides>
 
 	<releases>
+		<release version="4.0.1" date="2017-11-06">
+			<description>
+				<p>
+					Ship own icons,
+					add action to launch new instance from applications overview
+				</p>
+			</description>
+		</release>
+
 		<release version="4.0" date="2017-11-04">
 			<description>
 				<p>
-					This release added the following items.
-					<ul>
-						<li>Add recent files support</li>
-						<li>Add ability to set timeout for request</li>
-						<li>Add ability to set user agent for request</li>
-						<li>Add preferences window</li>
-						<li>Add shortcuts window</li>
-						<li>Add support for translations</li>
-						<li>Add support for flatpak</li>
-					</ul>
+					Add recent files support,
+					add ability to set timeout for request,
+					add ability to set user agent for request,
+					add preferences window,
+					add shortcuts window,
+					add support for translations,
+					add support for flatpak
 				</p>
 			</description>
 		</release>
@@ -75,11 +89,8 @@
 		<release version="3.2" date="2017-09-05">
 			<description>
 				<p>
-					This release fixed the following items.
-					<ul>
-						<li>Fix non-highlighting bug in response stack</li>
-						<li>Fix bug application crash on re-save</li>
-					</ul>
+					Fix non-highlighting bug in response stack,
+					fix bug application crash on re-save
 				</p>
 			</description>
 		</release>
@@ -87,11 +98,8 @@
 		<release version="3.1" date="2017-08-13">
 			<description>
 				<p>
-					This release added the following items.
-					<ul>
-						<li>Move to Meson build system</li>
-						<li>Allow opening files on application startup</li>
-					</ul>
+					Move to Meson build system,
+					allow opening files on application startup
 				</p>
 			</description>
 		</release>
@@ -99,10 +107,7 @@
 		<release version="3.0" date="2017-07-11">
 			<description>
 				<p>
-					This release fixed the following items.
-					<ul>
-						<li>Rewrite application in C</li>
-					</ul>
+					Rewrite to C
 				</p>
 			</description>
 		</release>
@@ -110,13 +115,10 @@
 		<release version="2.0" date="2017-06-17">
 			<description>
 				<p>
-					This release added the following items.
-					<ul>
-						<li>Display message when something has gone wrong while sending the request</li>
-						<li>Add ability to save a request</li>
-						<li>Add ability to open a request</li>
-						<li>Add ability to clear the current request</li>
-					</ul>
+					Display message when something has gone wrong while sending the request,
+					add ability to save a request,
+					add ability to open a request,
+					add ability to clear the current request
 				</p>
 			</description>
 		</release>
@@ -124,12 +126,9 @@
 		<release version="1.4.1" date="2017-06-11">
 			<description>
 				<p>
-					This release added the following items.
-					<ul>
-						<li>Add cancel request button</li>
-						<li>Add shortcuts for send and cancel button</li>
-						<li>Display notification when request is processed</li>
-					</ul>
+					Add cancel request button,
+					add shortcuts for send and cancel button,
+					display notification when request is sent
 				</p>
 			</description>
 		</release>
@@ -137,11 +136,8 @@
 		<release version="1.4" date="2017-06-09">
 			<description>
 				<p>
-					This release added the following items.
-					<ul>
-						<li>Add spinner to indicate the request is still being sent</li>
-						<li>Add shortcut to send request</li>
-					</ul>
+					Add spinner to indicate the request is still being sent,
+					add shortcut to send a request
 				</p>
 			</description>
 		</release>
@@ -149,11 +145,8 @@
 		<release version="1.3" date="2017-06-01">
 			<description>
 				<p>
-					This release fixed/added the following items.
-					<ul>
-						<li>Refactor codebase</li>
-						<li>Add ability to create raw body instead of formdata</li>
-					</ul>
+					- Refactor codebase
+					- Add ability to create raw body instead of formdata
 				</p>
 			</description>
 		</release>
@@ -161,11 +154,8 @@
 		<release version="1.2" date="2017-04-07">
 			<description>
 				<p>
-					This release fixed/added the following items.
-					<ul>
-						<li>Add ability to add cookies to a request</li>
-						<li>Fix endless scrolling bug on response stack</li>
-					</ul>
+					- Add ability to add cookies to a request
+					- Fix endless scrolling bug on response stack
 				</p>
 			</description>
 		</release>
@@ -173,10 +163,7 @@
 		<release version="1.1" date="2017-03-31">
 			<description>
 				<p>
-					This release added the following items.
-					<ul>
-						<li>Add ability to add files to a request</li>
-					</ul>
+					- Add ability to add files to a request
 				</p>
 			</description>
 		</release>

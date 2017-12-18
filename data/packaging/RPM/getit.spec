@@ -1,5 +1,5 @@
 Name:			getit
-Version:		4.0
+Version:		4.0.1
 Release:		1%{?dist}
 Summary:		Send HTTP requests to your API endpoints
 
@@ -45,10 +45,17 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/%{name}
 %{_datadir}/applications/net.bartkessels.%{name}.desktop
 %{_datadir}/glib-2.0/schemas/net.bartkessels.getit.gschema.xml
-%{_datadir}/mime/packages/getit.xml
+%{_datadir}/mime/packages/net.bartkessels.getit.xml
 %{_datadir}/appdata/net.bartkessels.%{name}.appdata.xml
+%{_datadir}/icons/hicolor/*/apps/net.bartkessels.getit.png
+%{_datadir}/icons/hicolor/*/apps/net.bartkessels.getit-symbolic.png
+%{_datadir}/icons/hicolor/*/actions/getit-remove-symbolic.png
 
 %changelog
+* Mon Nov 06 2017 Bart Kessels <bartkessels@bk-mail.com> 4.0.1
+- Update .desktop file actions menu
+- Ship own icons
+
 * Sat Nov 04 2017 Bart Kessels <bartkessels@bk-mail.com> 4.0
 - Add recent files support
 - Add ability to set timeout for request
