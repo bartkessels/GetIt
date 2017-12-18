@@ -20,7 +20,7 @@ option for authentication, right now only basic auth and digest auth.
 - gcc
 - meson
 - gtk3-devel
-- gtksourceview3-devl
+- gtksourceview3-devel
 - json-glib-devel
 - glib-devel
 - libsoup-devel
