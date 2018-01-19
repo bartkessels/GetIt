@@ -63,6 +63,14 @@
 	</provides>
 
 	<releases>
+		<release version="4.0.2" date="2018-01-19">
+			<description>
+				<p>
+					Clear headerbar when clearing a request
+					Fix bug showing syntax highlighting
+				</p>
+			</description>
+		</release>
 		<release version="4.0.1" date="2017-11-06">
 			<description>
 				<p>

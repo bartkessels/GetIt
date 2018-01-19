@@ -1,5 +1,5 @@
 Name:			getit
-Version:		4.0.1
+Version:		4.0.2
 Release:		1%{?dist}
 Summary:		Send HTTP requests to your API endpoints
 
@@ -7,15 +7,15 @@ License:		GPLv3+
 URL:			https://getit.bartkessels.net
 Source0:		https://github.com/bartkessels/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 
-BuildRequires:	gcc
-BuildRequires:  meson
-BuildRequires:	gtk3-devel
-BuildRequires:	gtksourceview3-devel
-BuildRequires:	json-glib-devel
-BuildRequires:	glib-devel
-BuildRequires:	libsoup-devel
-BuildRequires:	libnotify-devel
-BuildRequires:	gettext
+BuildRequires:		gcc
+BuildRequires:		meson
+BuildRequires:		gtk3-devel
+BuildRequires:		gtksourceview3-devel
+BuildRequires:		json-glib-devel
+BuildRequires:		glib-devel
+BuildRequires:		libsoup-devel
+BuildRequires:		libnotify-devel
+BuildRequires:		gettext
 
 Requires:		gtk3
 Requires:		gtksourceview3
@@ -52,6 +52,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/icons/hicolor/*/actions/getit-remove-symbolic.png
 
 %changelog
+* Fri Jan 19 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.2
+- Clear headerbar when clearing a request
+- Fix bug showing syntax highlighting
+
 * Mon Nov 06 2017 Bart Kessels <bartkessels@bk-mail.com> 4.0.1
 - Update .desktop file actions menu
 - Ship own icons
