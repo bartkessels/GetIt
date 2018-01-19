@@ -339,7 +339,7 @@ getit_window_request_finished (SoupSession *session,
     if (mime_type != NULL) {
         mime_type_split = g_strsplit (mime_type, ";", 2);
 
-        if (g_strv_length (mime_type_split) > 1) {
+        if (g_strv_length (mime_type_split) >= 1) {
             response_language = mime_type_split [0];
         }
     }
