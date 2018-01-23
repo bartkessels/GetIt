@@ -24,6 +24,8 @@
 			<li>easily open recent saved/opened requests</li>
 			<li>sending custom POST data</li>
 			<li>syntax highlighting</li>
+			<li>Preview for HTML response</li>
+			<li>Make JSON response look beautifull automatically</li>
 		</ul>
 	</description>
 
@@ -83,7 +85,7 @@
 			<description>
 				<ul>
 					<li>Ship own icons</li>
-					<li>add action to launch new instance from applications overview</li>
+					<li>Add action to launch new instance from applications overview</li>
 				</ul>
 			</description>
 		</release>
@@ -92,12 +94,12 @@
 			<description>
 				<ul>
 					<li>Add recent files support</li>
-					<li>add ability to set timeout for request</li>
-					<li>add ability to set user agent for request</li>
-					<li>add preferences window</li>
-					<li>add shortcuts window</li>
-					<li>add support for translations</li>
-					<li>add support for flatpak</li>
+					<li>Add ability to set timeout for request</li>
+					<li>Add ability to set user agent for request</li>
+					<li>Add preferences window</li>
+					<li>Add shortcuts window</li>
+					<li>Add support for translations</li>
+					<li>Add support for flatpak</li>
 				</ul>
 			</description>
 		</release>
@@ -106,7 +108,7 @@
 			<description>
 				<ul>
 					<li>Fix non-highlighting bug in response stack</li>
-					<li>fix bug application crash on re-save</li>
+					<li>Fix bug application crash on re-save</li>
 				</ul>
 			</description>
 		</release>
@@ -115,72 +117,72 @@
 			<description>
 				<ul>
 					<li>Move to Meson build system</li>
-					<li>allow opening files on application startup</li>
+					<li>Allow opening files on application startup</li>
 				</ul>
 			</description>
 		</release>
 
 		<release version="3.0" date="2017-07-11">
 			<description>
-				<p>
-					Rewrite to C
-				</p>
+				<ul>
+					<li>Rewrite to C</li>
+				</ul>
 			</description>
 		</release>
 
 		<release version="2.0" date="2017-06-17">
 			<description>
-				<p>
-					Display message when something has gone wrong while sending the request,
-					add ability to save a request,
-					add ability to open a request,
-					add ability to clear the current request
-				</p>
+				<ul>
+					<li>Display message when something has gone wrong while sending the request</li>
+					<li>Add ability to save a request</li>
+					<li>Add ability to open a request</li>
+					<li>Add ability to clear the current request</li>
+				</ul>
 			</description>
 		</release>
 
 		<release version="1.4.1" date="2017-06-11">
 			<description>
-				<p>
-					Add cancel request button,
-					add shortcuts for send and cancel button,
-					display notification when request is sent
-				</p>
+				<ul>
+					<li>Add cancel request button</li>
+					<li>Add shortcuts for send and cancel button</li>
+					<li>Display notification when request is sent</li>
+				</ul>
 			</description>
 		</release>
 
 		<release version="1.4" date="2017-06-09">
 			<description>
-				<p>
-					Add spinner to indicate the request is still being sent,
-					add shortcut to send a request
-				</p>
+				<ul>
+					<li>Add spinner to indicate the request is still being sent</li>
+					<li>Add shortcut to send a request</li>
+				</ul>
 			</description>
 		</release>
 
 		<release version="1.3" date="2017-06-01">
 			<description>
-				<p>
-					- Refactor codebase
-					- Add ability to create raw body instead of formdata
-				</p>
+				<ul>
+					<li>Refactor codebase</li>
+					<li>Add ability to create raw body instead of formdata</li>
+				</ul>
 			</description>
 		</release>
 
 		<release version="1.2" date="2017-04-07">
 			<description>
-				<p>
-					- Add ability to add cookies to a request
-					- Fix endless scrolling bug on response stack
-				</p>
+				<ul>
+					<li>Add ability to add cookies to a request</li>
+					<li>Fix endless scrolling bug on response stack</li>
+				</ul>
 			</description>
 		</release>
 
 		<release version="1.1" date="2017-03-31">
 			<description>
-				<p>
-					- Add ability to add files to a request
-				</p>
+				<ul>
+					<li>Add ability to add files to a request</li>
+				</ul>
 			</description>
 		</release>
 
