@@ -136,21 +136,24 @@ getit_content_response_show_response (GetitContentResponse *self,
     g_list_free (children);
     g_list_free (children_iter);
 
-    /* Add headers */
-    status_value = g_strdup_printf ("%i (%s)", status_code, status_message);
-    getit_content_response_add_header (_("Status"), status_value, self);
-
-    soup_message_headers_foreach (headers, getit_content_response_add_header, self);
-
     /* Create and clear buffer */
     text_buffer_pretty = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->sv_output_pretty));
     text_buffer_raw = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->sv_output_raw));
     gtk_text_buffer_set_text (text_buffer_pretty, "", 0);
     gtk_text_buffer_set_text (text_buffer_raw, "", 0);
 
+    /* Clear webview */
+    webkit_web_view_load_plain_text (WEBKIT_WEB_VIEW (self->wv_output_preview), "");
+
     /* Don't continue if the body is empty */
     gtk_widget_show_all (GTK_WIDGET (self->pnd_output));
     g_return_if_fail (body != NULL);
+
+    /* Add headers */
+    status_value = g_strdup_printf ("%i (%s)", status_code, status_message);
+    getit_content_response_add_header (_("Status"), status_value, self);
+
+    soup_message_headers_foreach (headers, getit_content_response_add_header, self);
 
     /* Add body to sourceviews */
     gtk_text_buffer_set_text (text_buffer_pretty, body, strlen (body));
