@@ -113,6 +113,8 @@ getit_content_response_show_response (GetitContentResponse *self,
     GtkTextBuffer *text_buffer_pretty;
     GtkTextBuffer *text_buffer_raw;
     const gchar *mimetype;
+    GError *json_error;
+    JsonParser *json_parser;
     GString *string_response;
     GBytes *bytes_response;
 
@@ -146,16 +148,38 @@ getit_content_response_show_response (GetitContentResponse *self,
     gtk_text_buffer_set_text (text_buffer_pretty, "", 0);
     gtk_text_buffer_set_text (text_buffer_raw, "", 0);
 
-    /* Add body to sourceviews if it's not null */
-    if (body != NULL) {
-        gtk_text_buffer_set_text (text_buffer_pretty, body, strlen (body));
-        gtk_text_buffer_set_text (text_buffer_raw, body, strlen (body));
-    }
+    /* Don't continue if the body is empty */
+    gtk_widget_show_all (GTK_WIDGET (self->grd_output));
+    g_return_if_fail (body != NULL);
+
+    /* Add body to sourceviews */
+    gtk_text_buffer_set_text (text_buffer_pretty, body, strlen (body));
+    gtk_text_buffer_set_text (text_buffer_raw, body, strlen (body));
 
     /* Get mimetype */
     mimetype = NULL;
     if (language != NULL) {
         mimetype = gtk_source_language_get_mime_types (language)[0];
+    }
+
+    /* Make JSON response readable */
+    json_parser = json_parser_new ();
+    json_parser_load_from_data (json_parser, body, strlen (body), &json_error);
+
+    if (json_error == NULL) {
+        JsonNode *root_node;
+        JsonGenerator *json_generator;
+        const gchar *pretty_json;
+
+        root_node = json_parser_get_root (json_parser);
+        json_generator = json_generator_new ();
+
+        json_generator_set_root (json_generator, root_node);
+        json_generator_set_pretty (json_generator, TRUE);
+
+        pretty_json = json_generator_to_data (json_generator, NULL);
+
+        gtk_text_buffer_set_text (text_buffer_pretty, pretty_json, strlen(pretty_json));
     }
 
     /* Load webview */
