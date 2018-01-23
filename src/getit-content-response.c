@@ -112,6 +112,9 @@ getit_content_response_show_response (GetitContentResponse *self,
     const gchar *status_value;
     GtkTextBuffer *text_buffer_pretty;
     GtkTextBuffer *text_buffer_raw;
+    const gchar *mimetype;
+    GString *string_response;
+    GBytes *bytes_response;
 
     getit_content_response_show_screen (self,
                                         FALSE,
@@ -149,10 +152,20 @@ getit_content_response_show_response (GetitContentResponse *self,
         gtk_text_buffer_set_text (text_buffer_raw, body, strlen (body));
     }
 
+    /* Get mimetype */
+    mimetype = NULL;
+    if (language != NULL) {
+        mimetype = gtk_source_language_get_mime_types (language)[0];
+    }
+
     /* Load webview */
-    webkit_web_view_load_html (WEBKIT_WEB_VIEW (self->wv_output_preview),
-                                 body,
-                                 uri);
+    string_response = g_string_new (body);
+    bytes_response = g_string_free_to_bytes (string_response);
+    webkit_web_view_load_bytes (WEBKIT_WEB_VIEW (self->wv_output_preview),
+                                bytes_response,
+                                mimetype,
+                                NULL,
+                                uri);
 
     /* Set language of response */
     if (GTK_SOURCE_IS_LANGUAGE (language)) {
