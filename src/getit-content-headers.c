@@ -62,14 +62,13 @@ getit_content_headers_clear (GetitContentHeaders *self)
 
     gint total_list_size;
 
-    /* Clear cookies */
+    /* Clear headers */
     total_list_size = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_headers)));
 
     /*
-     * Start iteration at 1 'cause the first element
-     * in the grid is the 'Add' button
+     * Iterate through elements
      */
-    for (int list_iterator = 1; list_iterator <= total_list_size; list_iterator++) {
+    for (int list_iterator = 0; list_iterator <= total_list_size; list_iterator++) {
         GetitElementHeader *header;
 
         header = GETIT_ELEMENT_HEADER (gtk_grid_get_child_at (self->grd_headers, 0, list_iterator));
@@ -87,16 +86,14 @@ getit_content_headers_add_to_request (GetitContentHeaders *self,
     gint total_headers;
 
     /*
-     * Count the formdata elements in the grid
-     * Minus 1 'cause the grid contains the 'Add' button
+     * Count the header elements in the grid
      */
     total_headers = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_headers)));
 
     /*
-     * Start iteration at 1 'cause the first element
-     * in the grid is the 'Add' button
+     * Iterate through headers
      */
-    for (int list_iterator = 1; list_iterator <= total_headers; list_iterator++) {
+    for (int list_iterator = 0; list_iterator <= total_headers; list_iterator++) {
         GetitElementHeader *header;
 
         GtkWidget *current_widget;
@@ -142,16 +139,14 @@ getit_content_headers_add_to_json_object (GetitContentHeaders *self,
     json_array_headers = json_array_new ();
 
     /*
-     * Count the cookie elements in the grid
-     * Minus 1 'cause the grid contains the 'Add' button
+     * Count the header elements in the grid
      */
     total_headers = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_headers)));
 
     /*
-     * Start iteration at 1 'cause the first element
-     * in the grid is the 'Add' button
+     * Iterate through headers
      */
-    for (int list_iterator = 1; list_iterator <= total_headers; list_iterator++) {
+    for (int list_iterator = 0; list_iterator <= total_headers; list_iterator++) {
         GetitElementHeader *header;
         JsonObject *json_object_header;
 
@@ -211,8 +206,8 @@ getit_content_headers_class_init (GetitContentHeadersClass *klass)
     widget_class = GTK_WIDGET_CLASS (klass);
 
     gtk_widget_class_set_template_from_resource (widget_class, "/net/bartkessels/getit/content-headers.ui");
-    gtk_widget_class_bind_template_child (widget_class, GetitContentHeaders, grd_headers);
     gtk_widget_class_bind_template_child (widget_class, GetitContentHeaders, btn_add);
+    gtk_widget_class_bind_template_child (widget_class, GetitContentHeaders, grd_headers);
 }
 
 static void
