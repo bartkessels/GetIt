@@ -113,7 +113,7 @@ getit_content_response_show_response (GetitContentResponse *self,
     GtkTextBuffer *text_buffer_pretty;
     GtkTextBuffer *text_buffer_raw;
     const gchar *mimetype;
-    GError *json_error;
+    GError *json_error = NULL;
     JsonParser *json_parser;
     GString *string_response;
     GBytes *bytes_response;
@@ -180,6 +180,8 @@ getit_content_response_show_response (GetitContentResponse *self,
         pretty_json = json_generator_to_data (json_generator, NULL);
 
         gtk_text_buffer_set_text (text_buffer_pretty, pretty_json, strlen(pretty_json));
+    } else {
+        g_error_free (json_error);
     }
 
     /* Load webview */
