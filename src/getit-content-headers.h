@@ -28,7 +28,7 @@ G_BEGIN_DECLS
 
 #define GETIT_TYPE_CONTENT_HEADERS (getit_content_headers_get_type())
 
-G_DECLARE_FINAL_TYPE (GetitContentHeaders, getit_content_headers, GETIT, CONTENT_HEADERS, GtkScrolledWindow)
+G_DECLARE_FINAL_TYPE (GetitContentHeaders, getit_content_headers, GETIT, CONTENT_HEADERS, GtkViewport)
 
 /* Public function signatures */
 GetitContentHeaders *getit_content_headers_new ();

@@ -19,14 +19,14 @@
 #include "getit-content-headers.h"
 
 struct _GetitContentHeaders {
-    GtkScrolledWindow parent_instance;
+    GtkViewport parent_instance;
 
     /* Template widgets */
-    GtkGrid *grd_main;
     GtkButton *btn_add;
+    GtkGrid *grd_headers;
 };
 
-G_DEFINE_TYPE (GetitContentHeaders, getit_content_headers, GTK_TYPE_SCROLLED_WINDOW)
+G_DEFINE_TYPE (GetitContentHeaders, getit_content_headers, GTK_TYPE_VIEWPORT)
 
 /*
  * =============================================================================
@@ -63,7 +63,7 @@ getit_content_headers_clear (GetitContentHeaders *self)
     gint total_list_size;
 
     /* Clear cookies */
-    total_list_size = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_main))) - 1;
+    total_list_size = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_headers)));
 
     /*
      * Start iteration at 1 'cause the first element
@@ -72,7 +72,7 @@ getit_content_headers_clear (GetitContentHeaders *self)
     for (int list_iterator = 1; list_iterator <= total_list_size; list_iterator++) {
         GetitElementHeader *header;
 
-        header = GETIT_ELEMENT_HEADER (gtk_grid_get_child_at (self->grd_main, 0, list_iterator));
+        header = GETIT_ELEMENT_HEADER (gtk_grid_get_child_at (self->grd_headers, 0, list_iterator));
         g_object_run_dispose (G_OBJECT (header));
     }
 }
@@ -90,7 +90,7 @@ getit_content_headers_add_to_request (GetitContentHeaders *self,
      * Count the formdata elements in the grid
      * Minus 1 'cause the grid contains the 'Add' button
      */
-    total_headers = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_main))) - 1;
+    total_headers = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_headers)));
 
     /*
      * Start iteration at 1 'cause the first element
@@ -105,7 +105,7 @@ getit_content_headers_add_to_request (GetitContentHeaders *self,
         const gchar *value;
 
         /* Skip this iteration if it's not a header type */
-        current_widget = gtk_grid_get_child_at (GTK_GRID (self->grd_main), 0, list_iterator);
+        current_widget = gtk_grid_get_child_at (GTK_GRID (self->grd_headers), 0, list_iterator);
 
         if (!GETIT_IS_ELEMENT_HEADER (current_widget)) {
             continue;
@@ -145,7 +145,7 @@ getit_content_headers_add_to_json_object (GetitContentHeaders *self,
      * Count the cookie elements in the grid
      * Minus 1 'cause the grid contains the 'Add' button
      */
-    total_headers = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_main))) - 1;
+    total_headers = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_headers)));
 
     /*
      * Start iteration at 1 'cause the first element
@@ -161,7 +161,7 @@ getit_content_headers_add_to_json_object (GetitContentHeaders *self,
         const gchar *value;
 
         /* Skip this iteration if it's not a cookie type */
-        current_widget = gtk_grid_get_child_at (GTK_GRID (self->grd_main), 0, list_iterator);
+        current_widget = gtk_grid_get_child_at (GTK_GRID (self->grd_headers), 0, list_iterator);
 
         if (!GETIT_IS_ELEMENT_HEADER (current_widget)) {
             continue;
@@ -192,7 +192,7 @@ getit_content_headers_add_header_with_values (GetitContentHeaders *self,
 {
     g_assert (GETIT_IS_CONTENT_HEADERS (self));
 
-    gtk_container_add (GTK_CONTAINER (self->grd_main),
+    gtk_container_add (GTK_CONTAINER (self->grd_headers),
                        GTK_WIDGET (getit_element_header_new_with_values (enabled,
                                                                          key,
                                                                          value)));
@@ -211,7 +211,7 @@ getit_content_headers_class_init (GetitContentHeadersClass *klass)
     widget_class = GTK_WIDGET_CLASS (klass);
 
     gtk_widget_class_set_template_from_resource (widget_class, "/net/bartkessels/getit/content-headers.ui");
-    gtk_widget_class_bind_template_child (widget_class, GetitContentHeaders, grd_main);
+    gtk_widget_class_bind_template_child (widget_class, GetitContentHeaders, grd_headers);
     gtk_widget_class_bind_template_child (widget_class, GetitContentHeaders, btn_add);
 }
 
@@ -223,7 +223,7 @@ getit_content_headers_init (GetitContentHeaders *self)
 
     gtk_widget_init_template (GTK_WIDGET (self));
 
-    g_signal_connect (self->btn_add, "clicked", G_CALLBACK (getit_content_headers_cb_btn_add_header_clicked), self->grd_main);
+    g_signal_connect (self->btn_add, "clicked", G_CALLBACK (getit_content_headers_cb_btn_add_header_clicked), self->grd_headers);
 }
 
  /*
