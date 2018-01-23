@@ -295,6 +295,7 @@ getit_content_response_add_header (const gchar *key,
     lbl_value = gtk_label_new (value);
 
     gtk_label_set_markup_with_mnemonic (GTK_LABEL (lbl_arrow), "&#8594;");
+    gtk_label_set_selectable (GTK_LABEL (lbl_value), TRUE);
 
     gtk_label_set_xalign (GTK_LABEL (lbl_key), 0);
     gtk_label_set_xalign (GTK_LABEL (lbl_value), 0);
