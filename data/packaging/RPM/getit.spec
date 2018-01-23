@@ -16,6 +16,7 @@ BuildRequires:		glib-devel
 BuildRequires:		libsoup-devel
 BuildRequires:		libnotify-devel
 BuildRequires:		gettext
+BuildRequires:		webkitgtk4-devel
 
 Requires:		gtk3
 Requires:		gtksourceview3
@@ -23,6 +24,7 @@ Requires:		json-glib
 Requires:		glib
 Requires:		libsoup
 Requires:		libnotify
+Requires:		webkitgtk4
 
 %description
 Application to send HTTP requests to test your own API endpoints

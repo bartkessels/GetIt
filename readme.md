@@ -26,6 +26,7 @@ option for authentication, right now only basic auth and digest auth.
 - libsoup-devel
 - libnotify-devel
 - gettext
+- webkitgtk4-devel
 
 ### Installing
 - gtk3
@@ -34,6 +35,7 @@ option for authentication, right now only basic auth and digest auth.
 - glib
 - libsoup
 - libnotify
+- webkitgtk4
 
 ## Features
 
