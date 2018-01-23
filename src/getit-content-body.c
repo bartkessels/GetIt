@@ -237,8 +237,12 @@ getit_content_body_add_to_json_object (GetitContentBody *self,
         const gchar *value;
         const gchar *file_name;
 
+        /* Skip this iteration if it's not a cookie type */
         current_widget = gtk_grid_get_child_at (GTK_GRID (self->grd_data_formdata_data), 0, list_iterator);
-        g_return_if_fail (GETIT_IS_ELEMENT_FORMDATA (current_widget));
+
+        if (!GETIT_IS_ELEMENT_FORMDATA (current_widget)) {
+            continue;
+        }
 
         formdata = GETIT_ELEMENT_FORMDATA (current_widget);
         json_object_formdata = json_object_new ();
@@ -382,8 +386,12 @@ getit_content_body_add_formdata_to_request (GetitContentBody *self,
         const gchar *file_contents;
         SoupBuffer *file_buffer;
 
+        /* Skip this iteration if it's not a cookie type */
         current_widget = gtk_grid_get_child_at (GTK_GRID (self->grd_data_formdata_data), 0, list_iterator);
-        g_return_if_fail (GETIT_IS_ELEMENT_FORMDATA (current_widget));
+
+        if (!GETIT_IS_ELEMENT_FORMDATA (current_widget)) {
+            continue;
+        }
 
         formdata = GETIT_ELEMENT_FORMDATA (current_widget);
         is_enabled = getit_element_formdata_get_enabled (formdata);
