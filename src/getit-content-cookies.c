@@ -19,14 +19,14 @@
 #include "getit-content-cookies.h"
 
 struct _GetitContentCookies {
-    GtkScrolledWindow parent_instance;
+    GtkViewport parent_instance;
 
     /* Template widgets */
-    GtkGrid *grd_main;
     GtkButton *btn_add;
+    GtkGrid *grd_cookies;
 };
 
-G_DEFINE_TYPE (GetitContentCookies, getit_content_cookies, GTK_TYPE_SCROLLED_WINDOW)
+G_DEFINE_TYPE (GetitContentCookies, getit_content_cookies, GTK_TYPE_VIEWPORT)
 
 /*
  * =============================================================================
@@ -63,16 +63,15 @@ getit_content_cookies_clear (GetitContentCookies *self)
     gint total_list_size;
 
     /* Clear cookies */
-    total_list_size = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_main))) - 1;
+    total_list_size = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_cookies)));
 
     /*
-     * Start iteration at 1 'cause the first element
-     * in the grid is the 'Add' button
+     * Iterate through elements
      */
-    for (int list_iterator = 1; list_iterator <= total_list_size; list_iterator++) {
+    for (int list_iterator = 0; list_iterator <= total_list_size; list_iterator++) {
         GetitElementCookie *cookie;
 
-        cookie = GETIT_ELEMENT_COOKIE (gtk_grid_get_child_at (self->grd_main, 0, list_iterator));
+        cookie = GETIT_ELEMENT_COOKIE (gtk_grid_get_child_at (self->grd_cookies, 0, list_iterator));
         g_object_run_dispose (G_OBJECT (cookie));
     }
 }
@@ -94,15 +93,13 @@ getit_content_cookies_add_to_request (GetitContentCookies *self,
 
     /*
      * Count the cookie elements in the grid
-     * Minus 1 'cause the grid contains the 'Add' button
      */
-    total_cookies = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_main))) - 1;
+    total_cookies = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_cookies)));
 
     /*
-     * Start iteration at 1 'cause the first element
-     * in the grid is the 'Add' button
+     * Iterate through all the cookies
      */
-    for (int list_iterator = 1; list_iterator <= total_cookies; list_iterator++) {
+    for (int list_iterator = 0; list_iterator <= total_cookies; list_iterator++) {
         GetitElementCookie *cookie;
         SoupCookie *soup_cookie;
 
@@ -112,7 +109,7 @@ getit_content_cookies_add_to_request (GetitContentCookies *self,
         const gchar *value;
 
         /* Skip this iteration if it's not a cookie type */
-        current_widget = gtk_grid_get_child_at (GTK_GRID (self->grd_main), 0, list_iterator);
+        current_widget = gtk_grid_get_child_at (GTK_GRID (self->grd_cookies), 0, list_iterator);
 
         if (!GETIT_IS_ELEMENT_COOKIE (current_widget)) {
             continue;
@@ -156,15 +153,13 @@ getit_content_cookies_add_to_json_object (GetitContentCookies *self,
 
     /*
      * Count the cookie elements in the grid
-     * Minus 1 'cause the grid contains the 'Add' button
      */
-    total_cookies = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_main))) - 1;
+    total_cookies = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_cookies)));
 
     /*
-     * Start iteration at 1 'cause the first element
-     * in the grid is the 'Add' button
+     * Iterate through all the cookies
      */
-    for (int list_iterator = 1; list_iterator <= total_cookies; list_iterator++) {
+    for (int list_iterator = 0; list_iterator <= total_cookies; list_iterator++) {
         GetitElementCookie *cookie;
         JsonObject *json_object_cookie;
 
@@ -174,7 +169,7 @@ getit_content_cookies_add_to_json_object (GetitContentCookies *self,
         const gchar *value;
 
         /* Skip this iteration if it's not a cookie type */
-        current_widget = gtk_grid_get_child_at (GTK_GRID (self->grd_main), 0, list_iterator);
+        current_widget = gtk_grid_get_child_at (GTK_GRID (self->grd_cookies), 0, list_iterator);
 
         if (!GETIT_IS_ELEMENT_COOKIE (current_widget)) {
             continue;
@@ -205,7 +200,7 @@ getit_content_cookies_add_cookie_with_values (GetitContentCookies *self,
 {
     g_assert (GETIT_IS_CONTENT_COOKIES (self));
 
-    gtk_container_add (GTK_CONTAINER (self->grd_main),
+    gtk_container_add (GTK_CONTAINER (self->grd_cookies),
                        GTK_WIDGET (getit_element_cookie_new_with_values (enabled,
                                                                          key,
                                                                          value)));
@@ -224,8 +219,8 @@ getit_content_cookies_class_init (GetitContentCookiesClass *klass)
     widget_class = GTK_WIDGET_CLASS (klass);
 
     gtk_widget_class_set_template_from_resource (widget_class, "/net/bartkessels/getit/content-cookies.ui");
-    gtk_widget_class_bind_template_child (widget_class, GetitContentCookies, grd_main);
     gtk_widget_class_bind_template_child (widget_class, GetitContentCookies, btn_add);
+    gtk_widget_class_bind_template_child (widget_class, GetitContentCookies, grd_cookies);
 }
 
 static void
@@ -236,7 +231,7 @@ getit_content_cookies_init (GetitContentCookies *self)
 
     gtk_widget_init_template (GTK_WIDGET (self));
 
-    g_signal_connect (self->btn_add, "clicked", G_CALLBACK (getit_content_cookies_cb_btn_add_cookie_clicked), self->grd_main);
+    g_signal_connect (self->btn_add, "clicked", G_CALLBACK (getit_content_cookies_cb_btn_add_cookie_clicked), self->grd_cookies);
 }
 
  /*

@@ -28,7 +28,7 @@ G_BEGIN_DECLS
 
 #define GETIT_TYPE_CONTENT_COOKIES (getit_content_cookies_get_type())
 
-G_DECLARE_FINAL_TYPE (GetitContentCookies, getit_content_cookies, GETIT, CONTENT_COOKIES, GtkScrolledWindow)
+G_DECLARE_FINAL_TYPE (GetitContentCookies, getit_content_cookies, GETIT, CONTENT_COOKIES, GtkViewport)
 
 /* Public function signatures */
 GetitContentCookies *getit_content_cookies_new ();
