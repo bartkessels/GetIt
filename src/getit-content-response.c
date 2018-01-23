@@ -19,15 +19,15 @@
 #include "getit-content-response.h"
 
 struct _GetitContentResponse {
-    GtkScrolledWindow parent_instance;
+    GtkViewport parent_instance;
 
     /* Template widgets */
     GtkLabel *lbl_default_message;
     GtkGrid *grd_sending;
     GtkGrid *grd_error;
     GtkLabel *lbl_error_message;
-    GtkGrid *grd_output;
-    GtkGrid *grd_headers;
+    GtkPaned *pnd_output;
+    GtkGrid *grd_output_headers;
     GtkSourceView *sv_output_pretty;
     GtkSourceView *sv_output_raw;
     GtkScrolledWindow *sw_output_preview;
@@ -35,7 +35,7 @@ struct _GetitContentResponse {
     GtkGrid *grd_timeout;
 };
 
-G_DEFINE_TYPE (GetitContentResponse, getit_content_response, GTK_TYPE_SCROLLED_WINDOW)
+G_DEFINE_TYPE (GetitContentResponse, getit_content_response, GTK_TYPE_VIEWPORT)
 
 /*
  * =============================================================================
@@ -126,7 +126,7 @@ getit_content_response_show_response (GetitContentResponse *self,
                                         FALSE);
 
     /* Clear headers grid */
-    children = gtk_container_get_children (GTK_CONTAINER (self->grd_headers));
+    children = gtk_container_get_children (GTK_CONTAINER (self->grd_output_headers));
 
 
     for (children_iter = children; children_iter != NULL; children_iter = g_list_next(children_iter)) {
@@ -149,7 +149,7 @@ getit_content_response_show_response (GetitContentResponse *self,
     gtk_text_buffer_set_text (text_buffer_raw, "", 0);
 
     /* Don't continue if the body is empty */
-    gtk_widget_show_all (GTK_WIDGET (self->grd_output));
+    gtk_widget_show_all (GTK_WIDGET (self->pnd_output));
     g_return_if_fail (body != NULL);
 
     /* Add body to sourceviews */
@@ -196,7 +196,7 @@ getit_content_response_show_response (GetitContentResponse *self,
         gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (text_buffer_pretty), language);
     }
 
-    gtk_widget_show_all (GTK_WIDGET (self->grd_output));
+    gtk_widget_show_all (GTK_WIDGET (self->pnd_output));
 }
 
 void
@@ -255,8 +255,8 @@ getit_content_response_class_init (GetitContentResponseClass *klass)
     gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, grd_sending);
     gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, grd_error);
     gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, lbl_error_message);
-    gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, grd_output);
-    gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, grd_headers);
+    gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, pnd_output);
+    gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, grd_output_headers);
     gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, sv_output_pretty);
     gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, sv_output_raw);
     gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, sw_output_preview);
@@ -283,7 +283,7 @@ getit_content_response_add_header (const gchar *key,
     gint row_index;
 
     self = GETIT_CONTENT_RESPONSE (user_data);
-    row_index = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_headers))) / 3; // Divide by 3 'cause there are
+    row_index = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_output_headers))) / 3; // Divide by 3 'cause there are
                                                                                                     // 3 widgets for each header
 
     GtkWidget *lbl_key, *lbl_arrow, *lbl_value;
@@ -297,9 +297,9 @@ getit_content_response_add_header (const gchar *key,
     gtk_label_set_xalign (GTK_LABEL (lbl_key), 0);
     gtk_label_set_xalign (GTK_LABEL (lbl_value), 0);
 
-    gtk_grid_attach (GTK_GRID (self->grd_headers), lbl_key, 0, row_index, 1, 1);
-    gtk_grid_attach (GTK_GRID (self->grd_headers), lbl_arrow, 1, row_index, 1, 1);
-    gtk_grid_attach (GTK_GRID (self->grd_headers), lbl_value, 2, row_index, 1, 1);
+    gtk_grid_attach (GTK_GRID (self->grd_output_headers), lbl_key, 0, row_index, 1, 1);
+    gtk_grid_attach (GTK_GRID (self->grd_output_headers), lbl_arrow, 1, row_index, 1, 1);
+    gtk_grid_attach (GTK_GRID (self->grd_output_headers), lbl_value, 2, row_index, 1, 1);
 }
 
 static void
@@ -314,7 +314,7 @@ getit_content_response_show_screen (GetitContentResponse *self,
 
     gtk_widget_set_visible (GTK_WIDGET (self->lbl_default_message), show_default);
     gtk_widget_set_visible (GTK_WIDGET (self->grd_sending), show_sending);
-    gtk_widget_set_visible (GTK_WIDGET (self->grd_output), show_response);
+    gtk_widget_set_visible (GTK_WIDGET (self->pnd_output), show_response);
     gtk_widget_set_visible (GTK_WIDGET (self->grd_error), show_error);
     gtk_widget_set_visible (GTK_WIDGET (self->grd_timeout), show_timeout);
 }
