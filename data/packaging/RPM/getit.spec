@@ -1,5 +1,5 @@
 Name:			getit
-Version:		4.0.3.1
+Version:		4.0.4
 Release:		1%{?dist}
 Summary:		Send HTTP requests to your API endpoints
 
@@ -54,6 +54,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/icons/hicolor/*/actions/getit-remove-symbolic.png
 
 %changelog
+* Tue Jan 23 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.4
+- Update scrollviews
+- Add ability to enlarge headers on response
+
 * Tue Jan 23 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.3.1
 - Update Dutch translations
 
