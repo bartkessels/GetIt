@@ -7,7 +7,7 @@
     <property name="type_hint">dialog</property>
     <property name="program_name">GetIt</property>
     <property name="version">4.0.4</property>
-    <property name="copyright" translatable="yes">Copyright © 2016 - 2017 Bart Kessels</property>
+    <property name="copyright" translatable="yes">Copyright © 2016 - 2018 Bart Kessels</property>
     <property name="comments" translatable="yes">GetIt is a small application to send HTTP requests</property>
     <property name="website">https://getit.bartkessels.net</property>
     <property name="authors">Bart Kessels &lt;bartkessels@bk-mail.com&gt;</property>
