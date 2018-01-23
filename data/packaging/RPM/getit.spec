@@ -1,5 +1,5 @@
 Name:			getit
-Version:		4.0.2
+Version:		4.0.3
 Release:		1%{?dist}
 Summary:		Send HTTP requests to your API endpoints
 
@@ -54,6 +54,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/icons/hicolor/*/actions/getit-remove-symbolic.png
 
 %changelog
+* Tue Jan 23 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.3
+- Add view for HTML preview
+- Automatically make JSON view readable
+
 * Fri Jan 19 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.2
 - Clear headerbar when clearing a request
 - Fix bug showing syntax highlighting

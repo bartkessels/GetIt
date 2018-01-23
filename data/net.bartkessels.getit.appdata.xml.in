@@ -63,52 +63,60 @@
 	</provides>
 
 	<releases>
+		<release version="4.0.3" date="2018-01-23">
+			<description>
+				<ul>
+					<li>Add view for HTML preview</li>
+					<li>Automatically make JSON view readable</li>
+				</ul>
+			</description>
+		</release>
 		<release version="4.0.2" date="2018-01-19">
 			<description>
-				<p>
-					Clear headerbar when clearing a request
-					Fix bug showing syntax highlighting
-				</p>
+				<ul>
+					<li>Clear headerbar when clearing a request</li>
+					<li>Fix bug showing syntax highlighting</li>
+				</ul>
 			</description>
 		</release>
 		<release version="4.0.1" date="2017-11-06">
 			<description>
-				<p>
-					Ship own icons,
-					add action to launch new instance from applications overview
-				</p>
+				<ul>
+					<li>Ship own icons</li>
+					<li>add action to launch new instance from applications overview</li>
+				</ul>
 			</description>
 		</release>
 
 		<release version="4.0" date="2017-11-04">
 			<description>
-				<p>
-					Add recent files support,
-					add ability to set timeout for request,
-					add ability to set user agent for request,
-					add preferences window,
-					add shortcuts window,
-					add support for translations,
-					add support for flatpak
-				</p>
+				<ul>
+					<li>Add recent files support</li>
+					<li>add ability to set timeout for request</li>
+					<li>add ability to set user agent for request</li>
+					<li>add preferences window</li>
+					<li>add shortcuts window</li>
+					<li>add support for translations</li>
+					<li>add support for flatpak</li>
+				</ul>
 			</description>
 		</release>
 
 		<release version="3.2" date="2017-09-05">
 			<description>
-				<p>
-					Fix non-highlighting bug in response stack,
-					fix bug application crash on re-save
-				</p>
+				<ul>
+					<li>Fix non-highlighting bug in response stack</li>
+					<li>fix bug application crash on re-save</li>
+				</ul>
 			</description>
 		</release>
 
 		<release version="3.1" date="2017-08-13">
 			<description>
-				<p>
-					Move to Meson build system,
-					allow opening files on application startup
-				</p>
+				<ul>
+					<li>Move to Meson build system</li>
+					<li>allow opening files on application startup</li>
+				</ul>
 			</description>
 		</release>
 
