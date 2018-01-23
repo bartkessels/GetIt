@@ -65,6 +65,14 @@
 	</provides>
 
 	<releases>
+		<release version="4.0.3." date="2018-01-23">
+			<description>
+				<ul>
+					<li>Update Dutch translations</li>
+				</ul>
+			</description>
+		</release>
+
 		<release version="4.0.3" date="2018-01-23">
 			<description>
 				<ul>
