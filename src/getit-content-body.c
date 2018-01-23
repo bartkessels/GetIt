@@ -19,21 +19,21 @@
 #include "getit-content-body.h"
 
 struct _GetitContentBody {
-    GtkScrolledWindow parent_instance;
+    GtkViewport parent_instance;
 
     /* Template widgets */
     GtkComboBoxText *cb_method;
     GtkEntry *et_uri;
     GtkStackSwitcher *sw_data;
     GtkStack *stack_data;
-    GtkGrid *grd_data_formdata;
+    GtkGrid *grd_data_formdata_data;
     GtkGrid *grd_data_raw;
     GtkButton *btn_data_formdata_add;
     GtkComboBoxText *cb_data_raw_syntax;
     GtkSourceView *sv_data_raw_input;
 };
 
-G_DEFINE_TYPE (GetitContentBody, getit_content_body, GTK_TYPE_SCROLLED_WINDOW)
+G_DEFINE_TYPE (GetitContentBody, getit_content_body, GTK_TYPE_VIEWPORT)
 
 /*
  * =============================================================================
@@ -83,16 +83,15 @@ getit_content_body_clear (GetitContentBody *self)
     gtk_entry_set_text (self->et_uri, "");
 
     /* Clear formdata */
-    total_list_size = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_data_formdata))) - 1;
+    total_list_size = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_data_formdata_data)));
 
     /*
-     * Start iteration at 1 'cause the first element
-     * in the grid is the 'Add' button
+     * Iterate through elements
      */
-    for (int list_iterator = 1; list_iterator <= total_list_size; list_iterator++) {
+    for (int list_iterator = 0; list_iterator < total_list_size; list_iterator++) {
         GetitElementFormdata *formdata;
 
-        formdata = GETIT_ELEMENT_FORMDATA (gtk_grid_get_child_at (self->grd_data_formdata, 0, list_iterator));
+        formdata = GETIT_ELEMENT_FORMDATA (gtk_grid_get_child_at (self->grd_data_formdata_data, 0, list_iterator));
         g_object_run_dispose (G_OBJECT (formdata));
     }
 
@@ -221,15 +220,13 @@ getit_content_body_add_to_json_object (GetitContentBody *self,
 
     /*
      * Count the formdata elements in the grid
-     * Minus 1 'cause the grid contains the 'Add' button
      */
-    total_list_size = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_data_formdata))) - 1;
+    total_list_size = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_data_formdata_data)));
 
     /*
-     * Start iteration at 1 'cause the first element
-     * in the grid is the 'Add' button
+     * Iterate through formdata objects
      */
-    for (int list_iterator = 1; list_iterator <= total_list_size; list_iterator++) {
+    for (int list_iterator = 0; list_iterator < total_list_size; list_iterator++) {
         GetitElementFormdata *formdata;
         JsonObject *json_object_formdata;
 
@@ -240,7 +237,7 @@ getit_content_body_add_to_json_object (GetitContentBody *self,
         const gchar *value;
         const gchar *file_name;
 
-        current_widget = gtk_grid_get_child_at (GTK_GRID (self->grd_data_formdata), 0, list_iterator);
+        current_widget = gtk_grid_get_child_at (GTK_GRID (self->grd_data_formdata_data), 0, list_iterator);
         g_return_if_fail (GETIT_IS_ELEMENT_FORMDATA (current_widget));
 
         formdata = GETIT_ELEMENT_FORMDATA (current_widget);
@@ -279,7 +276,7 @@ getit_content_body_add_formdata_with_values (GetitContentBody *self,
 {
     g_assert (GETIT_CONTENT_BODY (self));
 
-    gtk_container_add (GTK_CONTAINER (self->grd_data_formdata),
+    gtk_container_add (GTK_CONTAINER (self->grd_data_formdata_data),
                        GTK_WIDGET (getit_element_formdata_new_with_values (enabled,
                                                                            key,
                                                                            value,
@@ -327,8 +324,8 @@ getit_content_body_class_init (GetitContentBodyClass *klass)
     gtk_widget_class_bind_template_child (widget_class, GetitContentBody, cb_method);
     gtk_widget_class_bind_template_child (widget_class, GetitContentBody, et_uri);
     gtk_widget_class_bind_template_child (widget_class, GetitContentBody, sw_data);
-    gtk_widget_class_bind_template_child (widget_class, GetitContentBody, grd_data_formdata);
     gtk_widget_class_bind_template_child (widget_class, GetitContentBody, btn_data_formdata_add);
+    gtk_widget_class_bind_template_child (widget_class, GetitContentBody, grd_data_formdata_data);
     gtk_widget_class_bind_template_child (widget_class, GetitContentBody, cb_data_raw_syntax);
     gtk_widget_class_bind_template_child (widget_class, GetitContentBody, sv_data_raw_input);
 }
@@ -342,7 +339,7 @@ getit_content_body_init (GetitContentBody *self)
     gtk_widget_init_template (GTK_WIDGET (self));
 
     g_signal_connect (self->btn_data_formdata_add, "clicked",
-                      G_CALLBACK (getit_content_body_cb_btn_add_formdata_clicked), self->grd_data_formdata);
+                      G_CALLBACK (getit_content_body_cb_btn_add_formdata_clicked), self->grd_data_formdata_data);
     g_signal_connect (self->cb_data_raw_syntax, "changed",
                       G_CALLBACK (getit_content_body_cb_combobox_raw_syntax_changed), self);
 }
@@ -362,15 +359,14 @@ getit_content_body_add_formdata_to_request (GetitContentBody *self,
 
     /*
      * Count the formdata elements in the grid
-     * Minus 1 'cause the grid contains the 'Add' button
      */
-    total_list_size = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_data_formdata))) - 1;
+    total_list_size = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_data_formdata_data)));
+
 
     /*
-     * Start iteration at 1 'cause the first element
-     * in the grid is the 'Add' button
+     * Iterate through formdata objects
      */
-    for (int list_iterator = 1; list_iterator <= total_list_size; list_iterator++) {
+    for (int list_iterator = 0; list_iterator < total_list_size; list_iterator++) {
         GetitElementFormdata *formdata;
 
         GtkWidget *current_widget;
@@ -386,8 +382,8 @@ getit_content_body_add_formdata_to_request (GetitContentBody *self,
         const gchar *file_contents;
         SoupBuffer *file_buffer;
 
-        current_widget = gtk_grid_get_child_at (GTK_GRID (self->grd_data_formdata), 0, list_iterator);
-        g_assert (GETIT_IS_ELEMENT_FORMDATA (current_widget));
+        current_widget = gtk_grid_get_child_at (GTK_GRID (self->grd_data_formdata_data), 0, list_iterator);
+        g_return_if_fail (GETIT_IS_ELEMENT_FORMDATA (current_widget));
 
         formdata = GETIT_ELEMENT_FORMDATA (current_widget);
         is_enabled = getit_element_formdata_get_enabled (formdata);

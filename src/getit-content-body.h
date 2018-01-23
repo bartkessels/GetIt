@@ -30,7 +30,7 @@ G_BEGIN_DECLS
 
 #define GETIT_TYPE_CONTENT_BODY (getit_content_body_get_type())
 
-G_DECLARE_FINAL_TYPE (GetitContentBody, getit_content_body, GETIT, CONTENT_BODY, GtkScrolledWindow)
+G_DECLARE_FINAL_TYPE (GetitContentBody, getit_content_body, GETIT, CONTENT_BODY, GtkViewport)
 
 /* Data type stack information */
 #define BODY_TYPE_FORMDATA "BODY_TYPE_FORMDATA"
