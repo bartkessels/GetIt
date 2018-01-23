@@ -1,4 +1,4 @@
-
+/src/ui/*.glade~
 /po/*.pot
 /build
 .flatpak-builder
