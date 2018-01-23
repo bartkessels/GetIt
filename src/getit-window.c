@@ -307,6 +307,8 @@ getit_window_request_finished (SoupSession *session,
     const gchar *mime_type;
     const gchar *response_language;
     gchar **mime_type_split;
+    SoupURI *soup_uri;
+    const gchar *uri;
 
     GtkSourceLanguageManager *language_manager;
     GtkSourceLanguage *language;
@@ -347,13 +349,17 @@ getit_window_request_finished (SoupSession *session,
     language_manager = gtk_source_language_manager_new ();
     language = gtk_source_language_manager_guess_language (language_manager, NULL, response_language);
 
+    soup_uri = soup_message_get_uri (message);
+    uri = soup_uri_to_string (soup_uri, FALSE);
+
     /* Update UI */
     getit_content_response_show_response (content_response,
                                           language,
                                           message->response_headers,
                                           message->response_body->data,
                                           message->status_code,
-                                          message->reason_phrase);
+                                          message->reason_phrase,
+                                          uri);
     getit_window_set_loading (self, FALSE);
 
     getit_notification_display (_("Request sent"),

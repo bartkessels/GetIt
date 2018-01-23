@@ -23,6 +23,7 @@
 #include <gtksourceview/gtksource.h>
 #include <libsoup/soup.h>
 #include <string.h>
+#include <webkit2/webkit2.h>
 
 #include "getit-messages.h"
 
@@ -41,7 +42,8 @@ void getit_content_response_show_response (GetitContentResponse *self,
                                            SoupMessageHeaders   *headers,
                                            const gchar          *body,
                                            guint                 status_code,
-                                           const gchar          *status_message);
+                                           const gchar          *status_message,
+                                           const gchar          *uri);
 void getit_content_response_show_error (GetitContentResponse *self,
                                         const gchar          *error_message);
 void getit_content_response_show_timeout (GetitContentResponse *self);

@@ -28,7 +28,10 @@ struct _GetitContentResponse {
     GtkLabel *lbl_error_message;
     GtkGrid *grd_output;
     GtkGrid *grd_headers;
-    GtkSourceView *sv_output;
+    GtkSourceView *sv_output_pretty;
+    GtkSourceView *sv_output_raw;
+    GtkScrolledWindow *sw_output_preview;
+    GtkWidget *wv_output_preview;
     GtkGrid *grd_timeout;
 };
 
@@ -62,6 +65,8 @@ getit_content_response_new ()
     GetitContentResponse *content_response;
 
     content_response = g_object_new (GETIT_TYPE_CONTENT_RESPONSE, NULL);
+    content_response->wv_output_preview = webkit_web_view_new ();
+    gtk_container_add (GTK_CONTAINER (content_response->sw_output_preview), content_response->wv_output_preview);
 
     return content_response;
 }
@@ -98,13 +103,15 @@ getit_content_response_show_response (GetitContentResponse *self,
                                       SoupMessageHeaders   *headers,
                                       const gchar          *body,
                                       guint                 status_code,
-                                      const gchar          *status_message)
+                                      const gchar          *status_message,
+                                      const gchar          *uri)
 {
     g_assert (GETIT_CONTENT_RESPONSE (self));
 
     GList *children, *children_iter;
     const gchar *status_value;
-    GtkTextBuffer *text_buffer;
+    GtkTextBuffer *text_buffer_pretty;
+    GtkTextBuffer *text_buffer_raw;
 
     getit_content_response_show_screen (self,
                                         FALSE,
@@ -131,17 +138,25 @@ getit_content_response_show_response (GetitContentResponse *self,
     soup_message_headers_foreach (headers, getit_content_response_add_header, self);
 
     /* Create and clear buffer */
-    text_buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->sv_output));
-    gtk_text_buffer_set_text (text_buffer, "", 0);
+    text_buffer_pretty = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->sv_output_pretty));
+    text_buffer_raw = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->sv_output_raw));
+    gtk_text_buffer_set_text (text_buffer_pretty, "", 0);
+    gtk_text_buffer_set_text (text_buffer_raw, "", 0);
 
-    /* Add body to sourceview if it's not null */
+    /* Add body to sourceviews if it's not null */
     if (body != NULL) {
-        gtk_text_buffer_set_text (text_buffer, body, strlen (body));
+        gtk_text_buffer_set_text (text_buffer_pretty, body, strlen (body));
+        gtk_text_buffer_set_text (text_buffer_raw, body, strlen (body));
     }
+
+    /* Load webview */
+    webkit_web_view_load_html (WEBKIT_WEB_VIEW (self->wv_output_preview),
+                                 body,
+                                 uri);
 
     /* Set language of response */
     if (GTK_SOURCE_IS_LANGUAGE (language)) {
-        gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (text_buffer), language);
+        gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (text_buffer_pretty), language);
     }
 
     gtk_widget_show_all (GTK_WIDGET (self->grd_output));
@@ -205,7 +220,9 @@ getit_content_response_class_init (GetitContentResponseClass *klass)
     gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, lbl_error_message);
     gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, grd_output);
     gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, grd_headers);
-    gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, sv_output);
+    gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, sv_output_pretty);
+    gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, sv_output_raw);
+    gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, sw_output_preview);
     gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, grd_timeout);
 }
 
