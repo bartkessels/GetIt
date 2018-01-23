@@ -8,6 +8,7 @@ Application to send HTTP requests to test your API endpoints.
 ![GetIt Cookies](data/screenshots/cookies.png)
 ![GetIt Headers](data/screenshots/headers.png)
 ![GetIt Response](data/screenshots/response.png)
+![GetIt Response HTML Preview](data/screenshots/response_html_preview.png)
 
 ## What can I do with it?
 

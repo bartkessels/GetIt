@@ -48,6 +48,10 @@
 			<caption>Display the response of the request</caption>
 			<image>https://github.com/bartkessels/getit/raw/master/data/screenshots/response.png</image>
 		</screenshot>
+		<screenshot>
+			<caption>Display the HTML response as a webpage</caption>
+			<image>https://github.com/bartkessels/getit/raw/master/data/screenshots/response_html_preview.png</image>
+		</screenshot>
 	</screenshots>
 
 	<url type="homepage">https://getit.bartkessels.net</url>
