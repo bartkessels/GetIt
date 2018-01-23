@@ -68,7 +68,7 @@ getit_content_headers_clear (GetitContentHeaders *self)
     /*
      * Iterate through elements
      */
-    for (int list_iterator = 0; list_iterator <= total_list_size; list_iterator++) {
+    for (int list_iterator = 0; list_iterator < total_list_size; list_iterator++) {
         GetitElementHeader *header;
 
         header = GETIT_ELEMENT_HEADER (gtk_grid_get_child_at (self->grd_headers, 0, list_iterator));
@@ -93,7 +93,7 @@ getit_content_headers_add_to_request (GetitContentHeaders *self,
     /*
      * Iterate through headers
      */
-    for (int list_iterator = 0; list_iterator <= total_headers; list_iterator++) {
+    for (int list_iterator = 0; list_iterator < total_headers; list_iterator++) {
         GetitElementHeader *header;
 
         GtkWidget *current_widget;
@@ -146,7 +146,7 @@ getit_content_headers_add_to_json_object (GetitContentHeaders *self,
     /*
      * Iterate through headers
      */
-    for (int list_iterator = 0; list_iterator <= total_headers; list_iterator++) {
+    for (int list_iterator = 0; list_iterator < total_headers; list_iterator++) {
         GetitElementHeader *header;
         JsonObject *json_object_header;
 

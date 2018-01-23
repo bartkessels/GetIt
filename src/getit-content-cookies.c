@@ -68,7 +68,7 @@ getit_content_cookies_clear (GetitContentCookies *self)
     /*
      * Iterate through elements
      */
-    for (int list_iterator = 0; list_iterator <= total_list_size; list_iterator++) {
+    for (int list_iterator = 0; list_iterator < total_list_size; list_iterator++) {
         GetitElementCookie *cookie;
 
         cookie = GETIT_ELEMENT_COOKIE (gtk_grid_get_child_at (self->grd_cookies, 0, list_iterator));
@@ -99,7 +99,7 @@ getit_content_cookies_add_to_request (GetitContentCookies *self,
     /*
      * Iterate through all the cookies
      */
-    for (int list_iterator = 0; list_iterator <= total_cookies; list_iterator++) {
+    for (int list_iterator = 0; list_iterator < total_cookies; list_iterator++) {
         GetitElementCookie *cookie;
         SoupCookie *soup_cookie;
 
@@ -159,7 +159,7 @@ getit_content_cookies_add_to_json_object (GetitContentCookies *self,
     /*
      * Iterate through all the cookies
      */
-    for (int list_iterator = 0; list_iterator <= total_cookies; list_iterator++) {
+    for (int list_iterator = 0; list_iterator < total_cookies; list_iterator++) {
         GetitElementCookie *cookie;
         JsonObject *json_object_cookie;
 
