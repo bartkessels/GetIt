@@ -54,6 +54,10 @@ static void getit_content_response_show_screen (GetitContentResponse *self,
                                                 const gboolean        show_error,
                                                 const gboolean        show_timeout);
 
+/* Callback signatures */
+static gboolean getit_content_response_cb_output_paned_destroy (GtkWidget *caller,
+                                                                gpointer   user_data);
+
 /*
  * =============================================================================
  * Public function implementations
@@ -275,6 +279,14 @@ getit_content_response_init (GetitContentResponse *self)
     g_assert (GTK_IS_WIDGET (self));
 
     gtk_widget_init_template (GTK_WIDGET (self));
+
+    /* Load and set divider value */
+    gint divider_value = getit_settings_get_divider_value ();
+    gtk_paned_set_position (GTK_PANED (self->pnd_output), divider_value);
+
+    /* Connect signals */
+    g_signal_connect (self->pnd_output, "destroy",
+                      G_CALLBACK (getit_content_response_cb_output_paned_destroy), NULL);
 }
 
 static void
@@ -323,4 +335,29 @@ getit_content_response_show_screen (GetitContentResponse *self,
     gtk_widget_set_visible (GTK_WIDGET (self->pnd_output), show_response);
     gtk_widget_set_visible (GTK_WIDGET (self->grd_error), show_error);
     gtk_widget_set_visible (GTK_WIDGET (self->grd_timeout), show_timeout);
+}
+
+ /*
+ * =============================================================================
+ * Private callback implementations
+ *
+ */
+static gboolean
+getit_content_response_cb_output_paned_destroy (GtkWidget *caller,
+                                                gpointer   user_data)
+{
+    g_assert (GTK_IS_CONTAINER (caller));
+    g_assert (GTK_IS_PANED (caller));
+
+    GtkPaned *pnd_output;
+    gint divider_value;
+
+    pnd_output = GTK_PANED (caller);
+    divider_value = gtk_paned_get_position (pnd_output);
+
+    g_print ("div value: %d\n", divider_value);
+
+    getit_settings_set_divider_value (divider_value);
+
+    return TRUE;
 }

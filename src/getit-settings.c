@@ -70,6 +70,16 @@ getit_settings_set_user_agent (const gchar *user_agent)
     g_settings_set_string (settings, SETTINGS_KEY_USER_AGENT, user_agent);
 }
 
+void
+getit_settings_set_divider_value (const gint divider_value)
+{
+    GSettings *settings;
+
+    settings = getit_settings_get_g_settings ();
+
+    g_settings_set_int (settings, SETTINGS_KEY_DIVIDER_VALUE, divider_value);
+}
+
 gboolean
 getit_settings_get_show_notifications ()
 {
@@ -116,6 +126,18 @@ getit_settings_get_user_agent ()
     user_agent = g_settings_get_string (settings, SETTINGS_KEY_USER_AGENT);
 
     return user_agent;
+}
+
+gint
+getit_settings_get_divider_value ()
+{
+    GSettings *settings;
+    gint divider_value;
+
+    settings = getit_settings_get_g_settings ();
+    divider_value = g_settings_get_int (settings, SETTINGS_KEY_DIVIDER_VALUE);
+
+    return divider_value;
 }
 
  /*

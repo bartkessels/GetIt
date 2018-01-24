@@ -27,6 +27,7 @@
 #include <json-glib/json-glib.h>
 
 #include "getit-messages.h"
+#include "getit-settings.h"
 
 G_BEGIN_DECLS
 

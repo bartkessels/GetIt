@@ -40,5 +40,14 @@
 			</description>
 		</key>
 
+		<key name="response-output-divider-value" type="i">
+			<default>250</default>
+			<summary>Value of which the divider is set</summary>
+			<description>
+				This value is used to place the divider between the headers
+				and the output of a request
+			</description>
+		</key>
+
 	</schema>
 </schemalist>

@@ -26,13 +26,16 @@
 #define SETTINGS_KEY_SHOW_NOTIFICATIONS "app-show-notifications"
 #define SETTINGS_KEY_TIMEOUT "request-timeout"
 #define SETTINGS_KEY_USER_AGENT "request-user-agent"
+#define SETTINGS_KEY_DIVIDER_VALUE "response-output-divider-value"
 
 void getit_settings_set_show_notifications (gboolean show_notifications);
 void getit_settings_set_show_recents_on_startup (gboolean show_recents_on_startup);
 void getit_settings_set_timeout (gint timeout);
 void getit_settings_set_user_agent (const gchar *user_agent);
+void getit_settings_set_divider_value (const gint divider_value);
 
 gboolean getit_settings_get_show_notifications ();
 gboolean getit_settings_get_show_recents_on_startup ();
 gint getit_settings_get_timeout ();
 const gchar *getit_settings_get_user_agent ();
+gint getit_settings_get_divider_value ();
