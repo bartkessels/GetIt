@@ -12,8 +12,12 @@ Application to send HTTP requests to test your API endpoints.
 
 ## What can I do with it?
 
-You can send numerous requests to a webserver. If you need it there is an
-option for authentication, right now only basic auth and digest auth.
+You can send numerous requests to a webserver. You can send RAW post data, 
+form post data, add cookies to your request and add headers to your request.
+
+The response can be viewed either as syntax highlighted code, with JSON even
+being made readable, as the raw output, which means no syntax highlighting, and
+view it in a webview.
 
 ## Required packages
 
