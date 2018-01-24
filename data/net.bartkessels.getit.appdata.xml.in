@@ -69,6 +69,14 @@
 	</provides>
 
 	<releases>
+
+		<release version="4.0.5" date="2018-01-24">
+			<ul>
+				<li>Save state of divider between headers and output in response stack</li>
+				<li>Make response headers selectable</li>
+			</ul>
+		</release>
+
 		<release version="4.0.4" date="2018-01-23">
 			<ul>
 				<li>Update scrollviews</li>

@@ -1,5 +1,5 @@
 Name:			getit
-Version:		4.0.4
+Version:		4.0.5
 Release:		1%{?dist}
 Summary:		Send HTTP requests to your API endpoints
 
@@ -54,6 +54,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/icons/hicolor/*/actions/getit-remove-symbolic.png
 
 %changelog
+* Wed Jan 24 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.5
+- Save state of divider between headers and output in response stack
+- Make response headers selectable
+
 * Tue Jan 23 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.4
 - Update scrollviews
 - Add ability to enlarge headers on response
