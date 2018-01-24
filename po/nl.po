@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-23 14:35+0100\n"
+"POT-Creation-Date: 2018-01-24 15:28+0100\n"
 "PO-Revision-Date: 2017-11-06 19:52+0100\n"
 "Last-Translator: Bart Kessels <bartkessels@bk-mail.com>\n"
 "Language-Team: \n"
@@ -68,6 +68,18 @@ msgstr "User agent die wordt meegegeven met een request"
 msgid "The given user agent will be sent along with each request."
 msgstr "De gegeven user agent wordt met ieder request meegestuurd."
 
+#: ../data/net.bartkessels.getit.gschema.xml.h:9
+msgid "Value of which the divider is set"
+msgstr "Waarde waarmee de splitsing wordt gezet"
+
+#: ../data/net.bartkessels.getit.gschema.xml.h:10
+msgid ""
+"This value is used to place the divider between the headers and the output "
+"of a request"
+msgstr ""
+"Deze waarde wordt gebruikt om de splitsing tussen the headers en deuitvoer "
+"van een request te bepalen"
+
 #: ../src/ui/content_body.glade.h:1
 msgid "Add Key Value Pair"
 msgstr "Key Value waardes toevoegen"
@@ -88,7 +100,7 @@ msgstr "JSON"
 msgid "XML"
 msgstr "XML"
 
-#: ../src/ui/content_body.glade.h:6 ../src/ui/content_response.glade.h:6
+#: ../src/ui/content_body.glade.h:6 ../src/ui/content_response.glade.h:8
 msgid "Raw"
 msgstr "Ruwe data"
 
@@ -117,18 +129,10 @@ msgid "Something went wrong sending your request..."
 msgstr "Er is iets misgegaan tijdens het versturen van je request..."
 
 #: ../src/ui/content_response.glade.h:5
-msgid "Pretty"
-msgstr "Opgemaakt"
-
-#: ../src/ui/content_response.glade.h:7
-msgid "Preview"
-msgstr "Voorbeeld"
-
-#: ../src/ui/content_response.glade.h:8
 msgid "<big>The request has timed out</big>"
 msgstr "<big>De request heeft is ge-timed-out</big>"
 
-#: ../src/ui/content_response.glade.h:9
+#: ../src/ui/content_response.glade.h:6
 msgid ""
 "The timeout of a request can be set in the preferences window. To disable "
 "the timeout completly set the value to 0."
@@ -136,9 +140,17 @@ msgstr ""
 "De time-out van een request kan worden aangepast in het instellingenscherm. "
 "Om de time-out compleet uit te schakelen zet deze dan op 0."
 
+#: ../src/ui/content_response.glade.h:7
+msgid "Pretty"
+msgstr "Opgemaakt"
+
+#: ../src/ui/content_response.glade.h:9
+msgid "Preview"
+msgstr "Voorbeeld"
+
 #: ../src/ui/dialog_about.glade.h:1
-msgid "Copyright © 2016 - 2017 Bart Kessels"
-msgstr "Copyright © 2016 - 2017 Bart Kessels"
+msgid "Copyright © 2016 - 2018 Bart Kessels"
+msgstr "Copyright © 2016 - 2018 Bart Kessels"
 
 #: ../src/ui/dialog_about.glade.h:2
 msgid "GetIt is a small application to send HTTP requests"
@@ -279,7 +291,7 @@ msgstr "Recente requests"
 msgid "Open Request"
 msgstr "Request openen"
 
-#: ../src/getit-content-response.c:141
+#: ../src/getit-content-response.c:158
 msgid "Status"
 msgstr "Status"
 
