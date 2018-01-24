@@ -5,7 +5,7 @@ Summary:		Send HTTP requests to your API endpoints
 
 License:		GPLv3+
 URL:			https://getit.bartkessels.net
-Source0:		https://github.com/bartkessels/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:		https://github.com/bartkessels/%{name}/archive/%{version}.tar.gz
 
 BuildRequires:		gcc
 BuildRequires:		meson
@@ -46,12 +46,12 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %{_bindir}/%{name}
 %{_datadir}/applications/net.bartkessels.%{name}.desktop
-%{_datadir}/glib-2.0/schemas/net.bartkessels.getit.gschema.xml
-%{_datadir}/mime/packages/net.bartkessels.getit.xml
+%{_datadir}/glib-2.0/schemas/net.bartkessels.%{name}.gschema.xml
+%{_datadir}/mime/packages/net.bartkessels.%{name}.xml
 %{_datadir}/appdata/net.bartkessels.%{name}.appdata.xml
-%{_datadir}/icons/hicolor/*/apps/net.bartkessels.getit.png
-%{_datadir}/icons/hicolor/*/apps/net.bartkessels.getit-symbolic.png
-%{_datadir}/icons/hicolor/*/actions/getit-remove-symbolic.png
+%{_datadir}/icons/hicolor/*/apps/net.bartkessels.%{name}.png
+%{_datadir}/icons/hicolor/*/apps/net.bartkessels.%{name}-symbolic.png
+%{_datadir}/icons/hicolor/*/actions/%{name}-remove-symbolic.png
 
 %changelog
 * Wed Jan 24 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.5
