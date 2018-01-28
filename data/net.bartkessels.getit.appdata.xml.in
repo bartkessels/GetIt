@@ -43,23 +43,23 @@
 	<screenshots>
 		<screenshot type="default">
 			<caption>Add default information about the request</caption>
-			<image>https://github.com/bartkessels/getit/raw/master/data/screenshots/body.png</image>
+			<image width="1600" height="900">https://github.com/bartkessels/getit/raw/master/data/screenshots/body.png</image>
 		</screenshot>
-		<screenshot>
+		<screenshot type="default">
 			<caption>Add cookies to the request</caption>
-			<image>https://github.com/bartkessels/getit/raw/master/data/screenshots/cookies.png</image>
+			<image width="1600" height="900">https://github.com/bartkessels/getit/raw/master/data/screenshots/cookies.png</image>
 		</screenshot>
-		<screenshot>
+		<screenshot type="default">
 			<caption>Add headers to the request</caption>
-			<image>https://github.com/bartkessels/getit/raw/master/data/screenshots/headers.png</image>
+			<image width="1600" height="900">https://github.com/bartkessels/getit/raw/master/data/screenshots/headers.png</image>
 		</screenshot>
-		<screenshot>
+		<screenshot type="default">
 			<caption>Display the response of the request</caption>
-			<image>https://github.com/bartkessels/getit/raw/master/data/screenshots/response.png</image>
+			<image width="1600" height="900">https://github.com/bartkessels/getit/raw/master/data/screenshots/response.png</image>
 		</screenshot>
-		<screenshot>
+		<screenshot type="default">
 			<caption>Display the HTML response as a webpage</caption>
-			<image>https://github.com/bartkessels/getit/raw/master/data/screenshots/response_html_preview.png</image>
+			<image width="1600" height="900">https://github.com/bartkessels/getit/raw/master/data/screenshots/response_html_preview.png</image>
 		</screenshot>
 	</screenshots>
 
