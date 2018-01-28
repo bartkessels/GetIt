@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-24 15:28+0100\n"
+"POT-Creation-Date: 2018-01-28 13:56+0100\n"
 "PO-Revision-Date: 2017-11-06 19:52+0100\n"
 "Last-Translator: Bart Kessels <bartkessels@bk-mail.com>\n"
 "Language-Team: \n"
@@ -17,6 +17,80 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in.h:1
+msgid "GetIt"
+msgstr "GetIt"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in.h:2
+msgid "Send HTTP requests to API endpoints"
+msgstr "Verstuur HTTP reqests naar API endpoints"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in.h:3
+msgid ""
+"GetIt&#39;s main focus is to make your life a lot easier when you have to "
+"test APIs or use somebody elses API. We know it can be hard to find a great, "
+"simple and open source application for this task that&#39;s not command line "
+"based."
+msgstr ""
+"GetIt&#39;s hoofdtaak is om jouw leven gemakkelijker te maken als je API&#39;"
+"s moet testen of de API van iemand ander gebruikt. Wij weten dat het "
+"moeilijk kan zijn om een goede, simpele en ook open source applicatie te "
+"vinden voor deze taak die niet gebaseerd is op de command line."
+
+#: ../data/net.bartkessels.getit.appdata.xml.in.h:4
+msgid ""
+"You can send numerous requests to a webserver. You can send RAW post data, "
+"form post data, add cookies to your request and add headers to your request."
+msgstr ""
+"Je kunt verschillende typen requests naar een webserver sturen. Je kunt ruwe "
+"post data sturen, form post data, cookiesaan je request toevoegen en "
+"verschillende headers aan je request toevoegen."
+
+#: ../data/net.bartkessels.getit.appdata.xml.in.h:5
+msgid ""
+"The response can be viewed either as syntax highlighted code, with JSON even "
+"being made readable, as the raw output, which means no syntax highlighting, "
+"and view it in a webview."
+msgstr ""
+"De response kan worden bekeken als opgemaakte code, waarbij JSON zelfs "
+"leesbaar wordt gemaakt, als de rauwe output, wat inhoudt dat de code niet "
+"wordt opgemaakt, en je kunt de response in een webview bekijken."
+
+#: ../data/net.bartkessels.getit.appdata.xml.in.h:6
+msgid "Features of GetIt include:"
+msgstr "Features van GetIt zijn onder andere:"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in.h:7
+msgid ""
+"Sending HTTP requests to API endpoints and display the response of the server"
+msgstr ""
+"HTTP Requests naar API endpoints versturen en de response van de server "
+"weergeven"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in.h:8
+msgid "Saving and opening requests"
+msgstr "Requests opslaan en openen"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in.h:9
+msgid "Easily open recent saved/opened requests"
+msgstr "Gemakkelijk recent opgeslagen/geopende requests openen"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in.h:10
+msgid "Sending custom POST data"
+msgstr "Aangepaste POST data versturen"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in.h:11
+msgid "Syntax highlighting for all responses"
+msgstr "Code opmaak voor alle response types"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in.h:12
+msgid "Preview for HTML response"
+msgstr "Voorbeeld voor HTML response"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in.h:13
+msgid "Make JSON response look beautifull automatically"
+msgstr "JSON response automatisch leesbaar maken"
 
 #: ../data/net.bartkessels.getit.gschema.xml.h:1
 msgid "Display screen with recent requests on application startup"
@@ -344,37 +418,3 @@ msgstr "Request is verzonden"
 #: ../src/getit-window.c:589
 msgid "Save Request"
 msgstr "Request opslaan"
-
-#~ msgid ""
-#~ "GetIt&#39;s main focus is to make your life a lot easier when you have to "
-#~ "test APIs or use somebody elses API. We know it can be hard to find a "
-#~ "great, simple and open source application for this task that&#39;s not "
-#~ "command line based."
-#~ msgstr ""
-#~ "GetIt&#39;s hoofdtaak is om jouw leven gemakkelijker te maken als je "
-#~ "API&#39;s moet testen of de API van iemand ander gebruikt. Wij weten dat "
-#~ "het moeilijk kan zijn om een goede, simpele en ook open source applicatie "
-#~ "te vinden voor deze taak die niet gebaseerd is op de command line."
-
-#~ msgid ""
-#~ "Some features you can expect in GetIt include: sending HTTP requests to "
-#~ "API endpoints and display the response of the server, saving and opening "
-#~ "requests, easily open recent saved/opened requests, sending custom POST "
-#~ "data, syntax highlighting."
-#~ msgstr ""
-#~ "Verschillende features van GetIt zijn onder andere: HTTP requests "
-#~ "versturen naar API endpoints en het resultaat van de server weergeven, "
-#~ "opslaan en openen van requests, gemakkelijk recent opgeslagen/geopende "
-#~ "requests openen, eigen POST data versturen, syntax highlighting"
-
-#~ msgid "New Window"
-#~ msgstr "Nieuw Scherm"
-
-#~ msgid "Touchpad gestures"
-#~ msgstr "Touchpad gebaren"
-
-#~ msgid "Move to stack on the right"
-#~ msgstr "Verplaats naar de stack rechts"
-
-#~ msgid "Move to stack on the left"
-#~ msgstr "Verplaats naar de stack links"
