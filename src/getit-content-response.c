@@ -355,8 +355,6 @@ getit_content_response_cb_output_paned_destroy (GtkWidget *caller,
     pnd_output = GTK_PANED (caller);
     divider_value = gtk_paned_get_position (pnd_output);
 
-    g_print ("div value: %d\n", divider_value);
-
     getit_settings_set_divider_value (divider_value);
 
     return TRUE;
