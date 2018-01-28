@@ -4,28 +4,37 @@
 	<id>net.bartkessels.getit.desktop</id>
 	<metadata_license>CC0</metadata_license>
 	<project_license>GPL-3.0+</project_license>
-	<name>GetIt</name>
-	<summary>Send HTTP requests to API endpoints</summary>
+
+	<_name>GetIt</_name>
+	<_summary>Send HTTP requests to API endpoints</_summary>
 	<translation type="gettext">getit</translation>
 
 	<description>
-		<p>
+		<_p>
 			GetIt&#39;s main focus is to make your life a lot easier when you have to test APIs or use somebody elses API.
 			We know it can be hard to find a great, simple and open source application for this task that&#39;s not command
 			line based.
-		</p>
-		<p>
+		</_p>
+		<_p>
+			You can send numerous requests to a webserver. You can send RAW post data, form post data, add cookies to your
+			request and add headers to your request.
+		</_p>
+		<_p>
+			The response can be viewed either as syntax highlighted code, with JSON even being made readable,
+			as the raw output, which means no syntax highlighting, and view it in a webview.
+		</_p>
+		<_p>
 			Features of GetIt include:
-		</p>
+		</_p>
 
 		<ul>
-			<li>sending HTTP requests to API endpoints and display the response of the server</li>
-			<li>saving and opening requests</li>
-			<li>easily open recent saved/opened requests</li>
-			<li>sending custom POST data</li>
-			<li>syntax highlighting</li>
-			<li>Preview for HTML response</li>
-			<li>Make JSON response look beautifull automatically</li>
+			<_li>Sending HTTP requests to API endpoints and display the response of the server</_li>
+			<_li>Saving and opening requests</_li>
+			<_li>Easily open recent saved/opened requests</_li>
+			<_li>Sending custom POST data</_li>
+			<_li>Syntax highlighting for all responses</_li>
+			<_li>Preview for HTML response</_li>
+			<_li>Make JSON response look beautifull automatically</_li>
 		</ul>
 	</description>
 
@@ -72,6 +81,7 @@
 
 		<release version="4.0.5" date="2018-01-24">
 			<description>
+				<p>This release fixed/added:</p>
 				<ul>
 					<li>Save state of divider between headers and output in response stack</li>
 					<li>Make response headers selectable</li>
@@ -81,8 +91,9 @@
 
 		<release version="4.0.4" date="2018-01-23">
 			<description>
+				<p>This release fixed/added:</p>
 				<ul>
-					<li>Update scrollviews</li>
+					<li>Update scrollviews in the application</li>
 					<li>Add ability to enlarge headers on response</li>
 				</ul>
 			</description>
@@ -90,6 +101,7 @@
 
 		<release version="4.0.3.1" date="2018-01-23">
 			<description>
+				<p>This release fixed/added:</p>
 				<ul>
 					<li>Update Dutch translations</li>
 				</ul>
@@ -98,6 +110,7 @@
 
 		<release version="4.0.3" date="2018-01-23">
 			<description>
+				<p>This release fixed/added:</p>
 				<ul>
 					<li>Add view for HTML preview</li>
 					<li>Automatically make JSON view readable</li>
@@ -106,6 +119,7 @@
 		</release>
 		<release version="4.0.2" date="2018-01-19">
 			<description>
+				<p>This release fixed/added:</p>
 				<ul>
 					<li>Clear headerbar when clearing a request</li>
 					<li>Fix bug showing syntax highlighting</li>
@@ -114,8 +128,9 @@
 		</release>
 		<release version="4.0.1" date="2017-11-06">
 			<description>
+				<p>This release fixed/added:</p>
 				<ul>
-					<li>Ship own icons</li>
+					<li>Ship own application icons</li>
 					<li>Add action to launch new instance from applications overview</li>
 				</ul>
 			</description>
@@ -123,6 +138,7 @@
 
 		<release version="4.0" date="2017-11-04">
 			<description>
+				<p>This release fixed/added:</p>
 				<ul>
 					<li>Add recent files support</li>
 					<li>Add ability to set timeout for request</li>
@@ -137,6 +153,7 @@
 
 		<release version="3.2" date="2017-09-05">
 			<description>
+				<p>This release fixed/added:</p>
 				<ul>
 					<li>Fix non-highlighting bug in response stack</li>
 					<li>Fix bug application crash on re-save</li>
@@ -146,6 +163,7 @@
 
 		<release version="3.1" date="2017-08-13">
 			<description>
+				<p>This release fixed/added:</p>
 				<ul>
 					<li>Move to Meson build system</li>
 					<li>Allow opening files on application startup</li>
@@ -155,14 +173,16 @@
 
 		<release version="3.0" date="2017-07-11">
 			<description>
+				<p>This release fixed/added:</p>
 				<ul>
-					<li>Rewrite to C</li>
+					<li>Rewrite from Python to C</li>
 				</ul>
 			</description>
 		</release>
 
 		<release version="2.0" date="2017-06-17">
 			<description>
+				<p>This release fixed/added:</p>
 				<ul>
 					<li>Display message when something has gone wrong while sending the request</li>
 					<li>Add ability to save a request</li>
@@ -174,6 +194,7 @@
 
 		<release version="1.4.1" date="2017-06-11">
 			<description>
+				<p>This release fixed/added:</p>
 				<ul>
 					<li>Add cancel request button</li>
 					<li>Add shortcuts for send and cancel button</li>
@@ -184,6 +205,7 @@
 
 		<release version="1.4" date="2017-06-09">
 			<description>
+				<p>This release fixed/added:</p>
 				<ul>
 					<li>Add spinner to indicate the request is still being sent</li>
 					<li>Add shortcut to send a request</li>
@@ -193,8 +215,8 @@
 
 		<release version="1.3" date="2017-06-01">
 			<description>
+				<p>This release fixed/added:</p>
 				<ul>
-					<li>Refactor codebase</li>
 					<li>Add ability to create raw body instead of formdata</li>
 				</ul>
 			</description>
@@ -202,6 +224,7 @@
 
 		<release version="1.2" date="2017-04-07">
 			<description>
+				<p>This release fixed/added:</p>
 				<ul>
 					<li>Add ability to add cookies to a request</li>
 					<li>Fix endless scrolling bug on response stack</li>
@@ -211,6 +234,7 @@
 
 		<release version="1.1" date="2017-03-31">
 			<description>
+				<p>This release fixed/added:</p>
 				<ul>
 					<li>Add ability to add files to a request</li>
 				</ul>
