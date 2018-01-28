@@ -5,10 +5,12 @@ Exec=getit %f
 Terminal=false
 Type=Application
 MimeType=application/x-getit
-Categories=Development;Tools;Network
+Categories=Development
 StartupNotify=true
+# Do NOT translate this; This is the icon file for the application
 Icon=net.bartkessels.getit
 Actions=new-window;
+Keywords=Request;HTTP;API;
 
 [Desktop Action new-window]
 Name=New Window

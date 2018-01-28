@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-28 13:56+0100\n"
+"POT-Creation-Date: 2018-01-28 14:54+0100\n"
 "PO-Revision-Date: 2017-11-06 19:52+0100\n"
 "Last-Translator: Bart Kessels <bartkessels@bk-mail.com>\n"
 "Language-Team: \n"
@@ -19,10 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../data/net.bartkessels.getit.appdata.xml.in.h:1
+#: ../data/net.bartkessels.getit.desktop:3
 msgid "GetIt"
 msgstr "GetIt"
 
 #: ../data/net.bartkessels.getit.appdata.xml.in.h:2
+#: ../data/net.bartkessels.getit.desktop:4
 msgid "Send HTTP requests to API endpoints"
 msgstr "Verstuur HTTP reqests naar API endpoints"
 
@@ -91,6 +93,18 @@ msgstr "Voorbeeld voor HTML response"
 #: ../data/net.bartkessels.getit.appdata.xml.in.h:13
 msgid "Make JSON response look beautifull automatically"
 msgstr "JSON response automatisch leesbaar maken"
+
+#: ../data/net.bartkessels.getit.desktop:11
+msgid "net.bartkessels.getit"
+msgstr "net.bartkessels.getit"
+
+#: ../data/net.bartkessels.getit.desktop:13
+msgid "Request;HTTP;API;"
+msgstr "Request;HTTP;API;"
+
+#: ../data/net.bartkessels.getit.desktop:16
+msgid "New Window"
+msgstr "Nieuw Venster"
 
 #: ../data/net.bartkessels.getit.gschema.xml.h:1
 msgid "Display screen with recent requests on application startup"
