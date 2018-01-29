@@ -542,25 +542,24 @@ getit_window_cb_mi_open_clicked (GtkWidget *caller,
 
     GetitWindow *self;
     GtkFileFilter *file_filter;
-    GtkWidget *file_chooser;
+    GtkFileChooserNative *file_chooser;
     gint file_chooser_result;
     const gchar *file_name;
 
     self = GETIT_WINDOW (user_data);
     file_filter = gtk_file_filter_new ();
-    file_chooser = gtk_file_chooser_dialog_new (_("Open Request"),
+    file_chooser = gtk_file_chooser_native_new (_("Open Request"),
                                                 GTK_WINDOW (self),
                                                 GTK_FILE_CHOOSER_ACTION_OPEN,
-                                                _("Cancel"), GTK_RESPONSE_CANCEL,
-                                                _("Open"), GTK_RESPONSE_ACCEPT,
-                                                NULL);
+                                                _("Cancel"),
+                                                _("Open"));
 
     gtk_file_filter_add_pattern (file_filter, "*.getit");
     gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (file_chooser), file_filter);
 
-    file_chooser_result = gtk_dialog_run (GTK_DIALOG (file_chooser));
+    file_chooser_result = gtk_native_dialog_run (GTK_NATIVE_DIALOG (file_chooser));
     file_name = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (file_chooser));
-    gtk_widget_destroy (file_chooser);
+    g_object_unref (file_chooser);
 
     /* User canceled open action */
     if (file_chooser_result != GTK_RESPONSE_ACCEPT) {
@@ -580,25 +579,25 @@ getit_window_cb_mi_save_as_clicked (GtkWidget *caller,
 
     GetitWindow *self;
     GtkFileFilter *file_filter;
-    GtkWidget *file_chooser;
+    GtkFileChooserNative *file_chooser;
     gint file_chooser_result;
     const gchar *file_name;
 
     self = GETIT_WINDOW (user_data);
     file_filter = gtk_file_filter_new ();
-    file_chooser = gtk_file_chooser_dialog_new (_("Save Request"),
+    file_chooser = gtk_file_chooser_native_new (_("Save Request"),
                                                 GTK_WINDOW (self),
                                                 GTK_FILE_CHOOSER_ACTION_SAVE,
-                                                _("Cancel"), GTK_RESPONSE_CANCEL,
-                                                _("Save"), GTK_RESPONSE_ACCEPT,
-                                                NULL);
+                                                _("Cancel"),
+                                                _("Save"));
 
     gtk_file_filter_add_pattern (file_filter, "*.getit");
     gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (file_chooser), file_filter);
+    gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (file_chooser), TRUE);
 
-    file_chooser_result = gtk_dialog_run (GTK_DIALOG (file_chooser));
+    file_chooser_result = gtk_native_dialog_run (GTK_NATIVE_DIALOG (file_chooser));
     file_name = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (file_chooser));
-    gtk_widget_destroy (file_chooser);
+    g_object_unref (file_chooser);
 
     /* User canceled save action */
     if (file_chooser_result != GTK_RESPONSE_ACCEPT) {
