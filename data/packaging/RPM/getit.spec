@@ -54,6 +54,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/icons/hicolor/*/actions/%{name}-remove-symbolic.png
 
 %changelog
+* Mon Jan 29 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.6
+- Updated save and open file dialogs
+- Update Dutch translation desktop and appstream file
+
 * Wed Jan 24 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.5
 - Save state of divider between headers and output in response stack
 - Make response headers selectable

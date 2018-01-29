@@ -79,6 +79,16 @@
 
 	<releases>
 
+		<release version="4.0.6" date="2018-01-29">
+			<description>
+				<p>This release fixed/added:</p>
+				<ul>
+					<li>Updated save and open file dialogs</li>
+					<li>Update Dutch translation desktop and appstream file</li>
+				</ul>
+			</description>
+		</release>
+
 		<release version="4.0.5" date="2018-01-24">
 			<description>
 				<p>This release fixed/added:</p>

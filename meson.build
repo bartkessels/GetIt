@@ -1,5 +1,5 @@
 project('getit','c',
-	version: '4.0.5',
+	version: '4.0.6',
 	meson_version: '>= 0.40.0',
 )
 i18n = import('i18n')
