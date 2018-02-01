@@ -93,6 +93,17 @@ just run the flatpak install command.
 $ flatpak install getit.flatpak
 ```
 
+And run it with `flatpak run net.bartkessels.getit`.
+
+## Flathub
+
+If you don't have flatpak-builder installed or don't want to generate your own flatpak bundle
+you can always install GetIt from Flathub.
+
+```
+$ flatpak install --from https://flathub.org/repo/appstream/net.bartkessels.getit.flatpakref
+```
+
 ## COPR
 
 If you have Fedora and don't want to build GetIt from source you can easily install it using dnf copr.
