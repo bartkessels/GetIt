@@ -1,46 +1,34 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Dutch translation
+# Copyright (C) 2018 Bart Kessels
+# This file is distributed under the same license as the getit package.
+# Bart Kessels <bartkessels@bk-mail.com>, 2018.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-02 20:12+0100\n"
-"PO-Revision-Date: 2017-11-06 19:52+0100\n"
+"Project-Id-Version: getit 4.0.6\n"
+"Report-Msgid-Bugs-To: bartkessels@bk-mail.com\n"
+"POT-Creation-Date: 2018-02-02 23:19+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Bart Kessels <bartkessels@bk-mail.com>\n"
-"Language-Team: \n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.3\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/net.bartkessels.getit.appdata.xml.in.h:1
-#: ../data/net.bartkessels.getit.desktop:3
-msgid "GetIt"
-msgstr "GetIt"
-
-#: ../data/net.bartkessels.getit.appdata.xml.in.h:2
-#: ../data/net.bartkessels.getit.desktop:4
-msgid "Send HTTP requests to API endpoints"
-msgstr "Verstuur HTTP reqests naar API endpoints"
-
-#: ../data/net.bartkessels.getit.appdata.xml.in.h:3
+#: ../data/net.bartkessels.getit.appdata.xml.in:18
 msgid ""
-"GetIt&#39;s main focus is to make your life a lot easier when you have to "
-"test APIs or use somebody elses API. We know it can be hard to find a great, "
-"simple and open source application for this task that&#39;s not command line "
+"GetIt's main focus is to make your life a lot easier when you have to test "
+"APIs or use somebody elses API. We know it can be hard to find a great, "
+"simple and open source application for this task that's not command line "
 "based."
 msgstr ""
-"GetIt&#39;s hoofdtaak is om jouw leven gemakkelijker te maken als je API&#39;"
-"s moet testen of de API van iemand ander gebruikt. Wij weten dat het "
-"moeilijk kan zijn om een goede, simpele en ook open source applicatie te "
-"vinden voor deze taak die niet gebaseerd is op de command line."
+"GetIt's hoofdtaak is om jouw leven gemakkelijker te maken als je API's moet "
+"testen of de API van iemand ander gebruikt. Wij weten dat het moeilijk kan "
+"zijn om een goede, simpele en ook open source applicatie te vinden voor deze "
+"taak die niet gebaseerd is op de command line."
 
-#: ../data/net.bartkessels.getit.appdata.xml.in.h:4
+#: ../data/net.bartkessels.getit.appdata.xml.in:23
 msgid ""
 "You can send numerous requests to a webserver. You can send RAW post data, "
 "form post data, add cookies to your request and add headers to your request."
@@ -49,7 +37,7 @@ msgstr ""
 "post data sturen, form post data, cookiesaan je request toevoegen en "
 "verschillende headers aan je request toevoegen."
 
-#: ../data/net.bartkessels.getit.appdata.xml.in.h:5
+#: ../data/net.bartkessels.getit.appdata.xml.in:27
 msgid ""
 "The response can be viewed either as syntax highlighted code, with JSON even "
 "being made readable, as the raw output, which means no syntax highlighting, "
@@ -59,60 +47,93 @@ msgstr ""
 "leesbaar wordt gemaakt, als de rauwe output, wat inhoudt dat de code niet "
 "wordt opgemaakt, en je kunt de response in een webview bekijken."
 
-#: ../data/net.bartkessels.getit.appdata.xml.in.h:6
+#: ../data/net.bartkessels.getit.appdata.xml.in:31
 msgid "Features of GetIt include:"
 msgstr "Features van GetIt zijn onder andere:"
 
-#: ../data/net.bartkessels.getit.appdata.xml.in.h:7
+#: ../data/net.bartkessels.getit.appdata.xml.in:36
 msgid ""
 "Sending HTTP requests to API endpoints and display the response of the server"
 msgstr ""
 "HTTP Requests naar API endpoints versturen en de response van de server "
 "weergeven"
 
-#: ../data/net.bartkessels.getit.appdata.xml.in.h:8
+#: ../data/net.bartkessels.getit.appdata.xml.in:37
 msgid "Saving and opening requests"
 msgstr "Requests opslaan en openen"
 
-#: ../data/net.bartkessels.getit.appdata.xml.in.h:9
+#: ../data/net.bartkessels.getit.appdata.xml.in:38
 msgid "Easily open recent saved/opened requests"
 msgstr "Gemakkelijk recent opgeslagen/geopende requests openen"
 
-#: ../data/net.bartkessels.getit.appdata.xml.in.h:10
+#: ../data/net.bartkessels.getit.appdata.xml.in:39
 msgid "Sending custom POST data"
 msgstr "Aangepaste POST data versturen"
 
-#: ../data/net.bartkessels.getit.appdata.xml.in.h:11
+#: ../data/net.bartkessels.getit.appdata.xml.in:40
 msgid "Syntax highlighting for all responses"
 msgstr "Code opmaak voor alle response types"
 
-#: ../data/net.bartkessels.getit.appdata.xml.in.h:12
+#: ../data/net.bartkessels.getit.appdata.xml.in:41
 msgid "Preview for HTML response"
 msgstr "Voorbeeld voor HTML response"
 
-#: ../data/net.bartkessels.getit.appdata.xml.in.h:13
+#: ../data/net.bartkessels.getit.appdata.xml.in:42
 msgid "Make JSON response look beautifull automatically"
 msgstr "JSON response automatisch leesbaar maken"
 
-#. Do NOT translate this; This is the icon file for the application
-#: ../data/net.bartkessels.getit.desktop:12
+#: ../data/net.bartkessels.getit.appdata.xml.in:50
+msgid "Add default information about the request"
+msgstr "Standaard informatie voor een request invullen"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:54
+msgid "Add cookies to the request"
+msgstr "Cookies aan een request toevoegen"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:58
+msgid "Add headers to the request"
+msgstr "Headers aan een request toevoegen"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:62
+msgid "Display the response of the request"
+msgstr "Response van een request bekijken"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:66
+msgid "Display the HTML response as a webpage"
+msgstr "HTML response als webpagina bekijken"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:73
+msgid "Bart Kessels"
+msgstr "Bart Kessels"
+
+#: ../data/net.bartkessels.getit.desktop.in:3
+#: ../data/net.bartkessels.getit.appdata.xml.in:8
+msgid "GetIt"
+msgstr "GetIt"
+
+#: ../data/net.bartkessels.getit.desktop.in:4
+#: ../data/net.bartkessels.getit.appdata.xml.in:9
+msgid "Send HTTP requests to API endpoints"
+msgstr "Verstuur HTTP reqests naar API endpoints"
+
+#: ../data/net.bartkessels.getit.desktop.in:12
 msgid "net.bartkessels.getit"
 msgstr "net.bartkessels.getit"
 
-#: ../data/net.bartkessels.getit.desktop:14
+#: ../data/net.bartkessels.getit.desktop.in:14
 msgid "Request;HTTP;API;"
 msgstr "Request;HTTP;API;"
 
-#: ../data/net.bartkessels.getit.desktop:17
+#: ../data/net.bartkessels.getit.desktop.in:17
 msgid "New Window"
-msgstr "Nieuw Venster"
+msgstr "Nieuw venster"
 
-#: ../data/net.bartkessels.getit.gschema.xml.h:1
+#: ../data/net.bartkessels.getit.gschema.xml:7
 msgid "Display screen with recent requests on application startup"
 msgstr ""
 "Scherm met recente requests weergeven als de applicatie wordt opgestart"
 
-#: ../data/net.bartkessels.getit.gschema.xml.h:2
+#: ../data/net.bartkessels.getit.gschema.xml:8
 msgid ""
 "When set to true the recent requests window will always be shown when the "
 "application is launched. Either way it can still be launched from the "
@@ -122,11 +143,11 @@ msgstr ""
 "requests getoond als de applicatie wordt gestart. Het recente requests "
 "scherm kan hoe dan ook gestart worden via het applicatiemenu."
 
-#: ../data/net.bartkessels.getit.gschema.xml.h:3
+#: ../data/net.bartkessels.getit.gschema.xml:17
 msgid "Display notifications when a request has been sent"
 msgstr "Notificatie tonen als een request is verzonden"
 
-#: ../data/net.bartkessels.getit.gschema.xml.h:4
+#: ../data/net.bartkessels.getit.gschema.xml:18
 msgid ""
 "When this setting is enabled GetIt will show a notification everytime a "
 "request has been sent or when the timeout has been reached."
@@ -135,11 +156,11 @@ msgstr ""
 "keer als een request is verzonden of als er een time-out heeft plaats "
 "gevonden."
 
-#: ../data/net.bartkessels.getit.gschema.xml.h:5
+#: ../data/net.bartkessels.getit.gschema.xml:27
 msgid "Timeout request after given seconds"
-msgstr "Time-out een request na gegeven seconden"
+msgstr "Time-out een request na ingevoerd aantal seconden"
 
-#: ../data/net.bartkessels.getit.gschema.xml.h:6
+#: ../data/net.bartkessels.getit.gschema.xml:28
 msgid ""
 "When a request is taking too long to get a response from the server it can "
 "be cancled within the given timeout. When timeout is set to 0 the request "
@@ -149,83 +170,83 @@ msgstr ""
 "krijgen kan de request automatisch worden geannuleerd door een time-out. Als "
 "de time-out wordt ingesteld op 0 dan zal het request oneindig doorgaan."
 
-#: ../data/net.bartkessels.getit.gschema.xml.h:7
+#: ../data/net.bartkessels.getit.gschema.xml:37
 msgid "User agent to send along with each request"
 msgstr "User agent die wordt meegegeven met een request"
 
-#: ../data/net.bartkessels.getit.gschema.xml.h:8
+#: ../data/net.bartkessels.getit.gschema.xml:38
 msgid "The given user agent will be sent along with each request."
 msgstr "De gegeven user agent wordt met ieder request meegestuurd."
 
-#: ../data/net.bartkessels.getit.gschema.xml.h:9
+#: ../data/net.bartkessels.getit.gschema.xml:45
 msgid "Value of which the divider is set"
 msgstr "Waarde waarmee de splitsing wordt gezet"
 
-#: ../data/net.bartkessels.getit.gschema.xml.h:10
+#: ../data/net.bartkessels.getit.gschema.xml:46
 msgid ""
 "This value is used to place the divider between the headers and the output "
 "of a request"
 msgstr ""
-"Deze waarde wordt gebruikt om de splitsing tussen the headers en deuitvoer "
+"Deze waarde wordt gebruikt om de splitsing tussen the headers en de uitvoer "
 "van een request te bepalen"
 
-#: ../src/ui/content_body.glade.h:1
+#: ../src/ui/content_body.glade:61
 msgid "Add Key Value Pair"
 msgstr "Key Value waardes toevoegen"
 
-#: ../src/ui/content_body.glade.h:2
+#: ../src/ui/content_body.glade:131
 msgid "Form Data"
 msgstr "Formdata"
 
-#: ../src/ui/content_body.glade.h:3 ../src/ui/element_formdata.glade.h:4
+#: ../src/ui/content_body.glade:147 ../src/ui/element_formdata.glade:82
 msgid "Text"
 msgstr "Tekst"
 
-#: ../src/ui/content_body.glade.h:4
+#: ../src/ui/content_body.glade:148
 msgid "JSON"
 msgstr "JSON"
 
-#: ../src/ui/content_body.glade.h:5
+#: ../src/ui/content_body.glade:149
 msgid "XML"
 msgstr "XML"
 
-#: ../src/ui/content_body.glade.h:6 ../src/ui/content_response.glade.h:8
+#: ../src/ui/content_body.glade:200 ../src/ui/content_response.glade:312
 msgid "Raw"
 msgstr "Ruwe data"
 
-#: ../src/ui/content_body.glade.h:7
+#: ../src/ui/content_body.glade:235
 msgid "Validate X.509 Certificates"
 msgstr "X.509 Certificaten Valideren"
 
-#: ../src/ui/content_cookies.glade.h:1
+#: ../src/ui/content_cookies.glade:23
 msgid "Add Cookie"
 msgstr "Cookie Toevoegen"
 
-#: ../src/ui/content_headers.glade.h:1
+#: ../src/ui/content_headers.glade:23
 msgid "Add Header"
 msgstr "Header Toevoegen"
 
-#: ../src/ui/content_response.glade.h:1
+#: ../src/ui/content_response.glade:28
 msgid "<big>Please send a request...</big>"
 msgstr "<big>Verstuur een request...</big>"
 
-#: ../src/ui/content_response.glade.h:2
+#: ../src/ui/content_response.glade:64
 msgid "<big>Sending request...</big>"
-msgstr "<big>Request aan het versturen...</big>"
+msgstr "<big>Request wordt verzonden...</big>"
 
-#: ../src/ui/content_response.glade.h:3
+#: ../src/ui/content_response.glade:89
 msgid "<big>An error has occured</big>"
 msgstr "<big>Er is een error opgetreden...</big>"
 
-#: ../src/ui/content_response.glade.h:4
+#: ../src/ui/content_response.glade:105
 msgid "Something went wrong sending your request..."
 msgstr "Er is iets misgegaan tijdens het versturen van je request..."
 
-#: ../src/ui/content_response.glade.h:5
+#: ../src/ui/content_response.glade:133
 msgid "<big>The request has timed out</big>"
-msgstr "<big>De request heeft is ge-timed-out</big>"
+msgstr "<big>De request is ge-timed-out</big>"
 
-#: ../src/ui/content_response.glade.h:6
+#: ../src/ui/content_response.glade:150
 msgid ""
 "The timeout of a request can be set in the preferences window. To disable "
 "the timeout completly set the value to 0."
@@ -233,207 +254,140 @@ msgstr ""
 "De time-out van een request kan worden aangepast in het instellingenscherm. "
 "Om de time-out compleet uit te schakelen zet deze dan op 0."
 
-#: ../src/ui/content_response.glade.h:7
+#: ../src/ui/content_response.glade:268
 msgid "Pretty"
 msgstr "Opgemaakt"
 
-#: ../src/ui/content_response.glade.h:9
+#: ../src/ui/content_response.glade:335
 msgid "Preview"
 msgstr "Voorbeeld"
 
-#: ../src/ui/dialog_about.glade.h:1
+#: ../src/ui/dialog_about.glade:10
 msgid "Copyright © 2016 - 2018 Bart Kessels"
 msgstr "Copyright © 2016 - 2018 Bart Kessels"
 
-#: ../src/ui/dialog_about.glade.h:2
+#: ../src/ui/dialog_about.glade:11
 msgid "GetIt is a small application to send HTTP requests"
 msgstr "GetIt is een applicatie om HTTP requests te versturen"
 
-#: ../src/ui/dialog_settings.glade.h:1
+#: ../src/ui/dialog_settings.glade:27
 msgid "Apply"
 msgstr "Toepassen"
 
-#: ../src/ui/dialog_settings.glade.h:2
+#: ../src/ui/dialog_settings.glade:63
 msgid "Display notifications"
 msgstr "Notificaties weergeven"
 
-#: ../src/ui/dialog_settings.glade.h:3
+#: ../src/ui/dialog_settings.glade:88
 msgid "Timeout"
 msgstr "Time-out"
 
-#: ../src/ui/dialog_settings.glade.h:4
+#: ../src/ui/dialog_settings.glade:116
 msgid "User Agent"
 msgstr "User Agent"
 
-#: ../src/ui/dialog_settings.glade.h:5
+#: ../src/ui/dialog_settings.glade:139
 msgid "Show recents on startup"
-msgstr "Recente requests tijdens opstarten"
+msgstr "Recente requests tijdens opstarten tonen"
 
-#: ../src/ui/element_cookie.glade.h:1 ../src/ui/element_formdata.glade.h:1
-#: ../src/ui/element_header.glade.h:1
+#: ../src/ui/element_cookie.glade:34 ../src/ui/element_formdata.glade:33
+#: ../src/ui/element_header.glade:34
 msgid "Key"
 msgstr "Key"
 
-#: ../src/ui/element_cookie.glade.h:2 ../src/ui/element_formdata.glade.h:2
-#: ../src/ui/element_header.glade.h:2
+#: ../src/ui/element_cookie.glade:46 ../src/ui/element_formdata.glade:45
+#: ../src/ui/element_header.glade:46
 msgid "Value"
 msgstr "Waarde"
 
-#: ../src/ui/element_formdata.glade.h:3
+#: ../src/ui/element_formdata.glade:69
 msgid "Choose File..."
 msgstr "Kies Bestand..."
 
-#: ../src/ui/element_formdata.glade.h:5 ../src/ui/window_shortcuts.glade.h:5
+#: ../src/ui/element_formdata.glade:83 ../src/ui/window_shortcuts.glade:47
 msgid "File"
 msgstr "Bestand"
 
-#: ../src/ui/menu_app.glade.h:1
+#: ../src/ui/menu_app.glade:6
 msgid "_Recent"
 msgstr "_Recent"
 
-#: ../src/ui/menu_app.glade.h:2
+#: ../src/ui/menu_app.glade:12
 msgid "_Preferences"
 msgstr "_Instellingen"
 
-#: ../src/ui/menu_app.glade.h:3
+#: ../src/ui/menu_app.glade:16
 msgid "_Shortcuts"
 msgstr "_Sneltoetsen"
 
-#: ../src/ui/menu_app.glade.h:4
+#: ../src/ui/menu_app.glade:22
 msgid "_About"
 msgstr "_Over"
 
-#: ../src/ui/menu_app.glade.h:5
+#: ../src/ui/menu_app.glade:28
 msgid "_Quit"
 msgstr "_Sluiten"
 
-#: ../src/ui/window_main.glade.h:1 ../src/getit-window.c:558
+#: ../src/ui/window_main.glade:46
 msgid "Open"
 msgstr "Openen"
 
-#: ../src/ui/window_main.glade.h:2
+#: ../src/ui/window_main.glade:59
 msgid "Save As"
 msgstr "Opslaan Als"
 
-#: ../src/ui/window_main.glade.h:3 ../src/getit-window.c:595
+#: ../src/ui/window_main.glade:72
 msgid "Save"
 msgstr "Opslaan"
 
-#: ../src/ui/window_main.glade.h:4
+#: ../src/ui/window_main.glade:88
 msgid "Clear Request"
 msgstr "Request Legen"
 
-#: ../src/ui/window_main.glade.h:5 ../src/getit-window.c:126
+#: ../src/ui/window_main.glade:119
 msgid "File: (null)"
 msgstr "Bestand: (null)"
 
-#: ../src/ui/window_main.glade.h:6
+#: ../src/ui/window_main.glade:161
 msgid "Send"
 msgstr "Verstuur"
 
-#: ../src/ui/window_main.glade.h:7
+#: ../src/ui/window_main.glade:165
 msgid "Send request (ctrl + return)"
 msgstr "Verstuur request (ctrl + enter)"
 
-#: ../src/ui/window_main.glade.h:8 ../src/getit-window.c:557
-#: ../src/getit-window.c:594
+#: ../src/ui/window_main.glade:177
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: ../src/ui/window_main.glade.h:9
+#: ../src/ui/window_main.glade:180
 msgid "Cancel running request (esc)"
 msgstr "Annuleer huidige request (esc)"
 
-#: ../src/ui/window_shortcuts.glade.h:1
+#: ../src/ui/window_shortcuts.glade:14
 msgid "Shortcuts"
 msgstr "Sneltoetsen"
 
-#: ../src/ui/window_shortcuts.glade.h:2
+#: ../src/ui/window_shortcuts.glade:20
 msgid "Request"
 msgstr "Request"
 
-#: ../src/ui/window_shortcuts.glade.h:3
+#: ../src/ui/window_shortcuts.glade:27
 msgid "Send request"
-msgstr "Request versturen"
+msgstr "Verstuur request"
 
-#: ../src/ui/window_shortcuts.glade.h:4
+#: ../src/ui/window_shortcuts.glade:36
 msgid "Cancel running request"
 msgstr "Annuleer het lopende request"
 
-#: ../src/ui/window_shortcuts.glade.h:6
+#: ../src/ui/window_shortcuts.glade:54
 msgid "Save the request as"
 msgstr "Request opslaan als"
 
-#: ../src/ui/window_shortcuts.glade.h:7
+#: ../src/ui/window_shortcuts.glade:63
 msgid "Save the request"
 msgstr "Request opslaan"
 
-#: ../src/ui/window_shortcuts.glade.h:8
+#: ../src/ui/window_shortcuts.glade:72
 msgid "Open a request"
-msgstr "Request openen"
-
-#: ../src/getit-application.c:196
-msgid "GetIt Files"
-msgstr "GetIt Bestanden"
-
-#: ../src/getit-application.c:198
-msgid "Recent Requests"
-msgstr "Recente requests"
-
-#: ../src/getit-application.c:201 ../src/getit-window.c:554
-msgid "Open Request"
-msgstr "Request openen"
-
-#: ../src/getit-content-response.c:158
-msgid "Status"
-msgstr "Status"
-
-#. Default messages
-#: ../src/getit-messages.h:24
-msgid "Are you sure you want to clear the request?"
-msgstr "Weet je zeker dat je het huidige request wilt legen?"
-
-#. Error messages
-#: ../src/getit-messages.h:27
-msgid "Something went wrong saving the file&#8230;"
-msgstr "Er is iets misgegaan tijdens het opslaan van het bestand&#8230;"
-
-#: ../src/getit-messages.h:28
-msgid "Something went wrong opening the file&#8230;"
-msgstr "Er is iets misgegaan tijdens het openen van het bestand&#8230;"
-
-#: ../src/getit-messages.h:29
-msgid "Something went wrong sending your request&#8230;"
-msgstr "Er is iets misgegaan tijdens het versturen van je request&#8230;"
-
-#: ../src/getit-stack.h:41
-msgid "Body"
-msgstr "Body"
-
-#: ../src/getit-stack.h:42
-msgid "Cookies"
-msgstr "Cookies"
-
-#: ../src/getit-stack.h:43
-msgid "Headers"
-msgstr "Headers"
-
-#: ../src/getit-stack.h:44
-msgid "Response"
-msgstr "Response"
-
-#: ../src/getit-window.c:183 ../src/getit-window.c:227
-msgid "File: "
-msgstr "Bestand:"
-
-#: ../src/getit-window.c:324
-msgid "Request timed out"
-msgstr "Request is ge-timed-out"
-
-#: ../src/getit-window.c:365
-msgid "Request sent"
-msgstr "Request is verzonden"
-
-#: ../src/getit-window.c:591
-msgid "Save Request"
-msgstr "Request opslaan"
+msgstr "Open een request"
