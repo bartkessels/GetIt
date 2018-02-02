@@ -22,8 +22,9 @@ struct _GetitContentBody {
     GtkViewport parent_instance;
 
     /* Template widgets */
-    GtkComboBoxText *cb_method;
     GtkEntry *et_uri;
+    GtkComboBoxText *cb_method;
+    GtkCheckButton *cbtn_validate_x509;
     GtkStackSwitcher *sw_data;
     GtkStack *stack_data;
     GtkGrid *grd_data_formdata_data;
@@ -99,6 +100,9 @@ getit_content_body_clear (GetitContentBody *self)
     gtk_combo_box_set_active (GTK_COMBO_BOX (self->cb_data_raw_syntax), 0);
     raw_text_buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->sv_data_raw_input));
     gtk_text_buffer_set_text (raw_text_buffer, "", 0);
+
+    /* Set default value for X.509 validation */
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (self->cbtn_validate_x509), DEF_VAL_VALIDATE_X509);
 }
 
 const gchar *
@@ -121,6 +125,17 @@ getit_content_body_get_method (GetitContentBody *self)
     method = gtk_combo_box_get_active_id (GTK_COMBO_BOX (self->cb_method));
 
     return method;
+}
+
+gboolean
+getit_content_body_get_validate_x509 (GetitContentBody *self)
+{
+    g_assert (GETIT_IS_CONTENT_BODY (self));
+
+    gboolean validate_x509;
+    validate_x509 = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (self->cbtn_validate_x509));
+
+    return validate_x509;
 }
 
 const gchar *
@@ -191,6 +206,7 @@ getit_content_body_add_to_json_object (GetitContentBody *self,
                                        const gchar      *formdata_array_name,
                                        const gchar      *body_uri_key,
                                        const gchar      *body_method_key,
+                                       const gchar      *validate_x509_key,
                                        const gchar      *body_data_type_key,
                                        const gchar      *raw_language_key,
                                        const gchar      *raw_string_key,
@@ -207,6 +223,7 @@ getit_content_body_add_to_json_object (GetitContentBody *self,
     JsonArray *json_array_formdata;
     const gchar *body_uri;
     gint body_method;
+    gboolean validate_x509;
     const gchar *body_data_type;
     gint raw_language;
     const gchar *raw_data;
@@ -214,6 +231,7 @@ getit_content_body_add_to_json_object (GetitContentBody *self,
     json_array_formdata = json_array_new ();
     body_uri = getit_content_body_get_uri (self);
     body_method = gtk_combo_box_get_active (GTK_COMBO_BOX (self->cb_method));
+    validate_x509 = getit_content_body_get_validate_x509 (self);
     body_data_type = getit_content_body_get_data_type (self);
     raw_language = gtk_combo_box_get_active (GTK_COMBO_BOX (self->cb_data_raw_syntax));
     raw_data = getit_content_body_get_data_raw (self);
@@ -265,6 +283,7 @@ getit_content_body_add_to_json_object (GetitContentBody *self,
     json_object_set_array_member (json_body_object, formdata_array_name, json_array_formdata);
     json_object_set_string_member (json_body_object, body_uri_key, body_uri);
     json_object_set_int_member (json_body_object, body_method_key, body_method);
+    json_object_set_boolean_member (json_body_object, validate_x509_key, validate_x509);
     json_object_set_string_member (json_body_object, body_data_type_key, body_data_type);
     json_object_set_int_member (json_body_object, raw_language_key, raw_language);
     json_object_set_string_member (json_body_object, raw_string_key, raw_data);
@@ -291,6 +310,7 @@ getit_content_body_add_formdata_with_values (GetitContentBody *self,
 void
 getit_content_body_set_values (GetitContentBody *self,
                                const gint        method,
+                               const gboolean    validate_x509,
                                const gchar      *uri,
                                const gchar      *data_type,
                                const gint        raw_language,
@@ -299,6 +319,7 @@ getit_content_body_set_values (GetitContentBody *self,
     g_assert (GETIT_IS_CONTENT_BODY (self));
 
     gtk_combo_box_set_active (GTK_COMBO_BOX (self->cb_method), method);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (self->cbtn_validate_x509), validate_x509);
     gtk_entry_set_text (self->et_uri, uri);
     gtk_stack_set_visible_child_name (self->stack_data, data_type);
     gtk_combo_box_set_active (GTK_COMBO_BOX (self->cb_data_raw_syntax), raw_language);
@@ -325,8 +346,9 @@ getit_content_body_class_init (GetitContentBodyClass *klass)
 
     gtk_widget_class_set_template_from_resource (widget_class, "/net/bartkessels/getit/content-body.ui");
     gtk_widget_class_bind_template_child (widget_class, GetitContentBody, stack_data);
-    gtk_widget_class_bind_template_child (widget_class, GetitContentBody, cb_method);
     gtk_widget_class_bind_template_child (widget_class, GetitContentBody, et_uri);
+    gtk_widget_class_bind_template_child (widget_class, GetitContentBody, cb_method);
+    gtk_widget_class_bind_template_child (widget_class, GetitContentBody, cbtn_validate_x509);
     gtk_widget_class_bind_template_child (widget_class, GetitContentBody, sw_data);
     gtk_widget_class_bind_template_child (widget_class, GetitContentBody, btn_data_formdata_add);
     gtk_widget_class_bind_template_child (widget_class, GetitContentBody, grd_data_formdata_data);

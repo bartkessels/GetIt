@@ -397,6 +397,7 @@ getit_window_request_send (GetitWindow *self)
 
     const gchar *method;
     const gchar *uri;
+    gboolean validate_x509;
 
     SoupURI *soup_uri;
     SoupMessage *soup_message;
@@ -413,6 +414,7 @@ getit_window_request_send (GetitWindow *self)
 
     method = getit_content_body_get_method (content_body);
     uri = getit_content_body_get_uri (content_body);
+    validate_x509 = getit_content_body_get_validate_x509 (content_body);
 
     soup_uri = soup_uri_new (uri);
 
@@ -428,6 +430,7 @@ getit_window_request_send (GetitWindow *self)
     /* Send the request */
     self->soup_session = soup_session_new_with_options ("timeout", getit_settings_get_timeout (),
                                                         "user-agent", getit_settings_get_user_agent (),
+                                                        "ssl-strict", validate_x509,
                                                         NULL);
     soup_message = soup_message_new_from_uri (method, soup_uri);
 

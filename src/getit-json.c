@@ -45,6 +45,7 @@ getit_json_save_file (GetitContentBody    *content_body,
                                            JSON_FORMDATA_NAME,
                                            JSON_BODY_URI_KEY,
                                            JSON_BODY_METHOD_KEY,
+                                           JSON_BODY_VALIDATE_X509,
                                            JSON_BODY_DATA_TYPE_KEY,
                                            JSON_BODY_RAW_LANGUAGE_KEY,
                                            JSON_BODY_RAW_INPUT_KEY,
@@ -108,6 +109,7 @@ getit_json_open_file (GetitContentBody     *content_body,
     JsonObject *json_object_body;
     JsonArray *json_array_body_formdata;
     gint body_method;
+    gboolean body_validate_x509;
     const gchar *body_uri;
     const gchar *body_data_type;
     gint body_raw_language;
@@ -140,6 +142,7 @@ getit_json_open_file (GetitContentBody     *content_body,
     json_array_body_formdata = json_object_get_array_member (json_object_body, JSON_FORMDATA_NAME);
 
     body_method = json_object_get_int_member (json_object_body, JSON_BODY_METHOD_KEY);
+    body_validate_x509 = json_object_get_boolean_member (json_object_body, JSON_BODY_VALIDATE_X509);
     body_uri = json_object_get_string_member (json_object_body, JSON_BODY_URI_KEY);
     body_data_type = json_object_get_string_member (json_object_body, JSON_BODY_DATA_TYPE_KEY);
     body_raw_language = json_object_get_int_member (json_object_body, JSON_BODY_RAW_LANGUAGE_KEY);
@@ -147,6 +150,7 @@ getit_json_open_file (GetitContentBody     *content_body,
 
     getit_content_body_set_values (content_body,
                                    body_method,
+                                   body_validate_x509,
                                    body_uri,
                                    body_data_type,
                                    body_raw_language,

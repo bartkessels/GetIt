@@ -30,6 +30,7 @@
 /* JSON variables */
 #define JSON_BODY_NAME "body"
 #define JSON_BODY_METHOD_KEY "method"
+#define JSON_BODY_VALIDATE_X509 "validate_x509"
 #define JSON_BODY_URI_KEY "uri"
 #define JSON_BODY_DATA_TYPE_KEY "data_type"
 #define JSON_BODY_RAW_LANGUAGE_KEY "raw_language"

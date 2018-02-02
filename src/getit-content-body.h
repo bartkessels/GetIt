@@ -36,11 +36,15 @@ G_DECLARE_FINAL_TYPE (GetitContentBody, getit_content_body, GETIT, CONTENT_BODY,
 #define BODY_TYPE_FORMDATA "BODY_TYPE_FORMDATA"
 #define BODY_TYPE_RAW "BODY_TYPE_RAW"
 
+/* Default values */
+#define DEF_VAL_VALIDATE_X509 TRUE
+
 /* Public function signatures */
 GetitContentBody *getit_content_body_new ();
 void getit_content_body_clear (GetitContentBody *self);
 const gchar *getit_content_body_get_uri (GetitContentBody *self);
 const gchar *getit_content_body_get_method (GetitContentBody *self);
+gboolean getit_content_body_get_validate_x509 (GetitContentBody *self);
 const gchar *getit_content_body_get_data_raw (GetitContentBody *self);
 const gchar *getit_content_body_get_data_type (GetitContentBody *self);
 void getit_content_body_set_raw_input (GetitContentBody *self,
@@ -52,6 +56,7 @@ void getit_content_body_add_to_json_object (GetitContentBody *self,
                                             const gchar      *formdata_array_name,
                                             const gchar      *body_uri_key,
                                             const gchar      *body_method_key,
+                                            const gchar      *validate_x509_key,
                                             const gchar      *body_data_type_key,
                                             const gchar      *raw_language_key,
                                             const gchar      *raw_string_key,
@@ -68,6 +73,7 @@ void getit_content_body_add_formdata_with_values (GetitContentBody *self,
                                                   const gint        type);
 void getit_content_body_set_values (GetitContentBody *self,
                                     const gint        method,
+                                    const gboolean    validate_x509,
                                     const gchar      *uri,
                                     const gchar      *data_type,
                                     const gint        raw_language,
