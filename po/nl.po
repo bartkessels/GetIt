@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-28 14:54+0100\n"
+"POT-Creation-Date: 2018-02-02 20:12+0100\n"
 "PO-Revision-Date: 2017-11-06 19:52+0100\n"
 "Last-Translator: Bart Kessels <bartkessels@bk-mail.com>\n"
 "Language-Team: \n"
@@ -94,15 +94,16 @@ msgstr "Voorbeeld voor HTML response"
 msgid "Make JSON response look beautifull automatically"
 msgstr "JSON response automatisch leesbaar maken"
 
-#: ../data/net.bartkessels.getit.desktop:11
+#. Do NOT translate this; This is the icon file for the application
+#: ../data/net.bartkessels.getit.desktop:12
 msgid "net.bartkessels.getit"
 msgstr "net.bartkessels.getit"
 
-#: ../data/net.bartkessels.getit.desktop:13
+#: ../data/net.bartkessels.getit.desktop:14
 msgid "Request;HTTP;API;"
 msgstr "Request;HTTP;API;"
 
-#: ../data/net.bartkessels.getit.desktop:16
+#: ../data/net.bartkessels.getit.desktop:17
 msgid "New Window"
 msgstr "Nieuw Venster"
 
@@ -191,6 +192,10 @@ msgstr "XML"
 #: ../src/ui/content_body.glade.h:6 ../src/ui/content_response.glade.h:8
 msgid "Raw"
 msgstr "Ruwe data"
+
+#: ../src/ui/content_body.glade.h:7
+msgid "Validate X.509 Certificates"
+msgstr "X.509 Certificaten Valideren"
 
 #: ../src/ui/content_cookies.glade.h:1
 msgid "Add Cookie"
@@ -302,7 +307,7 @@ msgstr "_Over"
 msgid "_Quit"
 msgstr "_Sluiten"
 
-#: ../src/ui/window_main.glade.h:1 ../src/getit-window.c:555
+#: ../src/ui/window_main.glade.h:1 ../src/getit-window.c:558
 msgid "Open"
 msgstr "Openen"
 
@@ -310,7 +315,7 @@ msgstr "Openen"
 msgid "Save As"
 msgstr "Opslaan Als"
 
-#: ../src/ui/window_main.glade.h:3 ../src/getit-window.c:593
+#: ../src/ui/window_main.glade.h:3 ../src/getit-window.c:595
 msgid "Save"
 msgstr "Opslaan"
 
@@ -330,8 +335,8 @@ msgstr "Verstuur"
 msgid "Send request (ctrl + return)"
 msgstr "Verstuur request (ctrl + enter)"
 
-#: ../src/ui/window_main.glade.h:8 ../src/getit-window.c:554
-#: ../src/getit-window.c:592
+#: ../src/ui/window_main.glade.h:8 ../src/getit-window.c:557
+#: ../src/getit-window.c:594
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -375,7 +380,7 @@ msgstr "GetIt Bestanden"
 msgid "Recent Requests"
 msgstr "Recente requests"
 
-#: ../src/getit-application.c:201 ../src/getit-window.c:551
+#: ../src/getit-application.c:201 ../src/getit-window.c:554
 msgid "Open Request"
 msgstr "Request openen"
 
@@ -429,6 +434,6 @@ msgstr "Request is ge-timed-out"
 msgid "Request sent"
 msgstr "Request is verzonden"
 
-#: ../src/getit-window.c:589
+#: ../src/getit-window.c:591
 msgid "Save Request"
 msgstr "Request opslaan"
