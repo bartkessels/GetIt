@@ -5,36 +5,41 @@
 	<metadata_license>CC0</metadata_license>
 	<project_license>GPL-3.0+</project_license>
 
-	<_name>GetIt</_name>
-	<_summary>Send HTTP requests to API endpoints</_summary>
+	<name>GetIt</name>
+	<summary>Send HTTP requests to API endpoints</summary>
 	<translation type="gettext">getit</translation>
 
+	<languages>
+		<lang percentage="100">en_US</lang>
+		<lang percentage="100">nl_NL</lang>
+	</languages>
+
 	<description>
-		<_p>
+		<p>
 			GetIt&#39;s main focus is to make your life a lot easier when you have to test APIs or use somebody elses API.
 			We know it can be hard to find a great, simple and open source application for this task that&#39;s not command
 			line based.
-		</_p>
-		<_p>
+		</p>
+		<p>
 			You can send numerous requests to a webserver. You can send RAW post data, form post data, add cookies to your
 			request and add headers to your request.
-		</_p>
-		<_p>
+		</p>
+		<p>
 			The response can be viewed either as syntax highlighted code, with JSON even being made readable,
 			as the raw output, which means no syntax highlighting, and view it in a webview.
-		</_p>
-		<_p>
+		</p>
+		<p>
 			Features of GetIt include:
-		</_p>
+		</p>
 
 		<ul>
-			<_li>Sending HTTP requests to API endpoints and display the response of the server</_li>
-			<_li>Saving and opening requests</_li>
-			<_li>Easily open recent saved/opened requests</_li>
-			<_li>Sending custom POST data</_li>
-			<_li>Syntax highlighting for all responses</_li>
-			<_li>Preview for HTML response</_li>
-			<_li>Make JSON response look beautifull automatically</_li>
+			<li>Sending HTTP requests to API endpoints and display the response of the server</li>
+			<li>Saving and opening requests</li>
+			<li>Easily open recent saved/opened requests</li>
+			<li>Sending custom POST data</li>
+			<li>Syntax highlighting for all responses</li>
+			<li>Preview for HTML response</li>
+			<li>Make JSON response look beautifull automatically</li>
 		</ul>
 	</description>
 
@@ -67,11 +72,6 @@
 	<url type="bugtracker">https://github.com/bartkessels/getit</url>
 	<developer_name>Bart Kessels</developer_name>
 	<update_contact>bartkessels_AT_bk-mail.com</update_contact>
-
-	<languages>
-		<lang>en_US</lang>
-		<lang percentage="100">nl_NL</lang>
-	</languages>
 
 	<provides>
 		<binary>getit</binary>
