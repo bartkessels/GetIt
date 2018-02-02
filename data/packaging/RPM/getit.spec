@@ -1,5 +1,5 @@
 Name:			getit
-Version:		4.0.6
+Version:		4.0.7
 Release:		1%{?dist}
 Summary:		Send HTTP requests to your API endpoints
 
@@ -54,6 +54,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/icons/hicolor/*/actions/%{name}-remove-symbolic.png
 
 %changelog
+* Sat Feb 03 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.7
+- Add option to disable X.509 certificate check
+- Update appstream translations
+
 * Mon Jan 29 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.6
 - Updated save and open file dialogs
 - Update Dutch translation desktop and appstream file
