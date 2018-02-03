@@ -316,6 +316,8 @@ getit_window_request_finished (SoupSession *session,
     self = GETIT_WINDOW (user_data);
     content_response = getit_stack_get_content_response (self->stack);
 
+    g_print ("Status code: %d\n", message->status_code); // 6
+
     /* Check if connection was timed out */
     if (message->status_code == 7) {
         /* Abort session */
@@ -325,6 +327,17 @@ getit_window_request_finished (SoupSession *session,
                                     soup_uri_to_string (soup_message_get_uri (message), FALSE),
                                     "network-transmit");
         getit_content_response_show_timeout (content_response);
+        getit_window_set_loading (self, FALSE);
+
+        return;
+    }
+
+    /* Check if X.509 certificate is accepted */
+    if (message->status_code == 6) {
+        getit_notification_display (_("Invalid X.509 certificate"),
+                                    soup_uri_to_string (soup_message_get_uri (message), FALSE),
+                                    "network-transmit");
+        getit_content_response_show_invalid_x509_cert (content_response);
         getit_window_set_loading (self, FALSE);
 
         return;

@@ -49,5 +49,6 @@ void getit_content_response_show_response (GetitContentResponse *self,
 void getit_content_response_show_error (GetitContentResponse *self,
                                         const gchar          *error_message);
 void getit_content_response_show_timeout (GetitContentResponse *self);
+void getit_content_response_show_invalid_x509_cert (GetitContentResponse *self);
 
 G_END_DECLS

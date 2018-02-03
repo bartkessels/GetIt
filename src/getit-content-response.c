@@ -33,6 +33,7 @@ struct _GetitContentResponse {
     GtkScrolledWindow *sw_output_preview;
     GtkWidget *wv_output_preview;
     GtkGrid *grd_timeout;
+    GtkGrid *grd_invalid_x509_cert;
 };
 
 G_DEFINE_TYPE (GetitContentResponse, getit_content_response, GTK_TYPE_VIEWPORT)
@@ -52,7 +53,8 @@ static void getit_content_response_show_screen (GetitContentResponse *self,
                                                 const gboolean        show_sending,
                                                 const gboolean        show_response,
                                                 const gboolean        show_error,
-                                                const gboolean        show_timeout);
+                                                const gboolean        show_timeout,
+                                                const gboolean        show_invalid_x509_cert);
 
 /* Callback signatures */
 static gboolean getit_content_response_cb_output_paned_destroy (GtkWidget *caller,
@@ -85,6 +87,7 @@ getit_content_response_show_default (GetitContentResponse *self)
                                         FALSE,
                                         FALSE,
                                         FALSE,
+                                        FALSE,
                                         FALSE);
 }
 
@@ -96,6 +99,7 @@ getit_content_response_show_sending (GetitContentResponse *self)
     getit_content_response_show_screen (self,
                                         FALSE,
                                         TRUE,
+                                        FALSE,
                                         FALSE,
                                         FALSE,
                                         FALSE);
@@ -126,6 +130,7 @@ getit_content_response_show_response (GetitContentResponse *self,
                                         FALSE,
                                         FALSE,
                                         TRUE,
+                                        FALSE,
                                         FALSE,
                                         FALSE);
 
@@ -219,6 +224,7 @@ getit_content_response_show_error (GetitContentResponse *self,
                                         FALSE,
                                         FALSE,
                                         TRUE,
+                                        FALSE,
                                         FALSE);
 
     if (error_message == NULL || strlen (error_message) < 1) {
@@ -234,6 +240,21 @@ getit_content_response_show_timeout (GetitContentResponse *self)
     g_assert (GETIT_IS_CONTENT_RESPONSE (self));
 
     getit_content_response_show_screen (self,
+                                        FALSE,
+                                        FALSE,
+                                        FALSE,
+                                        FALSE,
+                                        TRUE,
+                                        FALSE);
+}
+
+void
+getit_content_response_show_invalid_x509_cert (GetitContentResponse *self)
+{
+    g_assert (GETIT_IS_CONTENT_RESPONSE (self));
+
+    getit_content_response_show_screen (self,
+                                        FALSE,
                                         FALSE,
                                         FALSE,
                                         FALSE,
@@ -270,6 +291,7 @@ getit_content_response_class_init (GetitContentResponseClass *klass)
     gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, sv_output_raw);
     gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, sw_output_preview);
     gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, grd_timeout);
+    gtk_widget_class_bind_template_child (widget_class, GetitContentResponse, grd_invalid_x509_cert);
 }
 
 static void
@@ -326,7 +348,8 @@ getit_content_response_show_screen (GetitContentResponse *self,
                                     const gboolean        show_sending,
                                     const gboolean        show_response,
                                     const gboolean        show_error,
-                                    const gboolean        show_timeout)
+                                    const gboolean        show_timeout,
+                                    const gboolean        show_invalid_x509_cert)
 {
     g_assert (GETIT_IS_CONTENT_RESPONSE (self));
 
@@ -335,6 +358,7 @@ getit_content_response_show_screen (GetitContentResponse *self,
     gtk_widget_set_visible (GTK_WIDGET (self->pnd_output), show_response);
     gtk_widget_set_visible (GTK_WIDGET (self->grd_error), show_error);
     gtk_widget_set_visible (GTK_WIDGET (self->grd_timeout), show_timeout);
+    gtk_widget_set_visible (GTK_WIDGET (self->grd_invalid_x509_cert), show_invalid_x509_cert);
 }
 
  /*
