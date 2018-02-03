@@ -391,3 +391,11 @@ msgstr "Request opslaan"
 #: ../src/ui/window_shortcuts.glade:72
 msgid "Open a request"
 msgstr "Open een request"
+
+#: ../src/ui/content_response.glade:366
+msgid "<big>Invalid X.509 Certificate</big>"
+msgstr "<big>Ongeldig X.509 Certificaat</big>"
+
+#: ../src/ui/content_response.glade:382
+msgid "The server responded with an invalid X.509 certificate"
+msgstr "De server retourneerde een ongeldig X.509 certificaat"
