@@ -71,8 +71,13 @@ getit_content_response_new ()
     GetitContentResponse *content_response;
 
     content_response = g_object_new (GETIT_TYPE_CONTENT_RESPONSE, NULL);
+
+#ifdef WEBKIT2_AVAILABLE
     content_response->wv_output_preview = webkit_web_view_new ();
     gtk_container_add (GTK_CONTAINER (content_response->sw_output_preview), content_response->wv_output_preview);
+#else
+    gtk_widget_destroy (GTK_WIDGET (content_response->sw_output_preview));
+#endif
 
     return content_response;
 }
@@ -120,11 +125,14 @@ getit_content_response_show_response (GetitContentResponse *self,
     const gchar *status_value;
     GtkTextBuffer *text_buffer_pretty;
     GtkTextBuffer *text_buffer_raw;
-    const gchar *mimetype;
     GError *json_error = NULL;
     JsonParser *json_parser;
+
+#ifdef WEBKIT2_AVAILABLE
+    const gchar *mimetype;
     GString *string_response;
     GBytes *bytes_response;
+#endif
 
     getit_content_response_show_screen (self,
                                         FALSE,
@@ -151,8 +159,10 @@ getit_content_response_show_response (GetitContentResponse *self,
     gtk_text_buffer_set_text (text_buffer_pretty, "", 0);
     gtk_text_buffer_set_text (text_buffer_raw, "", 0);
 
+#ifdef WEBKIT2_AVAILABLE
     /* Clear webview */
     webkit_web_view_load_plain_text (WEBKIT_WEB_VIEW (self->wv_output_preview), "");
+#endif
 
     /* Don't continue if the body is empty */
     gtk_widget_show_all (GTK_WIDGET (self->pnd_output));
@@ -168,11 +178,13 @@ getit_content_response_show_response (GetitContentResponse *self,
     gtk_text_buffer_set_text (text_buffer_pretty, body, strlen (body));
     gtk_text_buffer_set_text (text_buffer_raw, body, strlen (body));
 
+#ifdef WEBKIT2_AVAILABLE
     /* Get mimetype */
     mimetype = NULL;
     if (language != NULL) {
         mimetype = gtk_source_language_get_mime_types (language)[0];
     }
+#endif
 
     /* Make JSON response readable */
     json_parser = json_parser_new ();
@@ -196,6 +208,7 @@ getit_content_response_show_response (GetitContentResponse *self,
         g_error_free (json_error);
     }
 
+#ifdef WEBKIT2_AVAILABLE
     /* Load webview */
     string_response = g_string_new (body);
     bytes_response = g_string_free_to_bytes (string_response);
@@ -204,6 +217,7 @@ getit_content_response_show_response (GetitContentResponse *self,
                                 mimetype,
                                 NULL,
                                 uri);
+#endif
 
     /* Set language of response */
     if (GTK_SOURCE_IS_LANGUAGE (language)) {

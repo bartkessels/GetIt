@@ -162,6 +162,7 @@
         </child>
         <child>
           <object class="GtkPaned" id="pnd_output">
+            <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="orientation">vertical</property>
             <property name="position">250</property>
@@ -226,7 +227,6 @@
             </child>
             <child>
               <object class="GtkNotebook" id="nb_output_content">
-                <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="margin_top">5</property>
                 <property name="tab_pos">left</property>

@@ -18,13 +18,18 @@
 
 #pragma once
 
+#include "getit-config.h"
+
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <gtksourceview/gtksource.h>
 #include <libsoup/soup.h>
 #include <string.h>
-#include <webkit2/webkit2.h>
 #include <json-glib/json-glib.h>
+
+#ifdef WEBKIT2_AVAILABLE
+#include <webkit2/webkit2.h>
+#endif
 
 #include "getit-messages.h"
 #include "getit-settings.h"

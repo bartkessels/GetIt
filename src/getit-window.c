@@ -316,8 +316,6 @@ getit_window_request_finished (SoupSession *session,
     self = GETIT_WINDOW (user_data);
     content_response = getit_stack_get_content_response (self->stack);
 
-    g_print ("Status code: %d\n", message->status_code); // 6
-
     /* Check if connection was timed out */
     if (message->status_code == 7) {
         /* Abort session */
