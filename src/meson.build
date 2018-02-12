@@ -25,7 +25,7 @@ getit_deps = [
   dependency('gtk+-3.0', version: '>= 3.22'),
   dependency('libsoup-2.4', version: '>= 2.40'),
   dependency('gtksourceview-3.0', version: '>= 3.22'),
-  dependency('libnotify', version: '>= 0.7.7'),
+  dependency('libnotify', version: '>= 0.7.6'),
   dependency('json-glib-1.0', version: '>= 1.2'),
   dependency('webkit2gtk-4.0', version: '>= 2.18.5')
 ]
