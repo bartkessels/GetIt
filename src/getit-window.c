@@ -1,6 +1,6 @@
 /* getit-window.c
  *
- * Copyright (C) 2017 Bart Kessels
+ * Copyright (C) 2017 - 2018 Bart Kessels
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -469,7 +469,6 @@ getit_window_set_loading (GetitWindow *self,
  * Private callback implementations
  *
  */
-
 static gboolean
 getit_window_register_shortcuts (GtkWidget   *caller,
                                  GdkEventKey *event,
@@ -565,8 +564,8 @@ getit_window_cb_mi_open_clicked (GtkWidget *caller,
     file_chooser = gtk_file_chooser_native_new (_("Open Request"),
                                                 GTK_WINDOW (self),
                                                 GTK_FILE_CHOOSER_ACTION_OPEN,
-                                                _("Cancel"),
-                                                _("Open"));
+                                                _("Open"),
+                                                _("Cancel"));
 
     gtk_file_filter_add_pattern (file_filter, "*.getit");
     gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (file_chooser), file_filter);
@@ -602,8 +601,8 @@ getit_window_cb_mi_save_as_clicked (GtkWidget *caller,
     file_chooser = gtk_file_chooser_native_new (_("Save Request"),
                                                 GTK_WINDOW (self),
                                                 GTK_FILE_CHOOSER_ACTION_SAVE,
-                                                _("Cancel"),
-                                                _("Save"));
+                                                _("Save"),
+                                                _("Cancel"));
 
     gtk_file_filter_add_pattern (file_filter, "*.getit");
     gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (file_chooser), file_filter);
