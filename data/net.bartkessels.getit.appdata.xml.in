@@ -79,6 +79,16 @@
 
 	<releases>
 
+		<release version="4.0.8" date="2018-02-18">
+			<description>
+				<p>This release fixed/added:</p>
+				<ul>
+					<li>Fix wrong Save/Cancel button labels</li>
+					<li>Highlight JSON response when Content-Type header isn&quot;t set</li>
+				</ul>
+			</description>
+		</release>
+
 		<release version="4.0.7" date="2018-02-03">
 			<description>
 				<p>This release fixed/added:</p>

@@ -1,5 +1,5 @@
 Name:			getit
-Version:		4.0.7
+Version:		4.0.8
 Release:		1%{?dist}
 Summary:		Send HTTP requests to your API endpoints
 
@@ -54,6 +54,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/icons/hicolor/*/actions/%{name}-remove-symbolic.png
 
 %changelog
+* Sun Feb 18 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.8
+- Fix wrong Save/Cancel button labels
+- Highlight JSON response when Content-Type header isn't set
+
 * Sat Feb 03 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.7
 - Add option to disable X.509 certificate check
 - Update appstream translations
