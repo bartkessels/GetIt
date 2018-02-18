@@ -34,6 +34,8 @@
 #include "getit-messages.h"
 #include "getit-settings.h"
 
+#define RESPONSE_CONTENT_TYPE_JSON "application/json"
+
 G_BEGIN_DECLS
 
 #define GETIT_TYPE_CONTENT_RESPONSE (getit_content_response_get_type())

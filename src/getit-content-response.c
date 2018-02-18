@@ -127,6 +127,7 @@ getit_content_response_show_response (GetitContentResponse *self,
     GtkTextBuffer *text_buffer_raw;
     GError *json_error = NULL;
     JsonParser *json_parser;
+    GtkSourceLanguageManager *language_manager;
 
 #ifdef WEBKIT2_AVAILABLE
     const gchar *mimetype;
@@ -178,13 +179,6 @@ getit_content_response_show_response (GetitContentResponse *self,
     gtk_text_buffer_set_text (text_buffer_pretty, body, strlen (body));
     gtk_text_buffer_set_text (text_buffer_raw, body, strlen (body));
 
-#ifdef WEBKIT2_AVAILABLE
-    /* Get mimetype */
-    mimetype = NULL;
-    if (language != NULL) {
-        mimetype = gtk_source_language_get_mime_types (language)[0];
-    }
-#endif
 
     /* Make JSON response readable */
     json_parser = json_parser_new ();
@@ -204,11 +198,20 @@ getit_content_response_show_response (GetitContentResponse *self,
         pretty_json = json_generator_to_data (json_generator, NULL);
 
         gtk_text_buffer_set_text (text_buffer_pretty, pretty_json, strlen(pretty_json));
+
+        language_manager = gtk_source_language_manager_new ();
+        language = gtk_source_language_manager_guess_language (language_manager, NULL, RESPONSE_CONTENT_TYPE_JSON);
     } else {
         g_error_free (json_error);
     }
 
 #ifdef WEBKIT2_AVAILABLE
+    /* Get mimetype */
+    mimetype = NULL;
+    if (language != NULL) {
+        mimetype = gtk_source_language_get_mime_types (language)[0];
+    }
+
     /* Load webview */
     string_response = g_string_new (body);
     bytes_response = g_string_free_to_bytes (string_response);
