@@ -31,7 +31,7 @@ view it in a webview.
 - libsoup-devel
 - libnotify-devel
 - gettext
-- webkitgtk4-devel
+- webkitgtk4-devel (optional)
 
 ### Installing
 - gtk3
@@ -40,7 +40,7 @@ view it in a webview.
 - glib
 - libsoup
 - libnotify
-- webkitgtk4
+- webkitgtk4 (optional)
 
 ## Features
 
