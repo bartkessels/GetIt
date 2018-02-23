@@ -122,7 +122,10 @@ getit_window_clear (GetitWindow *self)
 
     getit_window_set_subtitle (self, "");
 
-    self->file = NULL;
+    if (self->file != NULL) {
+        g_object_unref (self->file);
+    }
+
     gtk_label_set_text (self->lbl_file, _("File: (null)"));
 }
 
