@@ -270,23 +270,23 @@ msgstr "Copyright © 2016 - 2018 Bart Kessels"
 msgid "GetIt is a small application to send HTTP requests"
 msgstr "GetIt is een applicatie om HTTP requests te versturen"
 
-#: ../src/ui/dialog_settings.glade:27
+#: ../src/ui/dialog_settings.glade:27 ../src/ui/dialog_settings.glade:191
 msgid "Apply"
 msgstr "Toepassen"
 
-#: ../src/ui/dialog_settings.glade:63
+#: ../src/ui/dialog_settings.glade:63 ../src/ui/dialog_settings.glade:34
 msgid "Display notifications"
 msgstr "Notificaties weergeven"
 
-#: ../src/ui/dialog_settings.glade:88
+#: ../src/ui/dialog_settings.glade:88 ../src/ui/dialog_settings.glade:97
 msgid "Timeout"
 msgstr "Time-out"
 
-#: ../src/ui/dialog_settings.glade:116
+#: ../src/ui/dialog_settings.glade:116 ../src/ui/dialog_settings.glade:125
 msgid "User Agent"
 msgstr "User Agent"
 
-#: ../src/ui/dialog_settings.glade:139
+#: ../src/ui/dialog_settings.glade:139 ../src/ui/dialog_settings.glade:59
 msgid "Show recents on startup"
 msgstr "Recente requests tijdens opstarten tonen"
 
@@ -356,7 +356,7 @@ msgstr "Verstuur"
 msgid "Send request (ctrl + return)"
 msgstr "Verstuur request (ctrl + enter)"
 
-#: ../src/ui/window_main.glade:177
+#: ../src/ui/window_main.glade:177 ../src/ui/dialog_settings.glade:177
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -368,7 +368,7 @@ msgstr "Annuleer huidige request (esc)"
 msgid "Shortcuts"
 msgstr "Sneltoetsen"
 
-#: ../src/ui/window_shortcuts.glade:20
+#: ../src/ui/window_shortcuts.glade:20 ../src/ui/dialog_settings.glade:146
 msgid "Request"
 msgstr "Request"
 
@@ -399,3 +399,7 @@ msgstr "<big>Ongeldig X.509 Certificaat</big>"
 #: ../src/ui/content_response.glade:382
 msgid "The server responded with an invalid X.509 certificate"
 msgstr "De server retourneerde een ongeldig X.509 certificaat"
+
+#: ../src/ui/dialog_settings.glade:81
+msgid "Application"
+msgstr "Applicatie"
