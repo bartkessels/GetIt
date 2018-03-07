@@ -1,6 +1,6 @@
 /* getit-application.c
  *
- * Copyright (C) 2017 Bart Kessels <bartkessels@bk-mail.com>
+ * Copyright (C) 2017 - 2018 Bart Kessels <bartkessels@bk-mail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -222,14 +222,12 @@ getit_application_cb_preferences (GSimpleAction *action,
 
     GtkApplication *app;
     GtkWindow *window;
-    GetitDialogSettings *dialog_settings;
+    GetitWindowSettings *window_settings;
 
     app = GTK_APPLICATION (user_data);
     window = gtk_application_get_active_window (app);
-    dialog_settings = getit_dialog_settings_new (window);
-
-    gtk_dialog_run (GTK_DIALOG (dialog_settings));
-    gtk_widget_destroy (GTK_WIDGET (dialog_settings));
+    window_settings = getit_window_settings_new (window);
+    gtk_widget_show (GTK_WIDGET (window_settings));
 }
 
 static void

@@ -1,6 +1,6 @@
 /* getit-dialog-settings.h
  *
- * Copyright (C) 2017 Bart Kessels <bartkessels@bk-mail.com>
+ * Copyright (C) 2017 - 2018 Bart Kessels <bartkessels@bk-mail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,13 +22,16 @@
 
 #include "getit-settings.h"
 
+#define WINDOW_SETTINGS_WIDTH 450
+#define WINDOW_SETTINGS_HEIGHT 200
+
 G_BEGIN_DECLS
 
-#define GETIT_TYPE_DIALOG_SETTINGS (getit_dialog_settings_get_type())
+#define GETIT_TYPE_WINDOW_SETTINGS (getit_window_settings_get_type())
 
-G_DECLARE_FINAL_TYPE (GetitDialogSettings, getit_dialog_settings, GETIT, DIALOG_SETTINGS, GtkDialog)
+G_DECLARE_FINAL_TYPE (GetitWindowSettings, getit_window_settings, GETIT, WINDOW_SETTINGS, GtkWindow)
 
 /* Public function signatures */
-GetitDialogSettings *getit_dialog_settings_new (GtkWindow *parent_window);
+GetitWindowSettings *getit_window_settings_new (GtkWindow *parent_window);
 
 G_END_DECLS

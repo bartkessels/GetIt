@@ -1,6 +1,6 @@
 /* getit-application.h
  *
- * Copyright (C) 2017 Bart Kessels <bartkessels@bk-mail.com>
+ * Copyright (C) 2017 - 2018 Bart Kessels <bartkessels@bk-mail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,10 +21,10 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-#include "getit-dialog-settings.h"
 #include "getit-settings.h"
 #include "getit-string.h"
 #include "getit-window.h"
+#include "getit-window-settings.h"
 #include "getit-window-shortcuts.h"
 
 /* Application information */

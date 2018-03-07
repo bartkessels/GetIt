@@ -9,7 +9,6 @@ getit_sources = [
   'getit-content-headers.c',
   'getit-content-response.c',
   'getit-dialog-about.c',
-  'getit-dialog-settings.c',
   'getit-element-cookie.c',
   'getit-element-formdata.c',
   'getit-element-header.c',
@@ -19,6 +18,7 @@ getit_sources = [
   'getit-stack.c',
   'getit-string.c',
   'getit-window.c',
+  'getit-window-settings.c',
   'getit-window-shortcuts.c',
   'main.c'
 ]

@@ -10,7 +10,6 @@
 
 		<!-- Dialogs -->
 		<file alias="dialog-about.ui" preprocess="xml-stripblanks">ui/dialog_about.glade</file>
-		<file alias="dialog-settings.ui" preprocess="xml-stripblanks">ui/dialog_settings.glade</file>
 
 		<!-- Elements -->
 		<file alias="element-cookie.ui" preprocess="xml-stripblanks">ui/element_cookie.glade</file>
@@ -23,6 +22,7 @@
 		<!-- Windows -->
 		<file alias="window-main.ui" preprocess="xml-stripblanks">ui/window_main.glade</file>
 		<file alias="window-shortcuts.ui" preprocess="xml-stripblanks">ui/window_shortcuts.glade</file>
+		<file alias="window-settings.ui" preprocess="xml-stripblanks">ui/window_settings.glade</file>
 
 	</gresource>
 </gresources>
