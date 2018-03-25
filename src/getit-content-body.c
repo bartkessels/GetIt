@@ -244,7 +244,7 @@ getit_content_body_add_to_json_object (GetitContentBody *self,
     /*
      * Iterate through formdata objects
      */
-    for (int list_iterator = 0; list_iterator < total_list_size; list_iterator++) {
+    for (int list_iterator = 0; list_iterator <= total_list_size; list_iterator++) {
         GetitElementFormdata *formdata;
         JsonObject *json_object_formdata;
 
@@ -388,11 +388,10 @@ getit_content_body_add_formdata_to_request (GetitContentBody *self,
      */
     total_list_size = g_list_length (gtk_container_get_children (GTK_CONTAINER (self->grd_data_formdata_data)));
 
-
     /*
      * Iterate through formdata objects
      */
-    for (int list_iterator = 0; list_iterator < total_list_size; list_iterator++) {
+    for (int list_iterator = 0; list_iterator <= total_list_size; list_iterator++) {
         GetitElementFormdata *formdata;
 
         GtkWidget *current_widget;

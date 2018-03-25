@@ -99,7 +99,7 @@ getit_content_cookies_add_to_request (GetitContentCookies *self,
     /*
      * Iterate through all the cookies
      */
-    for (int list_iterator = 0; list_iterator < total_cookies; list_iterator++) {
+    for (int list_iterator = 0; list_iterator <= total_cookies; list_iterator++) {
         GetitElementCookie *cookie;
         SoupCookie *soup_cookie;
 
@@ -129,9 +129,6 @@ getit_content_cookies_add_to_request (GetitContentCookies *self,
         cookie_list = g_slist_append (cookie_list, soup_cookie);
     }
 
-    g_return_if_fail (cookie_list != NULL);
-    g_return_if_fail (g_slist_length (cookie_list) > 0);
-
     soup_cookies_to_request (cookie_list, soup_message);
 }
 
@@ -159,7 +156,7 @@ getit_content_cookies_add_to_json_object (GetitContentCookies *self,
     /*
      * Iterate through all the cookies
      */
-    for (int list_iterator = 0; list_iterator < total_cookies; list_iterator++) {
+    for (int list_iterator = 0; list_iterator <= total_cookies; list_iterator++) {
         GetitElementCookie *cookie;
         JsonObject *json_object_cookie;
 
