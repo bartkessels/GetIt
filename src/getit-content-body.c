@@ -89,7 +89,7 @@ getit_content_body_clear (GetitContentBody *self)
     /*
      * Iterate through elements
      */
-    for (int list_iterator = 0; list_iterator < total_list_size; list_iterator++) {
+    for (int list_iterator = 0; list_iterator <= total_list_size; list_iterator++) {
         GetitElementFormdata *formdata;
 
         formdata = GETIT_ELEMENT_FORMDATA (gtk_grid_get_child_at (self->grd_data_formdata_data, 0, list_iterator));
@@ -434,6 +434,7 @@ getit_content_body_add_formdata_to_request (GetitContentBody *self,
 
             /* Skip this iteration if an error occured */
             if (error != NULL) {
+                g_error_free (error);
                 continue;
             }
 

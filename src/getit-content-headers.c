@@ -68,7 +68,7 @@ getit_content_headers_clear (GetitContentHeaders *self)
     /*
      * Iterate through elements
      */
-    for (int list_iterator = 0; list_iterator < total_list_size; list_iterator++) {
+    for (int list_iterator = 0; list_iterator <= total_list_size; list_iterator++) {
         GetitElementHeader *header;
 
         header = GETIT_ELEMENT_HEADER (gtk_grid_get_child_at (self->grd_headers, 0, list_iterator));
