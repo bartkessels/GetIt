@@ -1,5 +1,5 @@
 Name:			getit
-Version:		4.0.8
+Version:		4.0.9
 Release:		1%{?dist}
 Summary:		Send HTTP requests to your API endpoints
 
@@ -54,6 +54,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/icons/hicolor/*/actions/%{name}-remove-symbolic.png
 
 %changelog
+* Sun Mar 25 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.9
+- New layout for the settings screen
+- Remove possible memory leak
+- Fix bug where elements weren't added to the request
+
 * Sun Feb 18 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.8
 - Fix wrong Save/Cancel button labels
 - Highlight JSON response when Content-Type header isn't set

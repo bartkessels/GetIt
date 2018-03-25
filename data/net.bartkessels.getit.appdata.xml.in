@@ -79,6 +79,17 @@
 
 	<releases>
 
+		<release version="4.0.9" date="2018-03-25">
+			<description>
+				<p>This release fixed/added:</p>
+				<ul>
+					<li>New layout for the settings screen</li>
+					<li>Remove possible memory leak</li>
+					<li>Fix bug where elements weren't added to the request</li>
+				</ul>
+			</description>
+		</release>
+
 		<release version="4.0.8" date="2018-02-18">
 			<description>
 				<p>This release fixed/added:</p>
