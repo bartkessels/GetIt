@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.2 -->
+<!-- Generated with glade 3.20.4 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <requires lib="gtksourceview" version="3.0"/>
@@ -353,7 +353,6 @@
         </child>
         <child>
           <object class="GtkGrid" id="grd_invalid_x509_cert">
-            <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="valign">center</property>
             <property name="vexpand">True</property>
