@@ -38,8 +38,8 @@
 			"sources": [
 				{
 					"type": "archive",
-					"url": "https://git.gnome.org/browse/gtksourceview/snapshot/gtksourceview-3.24.6.tar.xz",
-					"sha256": "f96e7de24e4fffe08a73f76d8b6ea7f878f122509ee869ab1fbf3c64ee29fb3b"
+					"url": "https://gitlab.gnome.org/GNOME/gtksourceview/-/archive/3.24.8/gtksourceview-3.24.8.tar.gz",
+					"sha256": "7bcc4e71e92a5deccb6aa17553993f673a914666c3550759b87097d30cb1ed8c"
 				}
 			]
 		},
