@@ -2,7 +2,7 @@
 
 Application to send HTTP requests to test your API endpoints.
 
-## 1. Screenshots
+## 1.2.1 Screenshots
 
 ![GetIt Body](data/screenshots/body.png)
 ![GetIt Cookies](data/screenshots/cookies.png)
