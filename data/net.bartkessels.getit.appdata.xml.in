@@ -16,7 +16,7 @@
 
 	<description>
 		<p>
-			GetIt&#39;s main focus is to make your life a lot easier when you have to test APIs or use somebody elses API.
+			GetIt&#39;s main focus is to make your life a lot easier when you have to test APIs or use somebody else&#39;s API.
 			We know it can be hard to find a great, simple and open source application for this task that&#39;s not command
 			line based.
 		</p>
@@ -39,7 +39,7 @@
 			<li>Sending custom POST data</li>
 			<li>Syntax highlighting for all responses</li>
 			<li>Preview for HTML response</li>
-			<li>Make JSON response look beautifull automatically</li>
+			<li>Make JSON response look beautiful automatically</li>
 		</ul>
 	</description>
 
