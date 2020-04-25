@@ -68,6 +68,8 @@
 		</screenshot>
 	</screenshots>
 
+	<content_rating type="oars-1.1" />
+	
 	<url type="homepage">https://getit.bartkessels.net</url>
 	<url type="bugtracker">https://github.com/bartkessels/getit</url>
 	<developer_name>Bart Kessels</developer_name>
