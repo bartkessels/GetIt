@@ -1,5 +1,7 @@
 # GetIt
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f8dd413a2e684e2d86127d47bb1bf74e)](https://app.codacy.com/manual/bartkessels/getit?utm_source=github.com&utm_medium=referral&utm_content=bartkessels/getit&utm_campaign=Badge_Grade_Dashboard)
+
 Application to send HTTP requests to test your API endpoints.
 
 ## 1 Screenshots
