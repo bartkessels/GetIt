@@ -60,8 +60,8 @@
 			"sources": [
 				{
 					"type": "git",
-					"tag": "4.0.9",
-					"commit": "c00ebfef57571052416164d3965b13b07c8c0da8",
+					"tag": "4.0.10",
+					"commit": "3e289cd18798b77ff5ac83482dbf99c328d33bff",
 					"url": "https://github.com/bartkessels/getit"
 				}
 			]

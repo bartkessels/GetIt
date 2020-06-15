@@ -1,5 +1,5 @@
 Name:			getit
-Version:		4.0.9
+Version:		4.0.10
 Release:		1%{?dist}
 Summary:		Send HTTP requests to your API endpoints
 
@@ -54,6 +54,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/icons/hicolor/*/actions/%{name}-remove-symbolic.png
 
 %changelog
+* Mon Jun 15 2020 Bart Kessels <bartkessels@bk-mail.com> 4.0.10
+- Add content rating to AppData
+
 * Sun Mar 25 2018 Bart Kessels <bartkessels@bk-mail.com> 4.0.9
 - New layout for the settings screen
 - Remove possible memory leak
