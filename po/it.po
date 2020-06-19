@@ -1,0 +1,402 @@
+# Italian translation
+# Copyright (C) 2018 Bart Kessels
+# This file is distributed under the same license as the getit package.
+# Albano Battistella <albano_battistella@hotmail.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: getit 4.0.6\n"
+"Report-Msgid-Bugs-To: bartkessels@bk-mail.com\n"
+"POT-Creation-Date: 2018-02-02 23:19+0100\n"
+"PO-Revision-Date: 2020-06-19 12:30+0100\n"
+"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
+"Language-Team: Italian <LL@li.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:18
+msgid ""
+"GetIt's main focus is to make your life a lot easier when you have to test "
+"APIs or use somebody elses API. We know it can be hard to find a great, "
+"simple and open source application for this task that's not command line "
+"based."
+msgstr ""
+"L'obiettivo principale di GetIt è rendere la tua vita molto più semplice quando devi testare"
+"API o utilizzare qualche altra API. Sappiamo che può essere difficile trovare un ottima"
+"applicazione semplice e open source per questa attività che non sia basato sulla riga di" 
+"comando."
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:23
+msgid ""
+"You can send numerous requests to a webserver. You can send RAW post data, "
+"form post data, add cookies to your request and add headers to your request."
+msgstr ""
+"Puoi inviare numerose richieste a un server web. Puoi inviare dati di post RAW"
+"modelli dati post, aggiungi cookie alla tua richiesta e aggiungi intestazioni alla tua richiesta."
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:27
+msgid ""
+"The response can be viewed either as syntax highlighted code, with JSON even "
+"being made readable, as the raw output, which means no syntax highlighting, "
+"and view it in a webview."
+msgstr ""
+"La risposta può essere visualizzata come codice evidenziato dalla sintassi, anche con JSON"
+"deve essere reso leggibile, come output non elaborato, il che significa che nessun evidenziazione della sintassi"
+"e vista in una visualizzazione Web."
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:31
+msgid "Features of GetIt include:"
+msgstr "Le caratteristiche di GetIt includono:"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:36
+msgid ""
+"Sending HTTP requests to API endpoints and display the response of the server"
+msgstr ""
+"Invio di richieste HTTP agli endpoint API e visualizzazione della risposta del server"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:37
+msgid "Saving and opening requests"
+msgstr "Salvataggio e apertura richieste"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:38
+msgid "Easily open recent saved/opened requests"
+msgstr "Apri facilmente le richieste salvate/aperte recentemente"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:39
+msgid "Sending custom POST data"
+msgstr "Invio di dati POST personalizzati"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:40
+msgid "Syntax highlighting for all responses"
+msgstr "Evidenziazione della sintassi per tutte le risposte"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:41
+msgid "Preview for HTML response"
+msgstr "Anteprima per la risposta HTML"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:42
+msgid "Make JSON response look beautifull automatically"
+msgstr "Rendi automaticamente bella la risposta JSON"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:50
+msgid "Add default information about the request"
+msgstr "Aggiungi informazioni predefinite sulla richiesta"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:54
+msgid "Add cookies to the request"
+msgstr "Aggiungi i cookie alla richiesta"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:58
+msgid "Add headers to the request"
+msgstr "Aggiungi intestazioni alla richiesta"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:62
+msgid "Display the response of the request"
+msgstr "Visualizza la risposta della richiesta"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:66
+msgid "Display the HTML response as a webpage"
+msgstr "Visualizza la risposta HTML come pagina Web"
+
+#: ../data/net.bartkessels.getit.appdata.xml.in:73
+msgid "Bart Kessels"
+msgstr "Bart Kessels"
+
+#: ../data/net.bartkessels.getit.desktop.in:3
+#: ../data/net.bartkessels.getit.appdata.xml.in:8
+msgid "GetIt"
+msgstr "GetIt"
+
+#: ../data/net.bartkessels.getit.desktop.in:4
+#: ../data/net.bartkessels.getit.appdata.xml.in:9
+msgid "Send HTTP requests to API endpoints"
+msgstr "Invia richieste HTTP agli endpoint API"
+
+#: ../data/net.bartkessels.getit.desktop.in:12
+msgid "net.bartkessels.getit"
+msgstr "net.bartkessels.getit"
+
+#: ../data/net.bartkessels.getit.desktop.in:14
+msgid "Request;HTTP;API;"
+msgstr "Richiesta;HTTP;API;"
+
+#: ../data/net.bartkessels.getit.desktop.in:17
+msgid "New Window"
+msgstr "Nuova Finestra"
+
+#: ../data/net.bartkessels.getit.gschema.xml:7
+msgid "Display screen with recent requests on application startup"
+msgstr ""
+"Mostra richieste recenti all'avvio dell'applicazione"
+
+#: ../data/net.bartkessels.getit.gschema.xml:8
+msgid ""
+"When set to true the recent requests window will always be shown when the "
+"application is launched. Either way it can still be launched from the "
+"application menu."
+msgstr ""
+"Se impostato su vero, la finestra delle richieste recenti verrà sempre visualizzata quando"
+"l'applicazione viene avviata. In entrambi i casi può ancora essere avviata dal"
+"menu dell'applicazione".
+
+#: ../data/net.bartkessels.getit.gschema.xml:17
+msgid "Display notifications when a request has been sent"
+msgstr "Visualizza le notifiche quando è stata inviata una richiesta"
+
+#: ../data/net.bartkessels.getit.gschema.xml:18
+msgid ""
+"When this setting is enabled GetIt will show a notification everytime a "
+"request has been sent or when the timeout has been reached."
+msgstr ""
+"Quando questa impostazione è abilitata, GetIt mostrerà una notifica ogni volta che una"
+"richiesta è stata inviata o quando è stato raggiunto il timeout."
+
+#: ../data/net.bartkessels.getit.gschema.xml:27
+msgid "Timeout request after given seconds"
+msgstr "Richiesta di timeout dopo determinati secondi"
+
+#: ../data/net.bartkessels.getit.gschema.xml:28
+msgid ""
+"When a request is taking too long to get a response from the server it can "
+"be cancled within the given timeout. When timeout is set to 0 the request "
+"will go on forever."
+msgstr ""
+"Quando una richiesta impiega troppo tempo per ottenere una risposta dal server, può"
+"essere escluso entro il timeout specificato. Quando il timeout è impostato su 0, la richiesta"
+"andrà avanti per sempre."
+
+#: ../data/net.bartkessels.getit.gschema.xml:37
+msgid "User agent to send along with each request"
+msgstr "Agente utente da inviare insieme ad ogni richiesta"
+
+#: ../data/net.bartkessels.getit.gschema.xml:38
+msgid "The given user agent will be sent along with each request."
+msgstr "L'agente utente fornito verrà inviato insieme a ciascuna richiesta."
+
+#: ../data/net.bartkessels.getit.gschema.xml:45
+msgid "Value of which the divider is set"
+msgstr "Valore di cui è impostato il divisore"
+
+#: ../data/net.bartkessels.getit.gschema.xml:46
+msgid ""
+"This value is used to place the divider between the headers and the output "
+"of a request"
+msgstr ""
+"Questo valore viene utilizzato per posizionare il divisore tra le intestazioni e l'output"
+"di una richiesta"
+
+#: ../src/ui/content_body.glade:61
+msgid "Add Key Value Pair"
+msgstr "Aggiungi coppia valore-chiave"
+
+#: ../src/ui/content_body.glade:131
+msgid "Form Data"
+msgstr "Dati Modulo"
+
+#: ../src/ui/content_body.glade:147 ../src/ui/element_formdata.glade:82
+msgid "Text"
+msgstr "Testo"
+
+#: ../src/ui/content_body.glade:148
+msgid "JSON"
+msgstr "JSON"
+
+#: ../src/ui/content_body.glade:149
+msgid "XML"
+msgstr "XML"
+
+#: ../src/ui/content_body.glade:200 ../src/ui/content_response.glade:312
+msgid "Raw"
+msgstr "Raw"
+
+#: ../src/ui/content_body.glade:235
+msgid "Validate X.509 Certificates"
+msgstr "Convalida certificati X.509"
+
+#: ../src/ui/content_cookies.glade:23
+msgid "Add Cookie"
+msgstr "Aggiungi cookie"
+
+#: ../src/ui/content_headers.glade:23
+msgid "Add Header"
+msgstr "Aggiungi intestazione"
+
+#: ../src/ui/content_response.glade:28
+msgid "<big>Please send a request...</big>"
+msgstr "<big>Si prega di inviare una richiesta...</big>"
+
+#: ../src/ui/content_response.glade:64
+msgid "<big>Sending request...</big>"
+msgstr "<big>Request wordt verzonden...</big>"
+
+#: ../src/ui/content_response.glade:89
+msgid "<big>An error has occured</big>"
+msgstr "<big>si è verificato un errore</big>"
+
+#: ../src/ui/content_response.glade:105
+msgid "Something went wrong sending your request..."
+msgstr "Si è verificato un errore durante l'invio della richiesta..."
+
+#: ../src/ui/content_response.glade:133
+msgid "<big>The request has timed out</big>"
+msgstr "<big>De request is ge-timed-out</big>"
+
+#: ../src/ui/content_response.glade:150
+msgid ""
+"The timeout of a request can be set in the preferences window. To disable "
+"the timeout completly set the value to 0."
+msgstr ""
+"Il timeout di una richiesta può essere impostato nella finestra delle preferenze. Per disabilitare"
+"il timeout imposta completamente il valore su 0."
+
+#: ../src/ui/content_response.glade:268
+msgid "Pretty"
+msgstr "Bello"
+
+#: ../src/ui/content_response.glade:335
+msgid "Preview"
+msgstr "Anteprima"
+
+#: ../src/ui/dialog_about.glade:10
+msgid "Copyright © 2016 - 2018 Bart Kessels"
+msgstr "Copyright © 2016 - 2018 Bart Kessels"
+
+#: ../src/ui/dialog_about.glade:11
+msgid "GetIt is a small application to send HTTP requests"
+msgstr "GetIt è una piccola applicazione per inviare richieste HTTP"
+
+#: ../src/ui/dialog_settings.glade:27 ../src/ui/dialog_settings.glade:191
+msgid "Apply"
+msgstr "Applica"
+
+#: ../src/ui/dialog_settings.glade:63 ../src/ui/dialog_settings.glade:34
+msgid "Display notifications"
+msgstr "Mostra notifiche"
+
+#: ../src/ui/dialog_settings.glade:88 ../src/ui/dialog_settings.glade:97
+msgid "Timeout"
+msgstr "Timeout"
+
+#: ../src/ui/dialog_settings.glade:116 ../src/ui/dialog_settings.glade:125
+msgid "User Agent"
+msgstr "Agente Utente"
+
+#: ../src/ui/dialog_settings.glade:139 ../src/ui/dialog_settings.glade:59
+msgid "Show recents on startup"
+msgstr "Mostra i recenti all'avvio"
+
+#: ../src/ui/element_cookie.glade:34 ../src/ui/element_formdata.glade:33
+#: ../src/ui/element_header.glade:34
+msgid "Key"
+msgstr "Chiave"
+
+#: ../src/ui/element_cookie.glade:46 ../src/ui/element_formdata.glade:45
+#: ../src/ui/element_header.glade:46
+msgid "Value"
+msgstr "Valore"
+
+#: ../src/ui/element_formdata.glade:69
+msgid "Choose File..."
+msgstr "Scegli FIle..."
+
+#: ../src/ui/element_formdata.glade:83 ../src/ui/window_shortcuts.glade:47
+msgid "File"
+msgstr "FIle"
+
+#: ../src/ui/menu_app.glade:6
+msgid "_Recent"
+msgstr "_Recente"
+
+#: ../src/ui/menu_app.glade:12
+msgid "_Preferences"
+msgstr "_Preferenze"
+
+#: ../src/ui/menu_app.glade:16
+msgid "_Shortcuts"
+msgstr "_Scorciatoie"
+
+#: ../src/ui/menu_app.glade:22
+msgid "_About"
+msgstr "_Informazioni"
+
+#: ../src/ui/menu_app.glade:28
+msgid "_Quit"
+msgstr "_Esci"
+
+#: ../src/ui/window_main.glade:46
+msgid "Open"
+msgstr "Opri"
+
+#: ../src/ui/window_main.glade:59
+msgid "Save As"
+msgstr "Salva Come"
+
+#: ../src/ui/window_main.glade:72
+msgid "Save"
+msgstr "Salva"
+
+#: ../src/ui/window_main.glade:88
+msgid "Clear Request"
+msgstr "Cancella Richiesta"
+
+#: ../src/ui/window_main.glade:119
+msgid "File: (null)"
+msgstr "FIle: (nullo)"
+
+#: ../src/ui/window_main.glade:161
+msgid "Send"
+msgstr "Invia"
+
+#: ../src/ui/window_main.glade:165
+msgid "Send request (ctrl + return)"
+msgstr "Invia richiesta (Ctrl + Invio)"
+
+#: ../src/ui/window_main.glade:177 ../src/ui/dialog_settings.glade:177
+msgid "Cancel"
+msgstr "Cancella"
+
+#: ../src/ui/window_main.glade:180
+msgid "Cancel running request (esc)"
+msgstr "Annulla richiesta in esecuzione (esc)"
+
+#: ../src/ui/window_shortcuts.glade:14
+msgid "Shortcuts"
+msgstr "Scorciatoie"
+
+#: ../src/ui/window_shortcuts.glade:20 ../src/ui/dialog_settings.glade:146
+msgid "Request"
+msgstr "Richiesta"
+
+#: ../src/ui/window_shortcuts.glade:27
+msgid "Send request"
+msgstr "Invia richiesta"
+
+#: ../src/ui/window_shortcuts.glade:36
+msgid "Cancel running request"
+msgstr "Annulla la richiesta in esecuzione"
+
+#: ../src/ui/window_shortcuts.glade:54
+msgid "Save the request as"
+msgstr "Salva la richiesta come"
+
+#: ../src/ui/window_shortcuts.glade:63
+msgid "Save the request"
+msgstr "Salva la richiesta"
+
+#: ../src/ui/window_shortcuts.glade:72
+msgid "Open a request"
+msgstr "Apri una richiesta"
+
+#: ../src/ui/content_response.glade:366
+msgid "<big>Invalid X.509 Certificate</big>"
+msgstr "<big>Certificato X.509 non valido</big>"
+
+#: ../src/ui/content_response.glade:382
+msgid "The server responded with an invalid X.509 certificate"
+msgstr "Il server ha risposto con un certificato X.509 non valido"
+
+#: ../src/ui/dialog_settings.glade:81
+msgid "Application"
+msgstr "Applicazione"
