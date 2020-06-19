@@ -26,7 +26,7 @@ msgstr ""
 "L'obiettivo principale di GetIt è rendere la tua vita molto più semplice quando devi testare"
 "API o utilizzare qualche altra API. Sappiamo che può essere difficile trovare un ottima"
 "applicazione semplice e open source per questa attività che non sia basato sulla riga di" 
-comando."
+"comando."
 
 #: ../data/net.bartkessels.getit.appdata.xml.in:23
 msgid ""
