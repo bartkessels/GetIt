@@ -7,8 +7,8 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 
-#include "domain/FormdataRequestBody.hpp"
-#include "domain/RawRequestBody.hpp"
+#include "domain/body/FormdataRequestBody.hpp"
+#include "domain/body/RawRequestBody.hpp"
 #include "domain/Request.hpp"
 #include "gui/widget/RequestWidget.hpp"
 

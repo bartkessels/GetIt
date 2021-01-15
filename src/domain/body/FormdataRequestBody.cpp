@@ -1,6 +1,6 @@
-#include "domain/FormdataRequestBody.hpp"
+#include "domain/body/FormdataRequestBody.hpp"
 
-using namespace getit::domain;
+using namespace getit::domain::body;
 
 FormdataRequestBody::FormdataRequestBody(std::string boundary):
     boundary(std::move(boundary))

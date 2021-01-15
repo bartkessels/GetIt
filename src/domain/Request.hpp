@@ -1,11 +1,11 @@
 #pragma once
 
-#include <functional>
-#include <map>
+#include <list>
 #include <memory>
 #include <string>
 
-#include "domain/RequestBody.hpp"
+#include "domain/RequestData.hpp"
+#include "domain/RequestPipeline.hpp"
 #include "domain/Response.hpp"
 
 namespace getit::domain
@@ -13,17 +13,16 @@ namespace getit::domain
     class Request
     {
         public:
-            Request(const std::string&  method, const std::string&  uri);
-            virtual ~Request() = default;
-
-            void addHeader(const std::string& header, const std::string& value);
-            void setBody(std::shared_ptr<RequestBody> body);
-            virtual void send(std::function<void(Response*)> callback) = 0;
+            Request() = default;
+            ~Request() = default;
+            
+            void registerPipeline(std::shared_ptr<RequestPipeline> pipeline);
+            void send();
 
         protected:
-            const std::string& method;
-            const std::string& uri;
-            std::map<std::string, std::string> headers;
-            std::shared_ptr<RequestBody> body;
+            virtual std::shared_ptr<Response> sendRequest(std::shared_ptr<RequestData> data) = 0;
+
+        private:
+            std::list<std::shared_ptr<RequestPipeline>> pipelines;
     };
 }

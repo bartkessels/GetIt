@@ -8,7 +8,7 @@
 
 #include "domain/RequestBody.hpp"
 
-namespace getit::domain
+namespace getit::domain::body
 {
     class FormdataRequestBody: public RequestBody
     {

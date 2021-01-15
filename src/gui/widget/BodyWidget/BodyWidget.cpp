@@ -19,13 +19,13 @@ BodyWidget::~BodyWidget()
 
 void BodyWidget::addToRequest(std::shared_ptr<domain::Request> request)
 {
-    const auto& bodyValue = ui->textBodyRaw->document()->toPlainText().toStdString();
-    const auto& contentType = ui->textContentType->text().toStdString();
-    const auto& body = std::make_shared<domain::RawRequestBody>(contentType);
+    // const auto& bodyValue = ui->textBodyRaw->document()->toPlainText().toStdString();
+    // const auto& contentType = ui->textContentType->text().toStdString();
+    // const auto& body = std::make_shared<domain::RawRequestBody>(contentType);
 
-    body->setBody(bodyValue);
+    // body->setBody(bodyValue);
 
-    request->setBody(body);
+    // request->setBody(body);
 }
 
 void BodyWidget::connectSignals()
@@ -83,7 +83,7 @@ void BodyWidget::connectSignals()
 void BodyWidget::formdataItemsChanged(QTreeWidgetItem*, int)
 {
     const auto& boundary = generateBoundary();
-    const auto& data = std::make_unique<getit::domain::FormdataRequestBody>(boundary);
+    const auto& data = std::make_unique<getit::domain::body::FormdataRequestBody>(boundary);
 
     for(int i = 0; i < ui->treeBodyFormdata->topLevelItemCount(); ++i ) {
         QTreeWidgetItem* item = ui->treeBodyFormdata->topLevelItem(i);

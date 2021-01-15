@@ -2,19 +2,22 @@
 
 using namespace getit::domain;
 
-Request::Request(const std::string&  method, const std::string&  uri):
-    method(method),
-    uri(uri)
+void Request::registerPipeline(std::shared_ptr<RequestPipeline> pipeline)
 {
-
+    this->pipelines.push_back(pipeline);
 }
 
-void Request::addHeader(const std::string& header, const std::string& value)
+void Request::send()
 {
-    this->headers.insert({header, value});
-}
+    std::shared_ptr<RequestData> requestData = std::make_shared<RequestData>();
 
-void Request::setBody(std::shared_ptr<RequestBody> body)
-{
-    this->body = body;
+    for (std::shared_ptr<RequestPipeline> pipeline : this->pipelines) {
+        pipeline->executeBeforeRequest(requestData);
+    }
+
+    std::shared_ptr<Response> response = this->sendRequest(requestData);
+
+    for (std::shared_ptr<RequestPipeline> pipeline : this->pipelines) {
+        pipeline->executeAfterRequest(response);
+    }
 }

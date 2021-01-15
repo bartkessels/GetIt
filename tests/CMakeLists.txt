@@ -6,9 +6,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
 find_package(Boost COMPONENTS thread system chrono REQUIRED)
 
 set(SRCFILES
-    ../src/domain/CppRestRequest.cpp
-    ../src/domain/FormdataRequestBody.cpp
-    ../src/domain/RawRequestBody.cpp
+    ../src/domain/body/FormdataRequestBody.cpp
+    ../src/domain/body/RawRequestBody.cpp
+
+    ../src/domain/request/CppRestRequest.cpp
+    
     ../src/domain/Request.cpp
 )
 

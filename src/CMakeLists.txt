@@ -12,11 +12,20 @@ set(CMAKE_CXX_STANDARD 20)
 
 set(SOURCEFILES
     main.cpp
-    domain/CppRestRequest.cpp
-    domain/FormdataRequestBody.cpp
+
+    domain/body/FormdataRequestBody.cpp
+    domain/body/RawRequestBody.cpp
+
+    domain/pipelines/BodyPipeline.cpp
+    domain/pipelines/HeadersPipeline.cpp
+    domain/pipelines/MethodPipeline.cpp
+    domain/pipelines/UriPipeline.cpp
+
+    domain/request/CppRestRequest.cpp
+
     domain/Request.cpp
+    domain/RequestData.cpp
     domain/RequestFactory.cpp
-    domain/RawRequestBody.cpp
 
     gui/MainWindow/MainWindow.cpp
     gui/widget/AuthenticationWidget/AuthenticationWidget.cpp
@@ -28,11 +37,19 @@ set(SOURCEFILES
 )
 
 set(HEADERFILES
-    domain/CppRestRequest.hpp
-    domain/FormdataRequestBody.hpp
-    domain/RawRequestBody.hpp
+    domain/body/FormdataRequestBody.hpp
+    domain/body/RawRequestBody.hpp
+
+    domain/pipelines/BodyPipeline.hpp
+    domain/pipelines/HeadersPipeline.hpp
+    domain/pipelines/MethodPipeline.hpp
+    domain/pipelines/UriPipeline.hpp
+
+    domain/request/CppRestRequest.hpp
+
     domain/Request.hpp
     domain/RequestBody.hpp
+    domain/RequestData.hpp
     domain/RequestFactory.hpp
     domain/Response.hpp
 

@@ -24,7 +24,7 @@ void HeadersWidget::addToRequest(std::shared_ptr<domain::Request> request)
         const auto& header = item->text(0).toStdString();
         const auto& value = item->text(1).toStdString();
 
-        request->addHeader(header, value);
+        // request->addHeader(header, value);
     }
 }
 

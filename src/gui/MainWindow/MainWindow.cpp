@@ -36,14 +36,15 @@ void MainWindow::connectSendSlot()
             this, [=]() {
                 const auto& method = ui->cbMethod->currentText().toStdString();
                 const auto& uri = ui->textUri->text().toStdString();
-                const auto& request = factory->getRequest(method, uri);
+                const auto& request = factory->getRequest();
 
                 this->bodyWidget->addToRequest(request);
                 this->requestInfoWidget->addToRequest(request);
+                request->send();
 
-                request->send([=](getit::domain::Response* response) {
-                    emit requestSent(response);
-                });
+                // request->send([=](getit::domain::Response* response) {
+                //     emit requestSent(response);
+                // });
             });
 }
 

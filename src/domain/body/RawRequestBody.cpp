@@ -1,6 +1,6 @@
-#include "domain/RawRequestBody.hpp"
+#include "domain/body/RawRequestBody.hpp"
 
-using namespace getit::domain;
+using namespace getit::domain::body;
 
 RawRequestBody::RawRequestBody(std::string contentType):
     contentType(std::move(contentType))
