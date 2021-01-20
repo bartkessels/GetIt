@@ -27,7 +27,7 @@ jobs:
 
     - stage: test
       os: linux
-      dist: bionic
+      dist: focal
       language: cpp
       compiler: gcc
       install: &install_linux
@@ -45,7 +45,7 @@ jobs:
 
     - stage: test
       os: linux
-      dist: bionic
+      dist: focal
       language: cpp
       compiler: clang
       install: *install_linux
@@ -80,7 +80,7 @@ jobs:
     ###############################
     - stage: build
       os: linux
-      dist: bionic
+      dist: focal
       language: cpp
       compiler: gcc
       install: *install_linux
@@ -91,7 +91,7 @@ jobs:
 
     - stage: build
       os: linux
-      dist: bionic
+      dist: focal
       language: cpp
       compiler: clang
       install: *install_linux
