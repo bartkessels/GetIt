@@ -24,15 +24,21 @@ void RequestData::setBody(std::shared_ptr<RequestBody> body)
     this->requestBody = body;
 }
 
-
-
 std::string RequestData::getMethod()
 {
+    if (this->method.empty()) {
+        throw exception::MethodRequiredException();
+    }
+
     return this->method;
 }
 
 std::string RequestData::getUri()
 {
+    if (this->uri.empty()) {
+        throw exception::UriRequiredException();
+    }
+
     return this->uri;
 }
 
@@ -41,7 +47,7 @@ std::map<std::string, std::string> RequestData::getHeaders()
     return this->headers;
 }
 
-std::shared_ptr<RequestBody> RequestData::getRequestBody()
+std::shared_ptr<RequestBody> RequestData::getBody()
 {
     return this->requestBody;
 }

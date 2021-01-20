@@ -2,12 +2,20 @@
 
 using namespace getit::domain::pipelines;
 
-void HeadersPipeline::executeBeforeRequest(std::shared_ptr<RequestData> data)
+
+void HeadersPipeline::addHeader(std::string header, std::string value)
 {
-    data->addOrUpdateHeader("test", "test");
+    this->headers.insert({header, value});
 }
 
-void HeadersPipeline::executeAfterRequest(std::shared_ptr<Response> response)
+void HeadersPipeline::removeHeader(std::string header)
 {
+    this->headers.erase(header);
+}
 
+void HeadersPipeline::executeBeforeRequest(std::shared_ptr<RequestData> data)
+{
+    for (auto const& [header, value] : this->headers) {
+        data->addOrUpdateHeader(header, value);
+    }
 }

@@ -40,6 +40,9 @@ set(HEADERFILES
     domain/body/FormdataRequestBody.hpp
     domain/body/RawRequestBody.hpp
 
+    domain/exception/MethodRequiredException.hpp
+    domain/exception/UriRequiredException.hpp
+
     domain/pipelines/BodyPipeline.hpp
     domain/pipelines/HeadersPipeline.hpp
     domain/pipelines/MethodPipeline.hpp
@@ -47,6 +50,8 @@ set(HEADERFILES
 
     domain/request/CppRestRequest.hpp
 
+    domain/AfterRequestPipeline.hpp
+    domain/BeforeRequestPipeline.hpp
     domain/Request.hpp
     domain/RequestBody.hpp
     domain/RequestData.hpp

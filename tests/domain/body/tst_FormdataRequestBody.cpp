@@ -3,9 +3,9 @@
 #include <memory>
 #include <string>
 
-#include "domain/FormdataRequestBody.hpp"
+#include "domain/body/FormdataRequestBody.hpp"
 
-using namespace getit::domain;
+using namespace getit::domain::body;
 
 TEST_CASE("FormdataRequestBody")
 {
@@ -114,5 +114,32 @@ TEST_CASE("FormdataRequestBody")
 
         // Assert
         REQUIRE(expectedBody.str() == result);
+    }
+
+
+    SECTION("getSize returns the size for the complete form-data template with elements and content of a file for an existing file")
+    {
+        // Arrange
+        const auto& fileName = "My existing file";
+        const auto& existingFilePath = "./tst_file.txt";
+        const auto& fileContents = "content";
+        const auto& formdataElement = "MyElement";
+        const auto& formdataElementValue = "MyElementsValue";
+        auto expectedFormdataElementBody = boost::format(
+                "--%1%\r\nContent-Disposition: form-data; name=\"%2%\"\r\n\r\n%3%\r\n"
+        ) % boundary % formdataElement % formdataElementValue;
+        auto expectedFileBody = boost::format(
+                "--%1%\r\nContent-Disposition: form-data; name=\"%2%\"; filename=\"%3%\"\r\n\r\n%4%\r\n"
+        ) % boundary % fileName % existingFilePath % fileContents;
+        auto expectedBody = boost::format(
+                "%1%%2%\r\n--%3%--\r\n"
+        ) % expectedFileBody % expectedFormdataElementBody % boundary;
+
+        // Act
+        requestBody->addFile(fileName, existingFilePath);
+        requestBody->addElement(formdataElement, formdataElementValue);
+
+        // Assert
+        REQUIRE(requestBody->getSize() == expectedBody.size());
     }
 }

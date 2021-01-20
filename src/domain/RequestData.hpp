@@ -4,6 +4,8 @@
 #include <memory>
 #include <string>
 
+#include "domain/exception/MethodRequiredException.hpp"
+#include "domain/exception/UriRequiredException.hpp"
 #include "domain/RequestBody.hpp"
 
 namespace getit::domain
@@ -22,7 +24,7 @@ namespace getit::domain
             std::string getMethod();
             std::string getUri();
             std::map<std::string, std::string> getHeaders();
-            std::shared_ptr<RequestBody> getRequestBody();
+            std::shared_ptr<RequestBody> getBody();
 
         private:
             std::string method;

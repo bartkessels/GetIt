@@ -12,8 +12,3 @@ void MethodPipeline::executeBeforeRequest(std::shared_ptr<RequestData> data)
 {
     data->setMethod(this->httpMethod);
 }
-
-void MethodPipeline::executeAfterRequest(std::shared_ptr<Response> response)
-{
-    
-}

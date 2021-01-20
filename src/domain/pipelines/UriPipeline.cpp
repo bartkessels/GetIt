@@ -12,8 +12,3 @@ void UriPipeline::executeBeforeRequest(std::shared_ptr<RequestData> data)
 {
     data->setUri(this->uri);
 }
-
-void UriPipeline::executeAfterRequest(std::shared_ptr<Response> response)
-{
-    
-}
