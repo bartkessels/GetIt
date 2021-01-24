@@ -34,6 +34,12 @@ set(SOURCEFILES
     gui/widget/HeadersWidget/HeadersWidget.cpp
     gui/widget/RequestInfoWidget/RequestInfoWidget.cpp
     gui/widget/RequestSettingsWidget/RequestSettingsWidget.cpp
+
+    gui/widget/MethodWidget/MethodController.cpp
+    gui/widget/MethodWidget/MethodView.cpp
+
+    gui/widget/UriWidget/UriController.cpp
+    gui/widget/UriWidget/UriView.cpp
 )
 
 set(HEADERFILES
@@ -67,6 +73,14 @@ set(HEADERFILES
     gui/widget/RequestSettingsWidget/RequestSettingsWidget.hpp
     gui/widget/RequestWidget.hpp
     gui/widget/ResponseWidget.hpp
+
+    gui/widget/MethodWidget/MethodController.hpp
+    gui/widget/MethodWidget/MethodView.hpp
+
+    gui/widget/UriWidget/UriController.hpp
+    gui/widget/UriWidget/UriView.hpp
+
+    gui/BeforeWidgetController.hpp
 )
 
 add_executable(getit

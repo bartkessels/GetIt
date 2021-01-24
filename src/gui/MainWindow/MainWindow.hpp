@@ -15,6 +15,16 @@
 #include "gui/widget/BodyWidget/BodyWidget.hpp"
 #include "gui/widget/RequestInfoWidget/RequestInfoWidget.hpp"
 
+// New imports for pipelines:
+
+#include "gui/widget/MethodWidget/MethodController.hpp"
+#include "gui/widget/MethodWidget/MethodView.hpp"
+
+#include "gui/widget/UriWidget/UriController.hpp"
+#include "gui/widget/UriWidget/UriView.hpp"
+
+#include "gui/BeforeWidgetController.hpp"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -29,14 +39,17 @@ namespace getit::gui
         explicit MainWindow(const std::shared_ptr<getit::domain::RequestFactory>& factory, QWidget* parent = nullptr);
         ~MainWindow() override;
 
+        void registerView(std::shared_ptr<getit::gui::BeforeWidgetController> controller, std::shared_ptr<QWidget> view);
+        // void registerView(std::shared_ptr<getit::gui::BeforeWidgetController> controller, std:;shared_ptr<QWidget> view);
+
     private:
+        std::shared_ptr<domain::Request> request;
         void connectSignals();
         void connectSendSlot();
 
         Ui::MainWindow* ui;
         std::shared_ptr<widget::RequestInfoWidget> requestInfoWidget;
         std::shared_ptr<widget::BodyWidget> bodyWidget;
-        const std::shared_ptr<getit::domain::RequestFactory>& factory;
 
     private slots:
         void setResponse(getit::domain::Response* response);
