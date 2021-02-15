@@ -22,9 +22,15 @@ FetchContent_MakeAvailable(extern_catch2)
 
 # ------------------------------------------------------------------------------
 # Cpp rest SDK
+SET(BUILD_TESTS OFF)
+SET(BUILD_SAMPLES OFF)
+
 FetchContent_Declare(
         extern_restsdk
 
         GIT_REPOSITORY https://github.com/microsoft/cpprestsdk.git
         GIT_TAG        2.10.17)
 FetchContent_MakeAvailable(extern_restsdk)
+
+SET(BUILD_TESTS ON)
+SET(BUILD_SAMPLES ON)
