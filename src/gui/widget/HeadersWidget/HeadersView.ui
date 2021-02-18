@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CookiesWidget</class>
- <widget class="QWidget" name="CookiesWidget">
+ <class>HeadersView</class>
+ <widget class="QWidget" name="HeadersView">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -30,12 +30,12 @@
     <number>0</number>
    </property>
    <item row="0" column="0">
-    <layout class="QVBoxLayout" name="layoutCookies">
+    <layout class="QVBoxLayout" name="layoutHeaders">
      <property name="spacing">
       <number>0</number>
      </property>
      <item>
-      <widget class="QTreeWidget" name="treeCookies">
+      <widget class="QTreeWidget" name="treeHeaders">
        <property name="tabKeyNavigation">
         <bool>true</bool>
        </property>
@@ -62,7 +62,7 @@
        </attribute>
        <column>
         <property name="text">
-         <string>Cookie</string>
+         <string>Header</string>
         </property>
        </column>
        <column>
@@ -70,15 +70,26 @@
          <string>Value</string>
         </property>
        </column>
+       <item>
+        <property name="text">
+         <string>User-Agent</string>
+        </property>
+        <property name="text">
+         <string>GetIt</string>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="layoutCookesTreeButtons">
+      <layout class="QHBoxLayout" name="layoutHeadersButtons">
        <property name="spacing">
         <number>0</number>
        </property>
        <item>
-        <spacer name="spacerCookiesButtons">
+        <spacer name="spacerHeadersButtons">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -91,14 +102,14 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="btnRemoveCookie">
+        <widget class="QPushButton" name="btnRemoveHeader">
          <property name="text">
           <string>-</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="btnAddCookie">
+        <widget class="QPushButton" name="btnAddHeader">
          <property name="text">
           <string>+</string>
          </property>

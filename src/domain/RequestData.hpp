@@ -18,7 +18,7 @@ namespace getit::domain
 
             void setMethod(std::string method);
             void setUri(std::string uri);
-            void addOrUpdateHeader(std::string header, std::string value);
+            void addHeader(std::string header, std::string value);
             void setBody(std::shared_ptr<RequestBody> body);
 
             std::string getMethod();

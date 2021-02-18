@@ -28,15 +28,24 @@ set(SOURCEFILES
     domain/RequestFactory.cpp
 
     gui/MainWindow/MainWindow.cpp
-    gui/widget/AuthenticationWidget/AuthenticationWidget.cpp
-    gui/widget/BodyWidget/BodyWidget.cpp
-    gui/widget/CookiesWidget/CookiesWidget.cpp
-    gui/widget/HeadersWidget/HeadersWidget.cpp
-    gui/widget/RequestInfoWidget/RequestInfoWidget.cpp
-    gui/widget/RequestSettingsWidget/RequestSettingsWidget.cpp
+
+    gui/widget/CookiesWidget/CookiesController.cpp
+    gui/widget/CookiesWidget/CookiesView.cpp
+
+    gui/widget/HeadersWidget/HeadersController.cpp
+    gui/widget/HeadersWidget/HeadersView.cpp
 
     gui/widget/MethodWidget/MethodController.cpp
     gui/widget/MethodWidget/MethodView.cpp
+
+    gui/widget/RawBodyWidget/RawBodyController.cpp
+    gui/widget/RawBodyWidget/RawBodyView.cpp
+
+    gui/widget/ResponseHeadersWidget/ResponseHeadersController.cpp
+    gui/widget/ResponseHeadersWidget/ResponseHeadersView.cpp
+
+    gui/widget/ResponseRawBodyWidget/ResponseRawBodyController.cpp
+    gui/widget/ResponseRawBodyWidget/ResponseRawBodyView.cpp
 
     gui/widget/UriWidget/UriController.cpp
     gui/widget/UriWidget/UriView.cpp
@@ -65,17 +74,26 @@ set(HEADERFILES
     domain/Response.hpp
 
     gui/MainWindow/MainWindow.hpp
-    gui/widget/AuthenticationWidget/AuthenticationWidget.hpp
-    gui/widget/BodyWidget/BodyWidget.hpp
-    gui/widget/CookiesWidget/CookiesWidget.hpp
-    gui/widget/HeadersWidget/HeadersWidget.hpp
-    gui/widget/RequestInfoWidget/RequestInfoWidget.hpp
-    gui/widget/RequestSettingsWidget/RequestSettingsWidget.hpp
     gui/widget/RequestWidget.hpp
     gui/widget/ResponseWidget.hpp
 
+    gui/widget/CookiesWidget/CookiesController.hpp
+    gui/widget/CookiesWidget/CookiesView.hpp
+
+    gui/widget/HeadersWidget/HeadersController.hpp
+    gui/widget/HeadersWidget/HeadersView.hpp
+
     gui/widget/MethodWidget/MethodController.hpp
     gui/widget/MethodWidget/MethodView.hpp
+
+    gui/widget/RawBodyWidget/RawBodyController.hpp
+    gui/widget/RawBodyWidget/RawBodyView.hpp
+
+    gui/widget/ResponseHeadersWidget/ResponseHeadersController.hpp
+    gui/widget/ResponseHeadersWidget/ResponseHeadersView.hpp
+
+    gui/widget/ResponseRawBodyWidget/ResponseRawBodyController.hpp
+    gui/widget/ResponseRawBodyWidget/ResponseRawBodyView.hpp
 
     gui/widget/UriWidget/UriController.hpp
     gui/widget/UriWidget/UriView.hpp

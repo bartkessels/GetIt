@@ -14,7 +14,7 @@ void RequestData::setUri(std::string uri)
     this->uri = uri;
 }
 
-void RequestData::addOrUpdateHeader(std::string header, std::string value)
+void RequestData::addHeader(std::string header, std::string value)
 {
     this->headers.insert({header, value});
 }

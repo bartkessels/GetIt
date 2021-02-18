@@ -1,14 +1,16 @@
 #pragma once
 
-#include "gui/widget/UriWidget/UriView.hpp"
+#include <map>
+
+#include "gui/widget/HeadersWidget/HeadersView.hpp"
 #include "gui/BeforeWidgetController.hpp"
 
 namespace getit::gui::widget
 {
-    class UriController: public BeforeWidgetController
+    class HeadersController: public BeforeWidgetController
     {
         public:
-            ~UriController() = default;
+            ~HeadersController() = default;
 
             void executeBeforeRequest(std::shared_ptr<getit::domain::RequestData> data);
     };

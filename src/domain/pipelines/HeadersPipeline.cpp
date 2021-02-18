@@ -16,6 +16,6 @@ void HeadersPipeline::removeHeader(std::string header)
 void HeadersPipeline::executeBeforeRequest(std::shared_ptr<RequestData> data)
 {
     for (auto const& [header, value] : this->headers) {
-        data->addOrUpdateHeader(header, value);
+        data->addHeader(header, value);
     }
 }

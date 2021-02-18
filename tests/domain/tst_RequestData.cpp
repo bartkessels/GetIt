@@ -79,7 +79,29 @@ TEST_CASE("RequestData")
         REQUIRE_THROWS(sut->getUri());
     }
 
-    SECTION("getHeaders returns the headers that are set using addOrUpdateHeader")
+    SECTION("setHeaders allows the same header multiple times")
+    {
+        // Arrange
+        std::string header = "Set-Cookie";
+        std::string value1 = "Content-Type=application/json";
+        std::string value2 = "Accept-Language=nl-nl";
+
+        std::map<std::string, std::string> expectedHeaders = {
+            {header, value1},
+            {header, value2}
+        };
+
+        const auto& sut = std::make_unique<RequestData>();
+
+        // Act
+        sut->addHeader(header, value1);
+        sut->addHeader(header, value2);
+
+        // Assert
+        REQUIRE(sut->getHeaders() == expectedHeaders);
+    }
+
+    SECTION("getHeaders returns the headers that are set using addHeader")
     {
         // Arrange
         std::string header1 = "h1";
@@ -92,14 +114,14 @@ TEST_CASE("RequestData")
         const auto& sut = std::make_unique<RequestData>();
 
         // Act
-        sut->addOrUpdateHeader(header1, "");
-        sut->addOrUpdateHeader(header2, "");
+        sut->addHeader(header1, "");
+        sut->addHeader(header2, "");
 
         // Assert
         REQUIRE(sut->getHeaders() == expectedHeaders);
     }
 
-    SECTION("getHeaders returns an empty map when no headers are set using addOrUpdateHeader")
+    SECTION("getHeaders returns an empty map when no headers are set using addHeader")
     {
         // Arrange
         const auto& sut = std::make_unique<RequestData>();
