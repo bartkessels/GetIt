@@ -4,14 +4,16 @@
 #include "domain/RequestFactory.hpp"
 
 #include "gui/MainWindow/MainWindow.hpp"
+#include "gui/widget/BodyWidget/RawBodyTab/RawBodyTabController.hpp"
+#include "gui/widget/BodyWidget/RawBodyTab/RawBodyTabView.hpp"
+#include "gui/widget/BodyWidget/BodyController.hpp"
+#include "gui/widget/BodyWidget/BodyView.hpp"
 #include "gui/widget/CookiesWidget/CookiesController.hpp"
 #include "gui/widget/CookiesWidget/CookiesView.hpp"
 #include "gui/widget/HeadersWidget/HeadersController.hpp"
 #include "gui/widget/HeadersWidget/HeadersView.hpp"
 #include "gui/widget/MethodWidget/MethodController.hpp"
 #include "gui/widget/MethodWidget/MethodView.hpp"
-#include "gui/widget/RawBodyWidget/RawBodyController.hpp"
-#include "gui/widget/RawBodyWidget/RawBodyView.hpp"
 #include "gui/widget/ResponseHeadersWidget/ResponseHeadersController.hpp"
 #include "gui/widget/ResponseHeadersWidget/ResponseHeadersView.hpp"
 #include "gui/widget/ResponseRawBodyWidget/ResponseRawBodyController.hpp"
@@ -34,9 +36,14 @@ void registerGeneralViews(getit::gui::MainWindow* window)
 
 void registerBodyViews(getit::gui::MainWindow* window)
 {
-    const auto& rawBodyController = std::make_shared<getit::gui::widget::RawBodyController>();
-    const auto& rawBodyView = std::make_shared<getit::gui::widget::RawBodyView>(window);
-    window->registerBodyView(rawBodyController, rawBodyView, "Raw Body");
+    const auto& rawBodyView = std::make_shared<getit::gui::widget::BodyWidget::RawBodyTabView>(window);
+    const auto& rawBodyController = std::make_shared<getit::gui::widget::BodyWidget::RawBodyTabController>(rawBodyView);
+
+    const auto& bodyView = std::make_shared<getit::gui::widget::BodyView>();
+    const auto& bodyController = std::make_shared<getit::gui::widget::BodyController>(bodyView);
+    bodyController->registerTab(rawBodyController, rawBodyView, "Raw");
+
+    window->registerBodyView(bodyController, bodyView, "Raw Body");
 }
 
 void registerInformationViews(getit::gui::MainWindow* window)

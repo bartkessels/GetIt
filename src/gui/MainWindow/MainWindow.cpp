@@ -42,9 +42,9 @@ void MainWindow::registerInformationView(std::shared_ptr<getit::domain::BeforeRe
     );
 }
 
-void MainWindow::registerBodyView(std::shared_ptr<getit::gui::BeforeWidgetController> controller, std::shared_ptr<QWidget> view, std::string name)
+void MainWindow::registerBodyView(std::shared_ptr<getit::domain::BeforeRequestPipeline> controller, std::shared_ptr<QWidget> view, std::string name)
 {
-    this->registerView(controller, view);
+    request->registerPipeline(controller);
     this->ui->bodyTabWidget->addTab(view.get(), QString::fromStdString(name));
 }
 

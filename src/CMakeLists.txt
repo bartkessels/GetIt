@@ -29,6 +29,11 @@ set(SOURCEFILES
 
     gui/MainWindow/MainWindow.cpp
 
+    gui/widget/BodyWidget/RawBodyTab/RawBodyTabController.cpp
+    gui/widget/BodyWidget/RawBodyTab/RawBodyTabView.cpp
+    gui/widget/BodyWidget/BodyController.cpp
+    gui/widget/BodyWidget/BodyView.cpp
+
     gui/widget/CookiesWidget/CookiesController.cpp
     gui/widget/CookiesWidget/CookiesView.cpp
 
@@ -37,9 +42,6 @@ set(SOURCEFILES
 
     gui/widget/MethodWidget/MethodController.cpp
     gui/widget/MethodWidget/MethodView.cpp
-
-    gui/widget/RawBodyWidget/RawBodyController.cpp
-    gui/widget/RawBodyWidget/RawBodyView.cpp
 
     gui/widget/ResponseHeadersWidget/ResponseHeadersController.cpp
     gui/widget/ResponseHeadersWidget/ResponseHeadersView.cpp
@@ -77,6 +79,13 @@ set(HEADERFILES
     gui/widget/RequestWidget.hpp
     gui/widget/ResponseWidget.hpp
 
+    gui/widget/BodyWidget/RawBodyTab/IRawBodyTabView.hpp
+    gui/widget/BodyWidget/RawBodyTab/RawBodyTabController.hpp
+    gui/widget/BodyWidget/RawBodyTab/RawBodyTabView.hpp
+    gui/widget/BodyWidget/BodyController.hpp
+    gui/widget/BodyWidget/BodyView.hpp
+    gui/widget/BodyWidget/IBodyView.hpp
+
     gui/widget/CookiesWidget/CookiesController.hpp
     gui/widget/CookiesWidget/CookiesView.hpp
     gui/widget/CookiesWidget/ICookiesView.hpp
@@ -88,9 +97,6 @@ set(HEADERFILES
     gui/widget/MethodWidget/IMethodView.hpp
     gui/widget/MethodWidget/MethodController.hpp
     gui/widget/MethodWidget/MethodView.hpp
-
-    gui/widget/RawBodyWidget/RawBodyController.hpp
-    gui/widget/RawBodyWidget/RawBodyView.hpp
 
     gui/widget/ResponseHeadersWidget/ResponseHeadersController.hpp
     gui/widget/ResponseHeadersWidget/ResponseHeadersView.hpp
