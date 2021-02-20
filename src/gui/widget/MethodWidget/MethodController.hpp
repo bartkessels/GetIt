@@ -1,15 +1,22 @@
 #pragma once
 
-#include "gui/widget/MethodWidget/MethodView.hpp"
-#include "gui/BeforeWidgetController.hpp"
+#include <memory>
+
+#include "domain/BeforeRequestPipeline.hpp"
+#include "domain/RequestData.hpp"
+#include "gui/widget/MethodWidget/IMethodView.hpp"
 
 namespace getit::gui::widget
 {
-    class MethodController: public BeforeWidgetController
+    class MethodController: public getit::domain::BeforeRequestPipeline
     {
         public:
+            explicit MethodController(std::shared_ptr<IMethodView> view);
             ~MethodController() = default;
 
-            void executeBeforeRequest(std::shared_ptr<getit::domain::RequestData> data);
+            void executeBeforeRequest(std::shared_ptr<getit::domain::RequestData> data) override;
+
+        private:
+            std::shared_ptr<IMethodView> view;
     };
 }

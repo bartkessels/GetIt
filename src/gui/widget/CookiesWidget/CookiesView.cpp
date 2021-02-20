@@ -24,31 +24,26 @@ CookiesView::~CookiesView()
     delete ui;
 }
 
-std::map<std::string, std::string> CookiesView::getCookies()
+std::list<std::pair<std::string, std::string>> CookiesView::getCookies()
 {
-    std::map<std::string, std::string> cookies;
+    std::list<std::pair<std::string, std::string>> cookies;
 
     for (int i = 0; i < ui->treeCookies->topLevelItemCount(); ++i) {
         QTreeWidgetItem* itm = ui->treeCookies->topLevelItem(i);
 
-        cookies.insert_or_assign(
+        cookies.push_back({
             itm->text(cookieIndex).toStdString(),
             itm->text(valueIndex).toStdString()
-        );
+        });
     }
 
     return cookies;
 }
 
-void CookiesView::setCookies(std::map<std::string, std::string> cookies)
+void CookiesView::setCookies(std::list<std::pair<std::string, std::string>> cookies)
 {
-    std::map<std::string, std::string>::iterator it;
-
-    for (it = cookies.begin(); it != cookies.end(); it++) {
-        this->addCookie(
-            it->first,
-            it->second
-        );
+    for (const auto& [cookie, value] : cookies) {
+        this->addCookie(cookie, value);
     }
 }
 

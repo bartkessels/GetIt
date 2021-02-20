@@ -1,7 +1,5 @@
 #include "domain/RequestData.hpp"
 
-#include <iostream>
-
 using namespace getit::domain;
 
 void RequestData::setMethod(std::string method)
@@ -16,7 +14,9 @@ void RequestData::setUri(std::string uri)
 
 void RequestData::addHeader(std::string header, std::string value)
 {
-    this->headers.insert({header, value});
+    this->headers.push_back(
+        {header, value}
+    );
 }
 
 void RequestData::setBody(std::shared_ptr<RequestBody> body)
@@ -42,7 +42,7 @@ std::string RequestData::getUri()
     return this->uri;
 }
 
-std::map<std::string, std::string> RequestData::getHeaders()
+nonUniqueMap RequestData::getHeaders()
 {
     return this->headers;
 }

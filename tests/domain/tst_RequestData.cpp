@@ -86,7 +86,7 @@ TEST_CASE("RequestData")
         std::string value1 = "Content-Type=application/json";
         std::string value2 = "Accept-Language=nl-nl";
 
-        std::map<std::string, std::string> expectedHeaders = {
+        nonUniqueMap expectedHeaders = {
             {header, value1},
             {header, value2}
         };
@@ -106,7 +106,7 @@ TEST_CASE("RequestData")
         // Arrange
         std::string header1 = "h1";
         std::string header2 = "h2";
-        std::map<std::string, std::string> expectedHeaders = {
+        nonUniqueMap expectedHeaders = {
             {header1, ""},
             {header2, ""}
         };

@@ -81,9 +81,7 @@ $ ./bin/getit_tests
 
 #### 5.1.1 Test coverage
 
-When building the tests the required compiler flags are set to generate the coverage reports for each individual
-source file. The coverage reports can be bundled using `lcov` which will generate a `*.info` file which can be transformed
-into a `html` file using the `genhtml` command.
+If you want to generate the test coverage report add the `--coverage` to the `cmake` command, i.e. `cmake --coverage ..`. This will generate a coverage report for each individual sources file. The coverage reports can be bundled using `lcov` which will generate a `.info` file. To open this file convert it to a `.html` file with the `genhtml` command.
 
 ```bash
 $ lcov --directory tests/CMakeFiles/getit_tests.dir --capture --output-file getit_coverage.info

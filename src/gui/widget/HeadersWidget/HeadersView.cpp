@@ -24,14 +24,14 @@ HeadersView::~HeadersView()
     delete ui;
 }
 
-std::map<std::string, std::string> HeadersView::getHeaders()
+std::list<std::pair<std::string, std::string>> HeadersView::getHeaders()
 {
-    std::map<std::string, std::string> headers;
+    std::list<std::pair<std::string, std::string>> headers;
 
     for (int i = 0; i < ui->treeHeaders->topLevelItemCount(); ++i) {
         QTreeWidgetItem* itm = ui->treeHeaders->topLevelItem(i);
 
-        headers.insert({
+        headers.push_back({
             itm->text(headerIndex).toStdString(),
             itm->text(valueIndex).toStdString()
         });
@@ -40,15 +40,10 @@ std::map<std::string, std::string> HeadersView::getHeaders()
     return headers;
 }
 
-void HeadersView::setHeaders(std::map<std::string, std::string> headers)
+void HeadersView::setHeaders(std::list<std::pair<std::string, std::string>> headers)
 {
-    std::map<std::string, std::string>::iterator it;
-
-    for (it = headers.begin(); it != headers.end(); it++) {
-        this->addHeader(
-            it->first,
-            it->second
-        );
+    for (const auto& [header, value] : headers) {
+        this->addHeader(header, value);
     }
 }
 

@@ -2,15 +2,17 @@
 
 using namespace getit::gui::widget;
 
+HeadersController::HeadersController(std::shared_ptr<IHeadersView> view):
+    view(view)
+{
+
+}
+
 void HeadersController::executeBeforeRequest(std::shared_ptr<getit::domain::RequestData> data)
 {
-    auto headers = getView<HeadersView>()->getHeaders();
-    std::map<std::string, std::string>::iterator it;
-
-    for (it = headers.begin(); it != headers.end(); it++) {
+    for (const auto& [header, value] : view->getHeaders()) {
         data->addHeader(
-            it->first,
-            it->second
+            header, value
         );
     }
 }

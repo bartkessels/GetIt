@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 
-set(CMAKE_CXX_STANDARD 20)
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
-
 find_package(Boost COMPONENTS thread system chrono REQUIRED)
+
+set(CMAKE_CXX_STANDARD 17)
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
 
 set(SRCFILES
     ../src/domain/body/FormdataRequestBody.cpp
@@ -19,6 +19,11 @@ set(SRCFILES
     ../src/domain/Request.cpp
     ../src/domain/RequestData.cpp
     ../src/domain/RequestFactory.cpp
+
+    ../src/gui/widget/CookiesWidget/CookiesController.cpp
+    ../src/gui/widget/HeadersWidget/HeadersController.cpp
+    ../src/gui/widget/MethodWidget/MethodController.cpp
+    ../src/gui/widget/UriWidget/UriController.cpp
 )
 
 set(TST_SRCFILES
@@ -36,9 +41,20 @@ set(TST_SRCFILES
 
     domain/tst_RequestData.cpp
     domain/tst_RequestFactory.cpp
+
+    gui/widget/CookiesWidget/tst_CookiesController.cpp
+    gui/widget/HeadersWidget/tst_HeadersController.cpp
+    gui/widget/MethodWidget/tst_MethodController.cpp
+    gui/widget/UriWidget/tst_UriController.cpp
 )
 
 set(TST_HEADERFILES
+    gui/widget/CookiesWidget/CookiesViewMock.hpp
+    gui/widget/HeadersWidget/HeadersViewMock.hpp
+    gui/widget/MethodWidget/MethodViewMock.hpp
+    gui/widget/UriWidget/UriViewMock.hpp
+    
+    mocks/AfterPipelineMock.hpp
     mocks/BeforePipelineMock.hpp
 )
 

@@ -5,12 +5,9 @@ using namespace getit::domain::pipelines;
 
 void HeadersPipeline::addHeader(std::string header, std::string value)
 {
-    this->headers.insert({header, value});
-}
-
-void HeadersPipeline::removeHeader(std::string header)
-{
-    this->headers.erase(header);
+    this->headers.push_back(
+        std::make_pair(header, value)
+    );
 }
 
 void HeadersPipeline::executeBeforeRequest(std::shared_ptr<RequestData> data)

@@ -14,7 +14,6 @@ namespace getit::domain::pipelines
             ~HeadersPipeline() = default;
 
             void addHeader(std::string header, std::string value);
-            void removeHeader(std::string header);
 
             /**
              * @brief Add the headers to the request
@@ -25,6 +24,6 @@ namespace getit::domain::pipelines
             void executeBeforeRequest(std::shared_ptr<RequestData> data) override;
 
         private:
-            std::map<std::string, std::string> headers;
+            nonUniqueMap headers;
     };
 }

@@ -19,3 +19,8 @@ std::string MethodView::getMethod()
 {
     return ui->method->currentText().toStdString();
 }
+
+void MethodView::setMethod(std::string method)
+{
+    ui->method->setCurrentText(QString::fromStdString(method).toUpper());
+}

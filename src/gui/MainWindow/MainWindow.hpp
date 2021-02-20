@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <string>
 
+#include "domain/AfterRequestPipeline.hpp"
+#include "domain/BeforeRequestPipeline.hpp"
 #include "domain/Request.hpp"
 #include "domain/RequestFactory.hpp"
 #include "domain/Response.hpp"
@@ -31,9 +33,10 @@ namespace getit::gui
         explicit MainWindow(const std::shared_ptr<getit::domain::RequestFactory>& factory, QWidget* parent = nullptr);
         ~MainWindow() override;
 
-        void registerUriView(std::shared_ptr<getit::gui::BeforeWidgetController> controller, std::shared_ptr<QWidget> view);
-        void registerMethodView(std::shared_ptr<getit::gui::BeforeWidgetController> controller, std::shared_ptr<QWidget> view);
-        void registerInformationView(std::shared_ptr<getit::gui::BeforeWidgetController> controller, std::shared_ptr<QWidget> widget, std::string name);
+        void registerUriView(std::shared_ptr<getit::domain::BeforeRequestPipeline> controller, std::shared_ptr<QWidget> view);
+        void registerMethodView(std::shared_ptr<getit::domain::BeforeRequestPipeline> controller, std::shared_ptr<QWidget> view);
+        // void registerInformationView(std::shared_ptr<getit::gui::BeforeWidgetController> controller, std::shared_ptr<QWidget> widget, std::string name);
+        void registerInformationView(std::shared_ptr<getit::domain::BeforeRequestPipeline> controller, std::shared_ptr<QWidget> view, std::string name);
         void registerBodyView(std::shared_ptr<getit::gui::BeforeWidgetController> controller, std::shared_ptr<QWidget> view, std::string name);
         void registerResponseHeadersView(std::shared_ptr<getit::gui::AfterWidgetController> controller, std::shared_ptr<QWidget> view);
         void registerResponseBodyView(std::shared_ptr<getit::gui::AfterWidgetController> controller, std::shared_ptr<QWidget> view, std::string name);

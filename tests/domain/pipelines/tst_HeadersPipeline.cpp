@@ -1,6 +1,9 @@
+#include <algorithm>
 #include <catch2/catch.hpp>
+#include <list>
 #include <memory>
 #include <string>
+#include <utility>
 
 #include "domain/pipelines/HeadersPipeline.hpp"
 
@@ -29,6 +32,11 @@ TEST_CASE("HeadersPipeline")
         auto header1 = "h1";
         auto header2 = "h2";
 
+        std::list<std::pair<std::string, std::string>> expectedHeaders = {
+            std::make_pair(header1, ""),
+            std::make_pair(header2, "")
+        };
+
         const auto& requestData = std::make_shared<RequestData>();
 
         const auto& sut = std::make_unique<HeadersPipeline>();
@@ -39,7 +47,6 @@ TEST_CASE("HeadersPipeline")
         sut->executeBeforeRequest(requestData);
 
         // Assert
-        REQUIRE(requestData->getHeaders().contains(header1));
-        REQUIRE(requestData->getHeaders().contains(header2));
+        REQUIRE(expectedHeaders == requestData->getHeaders());
     }
 }

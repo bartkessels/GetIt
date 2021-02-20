@@ -1,12 +1,15 @@
 #pragma once
 
-#include <map>
+#include <list>
 #include <memory>
 #include <string>
+#include <utility>
 
 #include "domain/exception/MethodRequiredException.hpp"
 #include "domain/exception/UriRequiredException.hpp"
 #include "domain/RequestBody.hpp"
+
+typedef std::list<std::pair<std::string, std::string>> nonUniqueMap;
 
 namespace getit::domain
 {
@@ -23,13 +26,13 @@ namespace getit::domain
 
             std::string getMethod();
             std::string getUri();
-            std::map<std::string, std::string> getHeaders();
+            nonUniqueMap getHeaders();
             std::shared_ptr<RequestBody> getBody();
 
         private:
             std::string method;
             std::string uri;
-            std::map<std::string, std::string> headers;
+            nonUniqueMap headers;
             std::shared_ptr<RequestBody> requestBody;
     };
 }

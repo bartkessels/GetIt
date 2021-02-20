@@ -1,6 +1,6 @@
 #pragma once
 
-#include <map>
+#include <list>
 #include <memory>
 #include <string>
 #include <QPushButton>
@@ -8,6 +8,9 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QWidget>
+#include <utility>
+
+#include "gui/widget/HeadersWidget/IHeadersView.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class HeadersView; }
@@ -15,14 +18,14 @@ QT_END_NAMESPACE
 
 namespace getit::gui::widget
 {
-    class HeadersView: public QWidget
+    class HeadersView: public QWidget, public IHeadersView
     {
         public:
             explicit HeadersView(QWidget* parent = nullptr);
             ~HeadersView();
 
-            std::map<std::string, std::string> getHeaders();
-            void setHeaders(std::map<std::string, std::string> headers);
+            std::list<std::pair<std::string, std::string>> getHeaders() override;
+            void setHeaders(std::list<std::pair<std::string, std::string>> headers) override;
 
         private:
             Ui::HeadersView* ui;

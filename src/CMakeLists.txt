@@ -8,7 +8,7 @@ set(CMAKE_AUTORCC ON)
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Boost COMPONENTS system REQUIRED)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 
 set(SOURCEFILES
     main.cpp
@@ -79,10 +79,13 @@ set(HEADERFILES
 
     gui/widget/CookiesWidget/CookiesController.hpp
     gui/widget/CookiesWidget/CookiesView.hpp
+    gui/widget/CookiesWidget/ICookiesView.hpp
 
     gui/widget/HeadersWidget/HeadersController.hpp
     gui/widget/HeadersWidget/HeadersView.hpp
+    gui/widget/HeadersWidget/IHeadersView.hpp
 
+    gui/widget/MethodWidget/IMethodView.hpp
     gui/widget/MethodWidget/MethodController.hpp
     gui/widget/MethodWidget/MethodView.hpp
 
@@ -95,6 +98,7 @@ set(HEADERFILES
     gui/widget/ResponseRawBodyWidget/ResponseRawBodyController.hpp
     gui/widget/ResponseRawBodyWidget/ResponseRawBodyView.hpp
 
+    gui/widget/UriWidget/IUriView.hpp
     gui/widget/UriWidget/UriController.hpp
     gui/widget/UriWidget/UriView.hpp
 

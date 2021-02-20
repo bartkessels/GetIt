@@ -1,17 +1,22 @@
 #pragma once
 
-#include <map>
+#include <memory>
 
-#include "gui/widget/HeadersWidget/HeadersView.hpp"
-#include "gui/BeforeWidgetController.hpp"
+#include "domain/BeforeRequestPipeline.hpp"
+#include "domain/RequestData.hpp"
+#include "gui/widget/HeadersWidget/IHeadersView.hpp"
 
 namespace getit::gui::widget
 {
-    class HeadersController: public BeforeWidgetController
+    class HeadersController: public getit::domain::BeforeRequestPipeline
     {
         public:
+            explicit HeadersController(std::shared_ptr<IHeadersView> view);
             ~HeadersController() = default;
 
-            void executeBeforeRequest(std::shared_ptr<getit::domain::RequestData> data);
+            void executeBeforeRequest(std::shared_ptr<getit::domain::RequestData> data) override;
+
+        private:
+            std::shared_ptr<IHeadersView> view;
     };
 }

@@ -37,7 +37,7 @@ jobs:
       before_script: &before_script
         - cd build
       script: &script_linux_test
-        - cmake ..
+        - cmake --coverage ..
         - make getit_tests
         - ./bin/getit_tests
       after_success:

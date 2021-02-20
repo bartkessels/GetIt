@@ -21,22 +21,25 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::registerUriView(std::shared_ptr<getit::gui::BeforeWidgetController> controller, std::shared_ptr<QWidget> view)
+void MainWindow::registerUriView(std::shared_ptr<getit::domain::BeforeRequestPipeline> controller, std::shared_ptr<QWidget> view)
 {
-    this->registerView(controller, view);
+    request->registerPipeline(controller);
     this->ui->uriWidget->addWidget(view.get());
 }
 
-void MainWindow::registerMethodView(std::shared_ptr<getit::gui::BeforeWidgetController> controller, std::shared_ptr<QWidget> view)
+void MainWindow::registerMethodView(std::shared_ptr<getit::domain::BeforeRequestPipeline> controller, std::shared_ptr<QWidget> view)
 {
-    this->registerView(controller, view);
+    request->registerPipeline(controller);
     this->ui->methodWidget->addWidget(view.get());
 }
 
-void MainWindow::registerInformationView(std::shared_ptr<getit::gui::BeforeWidgetController> controller, std::shared_ptr<QWidget> view, std::string name)
+void MainWindow::registerInformationView(std::shared_ptr<getit::domain::BeforeRequestPipeline> controller, std::shared_ptr<QWidget> view, std::string name)
 {
-    this->registerView(controller, view);
-    this->ui->informationTabWidget->addTab(view.get(), QString::fromStdString(name));
+    request->registerPipeline(controller);
+    this->ui->informationTabWidget->addTab(
+        view.get(),
+        QString::fromStdString(name)
+    );
 }
 
 void MainWindow::registerBodyView(std::shared_ptr<getit::gui::BeforeWidgetController> controller, std::shared_ptr<QWidget> view, std::string name)

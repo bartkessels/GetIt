@@ -1,6 +1,6 @@
 #pragma once
 
-#include <map>
+#include <list>
 #include <memory>
 #include <string>
 #include <QPushButton>
@@ -8,6 +8,9 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QWidget>
+#include <utility>
+
+#include "gui/widget/CookiesWidget/ICookiesView.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class CookiesView; }
@@ -15,14 +18,14 @@ QT_END_NAMESPACE
 
 namespace getit::gui::widget
 {
-    class CookiesView: public QWidget
+    class CookiesView: public QWidget, public ICookiesView
     {
         public:
             explicit CookiesView(QWidget* parent = nullptr);
             ~CookiesView();
 
-            std::map<std::string, std::string> getCookies();
-            void setCookies(std::map<std::string, std::string> cookies);
+            std::list<std::pair<std::string, std::string>> getCookies() override;
+            void setCookies(std::list<std::pair<std::string, std::string>> cookies) override;
 
         private:
             Ui::CookiesView* ui;

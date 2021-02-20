@@ -23,12 +23,12 @@ using namespace getit::domain;
 
 void registerGeneralViews(getit::gui::MainWindow* window)
 {    
-    const auto& methodController = std::make_shared<getit::gui::widget::MethodController>();
     const auto& methodView = std::make_shared<getit::gui::widget::MethodView>(window);
+    const auto& methodController = std::make_shared<getit::gui::widget::MethodController>(methodView);
     window->registerMethodView(methodController, methodView);
 
-    const auto& uriController = std::make_shared<getit::gui::widget::UriController>();
     const auto& uriView = std::make_shared<getit::gui::widget::UriView>(window);
+    const auto& uriController = std::make_shared<getit::gui::widget::UriController>(uriView);
     window->registerUriView(uriController, uriView);
 }
 
@@ -41,12 +41,12 @@ void registerBodyViews(getit::gui::MainWindow* window)
 
 void registerInformationViews(getit::gui::MainWindow* window)
 {
-    const auto& headersController = std::make_shared<getit::gui::widget::HeadersController>();
     const auto& headersView = std::make_shared<getit::gui::widget::HeadersView>(window);
+    const auto& headersController = std::make_shared<getit::gui::widget::HeadersController>(headersView);
     window->registerInformationView(headersController, headersView, "Headers");
 
-    const auto& cookiesController = std::make_shared<getit::gui::widget::CookiesController>();
     const auto& cookiesView = std::make_shared<getit::gui::widget::CookiesView>(window);
+    const auto& cookiesController = std::make_shared<getit::gui::widget::CookiesController>(cookiesView);
     window->registerInformationView(cookiesController, cookiesView, "Cookies");
 }
 
