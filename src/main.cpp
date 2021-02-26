@@ -4,6 +4,8 @@
 #include "domain/RequestFactory.hpp"
 
 #include "gui/MainWindow/MainWindow.hpp"
+#include "gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabController.hpp"
+#include "gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabView.hpp"
 #include "gui/widget/BodyWidget/RawBodyTab/RawBodyTabController.hpp"
 #include "gui/widget/BodyWidget/RawBodyTab/RawBodyTabView.hpp"
 #include "gui/widget/BodyWidget/BodyController.hpp"
@@ -36,11 +38,16 @@ void registerGeneralViews(getit::gui::MainWindow* window)
 
 void registerBodyViews(getit::gui::MainWindow* window)
 {
+    const auto& formdataView = std::make_shared<getit::gui::widget::BodyWidget::FormdataBodyTabView>(window);
+    const auto& formdataController = std::make_shared<getit::gui::widget::BodyWidget::FormdataBodyTabController>(formdataView);
+
     const auto& rawBodyView = std::make_shared<getit::gui::widget::BodyWidget::RawBodyTabView>(window);
     const auto& rawBodyController = std::make_shared<getit::gui::widget::BodyWidget::RawBodyTabController>(rawBodyView);
 
     const auto& bodyView = std::make_shared<getit::gui::widget::BodyView>();
     const auto& bodyController = std::make_shared<getit::gui::widget::BodyController>(bodyView);
+    
+    bodyController->registerTab(formdataController, formdataView, "Formdata");
     bodyController->registerTab(rawBodyController, rawBodyView, "Raw");
 
     window->registerBodyView(bodyController, bodyView, "Raw Body");

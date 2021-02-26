@@ -29,6 +29,8 @@ set(SOURCEFILES
 
     gui/MainWindow/MainWindow.cpp
 
+    gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabController.cpp
+    gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabView.cpp
     gui/widget/BodyWidget/RawBodyTab/RawBodyTabController.cpp
     gui/widget/BodyWidget/RawBodyTab/RawBodyTabView.cpp
     gui/widget/BodyWidget/BodyController.cpp
@@ -79,6 +81,9 @@ set(HEADERFILES
     gui/widget/RequestWidget.hpp
     gui/widget/ResponseWidget.hpp
 
+    gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabController.hpp
+    gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabView.hpp
+    gui/widget/BodyWidget/FormdataBodyTab/IFormdataBodyTabView.hpp
     gui/widget/BodyWidget/RawBodyTab/IRawBodyTabView.hpp
     gui/widget/BodyWidget/RawBodyTab/RawBodyTabController.hpp
     gui/widget/BodyWidget/RawBodyTab/RawBodyTabView.hpp
