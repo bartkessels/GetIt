@@ -9,32 +9,35 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>928</width>
-    <height>511</height>
+    <width>973</width>
+    <height>546</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>GetIt</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="spacing">
-       <number>6</number>
-      </property>
       <item>
        <layout class="QGridLayout" name="methodWidget">
         <property name="sizeConstraint">
-         <enum>QLayout::SetDefaultConstraint</enum>
+         <enum>QLayout::SetFixedSize</enum>
         </property>
        </layout>
       </item>
       <item>
-       <layout class="QGridLayout" name="uriWidget"/>
+       <layout class="QGridLayout" name="uriWidget" rowstretch="0" columnminimumwidth="0"/>
       </item>
       <item>
        <widget class="QPushButton" name="btnSend">
+        <property name="maximumSize">
+         <size>
+          <width>75</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
          <string>Send</string>
         </property>
@@ -43,45 +46,48 @@
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <property name="spacing">
-       <number>6</number>
+     <widget class="QSplitter" name="splitter_3">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <property name="spacing">
-         <number>6</number>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="handleWidth">
+       <number>15</number>
+      </property>
+      <widget class="QSplitter" name="splitter">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="handleWidth">
+        <number>15</number>
+       </property>
+       <widget class="QTabWidget" name="informationTabWidget">
+        <property name="currentIndex">
+         <number>-1</number>
         </property>
-        <item>
-         <widget class="QTabWidget" name="informationTabWidget">
-          <property name="currentIndex">
-           <number>-1</number>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTabWidget" name="bodyTabWidget">
-          <property name="currentIndex">
-           <number>-1</number>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <property name="spacing">
-         <number>6</number>
-        </property>
-        <item>
-         <layout class="QGridLayout" name="responseHeadersWidget"/>
-        </item>
-        <item>
-         <widget class="QTabWidget" name="responseBodyTabWidget"/>
-        </item>
-       </layout>
-      </item>
-     </layout>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget">
+        <layout class="QGridLayout" name="bodyWidget"/>
+       </widget>
+      </widget>
+      <widget class="QSplitter" name="splitter_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="handleWidth">
+        <number>15</number>
+       </property>
+       <widget class="QWidget" name="">
+        <layout class="QGridLayout" name="responseHeadersWidget"/>
+       </widget>
+       <widget class="QTabWidget" name="responseBodyTabWidget"/>
+      </widget>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -90,7 +96,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>928</width>
+     <width>973</width>
      <height>21</height>
     </rect>
    </property>

@@ -50,7 +50,7 @@ void registerBodyViews(getit::gui::MainWindow* window)
     bodyController->registerTab(formdataController, formdataView, "Formdata");
     bodyController->registerTab(rawBodyController, rawBodyView, "Raw");
 
-    window->registerBodyView(bodyController, bodyView, "Raw Body");
+    window->registerBodyView(bodyController, bodyView);
 }
 
 void registerInformationViews(getit::gui::MainWindow* window)
