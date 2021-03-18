@@ -7,7 +7,13 @@ set(CMAKE_AUTORCC ON)
 
 
 find_package(Boost COMPONENTS system REQUIRED)
-find_package(Qt6 COMPONENTS Widgets REQUIRED)
+
+# Try to use Qt6 if it's available, otherwise
+# fall back to Qt5
+find_package(Qt6 COMPONENTS Widgets)
+if (NOT Qt6_FOUND)
+    find_package(Qt5 5 COMPONENTS Widgets REQUIRED)
+endif()
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -31,7 +37,7 @@ set(SOURCEFILES
     gui/MainWindow/MainWindow.cpp
 
     gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabController.cpp
-    gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabView.cpp
+        gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabView.cpp
     gui/widget/BodyWidget/RawBodyTab/RawBodyTabController.cpp
     gui/widget/BodyWidget/RawBodyTab/RawBodyTabView.cpp
     gui/widget/BodyWidget/BodyController.cpp
@@ -124,4 +130,9 @@ add_executable(getit
 # Libraries
 target_link_libraries(getit Boost::system)
 target_link_libraries(getit cpprest)
-target_link_libraries(getit Qt::Widgets)
+
+if (NOT Qt6_FOUND)
+    target_link_libraries(getit Qt5::Widgets)
+else()
+    target_link_libraries(getit Qt::Widgets)
+endif()
