@@ -73,8 +73,7 @@ Once you've installed the required packages you're ready to compile GetIt or the
 ### 5.1 Tests
 
 ```bash
-$ cd build
-$ cmake ..
+$ cmake .
 $ make getit_tests
 $ ./bin/getit_tests
 ```
@@ -92,8 +91,7 @@ $ open coverage/index.html
 ### 5.2 Application
 
 ```bash
-$ cd build
-$ cmake ..
+$ cmake .
 $ make getit
 $ ./bin/getit
 ```
