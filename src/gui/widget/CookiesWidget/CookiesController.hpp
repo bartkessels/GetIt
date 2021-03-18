@@ -13,7 +13,7 @@ namespace getit::gui::widget
     {
         public:
             explicit CookiesController(std::shared_ptr<ICookiesView> view);
-            ~CookiesController() = default;
+            ~CookiesController() override = default;
 
             void executeBeforeRequest(std::shared_ptr<getit::domain::RequestData> data) override;
 

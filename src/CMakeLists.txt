@@ -85,8 +85,6 @@ set(HEADERFILES
     domain/Response.hpp
 
     gui/MainWindow/MainWindow.hpp
-    gui/widget/RequestWidget.hpp
-    gui/widget/ResponseWidget.hpp
 
     gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabController.hpp
     gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabView.hpp

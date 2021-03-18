@@ -14,8 +14,8 @@ namespace getit::gui::widget
     class BodyController: public getit::domain::BeforeRequestPipeline
     {
         public:
-            BodyController(std::shared_ptr<IBodyView> view);
-            ~BodyController() = default;
+            explicit BodyController(std::shared_ptr<IBodyView> view);
+            ~BodyController() override = default;
 
             void registerTab(std::shared_ptr<getit::domain::BeforeRequestPipeline> tab, std::shared_ptr<QWidget> body, std::string name);
 

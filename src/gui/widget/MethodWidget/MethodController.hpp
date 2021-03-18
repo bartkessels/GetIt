@@ -12,7 +12,7 @@ namespace getit::gui::widget
     {
         public:
             explicit MethodController(std::shared_ptr<IMethodView> view);
-            ~MethodController() = default;
+            ~MethodController() override = default;
 
             void executeBeforeRequest(std::shared_ptr<getit::domain::RequestData> data) override;
 

@@ -22,7 +22,7 @@ namespace getit::gui::widget
     {
         public:
             explicit CookiesView(QWidget* parent = nullptr);
-            ~CookiesView();
+            ~CookiesView() override;
 
             std::list<std::pair<std::string, std::string>> getCookies() override;
             void setCookies(std::list<std::pair<std::string, std::string>> cookies) override;

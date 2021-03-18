@@ -28,7 +28,7 @@ TEST_CASE("UriWidget/UriController")
         // Act
         sut->executeBeforeRequest(requestData);
 
-        // Arrange
+        // Assert
         REQUIRE(expectedUri == requestData->getUri());
     }
 }

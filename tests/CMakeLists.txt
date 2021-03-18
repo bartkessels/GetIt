@@ -23,6 +23,7 @@ set(SRCFILES
     ../src/domain/RequestData.cpp
     ../src/domain/RequestFactory.cpp
 
+    ../src/gui/widget/BodyWidget/RawBodyTab/RawBodyTabController.cpp
     ../src/gui/widget/CookiesWidget/CookiesController.cpp
     ../src/gui/widget/HeadersWidget/HeadersController.cpp
     ../src/gui/widget/MethodWidget/MethodController.cpp
@@ -45,6 +46,7 @@ set(TST_SRCFILES
     domain/tst_RequestData.cpp
     domain/tst_RequestFactory.cpp
 
+    gui/widget/BodyWidget/RawBodyTab/tst_RawBodyTabController.cpp
     gui/widget/CookiesWidget/tst_CookiesController.cpp
     gui/widget/HeadersWidget/tst_HeadersController.cpp
     gui/widget/MethodWidget/tst_MethodController.cpp
@@ -52,6 +54,7 @@ set(TST_SRCFILES
 )
 
 set(TST_HEADERFILES
+    gui/widget/BodyWidget/RawBodyTab/RawBodyTabViewMock.hpp
     gui/widget/CookiesWidget/CookiesViewMock.hpp
     gui/widget/HeadersWidget/HeadersViewMock.hpp
     gui/widget/MethodWidget/MethodViewMock.hpp

@@ -20,7 +20,7 @@ namespace getit::gui::widget
     {
         public:
             explicit BodyView(QWidget* parent = nullptr);
-            ~BodyView();
+            ~BodyView() override;
 
             void addBodyTab(QWidget* tab, std::string name) override;
             int getSelectedTabIndex() override;

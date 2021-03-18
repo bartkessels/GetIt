@@ -15,7 +15,7 @@ namespace getit::gui::widget
     {
         public:
             explicit ResponseRawBodyView(QWidget* parent = nullptr);
-            ~ResponseRawBodyView();
+            ~ResponseRawBodyView() override;
 
             void setBody(std::string body);
 

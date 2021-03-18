@@ -14,7 +14,7 @@ namespace getit::gui::widget::BodyWidget
     {
         public:
             explicit RawBodyTabController(std::shared_ptr<IRawBodyTabView> view);
-            ~RawBodyTabController() = default;
+            ~RawBodyTabController() override = default;
 
             void executeBeforeRequest(std::shared_ptr<getit::domain::RequestData> data) override;
 

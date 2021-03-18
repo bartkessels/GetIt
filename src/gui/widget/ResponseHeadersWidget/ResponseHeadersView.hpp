@@ -18,7 +18,7 @@ namespace getit::gui::widget
     {
         public:
             explicit ResponseHeadersView(QWidget* parent = nullptr);
-            ~ResponseHeadersView();
+            ~ResponseHeadersView() override;
 
             void setHeaders(std::map<std::string, std::string> headers);
 

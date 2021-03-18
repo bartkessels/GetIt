@@ -12,7 +12,7 @@ namespace getit::gui::widget
     {
         public:
             explicit UriController(std::shared_ptr<IUriView> view);
-            ~UriController() = default;
+            ~UriController() override = default;
 
             void executeBeforeRequest(std::shared_ptr<getit::domain::RequestData> data) override;
 

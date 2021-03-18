@@ -16,7 +16,7 @@ namespace getit::gui::widget
     {
         public:
             explicit UriView(QWidget* parent = nullptr);
-            ~UriView();
+            ~UriView() override;
 
             std::string getUri() override;
             void setUri(std::string uri) override;

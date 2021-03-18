@@ -16,7 +16,7 @@ namespace getit::gui::widget::BodyWidget
     {
         public:
             explicit RawBodyTabView(QWidget* parent = nullptr);
-            ~RawBodyTabView();
+            ~RawBodyTabView() override;
 
             std::string getContentType() override;
             std::string getBody() override;

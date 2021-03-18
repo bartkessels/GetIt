@@ -10,8 +10,8 @@ namespace getit::gui::widget
     class ResponseHeadersController: public AfterWidgetController
     {
         public:
-            ~ResponseHeadersController() = default;
+            ~ResponseHeadersController() override = default;
 
-            void executeAfterRequest(std::shared_ptr<getit::domain::Response> response);
+            void executeAfterRequest(std::shared_ptr<getit::domain::Response> response) override;
     };
 }
