@@ -8,14 +8,14 @@ addons:
   apt:
     update: true
     packages:
-      - qt5-default
-      - qtdeclarative5-dev
+      - qt6-default
+      - qtdeclarative6-dev
       - libboost-all-dev
 
   homebrew:
     update: true
     packages:
-      - qt5
+      - qt6
       - boost
 
 jobs:
