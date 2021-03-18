@@ -5,8 +5,15 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
+
 find_package(Boost COMPONENTS system REQUIRED)
+
+# Try to use Qt6 if it's available, otherwise
+# fall back to Qt5
+find_package(Qt6 COMPONENTS Widgets)
+if (NOT Qt6_FOUND)
+    find_package(Qt5 5 COMPONENTS Widgets REQUIRED)
+endif()
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -125,4 +132,4 @@ add_executable(getit
 # Libraries
 target_link_libraries(getit Boost::system)
 target_link_libraries(getit cpprest)
-target_link_libraries(getit Qt5::Widgets)
+target_link_libraries(getit Qt::Widgets)
