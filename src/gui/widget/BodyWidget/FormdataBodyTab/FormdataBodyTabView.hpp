@@ -20,7 +20,7 @@ namespace getit::gui::widget::BodyWidget
     {
         public:
             explicit FormdataBodyTabView(QWidget* parent = nullptr);
-            ~FormdataBodyTabView();
+            ~FormdataBodyTabView() override;
 
             std::map<std::string, std::string> getElements() override;
             std::map<std::string, std::string> getFiles() override;

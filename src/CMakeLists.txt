@@ -37,7 +37,7 @@ set(SOURCEFILES
     gui/MainWindow/MainWindow.cpp
 
     gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabController.cpp
-    gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabView.cpp
+        gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabView.cpp
     gui/widget/BodyWidget/RawBodyTab/RawBodyTabController.cpp
     gui/widget/BodyWidget/RawBodyTab/RawBodyTabView.cpp
     gui/widget/BodyWidget/BodyController.cpp

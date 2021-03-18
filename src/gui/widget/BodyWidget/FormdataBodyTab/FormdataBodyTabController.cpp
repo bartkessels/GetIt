@@ -17,7 +17,6 @@ void FormdataBodyTabController::executeBeforeRequest(std::shared_ptr<getit::doma
 
     auto requestBody = std::make_shared<getit::domain::body::FormdataRequestBody>(boundary);
 
-
     for (const auto& [element, value] : view->getElements()) {
         requestBody->addElement(element, value);
     }

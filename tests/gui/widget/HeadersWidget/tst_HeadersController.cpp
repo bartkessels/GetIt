@@ -1,7 +1,6 @@
 #include <catch2/catch.hpp>
 #include <catch2/trompeloeil.hpp>
 #include <memory>
-#include <string>
 
 #include "domain/RequestData.hpp"
 #include "gui/widget/HeadersWidget/HeadersController.hpp"
