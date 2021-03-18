@@ -3,7 +3,10 @@ cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 find_package(Boost COMPONENTS thread system chrono REQUIRED)
 
 set(CMAKE_CXX_STANDARD 17)
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
+
+# Copy tst_file.txt to current working directory
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/res/tst_file.txt
+        DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 
 set(SRCFILES
     ../src/domain/body/FormdataRequestBody.cpp
