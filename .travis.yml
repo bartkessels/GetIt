@@ -34,10 +34,8 @@ jobs:
         - wget https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz
         - tar -xf cmake-3.15.7-Linux-x86_64.tar.gz
         - export PATH=`pwd`/cmake-3.15.7-Linux-x86_64/bin:$PATH
-      before_script: &before_script
-        - cd build
       script: &script_linux_test
-        - cmake --coverage ..
+        - cmake . --coverage
         - make getit_tests
         - ./bin/getit_tests
       after_success:
@@ -49,7 +47,6 @@ jobs:
       language: cpp
       compiler: clang
       install: *install_linux
-      before_script: *before_script
       script: *script_linux_test
 
     - stage: test
@@ -61,9 +58,8 @@ jobs:
         - wget https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Darwin-x86_64.tar.gz
         - tar -xf cmake-3.15.7-Darwin-x86_64.tar.gz
         - export PATH=`pwd`/cmake-3.15.7-Darwin-x86_64/bin:$PATH
-      before_script: *before_script
       script: &script_macos_test
-        - cmake .. -DCMAKE_PREFIX_PATH=/usr/local/opt/qt
+        - cmake . -DCMAKE_PREFIX_PATH=/usr/local/opt/qt
         - make getit_tests
         - ./bin/getit_tests
 
@@ -72,7 +68,6 @@ jobs:
       osx_image: xcode12.2
       compiler: clang
       install: *install_macos
-      before_script: *before_script
       script: *script_macos_test
 
     ###############################
@@ -84,9 +79,8 @@ jobs:
       language: cpp
       compiler: gcc
       install: *install_linux
-      before_script: *before_script
       script: &script_linux_build
-        - cmake ..
+        - cmake .
         - make getit
 
     - stage: build
@@ -95,7 +89,6 @@ jobs:
       language: cpp
       compiler: clang
       install: *install_linux
-      before_script: *before_script
       script: *script_linux_build
 
     - stage: build
@@ -104,9 +97,8 @@ jobs:
       language: cpp
       compiler: gcc
       install: *install_macos
-      before_script: *before_script
       script: &script_macos_build
-        - cmake .. -DCMAKE_PREFIX_PATH=/usr/local/opt/qt
+        - cmake . -DCMAKE_PREFIX_PATH=/usr/local/opt/qt
         - make getit
 
     - stage: build
@@ -115,5 +107,4 @@ jobs:
       language: cpp
       compiler: clang
       install: *install_macos
-      before_script: *before_script
       script: *script_macos_build
