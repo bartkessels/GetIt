@@ -35,7 +35,7 @@ jobs:
         - tar -xf cmake-3.15.7-Linux-x86_64.tar.gz
         - export PATH=`pwd`/cmake-3.15.7-Linux-x86_64/bin:$PATH
       script: &script_linux_test
-        - cmake . --coverage
+        - cmake --coverage .
         - make getit_tests
         - ./bin/getit_tests
       after_success:
