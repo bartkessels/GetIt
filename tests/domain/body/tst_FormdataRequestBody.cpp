@@ -7,6 +7,17 @@
 
 using namespace getit::domain::body;
 
+inline std::string getTestFile()
+{
+    std::string expectedLocation = "./bin/tst_file.txt";
+
+    if (!std::filesystem::exists(expectedLocation)) {
+        expectedLocation = "./tst_file.txt";
+    }
+
+    return expectedLocation;
+}
+
 TEST_CASE("FormdataRequestBody")
 {
     // Before
@@ -75,7 +86,7 @@ TEST_CASE("FormdataRequestBody")
     {
         // Arrange
         const auto& fileName = "My existing file";
-        const auto& existingFilePath = "./tst_file.txt";
+        const auto& existingFilePath = getTestFile();
         const auto& fileContents = "content";
         auto expectedBody = boost::format(
                 "--%1%\r\nContent-Disposition: form-data; name=\"%2%\"; filename=\"%3%\"\r\n\r\n%4%\r\n\r\n--%1%--\r\n"
@@ -93,7 +104,7 @@ TEST_CASE("FormdataRequestBody")
     {
         // Arrange
         const auto& fileName = "My existing file";
-        const auto& existingFilePath = "./tst_file.txt";
+        const auto& existingFilePath = getTestFile();
         const auto& fileContents = "content";
         const auto& formdataElement = "MyElement";
         const auto& formdataElementValue = "MyElementsValue";
@@ -121,7 +132,7 @@ TEST_CASE("FormdataRequestBody")
     {
         // Arrange
         const auto& fileName = "My existing file";
-        const auto& existingFilePath = "./tst_file.txt";
+        const auto& existingFilePath = getTestFile();
         const auto& fileContents = "content";
         const auto& formdataElement = "MyElement";
         const auto& formdataElementValue = "MyElementsValue";

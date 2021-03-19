@@ -12,6 +12,17 @@
 using namespace getit::gui::widget::BodyWidget;
 using namespace getit::domain::body;
 
+inline std::string getTestFile()
+{
+    std::string expectedLocation = "./bin/tst_file.txt";
+
+    if (!std::filesystem::exists(expectedLocation)) {
+        expectedLocation = "./tst_file.txt";
+    }
+
+    return expectedLocation;
+}
+
 TEST_CASE("BodyWidget/FormdataBodyTab/FormdataBodyTabController")
 {
     SECTION("Check if all elements from the view are added to the body of the request data")
@@ -51,7 +62,7 @@ TEST_CASE("BodyWidget/FormdataBodyTab/FormdataBodyTabController")
     {
         // Arrange
         auto file1Key = "This is my test file";
-        auto file1Path = "./tst_file.txt";
+        auto file1Path = getTestFile();
         auto expectedFileContent = "content";
 
         std::map<std::string, std::string> expectedFiles {

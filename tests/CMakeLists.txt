@@ -56,14 +56,13 @@ set(TST_SRCFILES
 )
 
 set(TST_HEADERFILES
-        gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabView.hpp
+    gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabView.hpp
     gui/widget/BodyWidget/RawBodyTab/RawBodyTabViewMock.hpp
     gui/widget/CookiesWidget/CookiesViewMock.hpp
     gui/widget/HeadersWidget/HeadersViewMock.hpp
     gui/widget/MethodWidget/MethodViewMock.hpp
     gui/widget/UriWidget/UriViewMock.hpp
-    
-    mocks/AfterPipelineMock.hpp
+
     mocks/BeforePipelineMock.hpp
 )
 
