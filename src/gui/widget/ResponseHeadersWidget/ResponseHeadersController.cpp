@@ -2,7 +2,13 @@
 
 using namespace getit::gui::widget;
 
+ResponseHeadersController::ResponseHeadersController(std::shared_ptr<IResponseHeadersView> view):
+    view(view)
+{
+
+}
+
 void ResponseHeadersController::executeAfterRequest(std::shared_ptr<getit::domain::Response> response)
 {
-    getView<ResponseHeadersView>()->setHeaders(response->headers);
+    this->view->setHeaders(response->headers);
 }

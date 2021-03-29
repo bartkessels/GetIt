@@ -19,13 +19,8 @@ void ResponseHeadersView::setHeaders(std::map<std::string, std::string> headers)
 {
     ui->treeHeaders->clear();
 
-    std::map<std::string, std::string>::iterator it;
-
-    for (it = headers.begin(); it != headers.end(); it++) {
-        this->addHeader(
-            it->first,
-            it->second
-        );
+    for (const auto& [header, value] : headers) {
+        this->addHeader(header, value);
     }
 }
 
@@ -35,4 +30,5 @@ void ResponseHeadersView::addHeader(std::string header, std::string value)
 
     headerRow->setText(headerIndex, QString::fromStdString(header));
     headerRow->setText(valueIndex, QString::fromStdString(value));
+    headerRow->setFlags(headerFlags);
 }

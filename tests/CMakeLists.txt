@@ -28,6 +28,7 @@ set(SRCFILES
     ../src/gui/widget/CookiesWidget/CookiesController.cpp
     ../src/gui/widget/HeadersWidget/HeadersController.cpp
     ../src/gui/widget/MethodWidget/MethodController.cpp
+    ../src/gui/widget/ResponseHeadersWidget/ResponseHEadersController.cpp
     ../src/gui/widget/UriWidget/UriController.cpp
 )
 
@@ -52,6 +53,7 @@ set(TST_SRCFILES
     gui/widget/CookiesWidget/tst_CookiesController.cpp
     gui/widget/HeadersWidget/tst_HeadersController.cpp
     gui/widget/MethodWidget/tst_MethodController.cpp
+    gui/widget/ResponseHeadersWidget/tst_ResponseHeadersController.cpp
     gui/widget/UriWidget/tst_UriController.cpp
 )
 
@@ -61,6 +63,7 @@ set(TST_HEADERFILES
     gui/widget/CookiesWidget/CookiesViewMock.hpp
     gui/widget/HeadersWidget/HeadersViewMock.hpp
     gui/widget/MethodWidget/MethodViewMock.hpp
+    gui/widget/ResponseHeadersWidget/ResponseHeadersViewMock.hpp
     gui/widget/UriWidget/UriViewMock.hpp
 
     mocks/BeforePipelineMock.hpp

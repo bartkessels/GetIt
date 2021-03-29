@@ -37,7 +37,7 @@ set(SOURCEFILES
     gui/MainWindow/MainWindow.cpp
 
     gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabController.cpp
-        gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabView.cpp
+    gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabView.cpp
     gui/widget/BodyWidget/RawBodyTab/RawBodyTabController.cpp
     gui/widget/BodyWidget/RawBodyTab/RawBodyTabView.cpp
     gui/widget/BodyWidget/BodyController.cpp
@@ -108,6 +108,7 @@ set(HEADERFILES
     gui/widget/MethodWidget/MethodController.hpp
     gui/widget/MethodWidget/MethodView.hpp
 
+    gui/widget/ResponseHeadersWidget/IResponseHeadersView.hpp
     gui/widget/ResponseHeadersWidget/ResponseHeadersController.hpp
     gui/widget/ResponseHeadersWidget/ResponseHeadersView.hpp
 

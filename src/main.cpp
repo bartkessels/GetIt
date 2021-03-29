@@ -66,9 +66,14 @@ void registerInformationViews(getit::gui::MainWindow* window)
 
 void registerAfterRequestViews(getit::gui::MainWindow* window)
 {
-    const auto& responseHeadersController = std::make_shared<getit::gui::widget::ResponseHeadersController>();
+//    const auto& responseHeadersController = std::make_shared<getit::gui::widget::ResponseHeadersController>();
+//    const auto& responseHeadersView = std::make_shared<getit::gui::widget::ResponseHeadersView>(window);
+//    window->registerResponseHeadersView(responseHeadersController, responseHeadersView);
+
     const auto& responseHeadersView = std::make_shared<getit::gui::widget::ResponseHeadersView>(window);
+    const auto& responseHeadersController = std::make_shared<getit::gui::widget::ResponseHeadersController>(responseHeadersView);
     window->registerResponseHeadersView(responseHeadersController, responseHeadersView);
+
 
     const auto& responseRawBodyController = std::make_shared<getit::gui::widget::ResponseRawBodyController>();
     const auto& responseRawBodyView = std::make_shared<getit::gui::widget::ResponseRawBodyView>(window);

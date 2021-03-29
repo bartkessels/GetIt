@@ -48,9 +48,9 @@ void MainWindow::registerBodyView(std::shared_ptr<getit::domain::BeforeRequestPi
     this->ui->bodyWidget->addWidget(view.get());
 }
 
-void MainWindow::registerResponseHeadersView(std::shared_ptr<getit::gui::AfterWidgetController> controller, std::shared_ptr<QWidget> view)
+void MainWindow::registerResponseHeadersView(std::shared_ptr<getit::domain::AfterRequestPipeline> controller, std::shared_ptr<QWidget> view)
 {
-    this->registerAfterRequestView(controller, view);
+    request->registerPipeline(controller);
     this->ui->responseHeadersWidget->addWidget(view.get());
 }
 

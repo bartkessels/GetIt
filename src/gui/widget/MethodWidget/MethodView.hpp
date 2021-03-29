@@ -15,8 +15,8 @@ namespace getit::gui::widget
     class MethodView: public QWidget, public IMethodView
     {
         public:
-            MethodView(QWidget* parent = nullptr);
-            ~MethodView();
+            explicit MethodView(QWidget* parent = nullptr);
+            ~MethodView() override;
 
             std::string getMethod() override;
             void setMethod(std::string method) override;

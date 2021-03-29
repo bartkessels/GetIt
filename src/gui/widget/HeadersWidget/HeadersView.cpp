@@ -31,10 +31,10 @@ std::list<std::pair<std::string, std::string>> HeadersView::getHeaders()
     for (int i = 0; i < ui->treeHeaders->topLevelItemCount(); ++i) {
         QTreeWidgetItem* itm = ui->treeHeaders->topLevelItem(i);
 
-        headers.push_back({
+        headers.emplace_back(
             itm->text(headerIndex).toStdString(),
             itm->text(valueIndex).toStdString()
-        });
+        );
     }
 
     return headers;
