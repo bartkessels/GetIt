@@ -52,11 +52,13 @@ set(SOURCEFILES
     gui/widget/MethodWidget/MethodController.cpp
     gui/widget/MethodWidget/MethodView.cpp
 
+    gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabController.cpp
+    gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabView.cpp
+    gui/widget/ResponseBodyWidget/ResponseBodyController.cpp
+    gui/widget/ResponseBodyWidget/ResponseBodyView.cpp
+
     gui/widget/ResponseHeadersWidget/ResponseHeadersController.cpp
     gui/widget/ResponseHeadersWidget/ResponseHeadersView.cpp
-
-    gui/widget/ResponseRawBodyWidget/ResponseRawBodyController.cpp
-    gui/widget/ResponseRawBodyWidget/ResponseRawBodyView.cpp
 
     gui/widget/UriWidget/UriController.cpp
     gui/widget/UriWidget/UriView.cpp
@@ -108,12 +110,16 @@ set(HEADERFILES
     gui/widget/MethodWidget/MethodController.hpp
     gui/widget/MethodWidget/MethodView.hpp
 
+    gui/widget/ResponseBodyWidget/RawResponseBodyTab/IRawResponseBodyTabView.hpp
+    gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabController.hpp
+    gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabView.hpp
+    gui/widget/ResponseBodyWidget/IResponseBodyView.hpp
+    gui/widget/ResponseBodyWidget/ResponseBodyController.hpp
+    gui/widget/ResponseBodyWidget/ResponseBodyView.hpp
+
     gui/widget/ResponseHeadersWidget/IResponseHeadersView.hpp
     gui/widget/ResponseHeadersWidget/ResponseHeadersController.hpp
     gui/widget/ResponseHeadersWidget/ResponseHeadersView.hpp
-
-    gui/widget/ResponseRawBodyWidget/ResponseRawBodyController.hpp
-    gui/widget/ResponseRawBodyWidget/ResponseRawBodyView.hpp
 
     gui/widget/UriWidget/IUriView.hpp
     gui/widget/UriWidget/UriController.hpp

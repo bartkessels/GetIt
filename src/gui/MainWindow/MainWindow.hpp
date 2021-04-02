@@ -38,11 +38,9 @@ namespace getit::gui
         void registerInformationView(std::shared_ptr<getit::domain::BeforeRequestPipeline> controller, std::shared_ptr<QWidget> view, std::string name);
         void registerBodyView(std::shared_ptr<getit::domain::BeforeRequestPipeline> controller, std::shared_ptr<QWidget> view);
         void registerResponseHeadersView(std::shared_ptr<getit::domain::AfterRequestPipeline> controller, std::shared_ptr<QWidget> view);
-        void registerResponseBodyView(std::shared_ptr<getit::gui::AfterWidgetController> controller, std::shared_ptr<QWidget> view, std::string name);
+        void registerResponseBodyView(std::shared_ptr<getit::domain::AfterRequestPipeline> controller, std::shared_ptr<QWidget> view);
 
     private:
-        void registerAfterRequestView(std::shared_ptr<getit::gui::AfterWidgetController> controller, std::shared_ptr<QWidget> view);
-
         Ui::MainWindow* ui;
         std::shared_ptr<domain::Request> request;
     };

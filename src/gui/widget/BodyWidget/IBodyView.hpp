@@ -1,8 +1,7 @@
 #pragma once
 
+#include <QWidget>
 #include <string>
-
-#include "domain/RequestBody.hpp"
 
 namespace getit::gui::widget
 {

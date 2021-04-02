@@ -16,10 +16,12 @@
 #include "gui/widget/HeadersWidget/HeadersView.hpp"
 #include "gui/widget/MethodWidget/MethodController.hpp"
 #include "gui/widget/MethodWidget/MethodView.hpp"
+#include "gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabController.hpp"
+#include "gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabView.hpp"
+#include "gui/widget/ResponseBodyWidget/ResponseBodyController.hpp"
+#include "gui/widget/ResponseBodyWidget/ResponseBodyView.hpp"
 #include "gui/widget/ResponseHeadersWidget/ResponseHeadersController.hpp"
 #include "gui/widget/ResponseHeadersWidget/ResponseHeadersView.hpp"
-#include "gui/widget/ResponseRawBodyWidget/ResponseRawBodyController.hpp"
-#include "gui/widget/ResponseRawBodyWidget/ResponseRawBodyView.hpp"
 #include "gui/widget/UriWidget/UriController.hpp"
 #include "gui/widget/UriWidget/UriView.hpp"
 
@@ -66,18 +68,22 @@ void registerInformationViews(getit::gui::MainWindow* window)
 
 void registerAfterRequestViews(getit::gui::MainWindow* window)
 {
-//    const auto& responseHeadersController = std::make_shared<getit::gui::widget::ResponseHeadersController>();
-//    const auto& responseHeadersView = std::make_shared<getit::gui::widget::ResponseHeadersView>(window);
-//    window->registerResponseHeadersView(responseHeadersController, responseHeadersView);
-
     const auto& responseHeadersView = std::make_shared<getit::gui::widget::ResponseHeadersView>(window);
     const auto& responseHeadersController = std::make_shared<getit::gui::widget::ResponseHeadersController>(responseHeadersView);
     window->registerResponseHeadersView(responseHeadersController, responseHeadersView);
+}
 
+void registerResponseBodyViews(getit::gui::MainWindow* window)
+{
+    const auto& rawResponseView = std::make_shared<getit::gui::widget::ResponseBodyWidget::RawResponseBodyTabView>();
+    const auto& rawResponseController = std::make_shared<getit::gui::widget::ResponseBodyWidget::RawResponseBodyTabController>(rawResponseView);
 
-    const auto& responseRawBodyController = std::make_shared<getit::gui::widget::ResponseRawBodyController>();
-    const auto& responseRawBodyView = std::make_shared<getit::gui::widget::ResponseRawBodyView>(window);
-    window->registerResponseBodyView(responseRawBodyController, responseRawBodyView, "Raw Response");
+    const auto& responseBodyView = std::make_shared<getit::gui::widget::ResponseBodyView>();
+    const auto& responseBodyController = std::make_shared<getit::gui::widget::ResponseBodyController>(responseBodyView);
+
+    responseBodyController->registerTab(rawResponseController, rawResponseView, "Raw");
+
+    window->registerResponseBodyView(responseBodyController, responseBodyView);
 }
 
 int main(int argc, char** argv)
@@ -95,6 +101,7 @@ int main(int argc, char** argv)
     registerBodyViews(&window);
     registerInformationViews(&window);
     registerAfterRequestViews(&window);
+    registerResponseBodyViews(&window);
     
     window.show();
 

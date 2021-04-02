@@ -28,6 +28,7 @@ set(SRCFILES
     ../src/gui/widget/CookiesWidget/CookiesController.cpp
     ../src/gui/widget/HeadersWidget/HeadersController.cpp
     ../src/gui/widget/MethodWidget/MethodController.cpp
+    ../src/gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabController.cpp
     ../src/gui/widget/ResponseHeadersWidget/ResponseHeadersController.cpp
     ../src/gui/widget/UriWidget/UriController.cpp
 )
@@ -53,6 +54,7 @@ set(TST_SRCFILES
     gui/widget/CookiesWidget/tst_CookiesController.cpp
     gui/widget/HeadersWidget/tst_HeadersController.cpp
     gui/widget/MethodWidget/tst_MethodController.cpp
+    gui/widget/ResponseBodyWidget/RawResponseBodyTab/tst_RawResponseBodyTabController.cpp
     gui/widget/ResponseHeadersWidget/tst_ResponseHeadersController.cpp
     gui/widget/UriWidget/tst_UriController.cpp
 )

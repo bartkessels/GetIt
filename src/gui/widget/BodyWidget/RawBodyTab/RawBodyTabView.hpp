@@ -1,8 +1,8 @@
 #pragma once
 
-#include <memory>
 #include <QString>
 #include <QWidget>
+#include <string>
 
 #include "gui/widget/BodyWidget/RawBodyTab/IRawBodyTabView.hpp"
 

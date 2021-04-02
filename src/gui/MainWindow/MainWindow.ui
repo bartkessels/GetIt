@@ -28,7 +28,7 @@
        </layout>
       </item>
       <item>
-       <layout class="QGridLayout" name="uriWidget" rowstretch="0" columnminimumwidth="0"/>
+       <layout class="QGridLayout" name="uriWidget" rowstretch="0"/>
       </item>
       <item>
        <widget class="QPushButton" name="btnSend">
@@ -60,6 +60,12 @@
        <number>15</number>
       </property>
       <widget class="QSplitter" name="splitter">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -76,16 +82,24 @@
        </widget>
       </widget>
       <widget class="QSplitter" name="splitter_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
        <property name="handleWidth">
         <number>15</number>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <layout class="QGridLayout" name="responseHeadersWidget"/>
        </widget>
-       <widget class="QTabWidget" name="responseBodyTabWidget"/>
+       <widget class="QWidget" name="gridLayoutWidget_2">
+        <layout class="QGridLayout" name="responseBodyWidget"/>
+       </widget>
       </widget>
      </widget>
     </item>

@@ -20,15 +20,16 @@ TEST_CASE("ResponseHeadersWidget/ResponseHeadersController")
             { "Content-Type", "application/json" }
         };
 
-        auto response = std::make_shared<getit::domain::Response>();
         auto responseHeadersView = std::make_shared<ResponseHeadersViewMock>();
+        auto response = std::make_shared<getit::domain::Response>();
+        response->headers = expectedHeaders;
+
         const auto& sut = std::make_unique<ResponseHeadersController>(responseHeadersView);
 
         // Assert (assert before making the call, otherwise the call won't be registered!)
         REQUIRE_CALL(*responseHeadersView.get(), setHeaders(expectedHeaders));
 
         // Act
-        response->headers = expectedHeaders;
         sut->executeAfterRequest(response);
     }
 }

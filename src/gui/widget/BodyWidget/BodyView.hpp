@@ -1,10 +1,8 @@
 #pragma once
 
-#include <list>
-#include <map>
-#include <memory>
 #include <QString>
 #include <QWidget>
+#include <string>
 
 #include "domain/BeforeRequestPipeline.hpp"
 #include "domain/RequestBody.hpp"
