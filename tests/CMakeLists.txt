@@ -28,7 +28,7 @@ set(SRCFILES
     ../src/gui/widget/CookiesWidget/CookiesController.cpp
     ../src/gui/widget/HeadersWidget/HeadersController.cpp
     ../src/gui/widget/MethodWidget/MethodController.cpp
-    ../src/gui/widget/ResponseHeadersWidget/ResponseHEadersController.cpp
+    ../src/gui/widget/ResponseHeadersWidget/ResponseHeadersController.cpp
     ../src/gui/widget/UriWidget/UriController.cpp
 )
 
