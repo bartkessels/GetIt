@@ -24,11 +24,11 @@ TEST_CASE("ResponseHeadersWidget/ResponseHeadersController")
         auto responseHeadersView = std::make_shared<ResponseHeadersViewMock>();
         const auto& sut = std::make_unique<ResponseHeadersController>(responseHeadersView);
 
+        // Assert (assert before making the call, otherwise the call won't be registered!)
+        REQUIRE_CALL(*responseHeadersView.get(), setHeaders(expectedHeaders));
+
         // Act
         response->headers = expectedHeaders;
         sut->executeAfterRequest(response);
-
-        // Assert
-        REQUIRE_CALL(*responseHeadersView.get(), setHeaders(response->headers));
     }
 }
