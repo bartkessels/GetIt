@@ -35,8 +35,6 @@ missing a feature please do not hesitate to open a pull-request or create an iss
 Unfortunately there are only so many things we can implement in a specific time period, so there will be some
 features that aren't included in GetIt but that we will add in the future.
 
-- Add API for adding settings to the request API
-- Syntax highlighting for the response
 - Authentication
     - Basic auth
     - Oauth 1/2
@@ -47,7 +45,9 @@ features that aren't included in GetIt but that we will add in the future.
 There are some things we want get up and running to make life easier for the developers of GetIt, mostly for
 distributing the application.
 
-- Setup CI for Windows machine
+- Setup CD pipeline for MacOS application
+- Setup CD pipeline for Windows application
+- Setup CD pipeline for Flatpak (Linux) application
 - Setup GUI test framework
 
 ## 4. Required packages
