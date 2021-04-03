@@ -24,5 +24,6 @@ namespace getit::gui::widget::ResponseBodyWidget
 
         private:
             Ui::JsonResponseBodyTabView* ui;
+            getit::gui::highlighter::Highlighter* highlighter;
     };
 }

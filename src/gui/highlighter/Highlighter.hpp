@@ -15,8 +15,11 @@ namespace getit::gui::highlighter
         Q_OBJECT
 
         public:
-            Highlighter(QTextDocument* document, std::list<getit::highlighter::HighlighterRule*> rules);
+            Highlighter(QTextDocument* document);
             ~Highlighter() = default;
+
+            void startHighlighting(std::list<getit::highlighter::HighlighterRule*> rules);
+            void stopHighlighting();
 
         protected:
             void highlightBlock(const QString& text) override;

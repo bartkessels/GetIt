@@ -8,11 +8,31 @@ RawBodyTabView::RawBodyTabView(QWidget* parent):
     ui(new Ui::RawBodyTabView())
 {
     ui->setupUi(this);
+
+    highlighter = new getit::gui::highlighter::Highlighter(
+            ui->rawBody->document()
+    );
+
+    connect(ui->highlighting, &QComboBox::currentTextChanged,
+        [this](const QString& text) {
+            if (text.toLower() == "none") {
+                this->highlighter->stopHighlighting();
+            } else if (text.toLower() == "json") {
+                this->highlighter->startHighlighting(
+                    getit::highlighter::JsonHighlighterRules::rules
+                );
+            } else if (text.toLower() == "xml") {
+                this->highlighter->startHighlighting(
+                    getit::highlighter::XmlHighlighterRules::rules
+                );
+            }
+        });
 }
 
 RawBodyTabView::~RawBodyTabView()
 {
     delete ui;
+    delete highlighter;
 }
 
 std::string RawBodyTabView::getContentType()

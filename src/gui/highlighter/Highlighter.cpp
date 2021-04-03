@@ -4,11 +4,22 @@
 using namespace getit::gui::highlighter;
 using namespace getit::highlighter;
 
-Highlighter::Highlighter(QTextDocument* document, std::list<HighlighterRule*> rules):
-    QSyntaxHighlighter(document),
-    rules(rules)
+Highlighter::Highlighter(QTextDocument* document):
+    QSyntaxHighlighter(document)
 {
 
+}
+
+void Highlighter::startHighlighting(std::list<getit::highlighter::HighlighterRule*> rules)
+{
+    this->rules = rules;
+    this->rehighlight();
+}
+
+void Highlighter::stopHighlighting()
+{
+    this->rules.clear();
+    this->rehighlight();
 }
 
 void Highlighter::highlightBlock(const QString& text)

@@ -1,10 +1,14 @@
 #pragma once
 
+#include <QComboBox>
 #include <QString>
 #include <QWidget>
 #include <string>
 
+#include "gui/highlighter/Highlighter.hpp"
 #include "gui/widget/BodyWidget/RawBodyTab/IRawBodyTabView.hpp"
+#include "highlighter/JsonHighlighterRules.hpp"
+#include "highlighter/XmlHighlighterRules.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class RawBodyTabView; }
@@ -26,5 +30,6 @@ namespace getit::gui::widget::BodyWidget
 
         private:
             Ui::RawBodyTabView* ui;
+            getit::gui::highlighter::Highlighter* highlighter;
     };
 }

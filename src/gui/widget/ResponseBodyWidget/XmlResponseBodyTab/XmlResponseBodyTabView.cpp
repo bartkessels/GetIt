@@ -8,19 +8,20 @@ XmlResponseBodyTabView::XmlResponseBodyTabView(QWidget* parent):
     ui(new Ui::XmlResponseBodyTabView())
 {
     ui->setupUi(this);
+
+    highlighter = new getit::gui::highlighter::Highlighter(
+            ui->responseBody->document()
+    );
 }
 
 XmlResponseBodyTabView::~XmlResponseBodyTabView()
 {
     delete ui;
+    delete highlighter;
 }
 
 void XmlResponseBodyTabView::setBody(std::string body)
 {
-    auto highlighter = new getit::gui::highlighter::Highlighter(
-            ui->responseBody->document(),
-            getit::highlighter::XmlHighlighterRules::rules
-    );
-
     ui->responseBody->document()->setPlainText(QString::fromStdString(body));
+    highlighter->startHighlighting(getit::highlighter::XmlHighlighterRules::rules);
 }
