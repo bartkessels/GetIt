@@ -12,5 +12,3 @@ void RawResponseBodyTabController::executeAfterRequest(std::shared_ptr<getit::do
 {
     view->setBody(response->body);
 }
-
-///Users/bkessels/Git-projects/X-platform/GetIt/src/gui/widget/ResponseBodyWidget/RawResponseBodyTabView/RawResponseBodyTabView.ui

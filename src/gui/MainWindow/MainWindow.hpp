@@ -16,9 +16,6 @@
 #include "gui/widget/UriWidget/UriController.hpp"
 #include "gui/widget/UriWidget/UriView.hpp"
 
-#include "gui/AfterWidgetController.hpp"
-#include "gui/BeforeWidgetController.hpp"
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE

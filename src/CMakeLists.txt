@@ -34,6 +34,8 @@ set(SOURCEFILES
     domain/RequestData.cpp
     domain/RequestFactory.cpp
 
+    gui/highlighter/Highlighter.cpp
+
     gui/MainWindow/MainWindow.cpp
 
     gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabController.cpp
@@ -52,6 +54,8 @@ set(SOURCEFILES
     gui/widget/MethodWidget/MethodController.cpp
     gui/widget/MethodWidget/MethodView.cpp
 
+    gui/widget/ResponseBodyWidget/JsonResponseBodyTab/JsonResponseBodyTabController.cpp
+    gui/widget/ResponseBodyWidget/JsonResponseBodyTab/JsonResponseBodyTabView.cpp
     gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabController.cpp
     gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabView.cpp
     gui/widget/ResponseBodyWidget/ResponseBodyController.cpp
@@ -86,6 +90,8 @@ set(HEADERFILES
     domain/RequestFactory.hpp
     domain/Response.hpp
 
+    gui/highlighter/Highlighter.hpp
+
     gui/MainWindow/MainWindow.hpp
 
     gui/widget/BodyWidget/FormdataBodyTab/FormdataBodyTabController.hpp
@@ -110,6 +116,9 @@ set(HEADERFILES
     gui/widget/MethodWidget/MethodController.hpp
     gui/widget/MethodWidget/MethodView.hpp
 
+    gui/widget/ResponseBodyWidget/JsonResponseBodyTab/IJsonResponseBodyTabView.hpp
+    gui/widget/ResponseBodyWidget/JsonResponseBodyTab/JsonResponseBodyTabController.hpp
+    gui/widget/ResponseBodyWidget/JsonResponseBodyTab/JsonResponseBodyTabView.hpp
     gui/widget/ResponseBodyWidget/RawResponseBodyTab/IRawResponseBodyTabView.hpp
     gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabController.hpp
     gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabView.hpp
@@ -125,7 +134,8 @@ set(HEADERFILES
     gui/widget/UriWidget/UriController.hpp
     gui/widget/UriWidget/UriView.hpp
 
-    gui/BeforeWidgetController.hpp
+    highlighter/HighlighterRule.hpp
+    highlighter/JsonHighlighterRules.hpp
 )
 
 add_executable(getit

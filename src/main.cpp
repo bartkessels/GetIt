@@ -16,6 +16,8 @@
 #include "gui/widget/HeadersWidget/HeadersView.hpp"
 #include "gui/widget/MethodWidget/MethodController.hpp"
 #include "gui/widget/MethodWidget/MethodView.hpp"
+#include "gui/widget/ResponseBodyWidget/JsonResponseBodyTab/JsonResponseBodyTabController.hpp"
+#include "gui/widget/ResponseBodyWidget/JsonResponseBodyTab/JsonResponseBodyTabView.hpp"
 #include "gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabController.hpp"
 #include "gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabView.hpp"
 #include "gui/widget/ResponseBodyWidget/ResponseBodyController.hpp"
@@ -75,13 +77,17 @@ void registerAfterRequestViews(getit::gui::MainWindow* window)
 
 void registerResponseBodyViews(getit::gui::MainWindow* window)
 {
-    const auto& rawResponseView = std::make_shared<getit::gui::widget::ResponseBodyWidget::RawResponseBodyTabView>();
+    const auto& rawResponseView = std::make_shared<getit::gui::widget::ResponseBodyWidget::RawResponseBodyTabView>(window);
     const auto& rawResponseController = std::make_shared<getit::gui::widget::ResponseBodyWidget::RawResponseBodyTabController>(rawResponseView);
+
+    const auto& jsonResponseView = std::make_shared<getit::gui::widget::ResponseBodyWidget::JsonResponseBodyTabView>(window);
+    const auto& jsonResponseController = std::make_shared<getit::gui::widget::ResponseBodyWidget::JsonResponseBodyTabController>(jsonResponseView);
 
     const auto& responseBodyView = std::make_shared<getit::gui::widget::ResponseBodyView>();
     const auto& responseBodyController = std::make_shared<getit::gui::widget::ResponseBodyController>(responseBodyView);
 
     responseBodyController->registerTab(rawResponseController, rawResponseView, "Raw");
+    responseBodyController->registerTab(jsonResponseController, jsonResponseView, "JSON");
 
     window->registerResponseBodyView(responseBodyController, responseBodyView);
 }

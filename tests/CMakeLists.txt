@@ -28,9 +28,12 @@ set(SRCFILES
     ../src/gui/widget/CookiesWidget/CookiesController.cpp
     ../src/gui/widget/HeadersWidget/HeadersController.cpp
     ../src/gui/widget/MethodWidget/MethodController.cpp
+    ../src/gui/widget/ResponseBodyWidget/JsonResponseBodyTab/JsonResponseBodyTabController.cpp
     ../src/gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabController.cpp
     ../src/gui/widget/ResponseHeadersWidget/ResponseHeadersController.cpp
     ../src/gui/widget/UriWidget/UriController.cpp
+
+    ../src/highlighter/JsonHighlighterRules.hpp
 )
 
 set(TST_SRCFILES
@@ -54,9 +57,12 @@ set(TST_SRCFILES
     gui/widget/CookiesWidget/tst_CookiesController.cpp
     gui/widget/HeadersWidget/tst_HeadersController.cpp
     gui/widget/MethodWidget/tst_MethodController.cpp
+    gui/widget/ResponseBodyWidget/JsonResponseBodyTab/tst_JsonResponseBodyTabController.cpp
     gui/widget/ResponseBodyWidget/RawResponseBodyTab/tst_RawResponseBodyTabController.cpp
     gui/widget/ResponseHeadersWidget/tst_ResponseHeadersController.cpp
     gui/widget/UriWidget/tst_UriController.cpp
+
+    highlighter/tst_JsonHighlighterRules.cpp
 )
 
 set(TST_HEADERFILES
@@ -65,6 +71,8 @@ set(TST_HEADERFILES
     gui/widget/CookiesWidget/CookiesViewMock.hpp
     gui/widget/HeadersWidget/HeadersViewMock.hpp
     gui/widget/MethodWidget/MethodViewMock.hpp
+    gui/widget/ResponseBodyWidget/JsonResponseBodyTab/JsonResponseBodyTabViewMock.hpp
+    gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabViewMock.hpp
     gui/widget/ResponseHeadersWidget/ResponseHeadersViewMock.hpp
     gui/widget/UriWidget/UriViewMock.hpp
 
