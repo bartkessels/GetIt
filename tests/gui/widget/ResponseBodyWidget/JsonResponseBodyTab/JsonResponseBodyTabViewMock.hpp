@@ -7,8 +7,8 @@
 
 class JsonResponseBodyTabViewMock: public getit::gui::widget::ResponseBodyWidget::IJsonResponseBodyTabView
 {
-public:
-    ~JsonResponseBodyTabViewMock() = default;
+    public:
+        ~JsonResponseBodyTabViewMock() = default;
 
-    MAKE_MOCK1(setBody, void(std::string), override);
+        MAKE_MOCK1(setBody, void(std::string), override);
 };

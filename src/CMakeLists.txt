@@ -58,6 +58,8 @@ set(SOURCEFILES
     gui/widget/ResponseBodyWidget/JsonResponseBodyTab/JsonResponseBodyTabView.cpp
     gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabController.cpp
     gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabView.cpp
+    gui/widget/ResponseBodyWidget/XmlResponseBodyTab/XmlResponseBodyTabController.cpp
+    gui/widget/ResponseBodyWidget/XmlResponseBodyTab/XmlResponseBodyTabView.cpp
     gui/widget/ResponseBodyWidget/ResponseBodyController.cpp
     gui/widget/ResponseBodyWidget/ResponseBodyView.cpp
 
@@ -122,6 +124,9 @@ set(HEADERFILES
     gui/widget/ResponseBodyWidget/RawResponseBodyTab/IRawResponseBodyTabView.hpp
     gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabController.hpp
     gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabView.hpp
+    gui/widget/ResponseBodyWidget/XmlResponseBodyTab/IXmlResponseBodyTabView.hpp
+    gui/widget/ResponseBodyWidget/XmlResponseBodyTab/XmlResponseBodyTabController.hpp
+    gui/widget/ResponseBodyWidget/XmlResponseBodyTab/XmlResponseBodyTabView.hpp
     gui/widget/ResponseBodyWidget/IResponseBodyView.hpp
     gui/widget/ResponseBodyWidget/ResponseBodyController.hpp
     gui/widget/ResponseBodyWidget/ResponseBodyView.hpp
@@ -136,6 +141,7 @@ set(HEADERFILES
 
     highlighter/HighlighterRule.hpp
     highlighter/JsonHighlighterRules.hpp
+    highlighter/XmlHighlighterRules.hpp
 )
 
 add_executable(getit

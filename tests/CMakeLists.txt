@@ -30,10 +30,12 @@ set(SRCFILES
     ../src/gui/widget/MethodWidget/MethodController.cpp
     ../src/gui/widget/ResponseBodyWidget/JsonResponseBodyTab/JsonResponseBodyTabController.cpp
     ../src/gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabController.cpp
+    ../src/gui/widget/ResponseBodyWidget/XmlResponseBodyTab/XmlResponseBodyTabController.cpp
     ../src/gui/widget/ResponseHeadersWidget/ResponseHeadersController.cpp
     ../src/gui/widget/UriWidget/UriController.cpp
 
     ../src/highlighter/JsonHighlighterRules.hpp
+    ../src/highlighter/XmlHighlighterRules.hpp
 )
 
 set(TST_SRCFILES
@@ -59,10 +61,12 @@ set(TST_SRCFILES
     gui/widget/MethodWidget/tst_MethodController.cpp
     gui/widget/ResponseBodyWidget/JsonResponseBodyTab/tst_JsonResponseBodyTabController.cpp
     gui/widget/ResponseBodyWidget/RawResponseBodyTab/tst_RawResponseBodyTabController.cpp
+    gui/widget/ResponseBodyWidget/XmlResponseBodyTab/tst_XmlResponseBodyTabController.cpp
     gui/widget/ResponseHeadersWidget/tst_ResponseHeadersController.cpp
     gui/widget/UriWidget/tst_UriController.cpp
 
     highlighter/tst_JsonHighlighterRules.cpp
+    highlighter/tst_XmlHighlighterRule.cpp
 )
 
 set(TST_HEADERFILES
@@ -73,6 +77,7 @@ set(TST_HEADERFILES
     gui/widget/MethodWidget/MethodViewMock.hpp
     gui/widget/ResponseBodyWidget/JsonResponseBodyTab/JsonResponseBodyTabViewMock.hpp
     gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabViewMock.hpp
+    gui/widget/ResponseBodyWidget/XmlResponseBodyTab/XmlResponseBodyTabViewMock.hpp
     gui/widget/ResponseHeadersWidget/ResponseHeadersViewMock.hpp
     gui/widget/UriWidget/UriViewMock.hpp
 

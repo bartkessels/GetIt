@@ -20,6 +20,8 @@
 #include "gui/widget/ResponseBodyWidget/JsonResponseBodyTab/JsonResponseBodyTabView.hpp"
 #include "gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabController.hpp"
 #include "gui/widget/ResponseBodyWidget/RawResponseBodyTab/RawResponseBodyTabView.hpp"
+#include "gui/widget/ResponseBodyWidget/XmlResponseBodyTab/XmlResponseBodyTabController.hpp"
+#include "gui/widget/ResponseBodyWidget/XmlResponseBodyTab/XmlResponseBodyTabView.hpp"
 #include "gui/widget/ResponseBodyWidget/ResponseBodyController.hpp"
 #include "gui/widget/ResponseBodyWidget/ResponseBodyView.hpp"
 #include "gui/widget/ResponseHeadersWidget/ResponseHeadersController.hpp"
@@ -83,11 +85,15 @@ void registerResponseBodyViews(getit::gui::MainWindow* window)
     const auto& jsonResponseView = std::make_shared<getit::gui::widget::ResponseBodyWidget::JsonResponseBodyTabView>(window);
     const auto& jsonResponseController = std::make_shared<getit::gui::widget::ResponseBodyWidget::JsonResponseBodyTabController>(jsonResponseView);
 
+    const auto& xmlResponseView = std::make_shared<getit::gui::widget::ResponseBodyWidget::XmlResponseBodyTabView>(window);
+    const auto& xmlResponseController = std::make_shared<getit::gui::widget::ResponseBodyWidget::XmlResponseBodyTabController>(xmlResponseView);
+
     const auto& responseBodyView = std::make_shared<getit::gui::widget::ResponseBodyView>();
     const auto& responseBodyController = std::make_shared<getit::gui::widget::ResponseBodyController>(responseBodyView);
 
     responseBodyController->registerTab(rawResponseController, rawResponseView, "Raw");
     responseBodyController->registerTab(jsonResponseController, jsonResponseView, "JSON");
+    responseBodyController->registerTab(xmlResponseController, xmlResponseView, "XML");
 
     window->registerResponseBodyView(responseBodyController, responseBodyView);
 }

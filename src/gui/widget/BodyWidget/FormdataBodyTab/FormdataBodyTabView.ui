@@ -34,6 +34,9 @@
          </property>
          <item>
           <widget class="QTreeWidget" name="treeElements">
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
            <column>
             <property name="text">
              <string>Key</string>
@@ -111,6 +114,9 @@
          </property>
          <item>
           <widget class="QTreeWidget" name="treeFiles">
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
            <column>
             <property name="text">
              <string>Key</string>
