@@ -1,6 +1,5 @@
 #pragma once
 
-#include <regex>
 #include <string>
 
 namespace getit::highlighter
@@ -13,12 +12,5 @@ namespace getit::highlighter
 
             HighlighterRule(std::string regex, int color):
                 regex(regex), color(color) {}
-
-            bool matches(std::string value) {
-                return std::regex_match(
-                        value,
-                        std::regex(regex)
-                    );
-            }
     };
 }
