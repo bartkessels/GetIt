@@ -1,0 +1,213 @@
+@startuml "Class diagram GetIt"
+skinparam linetype ortho
+
+' Domain layer
+namespace domain {
+    namespace models {
+        class Request {
+            - method: string
+            - uri: string
+            - headers: map<string, string>
+
+            + setMethod(method: string): void
+            + setUri(uri: string): void
+            + addHeader(header: string, value: string): void
+            + setHeaders(headers: map<string, string>): void
+            + getMethod(): string
+            + getUri(): string
+            + getHeaders(): map<string, string>
+            + {abstract} getBody(): string
+            + {abstract} getContentType(): string
+        }
+
+        class Response {
+            + headers: map<string, string>
+            + body: string
+        }
+    }
+
+    namespace contracts {
+        interface RequestFactory {
+            + getRequest(body: string): Request
+            + getRequest(body: string, contentType: string): Request
+            + getRequest(elements: map<string, string>, files: map<string, string>, boundary: string): Request
+        }
+
+        RequestFactory ..> domain.models.Request
+    }
+
+    namespace factories {
+        class RequestFactory { }
+
+        RequestFactory ..|> domain.contracts.RequestFactory
+    }
+
+    namespace implementations {
+        class FormdataRequest {
+            - boundary: string
+            - elements: map<string, string>
+            - files: map<string, string>
+            - {static} CONTENT_TYPE_TEMPLATE: string
+            - {static} BODY_WITH_BOUNDARY_TEMPLATE: string
+            - {static} ELEMENT_TEMPLATE: string
+            - {static} FILE_TEMPLATE: string
+
+            + addElement(key: string, value: string): void
+            + addFile(key: string, filePath: string): void
+            + setBoundary(boundary: string): void
+            + setElements(elements: map<string, string>): void
+            + setFiles(files: map<string, string>): void
+            + getBoundary(): string
+            + getElements(): map<string, string>
+            + getFiles(): map<string, string>
+
+            - getElementsBody(): string
+            - getFilesBody(): string
+        }
+
+        class RawRequest {
+            - body: string
+            - contentType: string
+            - {static} DEFAULT_CONTENT_TYPE = "text/plain": string
+
+            + setContentType(contentType: string): void
+            + setBody(body: string): void
+        }
+
+        FormdataRequest --|> domain.models.Request
+        RawRequest --|> domain.models.Request
+    }
+}
+
+' Data layer
+namespace data {
+    namespace contracts {
+        interface RequestRepository {
+            + {static} METHOD_NAME = "method": string
+            + {static} URI_NAME = "uri": string
+
+            + saveRequest(filePath: string, request: Request): void
+            + loadRequest(filePath: string): Request
+        }
+
+        interface RequestRepositoryFactory {
+            + getRepository(request: Request): RequestRepository
+        }
+        
+        RequestRepositoryFactory ..> RequestRepository
+        RequestRepository ..> domain.models.Request
+    }
+
+    namespace exceptions {
+        class NoAvailableRepositoryException { }
+    }
+
+    namespace factories {
+        class RequestRepositoryFactory {}
+
+        RequestRepositoryFactory ..|> data.contracts.RequestRepository
+        RequestRepositoryFactory ..> data.exceptions.NoAvailableRepositoryException
+    }
+
+    namespace repositories {
+        class FormdataRequestRepository {
+            - {static} BOUNDARY_NAME = "boundary": string
+            - {static} BODY_TYPE_NAME = "formdata": string
+            - {static} ELEMENTS_ARRAY_NAME = "elements": string
+            - {static} FILES_ARRAY_NAME = "files": string
+            - {static} KEY_NAME = "key": string
+            - {static} ELEMENT_VALUE_NAME = "value": string
+            - {static} FILE_PATH_NAME = "filePath": string
+        }
+
+        class RawRequestRepository {
+            - {static} BODY_TYPE_NAME = "raw": string
+            - {static} BODY_NAME = "body": string
+            - {static} CONTENT_TYPE_NAME = "contentType": string
+        }
+
+        FormdataRequestRepository ..|> data.contracts.RequestRepository
+        RawRequestRepository ..|> data.contracts.RequestRepository
+    }
+}
+
+' Service layer
+namespace service {
+    namespace contracts {
+        interface RequestService {
+            + send(request: Request): future<Response>
+        }
+
+        RequestService ..> domain.models.Request
+        RequestService ..> domain.models.Response
+    }
+
+    namespace factories {
+        class RequestServiceFactory {
+            + getRequestService(): RequestService
+        }
+
+        RequestServiceFactory ..> service.contracts.RequestService
+    }
+
+    namespace implementations {
+        class CppRestRequestService { }
+
+        CppRestRequestService ..|> service.contracts.RequestService
+    }
+}
+
+' Presentation layer
+namespace presentation {
+    namespace window {
+        class MainWindow {
+            // emit sendRequest signal
+            // emit new tab signal
+            // emit close tab signal
+            // emit save tab signal
+            // emit save tab as signal
+
+            // listen on response slot
+        }
+
+        class MainWindowController {
+            // send response signal
+
+            // listen on sendRequest signal
+            // listen on new tab slot
+            // listen on close tab slot
+            // listen on save tab slot
+            // listen on save tab as slot
+        }
+    }
+
+    namespace widget {
+        class RawRequestWidget {
+            // emit new header signal
+            // emit new cookie signal
+            // emit body changed signal
+        }
+
+        class RawRequestWidgetController {
+            // listen on new header slot
+            // listen on new cookie slot
+            // listen on body changed slot
+        }
+
+        class FormdataWidget {
+            // emit new header signal
+            // emit new cookie signal
+            // emit new element signal
+            // emit new file signal
+        }
+
+        class FormdataWidgetController {
+            // listen on new header slot
+            // listen on new cookie slot
+            // listen on new element slot
+            // listen on new file signal
+        }
+    }
+}
+
+@enduml
