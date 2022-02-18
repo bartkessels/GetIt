@@ -6,10 +6,6 @@ This document outlines the design philosofy for GetIt's source code.
     - [1.1 Interfaces](#11-interfaces)
     - [1.2 Classes](#12-classes)
     - [1.3 Layers](#13-layers)
-        - [1.3.1 Domain layer](#131-domain-layer)
-        - [1.3.2 Service layer](#132-service-layer)
-        - [1.3.3 Data layer](#133-data-layer)
-        - [1.3.4 Presentation layer](#134-presentation-layer)
 - [2. Design decisions](#2-design-decisions)
 
 ## 1. Class diagram
@@ -52,27 +48,19 @@ In the following paragraphs each layer will be explained in more detail.
 
 ### 1.3 Layers
 
-#### 1.3.1 Domain layer
+GetIt uses the layered pattern, or N-tier pattern, to decouple the different types of partitions
+most common applications consist of . This pattern groups classes by responsibility and encourages you to place
+them into the same layer [(Price et Al., 2022)](https://docs.microsoft.com/en-us/azure/architecture/guide/architecture-styles/n-tier). Thus meaning that all classes and logic related to data storage or retrieval
+are put into the data layer.
 
-The domain layer consists of classes exclusive to the domain. This includes classes such as `Request` that are directly sent to a server.
+The table below lists and describes the different layers GetIt acknowledges.
 
-The domain layer can only contain classes that are dependent on other classes inside the domain layer. This is done to prevent knowledge of anything outside of the request domain.
-
-#### 1.3.2 Service layer
-
-The service layer is used to decouple the domain from the actual implementation of sending a request and retrieving a response from a server.
-
-The service layer can be thought of as the layer that can be used to interact with domain objects. Even though it's possible to interact with the domain objects, they can't be used to send an actual request.
-
-#### 1.3.3 Data layer
-
-The data layer is used to decouple the domain layer from storing domain objects. In the data layer it's possible to create multiple implementations of methods for saving a request, or retrieving a request.
-
-With this decoupling, the domain layer can be used to describe the domain without worrying about any details that are required for saving a request.
-
-#### 1.3.4 Presentation layer
-
-The presentation layer consists of QT-libraries and interaction for the GUI. The presentation layer is only allowed to communicate with the service and data layer. However, the objects from the domain layer are used as models in the MVC pattern.
+|Layer| Description                                                                                                                                                                                                                                                                                                                                                        |
+|---|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Domain| The domain layer consists of classes exclusive to the domain. This includes classes such as `Request` that are directly sent to a server. <br/> <br/>The domain layer can only contain classes that are dependent on other classes inside the domain layer. This is done to prevent knowledge of anything outside of the request domain.                           |
+|Service| The service layer is used to decouple the domain from the actual implementation of sending a request and retrieving a response from a server. <br/> <br/>The service layer can be thought of as the layer that can be used to interact with domain objects. Even though it's possible to interact with the domain objects, they can't be used to send an actual request. |
+|Data|The data layer is used to decouple the domain layer from storing domain objects. In the data layer it's possible to create multiple implementations of methods for saving a request, or retrieving a request. <br/><br/>With this decoupling, the domain layer can be used to describe the domain without worrying about any details that are required for saving a request.|
+|Presentation|The presentation layer consists of QT-libraries and interaction for the GUI. The presentation layer is only allowed to communicate with the service and data layer. However, the objects from the domain layer are used as models in the MVC pattern.|
 
 ## 2. Design decisions
 
