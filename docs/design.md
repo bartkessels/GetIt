@@ -78,11 +78,11 @@ The presentation layer consists of QT-libraries and interaction for the GUI. The
 
 This paragraph describes the different decisions that were made during the design of GetIt.
 
-|__GDD01__|Raw- and FormdataRequest|
-|---|---|
-|__Decision__|Create a different implementation for the RawRequest and FormdataRequest|
-|__Motives__|When creating a different implementation for the different request types the domain can be modelled around a single abstract request without knowing anything about the internals|
-|__Alternatives__|Use a single Request class with different request body objects|
+|__GDD01__| Raw- and FormdataRequestBody                                                                                                    |
+|---|---------------------------------------------------------------------------------------------------------------------------------|
+|__Decision__| Create a different implementation for the RawRequestBody and FormdataRequestBody which implement from the RequestBody interface |
+|__Motives__| When working with a Request you don't need to know the specific body type, therefore an interface `RequestBody` is used         |
+|__Alternatives__| Use different Request implementations for the different body types                                                              |
 
 |__GDD02__|Abstract factory|
 |---|---|
