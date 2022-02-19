@@ -17,11 +17,9 @@ namespace getit::domain::factories
         public:
             ~RequestFactory() override = default;
 
-            std::shared_ptr<models::Request> getRequest(std::string method, std::string uri, std::string body) override;
-            std::shared_ptr<models::Request> getRequest(std::string method, std::string uri, std::string body, std::string contentType) override;
-            std::shared_ptr<models::Request> getRequest(std::string method, std::string uri, std::map<std::string, std::string> elements, std::map<std::string, std::string> files, std::string boundary) override;
-
-        private:
-            static std::shared_ptr<models::Request> getRequest(std::string method, std::string uri);
+            static std::shared_ptr<models::Request> getRequest(const std::string& method, const std::string& uri);
+            std::shared_ptr<models::Request> getRequest(const std::string& method, const std::string& uri, const std::string& body) override;
+            std::shared_ptr<models::Request> getRequest(const std::string& method, const std::string& uri, const std::string& body, const std::string& contentType) override;
+            std::shared_ptr<models::Request> getRequest(const std::string& method, const std::string& uri, std::map<std::string, std::string> elements, std::map<std::string, std::string> files, const std::string& boundary) override;
     };
 }

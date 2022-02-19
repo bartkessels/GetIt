@@ -1,14 +1,24 @@
 #pragma once
 
-#include "domain/models/Request.hpp"
-#include "presentation/fragments/FragmentController.hpp"
-#include "presentation/fragments/FragmentView.hpp"
+#include <memory>
 
-namespace getit::presenation::fragments
+#include "domain/models/Request.hpp"
+#include "presentation/fragments/BodyFragment/BodyFragmentModel.hpp"
+#include "presentation/fragments/BodyFragment/BodyFragmentView.hpp"
+#include "presentation/fragments/FragmentController.hpp"
+
+namespace getit::presentation::fragments
 {
-    class BodyFragmentController : public FragmentController<domain::models::Request>
+    class BodyFragmentController : public FragmentController<BodyFragmentModel>
     {
         public:
             explicit BodyFragmentController(BodyFragmentView* view);
+            ~BodyFragmentController() override;
+
+            std::shared_ptr<BodyFragmentModel> getContent() override;
+            void setContent(std::shared_ptr<BodyFragmentModel> content) override;
+
+        private:
+            BodyFragmentView* view;
     };
 }

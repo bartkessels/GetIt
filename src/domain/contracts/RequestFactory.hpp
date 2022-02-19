@@ -13,8 +13,8 @@ namespace getit::domain::contracts
         public:
             virtual ~RequestFactory() = default;
 
-            virtual std::shared_ptr<models::Request> getRequest(std::string method, std::string uri, std::string body) = 0;
-            virtual std::shared_ptr<models::Request> getRequest(std::string method, std::string uri, std::string body, std::string contentType) = 0;
-            virtual std::shared_ptr<models::Request> getRequest(std::string method, std::string uri, std::map<std::string, std::string> elements, std::map<std::string, std::string> files, std::string boundary) = 0;
+            virtual std::shared_ptr<models::Request> getRequest(const std::string& method, const std::string& uri, const std::string& body) = 0;
+            virtual std::shared_ptr<models::Request> getRequest(const std::string& method, const std::string& uri, const std::string& body, const std::string& contentType) = 0;
+            virtual std::shared_ptr<models::Request> getRequest(const std::string& method, const std::string& uri, std::map<std::string, std::string> elements, std::map<std::string, std::string> files, const std::string& boundary) = 0;
     };
 }

@@ -22,13 +22,15 @@ set(SOURCEFILES
     data/repositories/RawRequestRepository.cpp
 
     domain/factories/RequestFactory.cpp
-        domain/implementations/FormdataRequestBody.cpp
-        domain/implementations/RawRequestBody.cpp
+    domain/implementations/FormdataRequestBody.cpp
+    domain/implementations/RawRequestBody.cpp
     domain/models/Request.cpp
 
-    presentation/tabs/RawRequestTab/RawRequestTabController.cpp
-    presentation/tabs/RawRequestTab/RawRequestTabView.cpp
-    presentation/tabs/RequestTabView.cpp
+    presentation/fragments/BodyFragment/BodyFragmentController.cpp
+    presentation/fragments/BodyFragment/BodyFragmentView.cpp
+    presentation/fragments/HeadersFragment/HeadersFragmentView.cpp
+    presentation/fragments/HeadersFragment/HeadersFragmentController.cpp
+
     presentation/windows/MainWindow.cpp
 
     service/factories/RequestServiceFactory.cpp

@@ -1,46 +1,42 @@
 #include "presentation/windows/MainWindow.hpp"
 #include "./ui_MainWindow.h"
 
-#include <iostream>
-#include <utility>
-
 using namespace getit::presentation::windows;
 
 MainWindow::MainWindow(std::shared_ptr<getit::domain::factories::RequestFactory> requestFactory, QWidget* parent):
     QMainWindow(parent),
-    requestFactory(std::move(std::move(requestFactory))),
+    requestFactory(std::move(requestFactory)),
     ui(new Ui::MainWindow())
 {
-    ui->setupUi(this);
+    this->ui->setupUi(this);
+    this->registerControllers();
 
-    connect(ui->menuItemNewRawRequest, &QAction::triggered,
-        this, [this]() {
-            this->createAndAddNewRawRequestTab();
-        });
-
-    connect(ui->menuItemSave, &QAction::triggered,
-        this, [this]() {
-            // Retrieve current tab item
-//            auto tabItem = this->ui->tabs->getCurrentTab();
-            
-        });
-
-    connect(ui->tabs, &QTabWidget::tabCloseRequested,
-        this, [this](int index) {
-            this->ui->tabs->removeTab(index);
-        });
+    connect(ui->send, &QPushButton::pressed, this, &MainWindow::sendRequest);
 }
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+    delete this->ui;
 }
 
-void MainWindow::createAndAddNewRawRequestTab()
+void MainWindow::sendRequest()
 {
-    auto tabImplementation = std::make_shared<tabs::RawRequestTabView>();
-    auto tab = new tabs::RequestTabView(tabImplementation);
-    auto controller = std::make_shared<tabs::RawRequestTabController>(tabImplementation, requestFactory);
+    const auto& method = ui->method->currentText().toStdString();
+    const auto& uri = ui->uri->text().toStdString();
 
-    ui->tabs->addTab(tab, "New Raw Request");
+    const auto& request = requestFactory->getRequest(method, uri);
+    request->setBody(bodyController->getContent()->body);
+    request->setHeaders(headersController->getContent()->headers);
+}
+
+void MainWindow::registerControllers()
+{
+    auto bodyView = new fragments::BodyFragmentView();
+    auto headersView = new fragments::HeadersFragmentView();
+
+    bodyController = std::make_shared<fragments::BodyFragmentController>(bodyView);
+    headersController = std::make_shared<fragments::HeadersFragmentController>(headersView);
+
+    ui->tabs->addTab(bodyView, "Body");
+    ui->tabs->addTab(headersView, "Headers");
 }

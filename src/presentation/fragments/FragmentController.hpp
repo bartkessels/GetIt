@@ -1,19 +1,16 @@
 #pragma once
 
-#include <QWidget>
-
-#include "presentation/fragments/FragmentView.hpp"
+#include <memory>
 
 namespace getit::presentation::fragments
 {
-    template<class T>
-    struct Fragment
+    template<class M>
+    struct FragmentController
     {
         public:
-            explicit Fragment(FragmentView* view = nullptr) = default;
-            virtual ~Fragment() = default;
+            virtual ~FragmentController() = default;
 
-            virtual T getContent() = 0;
-            virtual void setContent(T content) = 0;
+            virtual std::shared_ptr<M> getContent() = 0;
+            virtual void setContent(std::shared_ptr<M> content) = 0;
     };
 }

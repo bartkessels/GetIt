@@ -3,13 +3,16 @@
 #include <memory>
 #include <QFileDialog>
 #include <QMainWindow>
+#include <utility>
 
 #include "domain/factories/RequestFactory.hpp"
 #include "domain/models/Request.hpp"
 #include "domain/models/Response.hpp"
-#include "presentation/tabs/RawRequestTab/RawRequestTabController.hpp"
-#include "presentation/tabs/RawRequestTab/RawRequestTabView.hpp"
-#include "presentation/tabs/RequestTabView.hpp"
+
+#include "presentation/fragments/BodyFragment/BodyFragmentController.hpp"
+#include "presentation/fragments/BodyFragment/BodyFragmentView.hpp"
+#include "presentation/fragments/HeadersFragment//HeadersFragmentController.hpp"
+#include "presentation/fragments/HeadersFragment/HeadersFragmentView.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,16 +26,14 @@ namespace getit::presentation::windows
             explicit MainWindow(std::shared_ptr<domain::factories::RequestFactory> requestFactory, QWidget* parent = nullptr);
             ~MainWindow() override;
 
-        signals:
-            // void newTab(std::string tabType);
-            // void closeTab(int index);
-            // void saveTab(int index);
-            // void saveTabAs(int index);
-
         private:
-            void createAndAddNewRawRequestTab();
+            void sendRequest();
+            void registerControllers();
 
             std::shared_ptr<domain::factories::RequestFactory> requestFactory;
             Ui::MainWindow* ui;
+
+            std::shared_ptr<fragments::BodyFragmentController> bodyController;
+            std::shared_ptr<fragments::HeadersFragmentController> headersController;
     };
 }
