@@ -19,6 +19,8 @@ jobs:
     
     - name: Download and install Boost
       uses: MarkusJx/install-boost@v2.1.0
+      with:
+        boost_version: "1.75.0"
 
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
