@@ -37,7 +37,7 @@ namespace getit::presentation::windows
             ~MainWindow() override;
 
         signals:
-            void responseReceived(std::shared_ptr<fragments::ResponseFragmentModel> response);
+            void responseReceived(std::shared_ptr<domain::models::Response> response);
 
         private:
             std::shared_ptr<RequestFactory> requestFactory;

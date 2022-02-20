@@ -1,5 +1,6 @@
 #include "presentation/fragments/BodyFragment/BodyFragmentController.hpp"
 
+using namespace getit;
 using namespace getit::presentation::fragments;
 
 BodyFragmentController::BodyFragmentController(BodyFragmentView* view):
@@ -13,14 +14,12 @@ BodyFragmentController::~BodyFragmentController()
     delete this->view;
 }
 
-std::shared_ptr<BodyFragmentModel> BodyFragmentController::getContent()
+std::shared_ptr<domain::models::RequestBody> BodyFragmentController::getContent()
 {
-    const auto& model = std::make_shared<BodyFragmentModel>();
-
-    return model;
+    return view->getBody();
 }
 
-void BodyFragmentController::setContent(std::shared_ptr<BodyFragmentModel> content)
+void BodyFragmentController::setContent(std::shared_ptr<domain::models::RequestBody> content)
 {
-
+    view->setBody(content);
 }

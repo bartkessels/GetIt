@@ -1,6 +1,7 @@
 #include "presentation/fragments/BodyFragment/BodyFragmentView.hpp"
 #include "./ui_BodyFragmentView.h"
 
+using namespace getit;
 using namespace getit::presentation::fragments;
 
 BodyFragmentView::BodyFragmentView(QWidget* parent):
@@ -22,25 +23,63 @@ BodyFragmentView::~BodyFragmentView()
     delete ui;
 }
 
-std::string BodyFragmentView::getContentType()
+std::shared_ptr<domain::models::RequestBody> BodyFragmentView::getBody()
 {
-    // Depends on selected bodyType
-    return "";
+    if (bodyType == BodyType::FORM_DATA) {
+        const auto& body = std::make_shared<domain::implementations::FormdataRequestBody>();
+
+        body->setElements(getRowsFromTreeWidget(ui->elements));
+        body->setFiles(getRowsFromTreeWidget(ui->files));
+
+        return body;
+    } else if (bodyType == BodyType::RAW) {
+        const auto& body = std::make_shared<domain::implementations::RawRequestBody>();
+
+        body->setContentType(ui->contentType->text().toStdString());
+        body->setBody(ui->raw->document()->toPlainText().toStdString());
+
+        return body;
+    }
+
+    return nullptr;
 }
 
-std::string BodyFragmentView::getBody()
+void BodyFragmentView::setBody(const std::shared_ptr<domain::models::RequestBody>& body)
 {
-    // Depends on selected bodyType
-    return "";
+    if (const auto& formdata = std::dynamic_pointer_cast<domain::implementations::FormdataRequestBody>(body)) {
+        setBody(formdata);
+    }
+    if (const auto& raw = std::dynamic_pointer_cast<getit::domain::implementations::RawRequestBody>(body)) {
+        setBody(raw);
+    }
+}
+
+void BodyFragmentView::setBody(const std::shared_ptr<domain::implementations::FormdataRequestBody>& body)
+{
+    for (const auto& [element, value] : body->getElements()) {
+        addRowToTreeWidget(element, value, ui->elements);
+    }
+
+    for (const auto& [file, filePath] : body->getFiles()) {
+        addRowToTreeWidget(file, filePath, ui->files);
+    }
+}
+
+void BodyFragmentView::setBody(const std::shared_ptr<domain::implementations::RawRequestBody>& body)
+{
+    ui->contentType->setText(QString::fromStdString(body->getContentType()));
+    ui->raw->setPlainText(QString::fromStdString(body->getBody()));
 }
 
 void BodyFragmentView::toggleBody()
 {
     // Show form data view by default
+    bodyType = BodyType::FORM_DATA;
     ui->formdataWidget->show();
     ui->rawWidget->hide();
 
     if (ui->bodyType->currentText().toLower().toStdString() == "raw") {
+        bodyType = BodyType::RAW;
         ui->formdataWidget->hide();
         ui->rawWidget->show();
     }
@@ -48,12 +87,7 @@ void BodyFragmentView::toggleBody()
 
 void BodyFragmentView::addDefaultElement()
 {
-    addElement("Key", "Value");
-}
-
-void BodyFragmentView::addElement(const std::string& element, const std::string& value)
-{
-    addRowToTreeWidget(element, value, ui->elements);
+    addRowToTreeWidget("Key", "Value", ui->elements);
 }
 
 void BodyFragmentView::removeSelectedElement()
@@ -63,16 +97,11 @@ void BodyFragmentView::removeSelectedElement()
 
 void BodyFragmentView::addDefaultFile()
 {
-    const auto& fileName = QFileDialog::getOpenFileUrl(this);
+    const auto& filePath = QFileDialog::getOpenFileUrl(this);
 
-    if (!fileName.isEmpty()) {
-        this->addFile("File", fileName.toLocalFile().toStdString());
+    if (!filePath.isEmpty()) {
+        addRowToTreeWidget("File", filePath.toLocalFile().toStdString(), ui->files);
     }
-}
-
-void BodyFragmentView::addFile(const std::string& fileName, const std::string& filePath)
-{
-    addRowToTreeWidget(fileName, filePath, ui->files);
 }
 
 void BodyFragmentView::removeSelectedFile()
@@ -87,4 +116,20 @@ void BodyFragmentView::addRowToTreeWidget(const std::string &key, const std::str
     row->setText(keyIndex, QString::fromStdString(key));
     row->setText(valueIndex, QString::fromStdString(value));
     row->setFlags(treeItemFlag);
+}
+
+std::map<std::string, std::string> BodyFragmentView::getRowsFromTreeWidget(QTreeWidget* widget) const
+{
+    std::map<std::string, std::string> rows;
+
+    for (int i = 0; i < widget->topLevelItemCount(); ++i) {
+        QTreeWidgetItem* itm = widget->topLevelItem(i);
+
+        rows.insert_or_assign(
+                itm->text(keyIndex).toStdString(),
+                itm->text(valueIndex).toStdString()
+        );
+    }
+
+    return rows;
 }

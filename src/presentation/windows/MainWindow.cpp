@@ -33,17 +33,13 @@ void MainWindow::sendRequest()
 
     auto request = requestFactory->getRequest(method, uri);
     const auto& requestService = requestServiceFactory->getRequestService();
-    const auto& responseContent = std::make_shared<fragments::ResponseFragmentModel>();
 
-    request->setBody(bodyController->getContent()->body);
-    request->setHeaders(headersController->getContent()->headers);
+    request->setBody(bodyController->getContent());
+    request->setHeaders(headersController->getContent());
 
-    QThread::create([this, requestService, request, responseContent] {
+    QThread::create([this, requestService, request] {
         auto response = requestService->send(request).get();
-        responseContent->body = response->body;
-        responseContent->headers = response->headers;
-
-        emit responseReceived(responseContent);
+        emit responseReceived(response);
     })->start();
 }
 

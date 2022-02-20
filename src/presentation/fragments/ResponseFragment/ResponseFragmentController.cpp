@@ -1,5 +1,6 @@
 #include "presentation/fragments/ResponseFragment/ResponseFragmentController.hpp"
 
+using namespace getit;
 using namespace getit::presentation::fragments;
 
 ResponseFragmentController::ResponseFragmentController(ResponseFragmentView* view):
@@ -13,9 +14,9 @@ ResponseFragmentController::~ResponseFragmentController()
     delete view;
 }
 
-std::shared_ptr<ResponseFragmentModel> ResponseFragmentController::getContent()
+std::shared_ptr<domain::models::Response> ResponseFragmentController::getContent()
 {
-    const auto& content = std::make_shared<ResponseFragmentModel>();
+    const auto& content = std::make_shared<domain::models::Response>();
 
     content->headers = view->getHeaders();
     content->body = view->getBody();
@@ -23,7 +24,7 @@ std::shared_ptr<ResponseFragmentModel> ResponseFragmentController::getContent()
     return content;
 }
 
-void ResponseFragmentController::setContent(std::shared_ptr<ResponseFragmentModel> content)
+void ResponseFragmentController::setContent(std::shared_ptr<domain::models::Response> content)
 {
     view->setHeaders(content->headers);
     view->setBody(content->body);

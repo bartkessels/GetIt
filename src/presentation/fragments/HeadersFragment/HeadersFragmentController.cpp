@@ -13,13 +13,12 @@ HeadersFragmentController::~HeadersFragmentController()
     delete this->view;
 }
 
-std::shared_ptr<HeadersFragmentModel> HeadersFragmentController::getContent()
+std::map<std::string, std::string> HeadersFragmentController::getContent()
 {
-    const auto& model = std::make_shared<HeadersFragmentModel>();
-    return model;
+    return view->getHeaders();
 }
 
-void HeadersFragmentController::setContent(std::shared_ptr<HeadersFragmentModel> content)
+void HeadersFragmentController::setContent(std::map<std::string, std::string> content)
 {
-
+    view->setHeaders(content);
 }
