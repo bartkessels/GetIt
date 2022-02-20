@@ -3,6 +3,7 @@
 
 #include "domain/factories/RequestFactory.hpp"
 #include "presentation/windows/MainWindow.hpp"
+#include "service/factories/RequestServiceFactory.hpp"
 
 using namespace getit;
 
