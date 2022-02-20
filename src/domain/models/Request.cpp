@@ -2,12 +2,12 @@
 
 using namespace getit::domain::models;
 
-void Request::setMethod(std::string method)
+void Request::setMethod(const std::string& method)
 {
     this->method = method;
 }
 
-void Request::setUri(std::string uri)
+void Request::setUri(const std::string& uri)
 {
     this->uri = uri;
 }

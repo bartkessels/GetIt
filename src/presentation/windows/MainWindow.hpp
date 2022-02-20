@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <QFileDialog>
+#include <QThread>
 #include <QMainWindow>
 #include <utility>
 
@@ -13,6 +14,13 @@
 #include "presentation/fragments/BodyFragment/BodyFragmentView.hpp"
 #include "presentation/fragments/HeadersFragment//HeadersFragmentController.hpp"
 #include "presentation/fragments/HeadersFragment/HeadersFragmentView.hpp"
+#include "presentation/fragments/ResponseFragment/ResponseFragmentController.hpp"
+#include "presentation/fragments/ResponseFragment/ResponseFragmentView.hpp"
+
+#include "service/factories/RequestServiceFactory.hpp"
+
+using namespace getit::domain::factories;
+using namespace getit::service::factories;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -22,18 +30,25 @@ namespace getit::presentation::windows
 {
     class MainWindow: public QMainWindow
     {
+        Q_OBJECT
+
         public:
-            explicit MainWindow(std::shared_ptr<domain::factories::RequestFactory> requestFactory, QWidget* parent = nullptr);
+            explicit MainWindow(std::shared_ptr<RequestFactory> requestFactory, std::shared_ptr<RequestServiceFactory> requestServiceFactory, QWidget* parent = nullptr);
             ~MainWindow() override;
 
-        private:
-            void sendRequest();
-            void registerControllers();
+        signals:
+            void responseReceived(std::shared_ptr<fragments::ResponseFragmentModel> response);
 
-            std::shared_ptr<domain::factories::RequestFactory> requestFactory;
+        private:
+            std::shared_ptr<RequestFactory> requestFactory;
+            std::shared_ptr<RequestServiceFactory> requestServiceFactory;
             Ui::MainWindow* ui;
 
             std::shared_ptr<fragments::BodyFragmentController> bodyController;
             std::shared_ptr<fragments::HeadersFragmentController> headersController;
+            std::shared_ptr<fragments::ResponseFragmentController> responseController;
+
+            void sendRequest();
+            void registerControllers();
     };
 }

@@ -11,18 +11,20 @@ std::future<std::shared_ptr<getit::domain::models::Response>> CppRestRequestServ
         cppRequest->headers().add(header, value);
     }
 
-    cppRequest->set_body(
+    if (request->getBody() != nullptr)
+        cppRequest->set_body(
             request->getBody()->getBody(),
-            request->getBody()->getContentType());
+            request->getBody()->getContentType()
+        );
 
-    return std::async(std::launch::async, [this, client, cppRequest]() {
+    return std::async(std::launch::async, [client, cppRequest]() {
         const auto& rawResponse = client->request(*cppRequest).get();
         const auto& response = std::make_shared<getit::domain::models::Response>();
         bool ignoreContentType = true;
 
         response->body = rawResponse.extract_string(ignoreContentType).get();
 
-        for (const auto& [header, value] : rawResponse.headers()) {
+        for (auto [header, value] : rawResponse.headers()) {
             response->headers.insert({header, value});
         }
 

@@ -13,8 +13,8 @@ namespace getit::domain::models
             Request() = default;
             ~Request() = default;
             
-            void setMethod(std::string method);
-            void setUri(std::string uri);
+            void setMethod(const std::string& method);
+            void setUri(const std::string& uri);
             void addHeader(const std::string& header, const std::string& value);
 
             void setHeaders(const std::map<std::string, std::string>& headers);

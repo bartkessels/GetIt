@@ -30,6 +30,8 @@ set(SOURCEFILES
     presentation/fragments/BodyFragment/BodyFragmentView.cpp
     presentation/fragments/HeadersFragment/HeadersFragmentView.cpp
     presentation/fragments/HeadersFragment/HeadersFragmentController.cpp
+    presentation/fragments/ResponseFragment/ResponseFragmentController.cpp
+    presentation/fragments/ResponseFragment/ResponseFragmentView.cpp
 
     presentation/windows/MainWindow.cpp
 

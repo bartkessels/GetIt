@@ -65,12 +65,18 @@
         <property name="placeholderText">
          <string notr="true">http(s)://...</string>
         </property>
+        <property name="clearButtonEnabled">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="send">
         <property name="text">
          <string>Send</string>
+        </property>
+        <property name="shortcut">
+         <string>Ctrl+Return</string>
         </property>
        </widget>
       </item>
