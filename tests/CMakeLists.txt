@@ -12,8 +12,8 @@ set(SOURCEFILES
     ../src/data/repositories/RawRequestRepository.cpp
 
     ../src/domain/factories/RequestFactory.cpp
-        ../src/domain/implementations/FormdataRequestBody.cpp
-        ../src/domain/implementations/RawRequestBody.cpp
+    ../src/domain/implementations/FormdataRequestBody.cpp
+    ../src/domain/implementations/RawRequestBody.cpp
     ../src/domain/models/Request.cpp
 
     ../src/service/factories/RequestServiceFactory.cpp
@@ -28,10 +28,11 @@ set(TESTFILES
     data/repositories/tst_RawRequestRepository.cpp
 
     domain/factories/tst_RequestFactory.cpp
-        domain/implementations/tst_FormdataRequestBody.cpp
-        domain/implementations/tst_RawRequestBody.cpp
+    domain/implementations/tst_FormdataRequestBody.cpp
+    domain/implementations/tst_RawRequestBody.cpp
 
     service/factories/tst_RequestServiceFactory.cpp
+    service/implementations/tst_CppRestRequestService.cpp
 )
 
 add_executable(getit_tests ${SOURCEFILES} ${TESTFILES})
