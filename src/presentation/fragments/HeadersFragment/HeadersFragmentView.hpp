@@ -6,20 +6,22 @@
 #include <QTreeWidgetItem>
 #include <QWidget>
 
+#include "presentation/fragments/HeadersFragment/IHeadersFragmentView.hpp"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class HeadersFragmentView; }
 QT_END_NAMESPACE
 
 namespace getit::presentation::fragments
 {
-    class HeadersFragmentView : public QWidget
+    class HeadersFragmentView : public IHeadersFragmentView, public QWidget
     {
         public:
             explicit HeadersFragmentView(QWidget* parent = nullptr);
             ~HeadersFragmentView() override;
 
-            std::map<std::string, std::string> getHeaders();
-            void setHeaders(const std::map<std::string, std::string>& headers);
+            std::map<std::string, std::string> getHeaders() override;
+            void setHeaders(const std::map<std::string, std::string>& headers) override;
 
         private:
             Ui::HeadersFragmentView* ui;

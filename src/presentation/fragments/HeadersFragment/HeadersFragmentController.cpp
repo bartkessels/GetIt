@@ -2,7 +2,7 @@
 
 using namespace getit::presentation::fragments;
 
-HeadersFragmentController::HeadersFragmentController(HeadersFragmentView* view):
+HeadersFragmentController::HeadersFragmentController(IHeadersFragmentView* view):
     view(view)
 {
 
@@ -10,7 +10,7 @@ HeadersFragmentController::HeadersFragmentController(HeadersFragmentView* view):
 
 HeadersFragmentController::~HeadersFragmentController()
 {
-    delete this->view;
+    delete view;
 }
 
 std::map<std::string, std::string> HeadersFragmentController::getContent()
