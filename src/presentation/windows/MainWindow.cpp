@@ -2,8 +2,8 @@
 #include "./ui_MainWindow.h"
 
 using namespace getit::presentation::windows;
-using namespace getit::domain::factories;
-using namespace getit::service::factories;
+using namespace getit::domain::contracts;
+using namespace getit::service::contracts;
 
 MainWindow::MainWindow(std::shared_ptr<RequestFactory> requestFactory, std::shared_ptr<RequestServiceFactory> requestServiceFactory, QWidget* parent):
     QMainWindow(parent),

@@ -6,7 +6,7 @@
 #include <QMainWindow>
 #include <utility>
 
-#include "domain/factories/RequestFactory.hpp"
+#include "domain/contracts/RequestFactory.hpp"
 #include "domain/models/Request.hpp"
 #include "domain/models/Response.hpp"
 
@@ -17,10 +17,10 @@
 #include "presentation/fragments/ResponseFragment/ResponseFragmentController.hpp"
 #include "presentation/fragments/ResponseFragment/ResponseFragmentView.hpp"
 
-#include "service/factories/RequestServiceFactory.hpp"
+#include "service/contracts/RequestServiceFactory.hpp"
 
-using namespace getit::domain::factories;
-using namespace getit::service::factories;
+using namespace getit::domain::contracts;
+using namespace getit::service::contracts;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
