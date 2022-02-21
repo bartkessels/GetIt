@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install boost
-      run: sudo apt update && sudo apt install -yq libboost1.65-dev
+      run: sudo apt update && sudo apt install -yq libboost-all-dev
     - name: Install Qt6
       run: sudo apt update && sudo apt install -yq build-essential libgl1-mesa-dev
     - name: Install CMake
@@ -29,7 +29,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install boost
-      run: sudo apt update && sudo apt install -yq libboost1.65-dev
+      run: sudo apt update && sudo apt install -yq libboost-all-dev
     - name: Install Qt6
       run: sudo apt update && sudo apt install -yq build-essential libgl1-mesa-dev
     - name: Install CMake
