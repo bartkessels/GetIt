@@ -11,7 +11,7 @@ std::future<std::shared_ptr<getit::domain::models::Response>> CppRestRequestServ
         cppRequest->headers().add(header, value);
     }
 
-    if (request->getBody() != nullptr)
+    if (request->getBody())
         cppRequest->set_body(
             request->getBody()->getBody(),
             request->getBody()->getContentType()

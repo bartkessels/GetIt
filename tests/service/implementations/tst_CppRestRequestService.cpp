@@ -4,6 +4,7 @@
 #include <utility>
 
 #include "domain/implementations/FormdataRequestBody.hpp"
+#include "domain/implementations/RawRequestBody.hpp"
 #include "domain/models/Request.hpp"
 #include "service/implementations/CppRestRequestService.hpp"
 
@@ -47,6 +48,24 @@ TEST_CASE("CppRestRequestService.send")
         sut->send(request).wait();
     }
 
+    SECTION("adds the uri to the request")
+    {
+        // Arrange
+        request->setMethod("GET");
+        request->setUri(uri);
+
+        // Assert
+        listen(requestListener, [=](const http_request& actualRequest) {
+            /// If the control flow comes here, it means that the request is
+            /// sent to the uri of the listener (i.e. the uri that's also set
+            /// on the request)
+            REQUIRE(true);
+        });
+
+        // Act
+        sut->send(request).wait();
+    }
+
     SECTION("adds the headers to the request")
     {
         // Arrange
@@ -78,7 +97,7 @@ TEST_CASE("CppRestRequestService.send")
 
         // Assert
         listen(requestListener, [=](const http_request& actualRequest) {
-            // TODO: Implement check if the body is empty
+            REQUIRE(actualRequest.body().read().get() <= 0);
         });
 
         // Act
@@ -94,7 +113,7 @@ TEST_CASE("CppRestRequestService.send")
 
         // Assert
         listen(requestListener, [=](const http_request& actualRequest) {
-            // TODO: Implement check if the body is empty
+            REQUIRE(actualRequest.body().read().get() <= 0);
         });
 
         // Act
@@ -104,8 +123,16 @@ TEST_CASE("CppRestRequestService.send")
     SECTION("does add a body to the request when body is of type form data")
     {
         // Arrange
+        const auto& key = "email_address";
+        const auto& value = "my_first_email@localhost";
+
+        const auto& fileKey = "picture.png";
+        const auto& filePath = "./test_file.txt";
+        const auto& fileContent = "content";
+
         const auto& body = std::make_shared<implementations::FormdataRequestBody>();
-        body->addElement("key", "value");
+        body->addElement(key, value);
+        body->addFile(fileKey, filePath);
 
         request->setMethod("GET");
         request->setUri(uri);
@@ -113,13 +140,36 @@ TEST_CASE("CppRestRequestService.send")
 
         // Assert
         listen(requestListener, [=](const http_request& actualRequest) {
-            // TODO: Implement check if the body contains the elements from the body
+            REQUIRE(actualRequest.to_string().find(key));
+            REQUIRE(actualRequest.to_string().find(value));
+
+            REQUIRE(actualRequest.to_string().find(fileKey));
+            REQUIRE(actualRequest.to_string().find(filePath));
+            REQUIRE(actualRequest.to_string().find(fileContent));
         });
 
         // Act
         sut->send(request).wait();
     }
 
-    // adds a formdata body to the request
-    // adds a raw body to the request
+    SECTION("does add a body to the request when body is of type raw")
+    {
+        // Arrange
+        auto bodyContent = "This is my plain text raw body";
+
+        const auto& body = std::make_shared<implementations::RawRequestBody>();
+        body->setBody(bodyContent);
+
+        request->setMethod("GET");
+        request->setUri(uri);
+        request->setBody(body);
+
+        // Assert
+        listen(requestListener, [=](const http_request& actualRequest) {
+            REQUIRE(actualRequest.to_string().find(bodyContent));
+        });
+
+        // Act
+        sut->send(request).wait();
+    }
 }
