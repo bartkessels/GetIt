@@ -16,4 +16,12 @@ I'm trying to tackle in the best possible way, meaning that I want to decouple t
 the UI to make it testable. As of right now I've no exact idea of how I want (or going) to
 accomplish this. So please check back in a couple of weeks to view the progress!
 
+__UPDATE__
+
+As of today (february 21st) the UI of GetIt is done and functional! The only thing left
+is saving and opening a request and error-handling (i.e. in a way that you, the user, sees
+wat went wrong instead of a segfault).
+
+![Main screen of GetIt](resources/images/getit.png)
+
 For more information about the motives behind the (re)design of GetIt, please checkout the [documentation](docs/design.md).
