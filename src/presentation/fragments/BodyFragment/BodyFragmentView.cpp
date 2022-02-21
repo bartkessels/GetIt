@@ -11,7 +11,7 @@ BodyFragmentView::BodyFragmentView(QWidget* parent):
     ui->setupUi(this);
     toggleBody();
 
-    connect(ui->bodyType, &QComboBox::currentTextChanged, this, &BodyFragmentView::toggleBody);
+    connect(ui->bodyType, &QComboBox::currentIndexChanged, this, &BodyFragmentView::toggleBody);
     connect(ui->addElement, &QPushButton::pressed, this, &BodyFragmentView::addDefaultElement);
     connect(ui->removeElement, &QPushButton::pressed, this, &BodyFragmentView::removeSelectedElement);
     connect(ui->addFile, &QPushButton::pressed, this, &BodyFragmentView::addDefaultFile);
@@ -23,38 +23,27 @@ BodyFragmentView::~BodyFragmentView()
     delete ui;
 }
 
-std::shared_ptr<domain::models::RequestBody> BodyFragmentView::getBody()
+std::shared_ptr<domain::implementations::FormdataRequestBody> BodyFragmentView::getFormDataBody()
 {
-    if (bodyType == BodyType::FORM_DATA) {
-        const auto& body = std::make_shared<domain::implementations::FormdataRequestBody>();
+    const auto& body = std::make_shared<domain::implementations::FormdataRequestBody>();
 
-        body->setElements(getRowsFromTreeWidget(ui->elements));
-        body->setFiles(getRowsFromTreeWidget(ui->files));
+    body->setElements(getRowsFromTreeWidget(ui->elements));
+    body->setFiles(getRowsFromTreeWidget(ui->files));
 
-        return body;
-    } else if (bodyType == BodyType::RAW) {
-        const auto& body = std::make_shared<domain::implementations::RawRequestBody>();
-
-        body->setContentType(ui->contentType->text().toStdString());
-        body->setBody(ui->raw->document()->toPlainText().toStdString());
-
-        return body;
-    }
-
-    return nullptr;
+    return body;
 }
 
-void BodyFragmentView::setBody(const std::shared_ptr<domain::models::RequestBody>& body)
+std::shared_ptr<domain::implementations::RawRequestBody> BodyFragmentView::getRawBody()
 {
-    if (const auto& formdata = std::dynamic_pointer_cast<domain::implementations::FormdataRequestBody>(body)) {
-        setBody(formdata);
-    }
-    if (const auto& raw = std::dynamic_pointer_cast<getit::domain::implementations::RawRequestBody>(body)) {
-        setBody(raw);
-    }
+    const auto& body = std::make_shared<domain::implementations::RawRequestBody>();
+
+    body->setContentType(ui->contentType->text().toStdString());
+    body->setBody(ui->raw->document()->toPlainText().toStdString());
+
+    return body;
 }
 
-void BodyFragmentView::setBody(const std::shared_ptr<domain::implementations::FormdataRequestBody>& body)
+void BodyFragmentView::setFormDataBody(const std::shared_ptr<domain::implementations::FormdataRequestBody>& body)
 {
     for (const auto& [element, value] : body->getElements()) {
         addRowToTreeWidget(element, value, ui->elements);
@@ -65,21 +54,31 @@ void BodyFragmentView::setBody(const std::shared_ptr<domain::implementations::Fo
     }
 }
 
-void BodyFragmentView::setBody(const std::shared_ptr<domain::implementations::RawRequestBody>& body)
+void BodyFragmentView::setRawBody(const std::shared_ptr<domain::implementations::RawRequestBody>& body)
 {
     ui->contentType->setText(QString::fromStdString(body->getContentType()));
     ui->raw->setPlainText(QString::fromStdString(body->getBody()));
 }
 
+BodyType BodyFragmentView::getBodyType()
+{
+    if (ui->bodyType->currentIndex() == BodyType::RAW)
+        return BodyType::RAW;
+    return BodyType::FORM_DATA;
+}
+
+void BodyFragmentView::setBodyType(const BodyType& bodyType)
+{
+    ui->bodyType->setCurrentIndex(bodyType);
+}
+
 void BodyFragmentView::toggleBody()
 {
     // Show form data view by default
-    bodyType = BodyType::FORM_DATA;
     ui->formdataWidget->show();
     ui->rawWidget->hide();
 
-    if (ui->bodyType->currentText().toLower().toStdString() == "raw") {
-        bodyType = BodyType::RAW;
+    if (ui->bodyType->currentIndex() == BodyType::RAW) {
         ui->formdataWidget->hide();
         ui->rawWidget->show();
     }
