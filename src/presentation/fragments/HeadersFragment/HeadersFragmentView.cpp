@@ -34,7 +34,7 @@ std::map<std::string, std::string> HeadersFragmentView::getHeaders()
     return headers;
 }
 
-void HeadersFragmentView::setHeaders(std::map<std::string, std::string> headers)
+void HeadersFragmentView::setHeaders(const std::map<std::string, std::string>& headers)
 {
     for (const auto& [header, value] : headers) {
         addHeader(header, value);
@@ -46,7 +46,7 @@ void HeadersFragmentView::addDefaultHeader()
     this->addHeader("Header", "Value");
 }
 
-void HeadersFragmentView::addHeader(std::string header, std::string value)
+void HeadersFragmentView::addHeader(const std::string& header, const std::string& value)
 {
     const auto& row = new QTreeWidgetItem(ui->headers);
 

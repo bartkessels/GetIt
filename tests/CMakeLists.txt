@@ -17,6 +17,7 @@ set(SOURCEFILES
     ../src/domain/models/Request.cpp
 
     ../src/presentation/fragments/BodyFragment/BodyFragmentController.cpp
+    ../src/presentation/fragments/ResponseFragment/ResponseFragmentController.cpp
 
     ../src/service/factories/RequestServiceFactory.cpp
     ../src/service/implementations/CppRestRequestService.cpp
@@ -34,6 +35,7 @@ set(TESTFILES
     domain/implementations/tst_RawRequestBody.cpp
 
     presentation/fragments/tst_BodyFragmentController.cpp
+    presentation/fragments/tst_ResponseFragmentController.cpp
 
     service/factories/tst_RequestServiceFactory.cpp
     service/implementations/tst_CppRestRequestService.cpp

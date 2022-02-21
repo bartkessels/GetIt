@@ -19,7 +19,7 @@ namespace getit::presentation::fragments
             ~HeadersFragmentView() override;
 
             std::map<std::string, std::string> getHeaders();
-            void setHeaders(std::map<std::string, std::string> headers);
+            void setHeaders(const std::map<std::string, std::string>& headers);
 
         private:
             Ui::HeadersFragmentView* ui;
@@ -29,7 +29,7 @@ namespace getit::presentation::fragments
             const Qt::ItemFlags treeItemFlag = Qt::ItemIsEditable | Qt::ItemIsSelectable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled;
 
             void addDefaultHeader();
-            void addHeader(std::string header, std::string value);
+            void addHeader(const std::string& header, const std::string& value);
             void removeSelectedHeader();
     };
 }

@@ -38,11 +38,14 @@ std::string ResponseFragmentView::getBody()
 
 void ResponseFragmentView::setHeaders(const std::map<std::string, std::string>& headers)
 {
-    ui->headers->clear();
-
     for (const auto& [header, value] : headers) {
         addHeader(header, value);
     }
+}
+
+void ResponseFragmentView::clearHeaders()
+{
+    ui->headers->clear();
 }
 
 void ResponseFragmentView::setBody(const std::string& body)

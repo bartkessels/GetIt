@@ -3,7 +3,7 @@
 using namespace getit;
 using namespace getit::presentation::fragments;
 
-ResponseFragmentController::ResponseFragmentController(ResponseFragmentView* view):
+ResponseFragmentController::ResponseFragmentController(IResponseFragmentView* view):
     view(view)
 {
 
@@ -26,6 +26,7 @@ std::shared_ptr<domain::models::Response> ResponseFragmentController::getContent
 
 void ResponseFragmentController::setContent(std::shared_ptr<domain::models::Response> content)
 {
+    view->clearHeaders();
     view->setHeaders(content->headers);
     view->setBody(content->body);
 }
