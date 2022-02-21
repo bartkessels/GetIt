@@ -1,54 +1,54 @@
-#include "domain/implementations/FormdataRequestBody.hpp"
+#include "domain/implementations/FormDataRequestBody.hpp"
 
 using namespace getit::domain::implementations;
 
-FormdataRequestBody::FormdataRequestBody(std::string boundary):
+FormDataRequestBody::FormDataRequestBody(std::string boundary):
     boundary(std::move(boundary))
 {
 
 }
 
-void FormdataRequestBody::addElement(std::string key, std::string value)
+void FormDataRequestBody::addElement(std::string key, std::string value)
 {
     this->elements.insert({key, value});
 }
 
-void FormdataRequestBody::addFile(std::string key, std::string filePath)
+void FormDataRequestBody::addFile(std::string key, std::string filePath)
 {
     this->files.insert({key, filePath});
 }
 
-void FormdataRequestBody::setBoundary(std::string boundary)
+void FormDataRequestBody::setBoundary(std::string boundary)
 {
     this->boundary = boundary;
 }
 
-void FormdataRequestBody::setElements(std::map<std::string, std::string> elements)
+void FormDataRequestBody::setElements(std::map<std::string, std::string> elements)
 {
     this->elements = elements;
 }
 
-void FormdataRequestBody::setFiles(std::map<std::string, std::string> files)
+void FormDataRequestBody::setFiles(std::map<std::string, std::string> files)
 {
     this->files = files;
 }
 
-std::string FormdataRequestBody::getBoundary()
+std::string FormDataRequestBody::getBoundary()
 {
     return this->boundary;
 }
 
-std::map<std::string, std::string> FormdataRequestBody::getElements()
+std::map<std::string, std::string> FormDataRequestBody::getElements()
 {
     return this->elements;
 }
 
-std::map<std::string, std::string> FormdataRequestBody::getFiles()
+std::map<std::string, std::string> FormDataRequestBody::getFiles()
 {
     return this->files;
 }
 
-std::string FormdataRequestBody::getBody()
+std::string FormDataRequestBody::getBody()
 {
     const auto& elementsBody = this->getElementsBody();
     const auto& filesBody = this->getFilesBody();
@@ -60,7 +60,7 @@ std::string FormdataRequestBody::getBody()
     return frmt.str();
 }
 
-std::string FormdataRequestBody::getContentType()
+std::string FormDataRequestBody::getContentType()
 {
     boost::format frmt = boost::format(
         CONTENT_TYPE_TEMPLATE
@@ -69,7 +69,7 @@ std::string FormdataRequestBody::getContentType()
     return frmt.str();
 }
 
-std::string FormdataRequestBody::getElementsBody()
+std::string FormDataRequestBody::getElementsBody()
 {
     std::string body;
 
@@ -84,7 +84,7 @@ std::string FormdataRequestBody::getElementsBody()
     return body;
 }
 
-std::string FormdataRequestBody::getFilesBody()
+std::string FormDataRequestBody::getFilesBody()
 {
     std::string body;
 

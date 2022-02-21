@@ -1,16 +1,16 @@
-#include "data/repositories/FormdataRequestRepository.hpp"
+#include "data/repositories/FormDataRequestRepository.hpp"
 
 using namespace getit::data::repositories;
 
-FormdataRequestRepository::FormdataRequestRepository(std::shared_ptr<domain::contracts::RequestFactory> factory):
+FormDataRequestRepository::FormDataRequestRepository(std::shared_ptr<domain::contracts::RequestFactory> factory):
     factory(std::move(factory))
 {
 
 }
 
-void FormdataRequestRepository::saveRequest(std::string filePath, std::shared_ptr<getit::domain::models::Request> request)
+void FormDataRequestRepository::saveRequest(std::string filePath, std::shared_ptr<getit::domain::models::Request> request)
 {
-    const auto& requestBody = std::dynamic_pointer_cast<getit::domain::implementations::FormdataRequestBody>(request->getBody());
+    const auto& requestBody = std::dynamic_pointer_cast<getit::domain::implementations::FormDataRequestBody>(request->getBody());
     auto jsonObject = nlohmann::json::object();
 
     jsonObject[METHOD_NAME] = request->getMethod();
@@ -45,7 +45,7 @@ void FormdataRequestRepository::saveRequest(std::string filePath, std::shared_pt
     output.close();
 }
 
-std::shared_ptr<getit::domain::models::Request> FormdataRequestRepository::loadRequest(std::string filePath)
+std::shared_ptr<getit::domain::models::Request> FormDataRequestRepository::loadRequest(std::string filePath)
 {
     auto jsonObject = nlohmann::json::object();
 

@@ -18,11 +18,11 @@ set(SOURCEFILES
     main.cpp
 
     data/factories/RequestRepositoryFactory.cpp
-    data/repositories/FormdataRequestRepository.cpp
+    data/repositories/FormDataRequestRepository.cpp
     data/repositories/RawRequestRepository.cpp
 
     domain/factories/RequestFactory.cpp
-    domain/implementations/FormdataRequestBody.cpp
+    domain/implementations/FormDataRequestBody.cpp
     domain/implementations/RawRequestBody.cpp
     domain/models/Request.cpp
 

@@ -4,14 +4,14 @@
 #include <memory>
 #include <string>
 
-#include "domain/implementations/FormdataRequestBody.hpp"
+#include "domain/implementations/FormDataRequestBody.hpp"
 
 using namespace getit::domain::implementations;
 
-TEST_CASE("FormdataRequestBody.getContentType")
+TEST_CASE("FormDataRequestBody.getContentType")
 {
     const auto& boundary = "--boundary-";
-    const auto& body = std::make_shared<FormdataRequestBody>(boundary);
+    const auto& body = std::make_shared<FormDataRequestBody>(boundary);
 
     SECTION("returns the expected multipart/form-data Content-Type with the given boundary")
     {
@@ -28,10 +28,10 @@ TEST_CASE("FormdataRequestBody.getContentType")
     }
 }
 
-TEST_CASE("FormdataRequestBody.getBody")
+TEST_CASE("FormDataRequestBody.getBody")
 {
     const auto& boundary = "--boundary-";
-    const auto& body = std::make_shared<FormdataRequestBody>(boundary);
+    const auto& body = std::make_shared<FormDataRequestBody>(boundary);
 
     SECTION("returns the string with unescaped characters for elements")
     {
@@ -188,10 +188,10 @@ TEST_CASE("FormdataRequestBody.getBody")
     }
 }
 
-TEST_CASE("FormdataRequestBody.setElements")
+TEST_CASE("FormDataRequestBody.setElements")
 {
     const auto& boundary = "--boundary-";
-    const auto& body = std::make_shared<FormdataRequestBody>(boundary);
+    const auto& body = std::make_shared<FormDataRequestBody>(boundary);
 
     SECTION("overwrites the previous set elements through addElement")
     {
@@ -218,10 +218,10 @@ TEST_CASE("FormdataRequestBody.setElements")
     }
 }
 
-TEST_CASE("FormdataRequestBody.setFiles")
+TEST_CASE("FormDataRequestBody.setFiles")
 {
     const auto& boundary = "--boundary-";
-    const auto& body = std::make_shared<FormdataRequestBody>(boundary);
+    const auto& body = std::make_shared<FormDataRequestBody>(boundary);
 
     SECTION("overwrites the previous set elements through addFile")
     {
@@ -248,14 +248,14 @@ TEST_CASE("FormdataRequestBody.setFiles")
     }
 }
 
-TEST_CASE("FormdataRequestBody.setBoundary")
+TEST_CASE("FormDataRequestBody.setBoundary")
 {
     SECTION("overwrites the previous set boundary through the constructor")
     {
         // Arrange
         const auto& oldBoundary = "--old-boundary-";
         const auto& newBoundary = "--new-boundary-";
-        const auto& body = std::make_shared<FormdataRequestBody>(oldBoundary);
+        const auto& body = std::make_shared<FormDataRequestBody>(oldBoundary);
 
         // Act
         body->setBoundary(newBoundary);

@@ -27,7 +27,7 @@ std::shared_ptr<domain::models::RequestBody> BodyFragmentController::getContent(
 
 void BodyFragmentController::setContent(std::shared_ptr<domain::models::RequestBody> content)
 {
-    if (const auto& formData = std::dynamic_pointer_cast<domain::implementations::FormdataRequestBody>(content)) {
+    if (const auto& formData = std::dynamic_pointer_cast<domain::implementations::FormDataRequestBody>(content)) {
         view->setFormDataBody(formData);
     } else if (const auto& raw = std::dynamic_pointer_cast<getit::domain::implementations::RawRequestBody>(content)) {
         view->setRawBody(raw);

@@ -3,7 +3,7 @@
 #include <memory>
 #include <utility>
 
-#include "domain/implementations/FormdataRequestBody.hpp"
+#include "domain/implementations/FormDataRequestBody.hpp"
 #include "domain/implementations/RawRequestBody.hpp"
 #include "domain/models/Request.hpp"
 #include "service/implementations/CppRestRequestService.hpp"
@@ -130,7 +130,7 @@ TEST_CASE("CppRestRequestService.send")
         const auto& filePath = "./test_file.txt";
         const auto& fileContent = "content";
 
-        const auto& body = std::make_shared<implementations::FormdataRequestBody>();
+        const auto& body = std::make_shared<implementations::FormDataRequestBody>();
         body->addElement(key, value);
         body->addFile(fileKey, filePath);
 

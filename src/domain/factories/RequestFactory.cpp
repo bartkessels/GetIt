@@ -28,7 +28,7 @@ std::shared_ptr<getit::domain::models::Request> RequestFactory::getRequest(const
 
 std::shared_ptr<getit::domain::models::Request> RequestFactory::getRequest(const std::string& method, const std::string& uri, std::map<std::string, std::string> elements, std::map<std::string, std::string> files, const std::string& boundary)
 {
-    const auto& requestBody = std::make_shared<implementations::FormdataRequestBody>(boundary);
+    const auto& requestBody = std::make_shared<implementations::FormDataRequestBody>(boundary);
     const auto& request = RequestFactory::getRequest(method, uri);
 
     requestBody->setElements(elements);

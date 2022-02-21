@@ -9,7 +9,7 @@
 #include <QWidget>
 #include <utility>
 
-#include "domain/implementations/FormdataRequestBody.hpp"
+#include "domain/implementations/FormDataRequestBody.hpp"
 #include "domain/implementations/RawRequestBody.hpp"
 #include "domain/models/RequestBody.hpp"
 #include "presentation/fragments/BodyFragment/BodyType.hpp"
@@ -28,10 +28,10 @@ namespace getit::presentation::fragments
             ~BodyFragmentView() override;
 
             std::shared_ptr<domain::implementations::RawRequestBody> getRawBody() override;
-            std::shared_ptr<domain::implementations::FormdataRequestBody> getFormDataBody() override;
+            std::shared_ptr<domain::implementations::FormDataRequestBody> getFormDataBody() override;
             BodyType getBodyType() override;
 
-            void setFormDataBody(const std::shared_ptr<domain::implementations::FormdataRequestBody>& body) override;
+            void setFormDataBody(const std::shared_ptr<domain::implementations::FormDataRequestBody>& body) override;
             void setRawBody(const std::shared_ptr<domain::implementations::RawRequestBody>& body) override;
             void setBodyType(const BodyType& bodyType) override;
 

@@ -10,8 +10,8 @@ RequestRepositoryFactory::RequestRepositoryFactory(std::shared_ptr<domain::contr
 
 std::shared_ptr<getit::data::contracts::RequestRepository> RequestRepositoryFactory::getRepository(std::shared_ptr<domain::models::Request> request)
 {
-    if (std::dynamic_pointer_cast<getit::domain::implementations::FormdataRequestBody>(request->getBody())) {
-        return std::make_shared<getit::data::repositories::FormdataRequestRepository>(this->factory);
+    if (std::dynamic_pointer_cast<getit::domain::implementations::FormDataRequestBody>(request->getBody())) {
+        return std::make_shared<getit::data::repositories::FormDataRequestRepository>(this->factory);
     } else if (std::dynamic_pointer_cast<getit::domain::implementations::RawRequestBody>(request->getBody())) {
         return std::make_shared<getit::data::repositories::RawRequestRepository>(this->factory);
     }

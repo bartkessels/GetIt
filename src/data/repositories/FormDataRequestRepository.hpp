@@ -9,15 +9,15 @@
 #include "data/contracts/RequestRepository.hpp"
 #include "domain/contracts/RequestFactory.hpp"
 #include "domain/models/Request.hpp"
-#include "domain/implementations/FormdataRequestBody.hpp"
+#include "domain/implementations/FormDataRequestBody.hpp"
 
 namespace getit::data::repositories
 {
-    class FormdataRequestRepository: public contracts::RequestRepository
+    class FormDataRequestRepository: public contracts::RequestRepository
     {
         public:
-            explicit FormdataRequestRepository(std::shared_ptr<domain::contracts::RequestFactory> factory);
-            ~FormdataRequestRepository() override = default;
+            explicit FormDataRequestRepository(std::shared_ptr<domain::contracts::RequestFactory> factory);
+            ~FormDataRequestRepository() override = default;
 
             void saveRequest(std::string filePath, std::shared_ptr<domain::models::Request> request) override;
             std::shared_ptr<domain::models::Request> loadRequest(std::string filePath) override;

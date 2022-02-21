@@ -6,11 +6,11 @@
 #include "data/contracts/RequestRepository.hpp"
 #include "data/contracts/RequestRepositoryFactory.hpp"
 #include "data/exceptions/NoAvailableRepositoryException.hpp"
-#include "data/repositories/FormdataRequestRepository.hpp"
+#include "data/repositories/FormDataRequestRepository.hpp"
 #include "data/repositories/RawRequestRepository.hpp"
 #include "domain/contracts/RequestFactory.hpp"
 #include "domain/models/Request.hpp"
-#include "domain/implementations/FormdataRequestBody.hpp"
+#include "domain/implementations/FormDataRequestBody.hpp"
 #include "domain/implementations/RawRequestBody.hpp"
 
 namespace getit::data::factories

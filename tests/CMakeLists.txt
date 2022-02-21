@@ -8,11 +8,11 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/res/test_file.txt
 
 set(SOURCEFILES
     ../src/data/factories/RequestRepositoryFactory.cpp
-    ../src/data/repositories/FormdataRequestRepository.cpp
+        ../src/data/repositories/FormDataRequestRepository.cpp
     ../src/data/repositories/RawRequestRepository.cpp
 
     ../src/domain/factories/RequestFactory.cpp
-    ../src/domain/implementations/FormdataRequestBody.cpp
+        ../src/domain/implementations/FormDataRequestBody.cpp
     ../src/domain/implementations/RawRequestBody.cpp
     ../src/domain/models/Request.cpp
 
@@ -28,11 +28,11 @@ set(TESTFILES
     main.cpp
 
     data/factories/tst_RequestRepositoryFactory.cpp
-    data/repositories/tst_FormdataRequestRepository.cpp
+    data/repositories/tst_FormDataRequestRepository.cpp
     data/repositories/tst_RawRequestRepository.cpp
 
     domain/factories/tst_RequestFactory.cpp
-    domain/implementations/tst_FormdataRequestBody.cpp
+    domain/implementations/tst_FormDataRequestBody.cpp
     domain/implementations/tst_RawRequestBody.cpp
 
     presentation/fragments/tst_BodyFragmentController.cpp

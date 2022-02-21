@@ -23,9 +23,9 @@ BodyFragmentView::~BodyFragmentView()
     delete ui;
 }
 
-std::shared_ptr<domain::implementations::FormdataRequestBody> BodyFragmentView::getFormDataBody()
+std::shared_ptr<domain::implementations::FormDataRequestBody> BodyFragmentView::getFormDataBody()
 {
-    const auto& body = std::make_shared<domain::implementations::FormdataRequestBody>();
+    const auto& body = std::make_shared<domain::implementations::FormDataRequestBody>();
 
     body->setElements(getRowsFromTreeWidget(ui->elements));
     body->setFiles(getRowsFromTreeWidget(ui->files));
@@ -43,7 +43,7 @@ std::shared_ptr<domain::implementations::RawRequestBody> BodyFragmentView::getRa
     return body;
 }
 
-void BodyFragmentView::setFormDataBody(const std::shared_ptr<domain::implementations::FormdataRequestBody>& body)
+void BodyFragmentView::setFormDataBody(const std::shared_ptr<domain::implementations::FormDataRequestBody>& body)
 {
     for (const auto& [element, value] : body->getElements()) {
         addRowToTreeWidget(element, value, ui->elements);

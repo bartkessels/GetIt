@@ -9,12 +9,12 @@
 
 namespace getit::domain::implementations
 {
-    class FormdataRequestBody: public models::RequestBody
+    class FormDataRequestBody: public models::RequestBody
     {
         public:
-            explicit FormdataRequestBody(std::string boundary);
-            FormdataRequestBody() = default;
-            ~FormdataRequestBody() = default;
+            explicit FormDataRequestBody(std::string boundary);
+            FormDataRequestBody() = default;
+            ~FormDataRequestBody() = default;
 
             void addElement(std::string key, std::string value);
             void addFile(std::string key, std::string filePath);

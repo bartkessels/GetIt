@@ -4,7 +4,7 @@
 #include <string>
 
 #include "domain/factories/RequestFactory.hpp"
-#include "domain/implementations/FormdataRequestBody.hpp"
+#include "domain/implementations/FormDataRequestBody.hpp"
 #include "domain/implementations/RawRequestBody.hpp"
 
 using namespace getit::domain::factories;
@@ -77,13 +77,13 @@ TEST_CASE("RequestFactory.getRequest [RawRequestBody - body/contentType overload
     }
 }
 
-TEST_CASE("RequestFactory.getRequest [FormdataRequestBody]")
+TEST_CASE("RequestFactory.getRequest [FormDataRequestBody]")
 {
     const auto& factory = std::make_shared<RequestFactory>();
     const auto& method = "POST";
     const auto& uri = "https://github.com/bartkessels";
 
-    SECTION("returns an instance of FormdataRequestBody when using the overload with elements, files and boundary")
+    SECTION("returns an instance of FormDataRequestBody when using the overload with elements, files and boundary")
     {
         // Arrange
         std::map<std::string, std::string> elements = { { "username", "bartkessels" } };
@@ -94,10 +94,10 @@ TEST_CASE("RequestFactory.getRequest [FormdataRequestBody]")
         const auto& result = factory->getRequest(method, uri, elements, files, boundary);
 
         // Assert
-        REQUIRE(std::dynamic_pointer_cast<getit::domain::implementations::FormdataRequestBody>(result->getBody()));
+        REQUIRE(std::dynamic_pointer_cast<getit::domain::implementations::FormDataRequestBody>(result->getBody()));
     }
 
-    SECTION("returns an instance of FormdataRequestBody with the correct values set")
+    SECTION("returns an instance of FormDataRequestBody with the correct values set")
     {
         // Arrange
         std::map<std::string, std::string> elements = { { "username", "bartkessels" } };
@@ -106,7 +106,7 @@ TEST_CASE("RequestFactory.getRequest [FormdataRequestBody]")
 
         // Act
         const auto& result = factory->getRequest(method, uri, elements, files, boundary);
-        const auto& requestBody = std::dynamic_pointer_cast<getit::domain::implementations::FormdataRequestBody>(result->getBody());
+        const auto& requestBody = std::dynamic_pointer_cast<getit::domain::implementations::FormDataRequestBody>(result->getBody());
 
         // Assert
         REQUIRE(elements == requestBody->getElements());

@@ -5,16 +5,16 @@
 #include <nlohmann/json.hpp>
 #include <regex>
 
-#include "data/repositories/FormdataRequestRepository.hpp"
+#include "data/repositories/FormDataRequestRepository.hpp"
 #include "domain/factories/RequestFactory.hpp"
-#include "domain/implementations/FormdataRequestBody.hpp"
+#include "domain/implementations/FormDataRequestBody.hpp"
 
 using namespace getit::data::repositories;
 
-TEST_CASE("FormdataRequestRepository.saveRequest")
+TEST_CASE("FormDataRequestRepository.saveRequest")
 {
     const auto& factory = std::make_shared<getit::domain::factories::RequestFactory>();
-    const auto& repository = std::make_shared<FormdataRequestRepository>(factory);
+    const auto& repository = std::make_shared<FormDataRequestRepository>(factory);
     const auto& filePath = "./output.json";
 
     SECTION("saves all the fields to the specified file")
@@ -23,7 +23,7 @@ TEST_CASE("FormdataRequestRepository.saveRequest")
         const auto& expectedFileContents = R"({"formdata":{"boundary":"--bound","elements":[],"files":[]},"method":"GET","uri":"https://github.com/bartkessels/getit"})";
 
         const auto& request = std::make_shared<getit::domain::models::Request>();
-        const auto& body = std::make_shared<getit::domain::implementations::FormdataRequestBody>();
+        const auto& body = std::make_shared<getit::domain::implementations::FormDataRequestBody>();
         request->setMethod("GET");
         request->setUri("https://github.com/bartkessels/getit");
         request->setBody(body);
@@ -54,7 +54,7 @@ TEST_CASE("FormdataRequestRepository.saveRequest")
         const auto& expectedFileContents = R"({"formdata":{"boundary":"--bound","elements":[{"key":"password","value":"password"},{"key":"username","value":"someone"}],"files":[]},"method":"GET","uri":"https://github.com/bartkessels/getit"})";
 
         const auto& request = std::make_shared<getit::domain::models::Request>();
-        const auto& body = std::make_shared<getit::domain::implementations::FormdataRequestBody>();
+        const auto& body = std::make_shared<getit::domain::implementations::FormDataRequestBody>();
         request->setMethod("GET");
         request->setUri("https://github.com/bartkessels/getit");
         request->setBody(body);
@@ -87,7 +87,7 @@ TEST_CASE("FormdataRequestRepository.saveRequest")
         const auto& expectedFileContents = R"({"formdata":{"boundary":"--bound","elements":[],"files":[{"filePath":"./picture.png","key":"image"},{"filePath":"./test_file.txt","key":"test"}]},"method":"GET","uri":"https://github.com/bartkessels/getit"})";
 
         const auto& request = std::make_shared<getit::domain::models::Request>();
-        const auto& body = std::make_shared<getit::domain::implementations::FormdataRequestBody>();
+        const auto& body = std::make_shared<getit::domain::implementations::FormDataRequestBody>();
         request->setMethod("GET");
         request->setUri("https://github.com/bartkessels/getit");
         request->setBody(body);
