@@ -6,32 +6,40 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
-  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
-  BUILD_TYPE: Release
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Download and install Boost
-      uses: MarkusJx/install-boost@v2.1.0
-      with:
-        boost_version: "1.75.0"
-
-    - name: Configure CMake
-      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
-
+    - name: Install boost
+      run: sudo apt update && sudo apt install -yq libboost1.65-dev
+    - name: Install Qt6
+      run: sudo apt update && sudo apt install -yq build-essential libgl1-mesa-dev
+    - name: Install CMake
+      run: sudo apt update && sudo apt install -yq cmake
+    - name: Create and open build directory
+      run: mkdir build && cd ./build
+    - name: Run CMake
+      run: cmake ..
     - name: Build GetIt
-      working-directory: ${{github.workspace}}/build
       run: make getit
-
-    - name: Test GetIt
-      working-directory: ${{github.workspace}}/build
-      run: make getit_tests && getit_tests
-      
-    - name: Check code quality
-      uses: parasoft/run-cpptest-action@1.0.1
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install boost
+      run: sudo apt update && sudo apt install -yq libboost1.65-dev
+    - name: Install Qt6
+      run: sudo apt update && sudo apt install -yq build-essential libgl1-mesa-dev
+    - name: Install CMake
+      run: sudo apt update && sudo apt install -yq cmake
+    - name: Create and open build directory
+      run: mkdir build && cd ./build
+    - name: Run CMake
+      run: cmake ..
+    - name: Build GetIt tests
+      run: make getit_tests
+    - name: Run tests
+      run: ./bin/getit_tests
+    
