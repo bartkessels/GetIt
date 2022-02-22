@@ -11,7 +11,7 @@ BodyFragmentView::BodyFragmentView(QWidget* parent):
     ui->setupUi(this);
     toggleBody(BodyType::FORM_DATA);
 
-    connect(ui->bodyType, &QComboBox::currentIndexChanged, this, &BodyFragmentView::toggleBody);
+    connect(ui->bodyType, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &BodyFragmentView::toggleBody);
     connect(ui->addElement, &QPushButton::pressed, this, &BodyFragmentView::addDefaultElement);
     connect(ui->removeElement, &QPushButton::pressed, this, &BodyFragmentView::removeSelectedElement);
     connect(ui->addFile, &QPushButton::pressed, this, &BodyFragmentView::addDefaultFile);
