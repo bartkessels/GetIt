@@ -21,7 +21,7 @@ QT_END_NAMESPACE
 
 namespace getit::presentation::fragments
 {
-    class BodyFragmentView : public IBodyFragmentView, public QWidget
+    class BodyFragmentView : public QWidget, public IBodyFragmentView
     {
         Q_OBJECT
 
