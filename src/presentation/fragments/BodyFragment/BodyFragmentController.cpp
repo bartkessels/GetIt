@@ -23,6 +23,8 @@ std::shared_ptr<domain::models::RequestBody> BodyFragmentController::getContent(
         case BodyType::RAW:
             return view->getRawBody();
     }
+    
+    return nullptr;
 }
 
 void BodyFragmentController::setContent(std::shared_ptr<domain::models::RequestBody> content)
