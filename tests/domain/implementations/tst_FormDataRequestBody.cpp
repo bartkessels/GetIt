@@ -101,7 +101,7 @@ TEST_CASE("FormDataRequestBody.getBody")
     {
         // Arrange
         const auto& key = "element";
-        const auto& filePath = "./test_file.txt";
+        const auto& filePath = "./bin/test_file.txt";
         const auto& fileContents = "content";
         const auto& expectedBody = (boost::format(
             "--%1%\r\nContent-Disposition: form-data; name=\"%2%\"; filename=\"%3%\"\r\n\r\n%4%\r\n\r\n--%1%--\r\n"
@@ -121,7 +121,7 @@ TEST_CASE("FormDataRequestBody.getBody")
         const auto& key1 = "element_1";
         const auto& key2 = "element_2";
         const auto& key3 = "element_3";
-        const auto& filePath = "./test_file.txt";
+        const auto& filePath = "./bin/test_file.txt";
         const auto& fileContents = "content";
 
         const auto& fileTemplate = "--%1%\r\nContent-Disposition: form-data; name=\"%2%\"; filename=\"%3%\"\r\n\r\n%4%\r\n";
@@ -156,7 +156,7 @@ TEST_CASE("FormDataRequestBody.getBody")
         const auto& value2 = "value_2";
         const auto& key3 = "element_3";
         const auto& value3 = "value_3";
-        const auto& filePath = "./test_file.txt";
+        const auto& filePath = "./bin/test_file.txt";
         const auto& fileContents = "content";
 
         const auto& elementTemplate = "--%1%\r\nContent-Disposition: form-data; name=\"%2%\"\r\n\r\n%3%\r\n";
