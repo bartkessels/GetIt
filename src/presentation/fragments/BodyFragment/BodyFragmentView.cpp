@@ -9,7 +9,7 @@ BodyFragmentView::BodyFragmentView(QWidget* parent):
     ui(new Ui::BodyFragmentView())
 {
     ui->setupUi(this);
-    toggleBody();
+    toggleBody(BodyType::FORM_DATA);
 
     connect(ui->bodyType, &QComboBox::currentIndexChanged, this, &BodyFragmentView::toggleBody);
     connect(ui->addElement, &QPushButton::pressed, this, &BodyFragmentView::addDefaultElement);
@@ -72,13 +72,13 @@ void BodyFragmentView::setBodyType(const BodyType& bodyType)
     ui->bodyType->setCurrentIndex(bodyType);
 }
 
-void BodyFragmentView::toggleBody()
+void BodyFragmentView::toggleBody(int changedIndex)
 {
     // Show form data view by default
     ui->formdataWidget->show();
     ui->rawWidget->hide();
 
-    if (ui->bodyType->currentIndex() == BodyType::RAW) {
+    if (changedIndex == BodyType::RAW) {
         ui->formdataWidget->hide();
         ui->rawWidget->show();
     }
