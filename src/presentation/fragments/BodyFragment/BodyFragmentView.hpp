@@ -23,6 +23,8 @@ namespace getit::presentation::fragments
 {
     class BodyFragmentView : public IBodyFragmentView, public QWidget
     {
+        Q_OBJECT
+
         public:
             explicit BodyFragmentView(QWidget* parent = nullptr);
             ~BodyFragmentView() override;
@@ -34,6 +36,13 @@ namespace getit::presentation::fragments
             void setFormDataBody(const std::shared_ptr<domain::implementations::FormDataRequestBody>& body) override;
             void setRawBody(const std::shared_ptr<domain::implementations::RawRequestBody>& body) override;
             void setBodyType(const BodyType& bodyType) override;
+        
+        private slots:
+            void toggleBody();
+            void addDefaultElement();
+            void addDefaultFile();
+            void removeSelectedElement();
+            void removeSelectedFile();
 
         private:
             Ui::BodyFragmentView* ui;
@@ -42,11 +51,8 @@ namespace getit::presentation::fragments
             const int valueIndex = 1;
             const Qt::ItemFlags treeItemFlag = Qt::ItemIsEditable | Qt::ItemIsSelectable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled;
 
-            void toggleBody();
             void addDefaultElement();
-            void removeSelectedElement();
             void addDefaultFile();
-            void removeSelectedFile();
 
             void addRowToTreeWidget(const std::string& key, const std::string& value, QTreeWidget* widget);
             std::map<std::string, std::string> getRowsFromTreeWidget(QTreeWidget* widget) const;
