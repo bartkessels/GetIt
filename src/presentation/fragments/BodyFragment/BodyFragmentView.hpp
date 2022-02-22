@@ -51,9 +51,6 @@ namespace getit::presentation::fragments
             const int valueIndex = 1;
             const Qt::ItemFlags treeItemFlag = Qt::ItemIsEditable | Qt::ItemIsSelectable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled;
 
-            void addDefaultElement();
-            void addDefaultFile();
-
             void addRowToTreeWidget(const std::string& key, const std::string& value, QTreeWidget* widget);
             std::map<std::string, std::string> getRowsFromTreeWidget(QTreeWidget* widget) const;
     };
