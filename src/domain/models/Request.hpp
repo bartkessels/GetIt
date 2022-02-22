@@ -3,6 +3,7 @@
 #include <map>
 #include <string>
 
+#include "domain/models/Authentication.hpp"
 #include "domain/models/RequestBody.hpp"
 
 namespace getit::domain::models
@@ -15,8 +16,6 @@ namespace getit::domain::models
             
             void setMethod(const std::string& method);
             void setUri(const std::string& uri);
-            void addHeader(const std::string& header, const std::string& value);
-
             void setHeaders(const std::map<std::string, std::string>& headers);
             void setBody(std::shared_ptr<RequestBody> body);
 

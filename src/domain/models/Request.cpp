@@ -12,16 +12,9 @@ void Request::setUri(const std::string& uri)
     this->uri = uri;
 }
 
-void Request::addHeader(const std::string& header, const std::string& value)
-{
-    this->headers.insert({header, value});
-}
-
 void Request::setHeaders(const std::map<std::string, std::string>& headers)
 {
-    for (const auto& [header, value] : headers) {
-        this->addHeader(header, value);
-    }
+    this->headers = headers;
 }
 
 void Request::setBody(std::shared_ptr<RequestBody> body)

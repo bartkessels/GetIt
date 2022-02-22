@@ -23,6 +23,7 @@ set(SOURCEFILES
 
     domain/factories/RequestFactory.cpp
     domain/implementations/FormDataRequestBody.cpp
+    domain/implementations/OAuth2Authentication.cpp
     domain/implementations/RawRequestBody.cpp
     domain/models/Request.cpp
 
@@ -35,6 +36,7 @@ set(SOURCEFILES
 
     presentation/windows/MainWindow.cpp
 
+    service/factories/AuthenticationServiceFactory.cpp
     service/factories/RequestServiceFactory.cpp
     service/implementations/CppRestRequestService.cpp
 )
