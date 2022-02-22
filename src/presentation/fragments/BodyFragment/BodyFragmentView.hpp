@@ -38,7 +38,7 @@ namespace getit::presentation::fragments
             void setBodyType(const BodyType& bodyType) override;
         
         private slots:
-            void toggleBody();
+            void toggleBody(int changedIndex);
             void addDefaultElement();
             void addDefaultFile();
             void removeSelectedElement();
