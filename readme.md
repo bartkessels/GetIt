@@ -1,5 +1,9 @@
 # GetIt
 
+[![Build & Test GetIt](https://github.com/bartkessels/GetIt/actions/workflows/build_and_test.yml/badge.svg)](https://github.com/bartkessels/GetIt/actions/workflows/build_and_test.yml)
+
+---
+
 Welcome to the Git repository of GetIt. GetIt is a small open source application to send API
 request using a cross-platform GUI. The main advantage of GetIt is the fact that it's native, no
 matter what platform you use, and it's completely open source.
