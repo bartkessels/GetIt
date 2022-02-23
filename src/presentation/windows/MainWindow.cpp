@@ -24,6 +24,7 @@ MainWindow::MainWindow(
     connect(ui->send, &QPushButton::pressed, this, &MainWindow::sendRequest);
     connect(ui->menuItemSave, &QAction::triggered, this, &MainWindow::saveRequest);
     connect(ui->menuItemSaveAs, &QAction::triggered, this, &MainWindow::saveRequest);
+    connect(ui->menuItemOpen, &QAction::triggered, this, &MainWindow::openRequest);
     connect(this, &MainWindow::responseReceived, this, [this](auto response) {
         responseController->setContent(response);
         ui->tabs->setCurrentIndex(ui->tabs->count() - 1);
@@ -35,7 +36,7 @@ MainWindow::~MainWindow()
     delete this->ui;
 }
 
-std::shared_ptr<getit::domain::models::Request> MainWindow::buildRequest()
+std::shared_ptr<getit::domain::models::Request> MainWindow::getRequest()
 {
     auto method = ui->method->currentText().toStdString();
     auto uri = ui->uri->text().toStdString();
@@ -47,10 +48,19 @@ std::shared_ptr<getit::domain::models::Request> MainWindow::buildRequest()
     return request;
 }
 
+void MainWindow::setRequest(const std::shared_ptr<getit::domain::models::Request>& request)
+{
+    ui->method->setCurrentText(QString::fromStdString(request->getMethod()));
+    ui->uri->setText(QString::fromStdString(request->getUri()));
+
+    bodyController->setContent(request->getBody());
+    headersController->setContent(request->getHeaders());
+}
+
 void MainWindow::sendRequest()
 {
     const auto& requestService = requestServiceFactory->getRequestService();
-    auto request = buildRequest();
+    auto request = getRequest();
 
     QThread::create([this, requestService, request] {
         auto response = requestService->send(request).get();
@@ -78,10 +88,10 @@ void MainWindow::saveRequest()
     if (saveLocation.empty())
         saveRequestAs();
 
-    const auto& request = buildRequest();
-    const auto& repository = requestRepositoryFactory->getRepository(request);
+    const auto& request = getRequest();
+    const auto& repository = requestRepositoryFactory->getRepository();
 
-    repository->saveRequest(saveLocation);
+    repository->saveRequest(saveLocation, request);
 }
 
 void MainWindow::saveRequestAs()
@@ -90,4 +100,17 @@ void MainWindow::saveRequestAs()
 
     if (!filePath.isEmpty())
         saveLocation = filePath.toLocalFile().toStdString();
+}
+
+void MainWindow::openRequest()
+{
+    const auto& filePath = QFileDialog::getOpenFileUrl(this, "Open GetIt Request", QUrl(), "*.getit");
+
+    if (filePath.isEmpty())
+        return;
+
+    saveLocation = filePath.toLocalFile().toStdString();
+    const auto& repository = requestRepositoryFactory->getRepository();
+    const auto& request = repository->loadRequest(saveLocation);
+    setRequest(request);
 }

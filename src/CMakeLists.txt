@@ -20,6 +20,7 @@ set(SOURCEFILES
     data/factories/RequestRepositoryFactory.cpp
     data/repositories/FormDataRequestRepository.cpp
     data/repositories/RawRequestRepository.cpp
+    data/repositories/RequestRepository.cpp
 
     domain/factories/RequestFactory.cpp
     domain/implementations/FormDataRequestBody.cpp

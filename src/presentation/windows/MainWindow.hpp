@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <QFileDialog>
+#include <QString>
 #include <QThread>
 #include <QMainWindow>
 #include <QUrl>
@@ -59,10 +60,12 @@ namespace getit::presentation::windows
             std::shared_ptr<fragments::HeadersFragmentController> headersController;
             std::shared_ptr<fragments::ResponseFragmentController> responseController;
 
-            std::shared_ptr<domain::models::Request> buildRequest();
+            std::shared_ptr<domain::models::Request> getRequest();
+            void setRequest(const std::shared_ptr<domain::models::Request>& request);
             void sendRequest();
             void registerControllers();
             void saveRequest();
             void saveRequestAs();
+            void openRequest();
     };
 }

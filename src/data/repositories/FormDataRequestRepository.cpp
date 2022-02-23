@@ -2,14 +2,13 @@
 
 using namespace getit::data::repositories;
 
-FormDataRequestRepository::FormDataRequestRepository(std::shared_ptr<domain::contracts::RequestFactory> factory, std::shared_ptr<domain::models::Request> request):
-    RequestRepository(std::move(request)),
+FormDataRequestRepository::FormDataRequestRepository(std::shared_ptr<domain::contracts::RequestFactory> factory):
     factory(std::move(factory))
 {
 
 }
 
-void FormDataRequestRepository::saveRequest(std::string filePath)
+void FormDataRequestRepository::saveRequest(const std::string& filePath, std::shared_ptr<domain::models::Request> request)
 {
     const auto& requestBody = std::dynamic_pointer_cast<getit::domain::implementations::FormDataRequestBody>(request->getBody());
     auto jsonObject = nlohmann::json::object();
@@ -17,28 +16,23 @@ void FormDataRequestRepository::saveRequest(std::string filePath)
     jsonObject[METHOD_NAME] = request->getMethod();
     jsonObject[URI_NAME] = request->getUri();
 
-    jsonObject[BODY_TYPE_NAME] = nlohmann::json::object();
-    jsonObject[BODY_TYPE_NAME][BOUNDARY_NAME] = requestBody->getBoundary();
-    jsonObject[BODY_TYPE_NAME][ELEMENTS_ARRAY_NAME] = nlohmann::json::array();
-    jsonObject[BODY_TYPE_NAME][FILES_ARRAY_NAME] = nlohmann::json::array();
-
-    int elementsIndex = 0;
-    int filesIndex = 0;
+    jsonObject[FORM_DATA_BODY_TYPE_NAME] = nlohmann::json::object();
+    jsonObject[FORM_DATA_BODY_TYPE_NAME][BOUNDARY_NAME] = requestBody->getBoundary();
+    jsonObject[FORM_DATA_BODY_TYPE_NAME][ELEMENTS_ARRAY_NAME] = nlohmann::json::array();
+    jsonObject[FORM_DATA_BODY_TYPE_NAME][FILES_ARRAY_NAME] = nlohmann::json::array();
 
     for (const auto& [key, value] : requestBody->getElements()) {
-        jsonObject[BODY_TYPE_NAME][ELEMENTS_ARRAY_NAME][elementsIndex] = nlohmann::json::object();
-        jsonObject[BODY_TYPE_NAME][ELEMENTS_ARRAY_NAME][elementsIndex][KEY_NAME] = key;
-        jsonObject[BODY_TYPE_NAME][ELEMENTS_ARRAY_NAME][elementsIndex][ELEMENT_VALUE_NAME] = value;
-
-        elementsIndex++;
+        auto element = nlohmann::json::object();
+        element[KEY_NAME] = key;
+        element[ELEMENT_VALUE_NAME] = value;
+        jsonObject[FORM_DATA_BODY_TYPE_NAME][ELEMENTS_ARRAY_NAME].push_back(element);
     }
 
     for (const auto& [key, path] : requestBody->getFiles()) {
-        jsonObject[BODY_TYPE_NAME][FILES_ARRAY_NAME][filesIndex] = nlohmann::json::object();
-        jsonObject[BODY_TYPE_NAME][FILES_ARRAY_NAME][filesIndex][KEY_NAME] = key;
-        jsonObject[BODY_TYPE_NAME][FILES_ARRAY_NAME][filesIndex][FILE_PATH_NAME] = path;
-
-        filesIndex++;
+        auto file = nlohmann::json::object();
+        file[KEY_NAME] = key;
+        file[FILE_PATH_NAME] = path;
+        jsonObject[FORM_DATA_BODY_TYPE_NAME][FILES_ARRAY_NAME].push_back(file);
     }
 
     std::ofstream output(filePath);
@@ -46,7 +40,7 @@ void FormDataRequestRepository::saveRequest(std::string filePath)
     output.close();
 }
 
-std::shared_ptr<getit::domain::models::Request> FormDataRequestRepository::loadRequest(std::string filePath)
+std::shared_ptr<getit::domain::models::Request> FormDataRequestRepository::loadRequest(const std::string& filePath)
 {
     auto jsonObject = nlohmann::json::object();
 
@@ -56,16 +50,16 @@ std::shared_ptr<getit::domain::models::Request> FormDataRequestRepository::loadR
 
     const auto& method = jsonObject[METHOD_NAME];
     const auto& uri = jsonObject[URI_NAME];
-    const auto& boundary = jsonObject[BOUNDARY_NAME];
+    const auto& boundary = jsonObject[FORM_DATA_BODY_TYPE_NAME][BOUNDARY_NAME];
 
     std::map<std::string, std::string> elements;
     std::map<std::string, std::string> files;
 
-    for (auto obj : jsonObject[BODY_TYPE_NAME][ELEMENTS_ARRAY_NAME]) {
+    for (auto obj : jsonObject[FORM_DATA_BODY_TYPE_NAME][ELEMENTS_ARRAY_NAME]) {
         elements.emplace(obj[KEY_NAME], obj[ELEMENT_VALUE_NAME]);
     }
 
-    for (auto obj : jsonObject[BODY_TYPE_NAME][FILES_ARRAY_NAME]) {
+    for (auto obj : jsonObject[FORM_DATA_BODY_TYPE_NAME][FILES_ARRAY_NAME]) {
         files.emplace(obj[KEY_NAME], obj[FILE_PATH_NAME]);
     }
 

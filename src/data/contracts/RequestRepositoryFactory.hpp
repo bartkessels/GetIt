@@ -12,6 +12,6 @@ namespace getit::data::contracts
         public:
             virtual ~RequestRepositoryFactory() = default;
 
-            virtual std::shared_ptr<RequestRepository> getRepository(std::shared_ptr<domain::models::Request> request) = 0;
+            virtual std::shared_ptr<RequestRepository> getRepository() = 0;
     };
 }
