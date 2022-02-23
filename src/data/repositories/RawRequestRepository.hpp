@@ -17,10 +17,10 @@ namespace getit::data::repositories
     class RawRequestRepository: public contracts::RequestRepository
     {
         public:
-            explicit RawRequestRepository(std::shared_ptr<domain::contracts::RequestFactory> factory);
+            explicit RawRequestRepository(std::shared_ptr<domain::contracts::RequestFactory> factory, std::shared_ptr<domain::models::Request> request);
             ~RawRequestRepository() override = default;
 
-            void saveRequest(std::string filePath, std::shared_ptr<domain::models::Request> request) override;
+            void saveRequest(std::string filePath) override;
             std::shared_ptr<domain::models::Request> loadRequest(std::string filePath) override;
 
         private:

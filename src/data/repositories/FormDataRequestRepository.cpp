@@ -2,13 +2,14 @@
 
 using namespace getit::data::repositories;
 
-FormDataRequestRepository::FormDataRequestRepository(std::shared_ptr<domain::contracts::RequestFactory> factory):
+FormDataRequestRepository::FormDataRequestRepository(std::shared_ptr<domain::contracts::RequestFactory> factory, std::shared_ptr<domain::models::Request> request):
+    RequestRepository(std::move(request)),
     factory(std::move(factory))
 {
 
 }
 
-void FormDataRequestRepository::saveRequest(std::string filePath, std::shared_ptr<getit::domain::models::Request> request)
+void FormDataRequestRepository::saveRequest(std::string filePath)
 {
     const auto& requestBody = std::dynamic_pointer_cast<getit::domain::implementations::FormDataRequestBody>(request->getBody());
     auto jsonObject = nlohmann::json::object();

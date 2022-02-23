@@ -17,10 +17,10 @@ namespace getit::data::repositories
     class FormDataRequestRepository: public contracts::RequestRepository
     {
         public:
-            explicit FormDataRequestRepository(std::shared_ptr<domain::contracts::RequestFactory> factory);
+            explicit FormDataRequestRepository(std::shared_ptr<domain::contracts::RequestFactory> factory, std::shared_ptr<domain::models::Request> request);
             ~FormDataRequestRepository() override = default;
 
-            void saveRequest(std::string filePath, std::shared_ptr<domain::models::Request> request) override;
+            void saveRequest(std::string filePath) override;
             std::shared_ptr<domain::models::Request> loadRequest(std::string filePath) override;
 
         private:

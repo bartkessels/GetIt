@@ -2,13 +2,14 @@
 
 using namespace getit::data::repositories;
 
-RawRequestRepository::RawRequestRepository(std::shared_ptr<domain::contracts::RequestFactory> factory):
+RawRequestRepository::RawRequestRepository(std::shared_ptr<domain::contracts::RequestFactory> factory, std::shared_ptr<domain::models::Request> request):
+    RequestRepository(std::move(request)),
     factory(std::move(factory))
 {
 
 }
 
-void RawRequestRepository::saveRequest(std::string filePath, std::shared_ptr<getit::domain::models::Request> request)
+void RawRequestRepository::saveRequest(std::string filePath)
 {
     const auto& body = std::dynamic_pointer_cast<getit::domain::implementations::RawRequestBody>(request->getBody());
     auto jsonObject = nlohmann::json::object();

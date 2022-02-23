@@ -4,7 +4,10 @@
 #include <QFileDialog>
 #include <QThread>
 #include <QMainWindow>
+#include <QUrl>
 #include <utility>
+
+#include "data/contracts/RequestRepositoryFactory.hpp"
 
 #include "domain/contracts/RequestFactory.hpp"
 #include "domain/models/Request.hpp"
@@ -19,6 +22,7 @@
 
 #include "service/contracts/RequestServiceFactory.hpp"
 
+using namespace getit::data::contracts;
 using namespace getit::domain::contracts;
 using namespace getit::service::contracts;
 
@@ -33,7 +37,12 @@ namespace getit::presentation::windows
         Q_OBJECT
 
         public:
-            explicit MainWindow(std::shared_ptr<RequestFactory> requestFactory, std::shared_ptr<RequestServiceFactory> requestServiceFactory, QWidget* parent = nullptr);
+            explicit MainWindow(
+                    std::shared_ptr<RequestFactory> requestFactory,
+                    std::shared_ptr<RequestServiceFactory> requestServiceFactory,
+                    std::shared_ptr<RequestRepositoryFactory> requestRepositoryFactory,
+                    QWidget* parent = nullptr
+                );
             ~MainWindow() override;
 
         signals:
@@ -42,13 +51,18 @@ namespace getit::presentation::windows
         private:
             std::shared_ptr<RequestFactory> requestFactory;
             std::shared_ptr<RequestServiceFactory> requestServiceFactory;
+            std::shared_ptr<RequestRepositoryFactory> requestRepositoryFactory;
             Ui::MainWindow* ui;
+            std::string saveLocation;
 
             std::shared_ptr<fragments::BodyFragmentController> bodyController;
             std::shared_ptr<fragments::HeadersFragmentController> headersController;
             std::shared_ptr<fragments::ResponseFragmentController> responseController;
 
+            std::shared_ptr<domain::models::Request> buildRequest();
             void sendRequest();
             void registerControllers();
+            void saveRequest();
+            void saveRequestAs();
     };
 }

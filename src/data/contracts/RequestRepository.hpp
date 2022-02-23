@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <string>
+#include <utility>
 
 #include "domain/models/Request.hpp"
 
@@ -10,9 +11,10 @@ namespace getit::data::contracts
     struct RequestRepository
     {
         public:
+            explicit RequestRepository(std::shared_ptr<domain::models::Request> request): request(std::move(request)) {}
             virtual ~RequestRepository() = default;
 
-            virtual void saveRequest(std::string filePath, std::shared_ptr<domain::models::Request> request) = 0;
+            virtual void saveRequest(std::string filePath) = 0;
             virtual std::shared_ptr<domain::models::Request> loadRequest(std::string filePath) = 0;
             
             static inline
@@ -20,5 +22,8 @@ namespace getit::data::contracts
 
             static inline
             const std::string URI_NAME = "uri";
+
+        protected:
+            std::shared_ptr<domain::models::Request> request;
     };
 }
