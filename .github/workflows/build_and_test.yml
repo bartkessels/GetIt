@@ -36,10 +36,11 @@ jobs:
     - name: Install CMake
       run: sudo apt update && sudo apt install -yq cmake
     - name: Run CMake
-      run: cmake --coverage .
+      run: cmake .
     - name: Build GetIt tests
       run: make getit_tests
     - name: Run tests
       run: ./bin/getit_tests
     - uses: codecov/codecov-action@v2.1.0
+    - uses: codacy/codacy-coverage-reporter-action@v1.3.0
     
