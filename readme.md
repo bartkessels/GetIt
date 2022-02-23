@@ -1,6 +1,8 @@
 # GetIt
 
 [![Build & Test GetIt](https://github.com/bartkessels/GetIt/actions/workflows/build_and_test.yml/badge.svg)](https://github.com/bartkessels/GetIt/actions/workflows/build_and_test.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/4b84329958e04d3abeb7fc5c45eac01c)](https://www.codacy.com/gh/bartkessels/GetIt/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bartkessels/GetIt&amp;utm_campaign=Badge_Grade)
+
 
 ---
 
