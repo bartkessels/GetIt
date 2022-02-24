@@ -42,7 +42,4 @@ jobs:
     - name: Run tests
       run: ./bin/getit_tests
     - uses: codecov/codecov-action@v2.1.0
-    - uses: codacy/codacy-coverage-reporter-action@v1.3.0
-      with:
-        token: 9ad77211-b474-4ee4-8bdd-cb391de0961b
     
