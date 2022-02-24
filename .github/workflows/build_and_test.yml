@@ -36,7 +36,7 @@ jobs:
     - name: Install CMake
       run: sudo apt update && sudo apt install -yq cmake
     - name: Run CMake
-      run: cmake .
+      run: cmake . -D CMAKE_CXX_FLAGS="fprofile-instr-generate -fcoverage-mapping" 
     - name: Build GetIt tests
       run: make getit_tests
     - name: Run tests
