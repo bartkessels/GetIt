@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 
 project(GetIt
-    VERSION 0.0.1
+    VERSION 5.0.0
     DESCRIPTION "Open source REST client application"
     HOMEPAGE_URL "https://getit.bartkessels.net"
 )
