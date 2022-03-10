@@ -40,18 +40,19 @@ set(SOURCEFILES
     service/implementations/CppRestRequestService.cpp
 )
 
-add_executable(getit
-    ${SOURCEFILES}
-    ../resources/resources.qrc
+add_executable(
+        ${CMAKE_PROJECT_NAME}
+        ${SOURCEFILES}
+        ../resources/resources.qrc
 )
 
 # Link libraries
-target_link_libraries(getit Boost::system)
-target_link_libraries(getit cpprest)
-target_link_libraries(getit nlohmann_json)
+target_link_libraries(${CMAKE_PROJECT_NAME} Boost::system)
+target_link_libraries(${CMAKE_PROJECT_NAME} cpprest)
+target_link_libraries(${CMAKE_PROJECT_NAME} nlohmann_json)
 
 if (NOT Qt6_FOUND)
-    target_link_libraries(getit Qt5::Widgets)
+    target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Widgets)
 else()
-    target_link_libraries(getit Qt::Widgets)
+    target_link_libraries(${CMAKE_PROJECT_NAME} Qt::Widgets)
 endif()
