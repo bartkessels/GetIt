@@ -93,6 +93,6 @@ This paragraph describes the different decisions that were made during the desig
 |__Motives__|To keep the construction of new classes in a single place, factories are used to construct new instances of objects.<br><br>However, some exceptions are expected. But these exceptions only remain in the convert classes or the `main` method. If objects are instantiated outside of a factory, it must be explicitly expressed in a comment.|
 
 |__GDD06__| Use C++ standard 2017                                                                                                                                                    |
-|---|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|---|---|
 |__Decision__| Using the C++ 2017 standard for compiling GetIt                                                                                                                          |
 |__Motives__| When compiling CppRestSDK with C++ standard 2020 the compilation fails due to `implicit capture of ‘this’ via ‘[=]’ is deprecated in C++20` in the `pplxtasks.h` header. |
