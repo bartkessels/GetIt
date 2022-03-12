@@ -37,7 +37,7 @@ TEST_CASE("FormDataRequestBody.getBody")
     {
         // Arrange
         const auto& key = "element";
-        const auto& value = "P@ssW0rd!\"";
+        const auto& value = R"("P@ssW0rd!"")";
         const auto& expectedBody = (boost::format(
             "--%1%\r\nContent-Disposition: form-data; name=\"%2%\"\r\n\r\n%3%\r\n\r\n--%1%--\r\n"
         ) % boundary % key % value).str();

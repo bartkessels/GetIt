@@ -39,16 +39,9 @@ namespace getit::domain::implementations
             std::string getFilesBody();
 
             // Boost templates
-            inline static
-            const std::string CONTENT_TYPE_TEMPLATE = "multipart/form-data; boundary=\"%1%\"";
-            
-            inline static
+            const std::string CONTENT_TYPE_TEMPLATE = R"(multipart/form-data; boundary="%1%")";
             const std::string BODY_WITH_BOUNDARY_TEMPLATE = "%1%%2%\r\n--%3%--\r\n";
-
-            inline static
             const std::string ELEMENT_TEMPLATE = "--%1%\r\nContent-Disposition: form-data; name=\"%2%\"\r\n\r\n%3%\r\n";
-
-            inline static
             const std::string FILE_TEMPLATE = "--%1%\r\nContent-Disposition: form-data; name=\"%2%\"; filename=\"%3%\"\r\n\r\n%4%\r\n";
     };
 }

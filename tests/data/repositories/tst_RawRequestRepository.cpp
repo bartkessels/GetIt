@@ -8,6 +8,14 @@
 
 using namespace getit::data::repositories;
 
+void writeRawFile(const std::string& path, const std::string& content)
+{
+    std::ofstream output(path);
+    output << std::setw(4) << content << std::endl;
+    output.close();
+}
+
+
 TEST_CASE("RawRequestRepository.saveRequest")
 {
     const auto& factory = std::make_shared<getit::domain::factories::RequestFactory>();
@@ -44,6 +52,40 @@ TEST_CASE("RawRequestRepository.saveRequest")
         ), fileContents.end());
         
         REQUIRE(expectedFileContents == fileContents);
+
+        std::remove(filePath);
+    }
+}
+
+TEST_CASE("RawRequestRepository.loadRequest")
+{
+    const auto& factory = std::make_shared<getit::domain::factories::RequestFactory>();
+    const auto& repository = std::make_shared<RawRequestRepository>(factory);
+    const auto& filePath = "./Request.getit";
+
+    SECTION("reads all the fields into the request when it's a raw request")
+    {
+        // Arrange
+        const auto& expectedMethod = "GET";
+        const auto& expectedUri = "https://github.com/bartkessels/getit";
+        const auto& expectedBody = "This is my raw body";
+        const auto& expectedContentType = "text/plain";
+
+        boost::format requestFormat = boost::format(
+                R"({"raw":{"body": "%1%", "contentType":"%2%"},"method":"%3%","uri":"%4%"})"
+        ) % expectedBody % expectedContentType % expectedMethod % expectedUri;
+
+        writeRawFile(filePath, requestFormat.str());
+
+        // Act
+        const auto& actual = repository->loadRequest(filePath);
+        const auto& actualBody = std::dynamic_pointer_cast<getit::domain::implementations::RawRequestBody>(actual->getBody());
+
+        // Assert
+        REQUIRE(actual->getMethod() == expectedMethod);
+        REQUIRE(actual->getUri() == expectedUri);
+        REQUIRE(actualBody->getContentType() == expectedContentType);
+        REQUIRE(actualBody->getBody() == expectedBody);
 
         std::remove(filePath);
     }

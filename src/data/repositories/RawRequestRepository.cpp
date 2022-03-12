@@ -38,5 +38,5 @@ std::shared_ptr<getit::domain::models::Request> RawRequestRepository::loadReques
     const auto& contentType = jsonObject[RAW_BODY_TYPE_NAME][CONTENT_TYPE_NAME];
     const auto& body = jsonObject[RAW_BODY_TYPE_NAME][BODY_NAME];
 
-    return this->factory->getRequest(method, uri, contentType, body);
+    return this->factory->getRequest(method, uri, body, contentType);
 }

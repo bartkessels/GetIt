@@ -2,8 +2,7 @@
 #include <cctype>
 #include <fstream>
 #include <memory>
-#include <nlohmann/json.hpp>
-#include <regex>
+#include <string>
 
 #include "data/repositories/FormDataRequestRepository.hpp"
 #include "domain/factories/RequestFactory.hpp"
@@ -11,11 +10,18 @@
 
 using namespace getit::data::repositories;
 
+void writeFormDataFile(const std::string& path, const std::string& content)
+{
+    std::ofstream output(path);
+    output << std::setw(4) << content << std::endl;
+    output.close();
+}
+
 TEST_CASE("FormDataRequestRepository.saveRequest")
 {
     const auto& factory = std::make_shared<getit::domain::factories::RequestFactory>();
     const auto& repository = std::make_shared<FormDataRequestRepository>(factory);
-    const auto& filePath = "./output.json";
+    const auto& filePath = "./Request.getit";
 
     SECTION("saves all the fields to the specified file")
     {
@@ -110,6 +116,46 @@ TEST_CASE("FormDataRequestRepository.saveRequest")
         ), fileContents.end());
         
         REQUIRE(expectedFileContents == fileContents);
+
+        std::remove(filePath);
+    }
+}
+
+TEST_CASE("FormDataRequestRepository.loadRequest")
+{
+    const auto& factory = std::make_shared<getit::domain::factories::RequestFactory>();
+    const auto& repository = std::make_shared<FormDataRequestRepository>(factory);
+    const auto& filePath = "./Request.getit";
+
+    SECTION("reads all the fields into the request when it's a form data request")
+    {
+        // Arrange
+        const auto& expectedMethod = "GET";
+        const auto& expectedUri = "https://github.com/bartkessels/getit";
+        const auto& expectedBoundary = "--bound";
+        const auto& expectedKey = "key";
+        const auto& expectedValue = "value";
+        const auto& expectedFileName = "image.png";
+        const auto& expectedFilePath = "./bin/tst_file.txt";
+
+        boost::format requestFormat = boost::format(
+                R"({"formdata":{"boundary":"%1%","elements":[{"key":"%2%","value":"%3%"}],"files":[{"key":"%4%","filePath":"%5%"}]},"method":"%6%","uri":"%7%"})"
+        ) % expectedBoundary % expectedKey % expectedValue % expectedFileName % expectedFilePath % expectedMethod % expectedUri;
+
+        writeFormDataFile(filePath, requestFormat.str());
+
+        // Act
+        const auto& actual = repository->loadRequest(filePath);
+        const auto& actualBody = std::dynamic_pointer_cast<getit::domain::implementations::FormDataRequestBody>(actual->getBody());
+
+        // Assert
+        REQUIRE(actual->getMethod() == expectedMethod);
+        REQUIRE(actual->getUri() == expectedUri);
+        REQUIRE(actualBody->getBoundary() == expectedBoundary);
+        REQUIRE(actualBody->getElements().find(expectedKey)->first == expectedKey);
+        REQUIRE(actualBody->getElements().find(expectedKey)->second == expectedValue);
+        REQUIRE(actualBody->getFiles().find(expectedFileName)->first == expectedFileName);
+        REQUIRE(actualBody->getFiles().find(expectedFileName)->second == expectedFilePath);
 
         std::remove(filePath);
     }
