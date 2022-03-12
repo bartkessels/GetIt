@@ -24,7 +24,7 @@ jobs:
     - name: Run CMake
       run: cmake .
     - name: Build GetIt
-      run: make getit
+      run: make GetIt
   test:
     runs-on: ubuntu-latest
     steps:
