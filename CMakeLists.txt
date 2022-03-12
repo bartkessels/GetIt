@@ -17,4 +17,8 @@ set(CMAKE_EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/build)
 add_subdirectory(third_party)
 add_subdirectory(src)
 add_subdirectory(tests)
-add_subdirectory(packaging)
+
+# Only build packages when the -Dpackaging=true flag is set
+IF (packaging)
+    add_subdirectory(packaging)
+ENDIF()
