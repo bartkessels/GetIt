@@ -8,7 +8,7 @@ FetchContent_Declare(
     extern_trompeloeil
 
     GIT_REPOSITORY https://github.com/rollbear/trompeloeil.git
-    GIT_TAG        v39)
+    GIT_TAG        v42)
 FetchContent_MakeAvailable(extern_trompeloeil)
 
 # ------------------------------------------------------------------------------
@@ -17,7 +17,7 @@ FetchContent_Declare(
     extern_catch2
 
     GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-    GIT_TAG        v2.13.4)
+    GIT_TAG        v2.13.8)
 FetchContent_MakeAvailable(extern_catch2)
 
 # ------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ FetchContent_Declare(
         extern_restsdk
 
         GIT_REPOSITORY https://github.com/microsoft/cpprestsdk.git
-        GIT_TAG        2.10.17)
+        GIT_TAG        2.10.18)
 FetchContent_MakeAvailable(extern_restsdk)
 
 SET(BUILD_TESTS ON)
@@ -43,5 +43,5 @@ FetchContent_Declare(
         extern_json
 
         GIT_REPOSITORY https://github.com/nlohmann/json.git
-        GIT_TAG        v3.9.1)
+        GIT_TAG        v3.10.5)
 FetchContent_MakeAvailable(extern_json)
