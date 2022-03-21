@@ -8,7 +8,6 @@
 #include "domain/factories/RequestFactory.hpp"
 #include "domain/implementations/FormDataRequestBody.hpp"
 
-#include <iostream>
 using namespace getit::data::repositories;
 
 void writeFormDataFile(const std::string& path, const std::string& content)
@@ -187,8 +186,6 @@ TEST_CASE("FormDataRequestRepository.loadRequest")
         // Assert
         REQUIRE(actual->getMethod() == expectedMethod);
         REQUIRE(actual->getUri() == expectedUri);
-        std::cout << actual->getHeaders().find(expectedHeader)->first << std::endl;
-        std::cout << actual->getHeaders().find(expectedHeader)->second << std::endl;
         REQUIRE(actual->getHeaders().find(expectedHeader)->first == expectedHeader);
         REQUIRE(actual->getHeaders().find(expectedHeader)->second == expectedHeaderValue);
         REQUIRE(actualBody->getBoundary() == expectedBoundary);
