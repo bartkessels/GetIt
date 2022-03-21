@@ -40,10 +40,10 @@ std::shared_ptr<getit::domain::models::Request> MainWindow::getRequest()
 {
     auto method = ui->method->currentText().toStdString();
     auto uri = ui->uri->text().toStdString();
-    auto request = requestFactory->getRequest(method, uri);
+    auto headers = headersController->getContent();
+    auto request = requestFactory->getRequest(method, uri, headers);
 
     request->setBody(bodyController->getContent());
-    request->setHeaders(headersController->getContent());
 
     return request;
 }

@@ -15,11 +15,19 @@ void FormDataRequestRepository::saveRequest(const std::string& filePath, std::sh
 
     jsonObject[METHOD_NAME] = request->getMethod();
     jsonObject[URI_NAME] = request->getUri();
+    jsonObject[HEADERS_NAME] = nlohmann::json::array();
 
     jsonObject[FORM_DATA_BODY_TYPE_NAME] = nlohmann::json::object();
     jsonObject[FORM_DATA_BODY_TYPE_NAME][BOUNDARY_NAME] = requestBody->getBoundary();
     jsonObject[FORM_DATA_BODY_TYPE_NAME][ELEMENTS_ARRAY_NAME] = nlohmann::json::array();
     jsonObject[FORM_DATA_BODY_TYPE_NAME][FILES_ARRAY_NAME] = nlohmann::json::array();
+
+    for (const auto& [key, value] : request->getHeaders()) {
+        auto header = nlohmann::json::object();
+        header[HEADER_NAME] = key;
+        header[HEADER_VALUE] = value;
+        jsonObject[HEADERS_NAME].push_back(header);
+    }
 
     for (const auto& [key, value] : requestBody->getElements()) {
         auto element = nlohmann::json::object();
@@ -52,8 +60,13 @@ std::shared_ptr<getit::domain::models::Request> FormDataRequestRepository::loadR
     const auto& uri = jsonObject[URI_NAME];
     const auto& boundary = jsonObject[FORM_DATA_BODY_TYPE_NAME][BOUNDARY_NAME];
 
+    std::map<std::string, std::string> headers;
     std::map<std::string, std::string> elements;
     std::map<std::string, std::string> files;
+
+    for (auto obj : jsonObject[HEADERS_NAME]) {
+        headers.emplace(obj[HEADER_NAME], obj[HEADER_VALUE]);
+    }
 
     for (auto obj : jsonObject[FORM_DATA_BODY_TYPE_NAME][ELEMENTS_ARRAY_NAME]) {
         elements.emplace(obj[KEY_NAME], obj[ELEMENT_VALUE_NAME]);
@@ -63,5 +76,5 @@ std::shared_ptr<getit::domain::models::Request> FormDataRequestRepository::loadR
         files.emplace(obj[KEY_NAME], obj[FILE_PATH_NAME]);
     }
 
-    return this->factory->getRequest(method, uri, elements, files, boundary);
+    return this->factory->getRequest(method, uri, headers, elements, files, boundary);
 }

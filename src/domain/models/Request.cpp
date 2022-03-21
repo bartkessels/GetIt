@@ -14,7 +14,7 @@ void Request::setUri(const std::string& uri)
 
 void Request::addHeader(const std::string& header, const std::string& value)
 {
-    this->headers.insert({header, value});
+    this->headers.emplace(header, value);
 }
 
 void Request::setHeaders(const std::map<std::string, std::string>& headers)
