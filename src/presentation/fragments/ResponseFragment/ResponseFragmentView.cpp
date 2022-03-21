@@ -8,11 +8,14 @@ ResponseFragmentView::ResponseFragmentView(QWidget* parent):
     ui(new Ui::ResponseFragmentView())
 {
     ui->setupUi(this);
+    syntaxHighlighter = new highlighters::SyntaxHighlighter(ui->body->document());
+    connect(ui->contentType, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ResponseFragmentView::setContentType);
 }
 
 ResponseFragmentView::~ResponseFragmentView()
 {
     delete ui;
+    delete syntaxHighlighter;
 }
 
 std::map<std::string, std::string> ResponseFragmentView::getHeaders()
@@ -60,4 +63,17 @@ void ResponseFragmentView::addHeader(const std::string& header, const std::strin
     row->setText(keyIndex, QString::fromStdString(header));
     row->setText(valueIndex, QString::fromStdString(value));
     row->setFlags(treeItemFlag);
+}
+
+void ResponseFragmentView::setContentType(int selectedIndex)
+{
+    switch(selectedIndex)
+    {
+        case ContentType::JSON:
+            syntaxHighlighter->startHighlighting(highlighters::JsonSyntaxHighlighterRule::rules);
+            break;
+        default:
+            syntaxHighlighter->stopHighlighting();
+            break;
+    }
 }
