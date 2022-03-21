@@ -36,7 +36,7 @@ jobs:
     - name: Install CMake
       run: sudo apt update && sudo apt install -yq cmake
     - name: Run CMake
-      run: cmake . -D CMAKE_CXX_FLAGS="--coverage" 
+      run: cmake . -DCMAKE_CXX_FLAGS="--coverage"
     - name: Build GetIt tests
       run: make getit_tests
     - name: Run tests

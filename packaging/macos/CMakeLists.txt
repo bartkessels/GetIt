@@ -1,11 +1,24 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES MACOSX_BUNDLE TRUE)
-set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
-    BUNDLE True
-    MACOSX_BUNDLE_GUI_IDENTIFIER net.bartkessels.getit
-    MACOSX_BUNDLE_BUNDLE_NAME ${CMAKE_PROJECT_NAME}
-    MACOSX_BUNDLE_BUNDLE_VERSION "${CMAKE_PROJECT_VERSION}"
-    MACOSX_BUNDLE_SHORT_VERSION_STRING "${CMAKE_PROJECT_VERSION}"
-    MACOSX_BUNDLE_PLIST "Info.plist"
-)
+set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES RESOURCE "./packaging/macos/icons/getit.icns")
+
+set(CPACK_BUNDLE_NAME ${CMAKE_PROJECT_NAME})
+set(CPACK_BUNDLE_PLIST ./packaging/macos/Info.plist)
+set(CPACK_BUNDLE_ICON ./packaging/macos/icons/getit.icns)
+
+install(TARGETS ${CMAKE_PROJECT_NAME} BUNDLE DESTINATION ./bin/${CMAKE_PROJECT_NAME}.app)
+set(CPACK_INSTALL_CMAKE_PROJECTS "./bin/${CMAKE_PROJECT_NAME}.app;${CMAKE_PROJECT_NAME};ALL;/")
+set(CPACK_COMPONENT_LIBRARIES_DEPENDS Boost::system)
+set(CPACK_COMPONENT_LIBRARIES_DEPENDS cpprest)
+set(CPACK_COMPONENT_LIBRARIES_DEPENDS nlohmann_json)
+
+#target_link_libraries(${CMAKE_PROJECT_NAME} Boost::system)
+#target_link_libraries(${CMAKE_PROJECT_NAME} cpprest)
+#target_link_libraries(${CMAKE_PROJECT_NAME} nlohmann_json)
+#add_custom_command(
+#        TARGET ${CMAKE_PROJECT_NAME}
+#        POST_BUILD
+#        COMMAND macdeployqt bin/${BINARY_NAME}.app
+#        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+#)

@@ -46,6 +46,12 @@ add_executable(
         ../resources/resources.qrc
 )
 
+
+install(TARGETS ${CMAKE_PROJECT_NAME}
+        RUNTIME
+        DESTINATION bin
+)
+
 # Link libraries
 target_link_libraries(${CMAKE_PROJECT_NAME} Boost::system)
 target_link_libraries(${CMAKE_PROJECT_NAME} cpprest)

@@ -21,4 +21,5 @@ add_subdirectory(tests)
 # Only build packages when the -Dpackaging=true flag is set
 IF (packaging)
     add_subdirectory(packaging)
+    include(CPack)
 ENDIF()
