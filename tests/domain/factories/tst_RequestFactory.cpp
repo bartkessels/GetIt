@@ -14,6 +14,7 @@ TEST_CASE("RequestFactory.getRequest [RawRequestBody - body overload]")
     const auto& factory = std::make_shared<RequestFactory>();
     const auto& method = "POST";
     const auto& uri = "https://github.com/bartkessels";
+    const auto& headers = std::map<std::string, std::string>();
 
     SECTION("returns an instance of RawRequestBody when using the overload with body")
     {
@@ -22,7 +23,7 @@ TEST_CASE("RequestFactory.getRequest [RawRequestBody - body overload]")
         const auto& contentType = "text/plain";
 
         // Act
-        const auto& result = factory->getRequest(method, uri, body, contentType);
+        const auto& result = factory->getRequest(method, uri, headers, body, contentType);
 
         // Assert
         REQUIRE(std::dynamic_pointer_cast<getit::domain::implementations::RawRequestBody>(result->getBody()));
@@ -34,7 +35,7 @@ TEST_CASE("RequestFactory.getRequest [RawRequestBody - body overload]")
         const auto& body = "This is my raw body";
 
         // Act
-        const auto& result = factory->getRequest(method, uri, body);
+        const auto& result = factory->getRequest(method, uri, headers, body);
         const auto& requestBody = std::dynamic_pointer_cast<getit::domain::implementations::RawRequestBody>(result->getBody());
 
         // Assert
@@ -47,6 +48,7 @@ TEST_CASE("RequestFactory.getRequest [RawRequestBody - body/contentType overload
     const auto& factory = std::make_shared<RequestFactory>();
     const auto& method = "POST";
     const auto& uri = "https://github.com/bartkessels";
+    const auto& headers = std::map<std::string, std::string>();
     
     SECTION("returns an instance of RawRequestBody when using the overload with body and contentType")
     {
@@ -55,7 +57,7 @@ TEST_CASE("RequestFactory.getRequest [RawRequestBody - body/contentType overload
         const auto& contentType = "text/plain";
 
         // Act
-        const auto& result = factory->getRequest(method, uri, body, contentType);
+        const auto& result = factory->getRequest(method, uri, headers, body, contentType);
 
         // Assert
         REQUIRE(std::dynamic_pointer_cast<getit::domain::implementations::RawRequestBody>(result->getBody()));
@@ -68,7 +70,7 @@ TEST_CASE("RequestFactory.getRequest [RawRequestBody - body/contentType overload
         const auto& contentType = "text/plain";
 
         // Act
-        const auto& result = factory->getRequest(method, uri, body, contentType);
+        const auto& result = factory->getRequest(method, uri, headers, body, contentType);
         const auto& requestBody = std::dynamic_pointer_cast<getit::domain::implementations::RawRequestBody>(result->getBody());
 
         // Assert
@@ -82,6 +84,7 @@ TEST_CASE("RequestFactory.getRequest [FormDataRequestBody]")
     const auto& factory = std::make_shared<RequestFactory>();
     const auto& method = "POST";
     const auto& uri = "https://github.com/bartkessels";
+    const auto& headers = std::map<std::string, std::string>();
 
     SECTION("returns an instance of FormDataRequestBody when using the overload with elements, files and boundary")
     {
@@ -91,7 +94,7 @@ TEST_CASE("RequestFactory.getRequest [FormDataRequestBody]")
         const auto& boundary = "--boundary";
 
         // Act
-        const auto& result = factory->getRequest(method, uri, elements, files, boundary);
+        const auto& result = factory->getRequest(method, uri, headers, elements, files, boundary);
 
         // Assert
         REQUIRE(std::dynamic_pointer_cast<getit::domain::implementations::FormDataRequestBody>(result->getBody()));
@@ -105,7 +108,7 @@ TEST_CASE("RequestFactory.getRequest [FormDataRequestBody]")
         const auto& boundary = "--boundary";
 
         // Act
-        const auto& result = factory->getRequest(method, uri, elements, files, boundary);
+        const auto& result = factory->getRequest(method, uri, headers, elements, files, boundary);
         const auto& requestBody = std::dynamic_pointer_cast<getit::domain::implementations::FormDataRequestBody>(result->getBody());
 
         // Assert
