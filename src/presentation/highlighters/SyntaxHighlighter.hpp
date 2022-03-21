@@ -1,5 +1,7 @@
 #pragma once
 
+#include <list>
+#include <memory>
 #include <QRegularExpression>
 #include <QSyntaxHighlighter>
 #include <QString>
@@ -13,7 +15,7 @@ namespace getit::presentation::highlighters
     class SyntaxHighlighter: public QSyntaxHighlighter
     {
         public:
-            SyntaxHighlighter(QTextDocument* document);
+            explicit SyntaxHighlighter(QTextDocument* document);
             ~SyntaxHighlighter() override = default;
 
             void startHighlighting(std::list<std::shared_ptr<SyntaxHighlighterRule>> rules);
