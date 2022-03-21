@@ -72,6 +72,8 @@ void ResponseFragmentView::setContentType(int selectedIndex)
         case ContentType::JSON:
             syntaxHighlighter->startHighlighting(highlighters::JsonSyntaxHighlighterRule::rules);
             break;
+        case ContentType::XML:
+            syntaxHighlighter->startHighlighting(highlighters::XmlSyntaxHighlighterRule::rules);
         default:
             syntaxHighlighter->stopHighlighting();
             break;

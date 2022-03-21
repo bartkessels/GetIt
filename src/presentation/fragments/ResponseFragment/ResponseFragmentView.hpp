@@ -11,6 +11,7 @@
 #include "presentation/fragments/ResponseFragment/IResponseFragmentView.hpp"
 #include "presentation/highlighters/JsonSyntaxHighlighterRule.hpp"
 #include "presentation/highlighters/SyntaxHighlighter.hpp"
+#include "presentation/highlighters/XmlSyntaxHighlighterRule.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class ResponseFragmentView; }

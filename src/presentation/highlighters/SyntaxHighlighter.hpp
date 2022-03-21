@@ -14,15 +14,15 @@ namespace getit::presentation::highlighters
     {
         public:
             SyntaxHighlighter(QTextDocument* document);
-            ~SyntaxHighlighter() override;
+            ~SyntaxHighlighter() override = default;
 
-            void startHighlighting(std::list<SyntaxHighlighterRule*> rules);
+            void startHighlighting(std::list<std::shared_ptr<SyntaxHighlighterRule>> rules);
             void stopHighlighting();
 
         protected:
             void highlightBlock(const QString& text) override;
 
         private:
-            std::list<SyntaxHighlighterRule*> rules;
+            std::list<std::shared_ptr<SyntaxHighlighterRule>> rules;
     };
 }

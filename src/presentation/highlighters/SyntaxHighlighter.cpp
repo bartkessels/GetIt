@@ -8,14 +8,7 @@ SyntaxHighlighter::SyntaxHighlighter(QTextDocument* document):
 
 }
 
-SyntaxHighlighter::~SyntaxHighlighter()
-{
-    while(!rules.empty()) {
-        delete rules.back();
-    }
-}
-
-void SyntaxHighlighter::startHighlighting(std::list<SyntaxHighlighterRule*> rules)
+void SyntaxHighlighter::startHighlighting(std::list<std::shared_ptr<SyntaxHighlighterRule>> rules)
 {
     this->rules = rules;
     this->rehighlight();
@@ -29,14 +22,14 @@ void SyntaxHighlighter::stopHighlighting()
 
 void SyntaxHighlighter::highlightBlock(const QString& text)
 {
-    for (SyntaxHighlighterRule* rule : this->rules) {
+    for (const auto& rule : this->rules) {
         QRegularExpression pattern(QString::fromStdString(rule->regex));
         QTextCharFormat format;
         format.setForeground(QColor(rule->color));
 
         QRegularExpressionMatchIterator matchIterator = pattern.globalMatch(text);
         while (matchIterator.hasNext()) {
-            QRegularExpressionMatch match = matchIterator.next();
+            const auto& match = matchIterator.next();
             setFormat(match.capturedStart(), match.capturedLength(), format);
         }
     }
