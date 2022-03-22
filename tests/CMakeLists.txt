@@ -41,6 +41,8 @@ set(TESTFILES
     presentation/fragments/tst_HeadersFragmentController.cpp
     presentation/fragments/tst_ResponseFragmentController.cpp
 
+    presentation/highlighters/tst_JsonSyntaxHighlighterRule.cpp
+
     service/factories/tst_RequestServiceFactory.cpp
     service/implementations/tst_CppRestRequestService.cpp
 )
