@@ -74,6 +74,7 @@ void ResponseFragmentView::setContentType(int selectedIndex)
             break;
         case ContentType::XML:
             syntaxHighlighter->startHighlighting(highlighters::XmlSyntaxHighlighterRule::rules);
+            break;
         default:
             syntaxHighlighter->stopHighlighting();
             break;
