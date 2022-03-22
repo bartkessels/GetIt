@@ -34,6 +34,8 @@ set(SOURCEFILES
     presentation/fragments/ResponseFragment/ResponseFragmentController.cpp
     presentation/fragments/ResponseFragment/ResponseFragmentView.cpp
 
+    presentation/highlighters/SyntaxHighlighter.cpp
+
     presentation/windows/MainWindow.cpp
 
     service/factories/RequestServiceFactory.cpp
