@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <utility>
 
 namespace getit::presentation::highlighters
 {
@@ -11,6 +12,6 @@ namespace getit::presentation::highlighters
             int color;
 
             SyntaxHighlighterRule(std::string regex, int color):
-                regex(regex), color(color) {}
+                regex(std::move(regex)), color(color) {}
     };
 }
