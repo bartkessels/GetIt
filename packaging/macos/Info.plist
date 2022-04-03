@@ -9,7 +9,7 @@
 	<key>CFBundleGetInfoString</key>
 	<string></string>
 	<key>CFBundleIconFile</key>
-	<string>icons/getit.icns</string>
+	<string>packaging/macos/icons/getit.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>net.bartkessels.getit</string>
 	<key>CFBundleInfoDictionaryVersion</key>

@@ -12,13 +12,3 @@ set(CPACK_INSTALL_CMAKE_PROJECTS "./bin/${CMAKE_PROJECT_NAME}.app;${CMAKE_PROJEC
 set(CPACK_COMPONENT_LIBRARIES_DEPENDS Boost::system)
 set(CPACK_COMPONENT_LIBRARIES_DEPENDS cpprest)
 set(CPACK_COMPONENT_LIBRARIES_DEPENDS nlohmann_json)
-
-#target_link_libraries(${CMAKE_PROJECT_NAME} Boost::system)
-#target_link_libraries(${CMAKE_PROJECT_NAME} cpprest)
-#target_link_libraries(${CMAKE_PROJECT_NAME} nlohmann_json)
-#add_custom_command(
-#        TARGET ${CMAKE_PROJECT_NAME}
-#        POST_BUILD
-#        COMMAND macdeployqt bin/${BINARY_NAME}.app
-#        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-#)
