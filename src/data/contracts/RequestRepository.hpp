@@ -18,6 +18,9 @@ namespace getit::data::contracts
         protected:
             const std::string METHOD_NAME = "method";
             const std::string URI_NAME = "uri";
+            const std::string HEADERS_NAME = "headers";
+            const std::string HEADER_NAME = "header";
+            const std::string HEADER_VALUE = "value";
             const std::string FORM_DATA_BODY_TYPE_NAME = "formdata";
             const std::string RAW_BODY_TYPE_NAME = "raw";
     };

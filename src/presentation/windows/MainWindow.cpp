@@ -29,6 +29,7 @@ MainWindow::MainWindow(
         responseController->setContent(response);
         ui->tabs->setCurrentIndex(ui->tabs->count() - 1);
     });
+    connect(this, &MainWindow::errorOccurred, this, &MainWindow::displayErrorMessage);
 }
 
 MainWindow::~MainWindow()
@@ -40,10 +41,10 @@ std::shared_ptr<getit::domain::models::Request> MainWindow::getRequest()
 {
     auto method = ui->method->currentText().toStdString();
     auto uri = ui->uri->text().toStdString();
-    auto request = requestFactory->getRequest(method, uri);
+    auto headers = headersController->getContent();
+    auto request = requestFactory->getRequest(method, uri, headers);
 
     request->setBody(bodyController->getContent());
-    request->setHeaders(headersController->getContent());
 
     return request;
 }
@@ -63,8 +64,15 @@ void MainWindow::sendRequest()
     auto request = getRequest();
 
     QThread::create([this, requestService, request] {
-        auto response = requestService->send(request).get();
-        emit responseReceived(response);
+        try
+        {
+            auto response = requestService->send(request).get();
+            emit responseReceived(response);
+        }
+        catch(const std::exception& e)
+        {
+            emit errorOccurred(e.what());
+        }
     })->start();
 }
 
@@ -113,4 +121,9 @@ void MainWindow::openRequest()
     const auto& repository = requestRepositoryFactory->getRepository();
     const auto& request = repository->loadRequest(saveLocation);
     setRequest(request);
+}
+
+void MainWindow::displayErrorMessage(const std::string& errorMessage)
+{
+    QMessageBox::warning(this, windowTitle(), QString::fromStdString(errorMessage));
 }

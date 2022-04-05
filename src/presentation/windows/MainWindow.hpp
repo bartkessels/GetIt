@@ -1,10 +1,12 @@
 #pragma once
 
+#include <exception>
 #include <memory>
 #include <QFileDialog>
 #include <QString>
 #include <QThread>
 #include <QMainWindow>
+#include <QMessageBox>
 #include <QUrl>
 #include <utility>
 
@@ -48,6 +50,7 @@ namespace getit::presentation::windows
 
         signals:
             void responseReceived(std::shared_ptr<domain::models::Response> response);
+            void errorOccurred(const std::string& errorMessage);
 
         private:
             std::shared_ptr<RequestFactory> requestFactory;
@@ -67,5 +70,6 @@ namespace getit::presentation::windows
             void saveRequest();
             void saveRequestAs();
             void openRequest();
+            void displayErrorMessage(const std::string& errorMessage);
     };
 }
