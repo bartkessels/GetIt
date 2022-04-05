@@ -8,4 +8,7 @@ ninja GetIt
 
 # Link Qt
 echo 'Linking Qt to the app bundle'
-macdeployqt ./bin/GetIt.app -timestamp -always-overwrite -libpath=./_deps
+macdeployqt ./bin/GetIt.app -timestamp -libpath=./_deps
+
+# Copy icon file
+cp ./packaging/macos/icons/getit.icns ./bin/GetIt.app/Contents/Resources
