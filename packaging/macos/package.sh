@@ -2,14 +2,13 @@
 
 # Compile GetIt
 echo 'Compiling GetIt...'
-cmake ../../.
-make GetIt
+# Disable warnings as error
+cmake . -Dpackaging=true -G Ninja -D CMAKE_CXX_FLAGS="-w"
+ninja GetIt
 
-# Link Qt libraries
-echo 'Linking Qt libraries'
+# Link Qt
+echo 'Linking Qt to the app bundle'
+macdeployqt ./bin/GetIt.app -timestamp -libpath=./_deps
 
-# Link CppRestSdk libraries
-echo 'Linking CppRestSdk libraries'
-
-# Link Boost libraries
-echo 'Linking Boost libraries'
+# Copy icon file
+cp ./packaging/macos/icons/getit.icns ./bin/GetIt.app/Contents/Resources
