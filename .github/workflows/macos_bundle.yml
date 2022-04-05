@@ -1,0 +1,29 @@
+name: Build MacOS package
+
+on:
+  create:
+    tags:
+      - v*
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    name: Build MacOS package
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install boost
+      run: brew install boost
+    - name: Install Qt5
+      run: brew install qt
+    - name: Install CMake
+      run: brew install cmake
+    - name: Run CMake
+      run: cmake .
+    - name: Create GetIt bundle
+      run: zsh ./packaging/macos/package.sh
+      
