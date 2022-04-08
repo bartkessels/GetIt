@@ -6,7 +6,6 @@ on:
       - v*
 
 env:
-  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
 
 jobs:
@@ -22,8 +21,6 @@ jobs:
       run: brew install qt
     - name: Install CMake
       run: brew install cmake
-    - name: Run CMake
-      run: cmake .
     - name: Create GetIt bundle
       run: zsh ./packaging/macos/package.sh
       
