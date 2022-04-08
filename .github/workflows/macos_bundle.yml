@@ -15,6 +15,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Get the tag version
+      id: get_tag_version
+      run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
     - name: Install boost
       run: brew install boost
     - name: Install Qt5
@@ -23,4 +26,9 @@ jobs:
       run: brew install cmake
     - name: Create GetIt bundle
       run: zsh ./packaging/macos/package.sh
+    - name: Release & Assets
+      uses: Hs1r1us/Release-AIO@v1.0
+      with:
+        tag_name: ${{ steps.get_tag_version.outputs.VERSION }}
+        asset_files: ./bin/GetIt.app
       
