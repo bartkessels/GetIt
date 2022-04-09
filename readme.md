@@ -6,9 +6,11 @@ Open Source HTTP client to test your API's.
 <br>
 [![Build & Test GetIt](https://github.com/bartkessels/GetIt/actions/workflows/build_and_test.yml/badge.svg)](https://github.com/bartkessels/GetIt/actions/workflows/build_and_test.yml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4b84329958e04d3abeb7fc5c45eac01c)](https://www.codacy.com/gh/bartkessels/GetIt/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bartkessels/GetIt&amp;utm_campaign=Badge_Grade)
+[![Vulnerability scan](https://github.com/bartkessels/GetIt/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/bartkessels/GetIt/actions/workflows/codeql-analysis.yml)
 <br>
 <!-- Build status -->
 [![Build MacOS package](https://github.com/bartkessels/GetIt/actions/workflows/macos_bundle.yml/badge.svg)](https://github.com/bartkessels/GetIt/actions/workflows/macos_bundle.yml)
+[![Build Windows executable](https://github.com/bartkessels/GetIt/actions/workflows/windows-executable.yml/badge.svg)](https://github.com/bartkessels/GetIt/actions/workflows/windows-executable.yml)
 
 ---
 
