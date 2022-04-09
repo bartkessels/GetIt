@@ -22,8 +22,8 @@ jobs:
     - name: Upload MacOS bundle as build artifact
       uses: actions/upload-artifact@v3.0.0
       with:
-        name: GetIt.app
-        path: ./bin/GetIt.app
+        name: GetIt-MacOS-x64.zip
+        path: ./getit.zip
     - name: Create release
       uses: actions/create-release@v1
       id: create_release
