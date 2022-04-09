@@ -19,10 +19,11 @@ jobs:
       run: brew install boost qt ninja cmake
     - name: Create GetIt bundle
       run: zsh ./packaging/macos/package.sh
-    - name: Upload MacOS bundle artifact
+    - name: Upload MacOS bundle as build artifact
       uses: actions/upload-artifact@v3.0.0
       with:
-        name: ./bin/GetIt.app
+        name: GetIt.app
+        path: ./bin/GetIt.app
     - name: Create release
       uses: actions/create-release@v1
       id: create_release
@@ -33,7 +34,7 @@ jobs:
         tag_name: ${{ github.ref }}
       env:
         GITHUB_TOKEN: ${{ github.token }}
-    - name: Upload MacOS bundle
+    - name: Upload MacOS bundle as release artifact
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
