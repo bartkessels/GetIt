@@ -1,0 +1,26 @@
+name: Build Windows executable
+
+on:
+  create:
+    tags:
+      - v*
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    name: Build Windows executable
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install dependencies
+      run: choco install -y boost qt ninja cmake
+    - name: Create GetIt bundle
+      run: packaging/windows/package.cmd
+    - name: Upload Windows executable as build artifact
+      uses: actions/upload-artifact@v3.0.0
+      with:
+        name: GetIt-Windows-x64.zip
+        path: ./getit.zip
