@@ -15,8 +15,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Install dependencies
-      run: choco install -y boost-msvc-14.1 qt5-default ninja cmake
+    - name: Install dependencies (Choco)
+      run: choco install -y qtcreator qt5-default ninja cmake
+    - name: Install dependencies (VCPKG)
+      run: vcpkg install boost
     - name: Create GetIt bundle
       run: packaging/windows/package.cmd
     - name: Upload Windows executable as build artifact
