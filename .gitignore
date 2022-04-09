@@ -13,6 +13,7 @@ CMakeScripts/
 *.build
 .ninja*
 *.ninja
+*.zip
 
 .DS_Store
 *.cbp

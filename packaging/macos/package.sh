@@ -12,3 +12,6 @@ macdeployqt ./bin/GetIt.app -timestamp -libpath=./_deps
 
 # Copy icon file
 cp ./packaging/macos/icons/getit.icns ./bin/GetIt.app/Contents/Resources
+
+# Zip file
+zip -rT getit.zip ./bin/GetIt.app >> /dev/null
