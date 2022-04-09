@@ -22,7 +22,7 @@ matter what platform you use, and it's completely open source.
   - [1.1 Sharing requests](#11-sharing-requests)
   - [1.2 Roadmap](#12-roadmap)
 - [2. External dependencies](#2-external-dependencies)
-- [3. Build](#2-build)
+- [3. Build](#3-build)
   - [3.1 MacOS](#31-macos)
   - [3.2 Linux](#32-linux)
   - [3.3 Windows](#33-windows)
@@ -100,7 +100,7 @@ This will create the `./bin/GetIt.app` file. This can be executed by double-clic
 Please note that this app bundle does __NOT__ include the dependencies or the Qt framework. When you move
 the bundle to a different location on your computer (or another computer altogether) the application might not start.
 
-## 3.1 Linux
+## 3.2 Linux
 
 __NOT TESTED YET!__
 
@@ -116,7 +116,7 @@ $ ninja GetIt
 This will create the `./bin/GetIt` binary file. It can be executed by either running `./bin/GetIt` from the terminal
 or double-clicking the file through your file browser.
 
-## 3.2 Windows
+## 3.3 Windows
 
 __NOT TESTED YET!__
 
@@ -145,11 +145,11 @@ $ zsh ./packaging/macos/package.sh
 This will create the `./bin/GetIt.app` app bundle with all required dependencies. This file can be distributed across
 multiple systems.
 
-## 4.1 Linux
+## 4.2 Linux
 
 This is not completed yet, there is going to be a script to generate a flatpak bundle.
 
-## 4.1 Windows
+## 4.3 Windows
 
 This is not completed yet, there is going to be a script to generate a Windows executable file.
 
