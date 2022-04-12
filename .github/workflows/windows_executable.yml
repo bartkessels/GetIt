@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Add VCPKG installation path to PATH variable
-      run: set PATH=%PATH%;%VCPKG_INSTALLATION_ROOT%
+      run: set PATH=%PATH%;C:\vcpkg
     - name: Install dependencies (Choco)
       run: choco install -y qtcreator qt5-default ninja cmake
     - name: Install dependencies (VCPKG)
