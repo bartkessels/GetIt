@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies (VCPKG)
       run: vcpkg install boost
     - name: Create GetIt executable
-      run: packaging/windows/package.cmd
+      run: ./packaging/windows/package.ps1
     - name: Upload Windows executable as build artifact
       uses: actions/upload-artifact@v3.0.0
       with:
