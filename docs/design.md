@@ -101,3 +101,9 @@ This paragraph describes the different decisions that were made during the desig
 |---|---|
 |__Decision__|Only use string literals when there are no line breaks in the string.|
 |__Motives__|To keep the code readable and strings on one line, the use of `\r\n` line breaks must be used instead of actual line breaks in the string.|
+
+
+| __GDD08__    | Separate pipeline to create Github release                                                                                                                                                                                                                                                                    |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| __Decision__ | Use a different pipeline to create a release based on the latest tag.                                                                                                                                                                                                                                         |
+| __Motives__  | To keep the pipelines for packaging GetIt for different platforms independent of each other, the release cannot be created in one of those pipelines. When the pipeline that creates the release fails, the other pipelines subsequently fail as well. Therefore a separate pipeline is the best alternative. |
