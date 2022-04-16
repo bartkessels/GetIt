@@ -1,0 +1,23 @@
+name: Create new release
+
+on:
+  create:
+    tags:
+      - v*
+
+jobs:
+  build:
+    name: Create new release based on latest tag
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          release_name: ${{ github.ref }}
+          tag_name: ${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
