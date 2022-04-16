@@ -15,11 +15,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Add VCPKG installation path to PATH variable
+      run: $Env:PATH += ";C:\vcpkg"
     - name: Install dependencies (Choco)
       run: choco install -y qtcreator qt5-default ninja cmake
     - name: Install dependencies (VCPKG)
       run: vcpkg install boost
-    - name: Create GetIt bundle
+    - name: Create GetIt executable
       run: packaging/windows/package.cmd
     - name: Upload Windows executable as build artifact
       uses: actions/upload-artifact@v3.0.0

@@ -10,7 +10,7 @@ Open Source HTTP client to test your API's.
 <br>
 <!-- Build status -->
 [![Build MacOS package](https://github.com/bartkessels/GetIt/actions/workflows/macos_bundle.yml/badge.svg)](https://github.com/bartkessels/GetIt/actions/workflows/macos_bundle.yml)
-[![Build Windows executable](https://github.com/bartkessels/GetIt/actions/workflows/windows-executable.yml/badge.svg)](https://github.com/bartkessels/GetIt/actions/workflows/windows-executable.yml)
+[![Build Windows executable](https://github.com/bartkessels/GetIt/actions/workflows/windows_executable.yml/badge.svg)](https://github.com/bartkessels/GetIt/actions/workflows/windows_executable.yml)
 
 ---
 
