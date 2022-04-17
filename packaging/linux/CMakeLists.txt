@@ -1,4 +1,13 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
+include(FetchContent)
+
+function(download_file url)
+    FetchContent_Declare(download_file
+            URL ${url}
+            DOWNLOAD_NO_EXTRACT true
+            )
+    FetchContent_MakeAvailable(download_file)
+endfunction(download_file)
 
 # Download latest tarball
 set(TARBALL "v${CMAKE_PROJECT_VERSION}.tar.gz")

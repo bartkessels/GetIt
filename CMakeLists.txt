@@ -20,6 +20,5 @@ add_subdirectory(tests)
 
 # Only build packages when the -Dpackaging=true flag is set
 IF (packaging)
-    include(cmake/DownloadFile.cmake)
     add_subdirectory(packaging)
 ENDIF()
