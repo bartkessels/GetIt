@@ -1,4 +1,4 @@
-#!/bin/env zsh
+#!/bin/env bash
 
 # Compile GetIt
 # Disable warnings as error
