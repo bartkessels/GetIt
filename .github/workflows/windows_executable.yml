@@ -28,3 +28,10 @@ jobs:
       with:
         name: GetIt-Windows-x64.zip
         path: ./getit.zip
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./getit.zip
+        asset_name: GetIt-Windows-x64.zip
+        tag: ${{ github.ref }}

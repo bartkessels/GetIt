@@ -24,14 +24,12 @@ jobs:
       with:
         name: GetIt-MacOS-x64.zip
         path: ./getit.zip
-    - name: Upload MacOS bundle as release artifact
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
       with:
-        upload_url: https://github.com/bartkessels/GetIt/releases/latest
-        asset_path: ./getit.zip
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./getit.zip
         asset_name: GetIt-MacOS-x64.zip
-        asset_content_type: application/zip
+        tag: ${{ github.ref }}
     
       
