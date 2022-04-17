@@ -4,8 +4,7 @@
 cmake . -Dpackaging=true -G Ninja
 
 # Install required runtimes
-flatpak install org.kde.Platform
-flatpak install org.kde.Sdk
+flatpak install org.kde.Sdk/x86_64/5.11
 
 # Build flatpak
 flatpak-builder --repo=getit_repo getit ./packaging/linux/getit.yml
