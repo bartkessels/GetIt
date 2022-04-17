@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
-        run: apt install boost qt ninja cmake
+        run: sudo apt install -y libboost-all-dev qt5-default ninja-build build-essential
       - name: Create GetIt flatpak
         run: zsh ./packaging/linux/package.sh
       - name: Upload GetIt flatpak as build artifact
