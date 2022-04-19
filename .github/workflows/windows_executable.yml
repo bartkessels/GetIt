@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies (Choco)
       run: choco install -y qtcreator qt5-default ninja cmake
     - name: Install dependencies (VCPKG)
-      run: vcpkg install boost
+      run: vcpkg install boost-date-time boost-regex boost-system boost-interprocess
     - name: Create GetIt executable
       run: ./packaging/windows/package.ps1
     - name: Upload Windows executable as build artifact
