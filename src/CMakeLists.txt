@@ -40,6 +40,7 @@ set(SOURCEFILES
 
     service/factories/RequestServiceFactory.cpp
     service/implementations/CppRestRequestService.cpp
+    service/mappers/VariablesMapper.cpp
 )
 
 add_executable(

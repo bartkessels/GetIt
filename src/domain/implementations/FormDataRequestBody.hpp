@@ -14,7 +14,7 @@ namespace getit::domain::implementations
         public:
             explicit FormDataRequestBody(std::string boundary);
             FormDataRequestBody() = default;
-            ~FormDataRequestBody() = default;
+            ~FormDataRequestBody() override = default;
 
             void addElement(std::string key, std::string value);
             void addFile(std::string key, std::string filePath);
