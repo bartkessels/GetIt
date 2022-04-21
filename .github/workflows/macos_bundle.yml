@@ -3,7 +3,7 @@ name: Build MacOS package
 on:
   create:
     tags:
-      - v*
+      - 'v*'
 
 env:
   BUILD_TYPE: Release
