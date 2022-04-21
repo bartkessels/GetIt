@@ -1,6 +1,5 @@
 #include <boost/format.hpp>
 #include <catch2/catch.hpp>
-#include <filesystem>
 #include <memory>
 #include <string>
 

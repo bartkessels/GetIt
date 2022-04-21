@@ -3,19 +3,19 @@
 using namespace getit::service::mappers;
 using namespace getit::domain;
 
-std::shared_ptr<models::Request> VariablesMapper::map(std::shared_ptr<models::Request> request, std::shared_ptr<models::Variables> variables)
+std::shared_ptr<models::Request> VariablesMapper::map(std::shared_ptr<models::Request> request)
 {
-    if (variables == nullptr)
-        return request;
+//    if (variables == nullptr)
+//        return request;
 
     this->request = request;
-    this->variables = variables;
-
-    for (const auto& variable : this->variables->variables) {
-        mapUri(variable);
-        mapBody(variable);
-        mapHeaders(variable);
-    }
+//    this->variables = variables;
+//
+//    for (const auto& variable : this->variables->variables) {
+//        mapUri(variable);
+//        mapBody(variable);
+//        mapHeaders(variable);
+//    }
 
     return this->request;
 }

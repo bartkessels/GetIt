@@ -12,7 +12,12 @@ void Request::setUri(const std::string& uri)
     this->uri = uri;
 }
 
-void Request::setVariables(std::shared_ptr<Variables> variables)
+void Request::addHeader(const std::string& header, const std::string& value)
+{
+    this->headers.emplace(header, value);
+}
+
+void Request::setVariables(std::list<std::shared_ptr<Variable>> variables)
 {
     this->variables = variables;
 }
@@ -20,7 +25,7 @@ void Request::setVariables(std::shared_ptr<Variables> variables)
 void Request::setHeaders(const std::map<std::string, std::string>& headers)
 {
     for (const auto& [header, value] : headers) {
-        this->headers.emplace(header, value);
+        this->addHeader(header, value);
     }
 }
 
@@ -39,7 +44,7 @@ std::string Request::getUri()
     return this->uri;
 }
 
-std::shared_ptr<Variables> Request::getVariables()
+std::list<std::shared_ptr<Variable>> Request::getVariables()
 {
     return this->variables;
 }

@@ -6,7 +6,6 @@
 
 #include "domain/implementations/RawRequestBody.hpp"
 #include "domain/models/Request.hpp"
-#include "domain/models/Variables.hpp"
 
 #include "service/mappers/VariablesMapper.hpp"
 

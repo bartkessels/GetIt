@@ -26,6 +26,7 @@ set(SOURCEFILES
     domain/implementations/FormDataRequestBody.cpp
     domain/implementations/RawRequestBody.cpp
     domain/models/Request.cpp
+    domain/models/Variable.cpp
 
     presentation/fragments/BodyFragment/BodyFragmentController.cpp
     presentation/fragments/BodyFragment/BodyFragmentView.cpp

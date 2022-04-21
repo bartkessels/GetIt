@@ -16,6 +16,7 @@ set(SOURCEFILES
     ../src/domain/implementations/FormDataRequestBody.cpp
     ../src/domain/implementations/RawRequestBody.cpp
     ../src/domain/models/Request.cpp
+    ../src/domain/models/Variable.cpp
 
     ../src/presentation/fragments/BodyFragment/BodyFragmentController.cpp
     ../src/presentation/fragments/HeadersFragment/HeadersFragmentController.cpp
@@ -36,6 +37,7 @@ set(TESTFILES
     domain/factories/tst_RequestFactory.cpp
     domain/implementations/tst_FormDataRequestBody.cpp
     domain/implementations/tst_RawRequestBody.cpp
+    domain/models/tst_Variable.cpp
 
     presentation/fragments/tst_BodyFragmentController.cpp
     presentation/fragments/tst_HeadersFragmentController.cpp

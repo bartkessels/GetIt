@@ -20,11 +20,10 @@ namespace getit::service::mappers
         public:
             ~VariablesMapper() override = default;
 
-            std::shared_ptr<models::Request> map(std::shared_ptr<models::Request> request, std::shared_ptr<models::Variables> variables) override;
+            std::shared_ptr<models::Request> map(std::shared_ptr<models::Request> request) override;
 
         protected:
             std::shared_ptr<models::Request> request;
-            std::shared_ptr<models::Variables> variables;
 
             virtual void mapBody(const std::tuple<std::string, std::string>& variable) = 0;
 
