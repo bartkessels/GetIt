@@ -3,7 +3,7 @@ name: Create new release
 on:
   create:
     tags:
-      - v*
+      - 'v*'
 
 jobs:
   build:
