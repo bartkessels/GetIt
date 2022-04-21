@@ -3,7 +3,7 @@ name: Build Linux Flatpak
 on:
   create:
     tags:
-      - v*
+      - 'v*'
 
 env:
   BUILD_TYPE: Release
