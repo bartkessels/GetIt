@@ -3,7 +3,7 @@ name: Build Windows executable
 on:
   create:
     tags:
-      - v*
+      - 'v*'
 
 env:
   BUILD_TYPE: Release
