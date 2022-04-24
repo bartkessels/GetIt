@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
-        run: sudo apt install -y cmake ninja flatpak-builder flatpak
+        run: apt install boost qt ninja-build cmake flatpak-builder flatpak
       - name: Create GetIt flatpak
         run: bash ./packaging/linux/package.sh
       - name: Upload GetIt flatpak as build artifact
