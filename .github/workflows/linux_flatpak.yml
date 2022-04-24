@@ -18,7 +18,7 @@ jobs:
       - name: Update apt
         run: sudo apt update && sudo apt upgrade -y
       - name: Install dependencies
-        run: sudo apt install -y libboost-all-dev qt6-base-dev ninja-build cmake flatpak-builder flatpak
+        run: sudo apt install -y libboost-all-dev qt5-default ninja-build cmake flatpak-builder flatpak
       - name: Create GetIt flatpak
         run: zsh ./packaging/linux/package.sh
       - name: Upload GetIt flatpak as build artifact
