@@ -4,7 +4,7 @@
 
 using namespace getit::domain::models;
 
-Variable::Variable(std::string name, std::string value):
+Variable::Variable(std::string  name, std::string value):
     name(std::move(name)),
     value(std::move(value))
 {
@@ -13,10 +13,11 @@ Variable::Variable(std::string name, std::string value):
 
 std::string Variable::apply(std::string input)
 {
-    boost::format frmt = boost::format("{%1%}") % name;
-    const auto& variableName = frmt.str();
+    if (input.empty())
+        return input;
 
-    boost::replace_all(input, variableName, value);
+    boost::format variableFormat = boost::format("{%1%}") % name;
+    boost::replace_all(input, variableFormat.str(), value);
 
     return input;
 }

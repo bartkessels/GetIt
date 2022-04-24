@@ -17,12 +17,14 @@ set(SOURCEFILES
     ../src/domain/implementations/RawRequestBody.cpp
     ../src/domain/models/Request.cpp
     ../src/domain/models/Variable.cpp
+    ../src/domain/transformations/VariablesTransformation.cpp
 
     ../src/presentation/fragments/BodyFragment/BodyFragmentController.cpp
     ../src/presentation/fragments/HeadersFragment/HeadersFragmentController.cpp
     ../src/presentation/fragments/ResponseFragment/ResponseFragmentController.cpp
 
     ../src/service/factories/RequestServiceFactory.cpp
+    ../src/service/implementations/BaseRequestService.cpp
     ../src/service/implementations/CppRestRequestService.cpp
 )
 
@@ -38,6 +40,7 @@ set(TESTFILES
     domain/implementations/tst_FormDataRequestBody.cpp
     domain/implementations/tst_RawRequestBody.cpp
     domain/models/tst_Variable.cpp
+    domain/transformations/tst_VariablesTransformation.cpp
 
     presentation/fragments/tst_BodyFragmentController.cpp
     presentation/fragments/tst_HeadersFragmentController.cpp
@@ -46,6 +49,7 @@ set(TESTFILES
     presentation/highlighters/tst_JsonSyntaxHighlighterRule.cpp
 
     service/factories/tst_RequestServiceFactory.cpp
+    service/implementations/tst_BaseRequestService.cpp
     service/implementations/tst_CppRestRequestService.cpp
 )
 

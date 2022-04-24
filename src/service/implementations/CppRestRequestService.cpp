@@ -1,8 +1,9 @@
 #include "service/implementations/CppRestRequestService.hpp"
 
+using namespace getit::domain::models;
 using namespace getit::service::implementations;
 
-std::future<std::shared_ptr<getit::domain::models::Response>> CppRestRequestService::send(std::shared_ptr<getit::domain::models::Request> request)
+std::future<std::shared_ptr<Response>> CppRestRequestService::sendRequest(std::shared_ptr<Request> request)
 {
     const auto& cppRequest = std::make_shared<web::http::http_request>(request->getMethod());
     const auto& client = std::make_shared<web::http::client::http_client>(request->getUri());
@@ -19,7 +20,7 @@ std::future<std::shared_ptr<getit::domain::models::Response>> CppRestRequestServ
 
     return std::async(std::launch::async, [client, cppRequest]() {
         const auto& rawResponse = client->request(*cppRequest).get();
-        const auto& response = std::make_shared<getit::domain::models::Response>();
+        const auto& response = std::make_shared<Response>();
         bool ignoreContentType = true;
 
         response->body = rawResponse.extract_string(ignoreContentType).get();

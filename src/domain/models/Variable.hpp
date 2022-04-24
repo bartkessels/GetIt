@@ -9,7 +9,7 @@ namespace getit::domain::models
     class Variable
     {
         public:
-            Variable(std::string name, std::string value);
+            Variable(std::string  name, std::string value);
             ~Variable() = default;
 
             std::string name;

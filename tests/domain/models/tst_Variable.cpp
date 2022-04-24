@@ -94,4 +94,16 @@ TEST_CASE("Variable.apply")
         REQUIRE(result == expected);
         REQUIRE(result != input);
     }
+
+    SECTION("returns empty string when the input is empty")
+    {
+        // Arrange
+        const auto& variable = std::make_unique<Variable>("key", "value");
+
+        // Act
+        const auto& result = variable->apply("");
+
+        // Assert
+        REQUIRE(result.empty());
+    }
 }

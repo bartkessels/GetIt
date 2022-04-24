@@ -3,6 +3,7 @@
 
 #include "data/factories/RequestRepositoryFactory.hpp"
 #include "domain/factories/RequestFactory.hpp"
+#include "presentation/windows/VariablesWindow/VariablesWindow.hpp"
 #include "presentation/windows/MainWindow.hpp"
 #include "service/factories/RequestServiceFactory.hpp"
 
@@ -22,10 +23,12 @@ int main(int argc, char** args)
     QApplication::setApplicationDisplayName(appName);
     QApplication::setApplicationName(appName);
 
+    const auto& variablesWindow = std::make_shared<presentation::windows::VariablesWindow>();
     const auto& window = std::make_shared<presentation::windows::MainWindow>(
             requestFactory,
             requestServiceFactory,
-            requestRepositoryFactory
+            requestRepositoryFactory,
+            variablesWindow
         );
     window->show();
 

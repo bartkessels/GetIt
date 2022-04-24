@@ -27,6 +27,7 @@ set(SOURCEFILES
     domain/implementations/RawRequestBody.cpp
     domain/models/Request.cpp
     domain/models/Variable.cpp
+    domain/transformations/VariablesTransformation.cpp
 
     presentation/fragments/BodyFragment/BodyFragmentController.cpp
     presentation/fragments/BodyFragment/BodyFragmentView.cpp
@@ -37,11 +38,12 @@ set(SOURCEFILES
 
     presentation/highlighters/SyntaxHighlighter.cpp
 
+    presentation/windows/VariablesWindow/VariablesWindow.cpp
     presentation/windows/MainWindow.cpp
 
     service/factories/RequestServiceFactory.cpp
+    service/implementations/BaseRequestService.cpp
     service/implementations/CppRestRequestService.cpp
-    service/mappers/VariablesMapper.cpp
 )
 
 add_executable(

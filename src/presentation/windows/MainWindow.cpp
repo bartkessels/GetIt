@@ -10,21 +10,24 @@ MainWindow::MainWindow(
         std::shared_ptr<RequestFactory> requestFactory,
         std::shared_ptr<RequestServiceFactory> requestServiceFactory,
         std::shared_ptr<RequestRepositoryFactory> requestRepositoryFactory,
+        std::shared_ptr<VariablesWindow> variablesWindow,
         QWidget* parent
 ):
     QMainWindow(parent),
     requestFactory(std::move(requestFactory)),
     requestServiceFactory(std::move(requestServiceFactory)),
     requestRepositoryFactory(std::move(requestRepositoryFactory)),
+    variablesWindow(std::move(variablesWindow)),
     ui(new Ui::MainWindow())
 {
-    this->ui->setupUi(this);
-    this->registerControllers();
+    ui->setupUi(this);
+    registerControllers();
 
     connect(ui->send, &QPushButton::pressed, this, &MainWindow::sendRequest);
     connect(ui->menuItemSave, &QAction::triggered, this, &MainWindow::saveRequest);
     connect(ui->menuItemSaveAs, &QAction::triggered, this, &MainWindow::saveRequest);
     connect(ui->menuItemOpen, &QAction::triggered, this, &MainWindow::openRequest);
+    connect(ui->menuItemViewVariables, &QAction::triggered, this, &MainWindow::displayVariablesWindow);
     connect(this, &MainWindow::responseReceived, this, [this](auto response) {
         responseController->setContent(response);
         ui->tabs->setCurrentIndex(ui->tabs->count() - 1);
@@ -121,6 +124,11 @@ void MainWindow::openRequest()
     const auto& repository = requestRepositoryFactory->getRepository();
     const auto& request = repository->loadRequest(saveLocation);
     setRequest(request);
+}
+
+void MainWindow::displayVariablesWindow()
+{
+    variablesWindow->show();
 }
 
 void MainWindow::displayErrorMessage(const std::string& errorMessage)

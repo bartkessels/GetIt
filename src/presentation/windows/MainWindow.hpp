@@ -22,6 +22,7 @@
 #include "presentation/fragments/HeadersFragment/HeadersFragmentView.hpp"
 #include "presentation/fragments/ResponseFragment/ResponseFragmentController.hpp"
 #include "presentation/fragments/ResponseFragment/ResponseFragmentView.hpp"
+#include "presentation/windows/VariablesWindow/VariablesWindow.hpp"
 
 #include "service/contracts/RequestServiceFactory.hpp"
 
@@ -44,6 +45,7 @@ namespace getit::presentation::windows
                     std::shared_ptr<RequestFactory> requestFactory,
                     std::shared_ptr<RequestServiceFactory> requestServiceFactory,
                     std::shared_ptr<RequestRepositoryFactory> requestRepositoryFactory,
+                    std::shared_ptr<VariablesWindow> variablesWindow,
                     QWidget* parent = nullptr
                 );
             ~MainWindow() override;
@@ -56,6 +58,7 @@ namespace getit::presentation::windows
             std::shared_ptr<RequestFactory> requestFactory;
             std::shared_ptr<RequestServiceFactory> requestServiceFactory;
             std::shared_ptr<RequestRepositoryFactory> requestRepositoryFactory;
+            std::shared_ptr<VariablesWindow> variablesWindow;
             Ui::MainWindow* ui;
             std::string saveLocation;
 
@@ -70,6 +73,7 @@ namespace getit::presentation::windows
             void saveRequest();
             void saveRequestAs();
             void openRequest();
+            void displayVariablesWindow();
             void displayErrorMessage(const std::string& errorMessage);
     };
 }
