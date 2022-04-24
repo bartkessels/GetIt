@@ -9,9 +9,10 @@ find_package(Boost COMPONENTS system REQUIRED)
 
 # Try to use Qt6 if it's available, otherwise
 # fall back to Qt5
-find_package(Qt6 COMPONENTS Widgets)
 if (NOT Qt6_FOUND)
     find_package(Qt5 5 COMPONENTS Widgets REQUIRED)
+else()
+    find_package(Qt6 COMPONENTS Widgets)
 endif()
 
 set(SOURCEFILES
