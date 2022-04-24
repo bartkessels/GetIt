@@ -9,10 +9,12 @@ find_package(Boost COMPONENTS system REQUIRED)
 
 # Try to use Qt6 if it's available, otherwise
 # fall back to Qt5
-if (NOT Qt6_FOUND)
-    find_package(Qt5 5 COMPONENTS Widgets REQUIRED)
-else()
+option(UseQt6 "Enable this if you want to use Qt6, instead of Qt5" no)
+
+if (UseQt6)
     find_package(Qt6 COMPONENTS Widgets)
+else()
+    find_package(Qt5 COMPONENTS Widgets REQUIRED)
 endif()
 
 set(SOURCEFILES
@@ -60,8 +62,8 @@ target_link_libraries(${CMAKE_PROJECT_NAME} Boost::system)
 target_link_libraries(${CMAKE_PROJECT_NAME} cpprest)
 target_link_libraries(${CMAKE_PROJECT_NAME} nlohmann_json)
 
-if (NOT Qt6_FOUND)
-    target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Widgets)
-else()
+if (UseQt6)
     target_link_libraries(${CMAKE_PROJECT_NAME} Qt::Widgets)
+else()
+    target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Widgets)
 endif()
