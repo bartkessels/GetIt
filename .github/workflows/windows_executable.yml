@@ -18,7 +18,7 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v2.14.0
     - name: Install dependencies (Choco)
-      run: choco install -y qtcreator qt5-default ninja cmake
+      run: choco install -y ninja cmake
     - name: Install dependencies (VCPKG)
       run: vcpkg install openssl-windows:x64-windows boost-date-time:x64-windows-static boost-regex:x64-windows-static boost-system:x64-windows-static boost-interprocess:x64-windows-static
     - name: System wide VCPKG integrations
