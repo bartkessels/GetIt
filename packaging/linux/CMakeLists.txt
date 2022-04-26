@@ -8,6 +8,11 @@ execute_process(COMMAND wget ${TARBALL_URL})
 # Calculate hash
 file(SHA256 ${TARBALL} TARBALL_HASH)
 
-# Replace variables in yaml file
-execute_process(COMMAND sed -i 's|{tarball-url}|${TARBALL_URL}|g' ${CMAKE_BINARY_DIR}/packaging/linux/getit.yml)
-execute_process(COMMAND sed -i 's|{tarball-hash}|${TARBALL_HASH}|g' ${CMAKE_BINARY_DIR}/packaging/linux/getit.yml)
+# Generate the getit.yml file
+file(READ ${CMAKE_BINARY_DIR}/packaging/linux/getit-template.yml TEMPLATE)
+
+string(REPLACE "{binary-name}" "${CMAKE_PROJECT_NAME}" TEMPLATE "${TEMPLATE}")
+string(REPLACE "{tarball-url}" "${TARBALL_URL}" TEMPLATE "${TEMPLATE}")
+string(REPLACE "{tarball-hash}" "${TARBALL_HASH}" TEMPLATE "${TEMPLATE}")
+
+file(WRITE ${CMAKE_BINARY_DIR}/packaging/linux/getit.yml ${TEMPLATE})

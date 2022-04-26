@@ -9,7 +9,7 @@ finish-args:
   - --filesystem=host
   - --device=dri
 modules:
-  - name: GetIt
+  - name: {binary-name}
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
