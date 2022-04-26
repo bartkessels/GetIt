@@ -1,10 +1,10 @@
 #!/bin/env bash
 
 # Compile GetIt
-cmake . -Dpackaging=true -G Ninja
+cmake .  -G Ninja -Dpackaging=true
 
 # Install required runtimes
-flatpak install org.kde.Sdk/x86_64/5.11
+flatpak install org.kde.Sdk/x86_64
 
 # Build flatpak
 flatpak-builder --repo=getit_repo getit ./packaging/linux/getit.yml

@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 
+add_definitions(-w)
+
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES MACOSX_BUNDLE TRUE)
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME ${CMAKE_PROJECT_NAME})
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES MACOSX_BUNDLE_COPYRIGHT "Bart Kessels")
