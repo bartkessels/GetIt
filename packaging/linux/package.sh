@@ -1,6 +1,5 @@
 #!/bin/env bash
 
-# Compile GetIt
 cmake .  -G Ninja -Dpackaging=true
 
 # Install required runtimes

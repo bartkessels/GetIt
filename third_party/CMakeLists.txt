@@ -1,8 +1,11 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 include(FetchContent)
-
 # Ignore all warnings
-add_definitions(-w)
+if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    add_definitions(-w)
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    add_definitions(/w)
+endif()
 
 # ------------------------------------------------------------------------------
 # Trompeloeil
