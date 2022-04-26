@@ -1,9 +1,7 @@
 #!/bin/env zsh
 
 # Compile GetIt
-echo 'Compiling GetIt...'
-# Disable warnings as error
-cmake . -DUseQt6=true -G Ninja -D CMAKE_CXX_FLAGS="-w"
+cmake . -DUseQt6=true -G Ninja -DPackaging=true -DCMAKE_CXX_FLAGS="-w"
 ninja GetIt
 
 # Link Qt
