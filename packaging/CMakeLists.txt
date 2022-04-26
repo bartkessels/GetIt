@@ -10,6 +10,6 @@ IF (WINDOWS)
     add_subdirectory(windows)
 ENDIF()
 
-IF (LINUX)
+IF (LINUX OR (UNIX AND NOT APPLE))
     add_subdirectory(linux)
 ENDIF()
