@@ -22,3 +22,4 @@ add_subdirectory(tests)
 IF (packaging)
     add_subdirectory(packaging)
 ENDIF()
+

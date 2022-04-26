@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
-
 include(FetchContent)
+
+# Ignore all warnings
+SET(${CMAKE_CXX_FLAGS} "-w")
 
 # ------------------------------------------------------------------------------
 # Trompeloeil
