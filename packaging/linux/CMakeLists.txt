@@ -9,5 +9,5 @@ execute_process(COMMAND wget ${TARBALL_URL})
 file(SHA256 ${TARBALL} TARBALL_HASH)
 
 # Replace variables in yaml file
-execute_process(COMMAND sed -i 's/{tarball-url}/${TARBALL_URL}/g' ${CMAKE_BINARY_DIR}/packaging/linux/getit.yml)
-execute_process(COMMAND sed -i 's/{tarball-hash}/${TARBALL_HASH}/g' ${CMAKE_BINARY_DIR}/packaging/linux/getit.yml)
+execute_process(COMMAND sed -i 's|{tarball-url}|${TARBALL_URL}|g' ${CMAKE_BINARY_DIR}/packaging/linux/getit.yml)
+execute_process(COMMAND sed -i 's|{tarball-hash}|${TARBALL_HASH}|g' ${CMAKE_BINARY_DIR}/packaging/linux/getit.yml)
