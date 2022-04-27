@@ -1,7 +1,7 @@
 #!/bin/env zsh
 
 # Compile GetIt
-cmake . -G Ninja -Dpackaging=true -DUseQt6=true
+cmake . -G Ninja -Dpackaging=true -DUseQt6=true -DCMAKE_CXX_FLAGS="-w"
 ninja GetIt
 
 # Link Qt

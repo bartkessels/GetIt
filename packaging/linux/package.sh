@@ -1,9 +1,6 @@
 #!/bin/env bash
 
-cmake .  -G Ninja -Dpackaging=true
-
-# Install required runtimes
-flatpak install org.kde.Sdk/x86_64
+cmake .  -G Ninja -Dpackaging=true -DCMAKE_CXX_FLAGS="-w"
 
 # Build flatpak
 flatpak-builder --repo=getit_repo getit ./packaging/linux/getit.yml

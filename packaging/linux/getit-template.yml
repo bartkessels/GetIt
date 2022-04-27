@@ -13,7 +13,7 @@ modules:
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DPackaging=true
+      - -Dpackaging=true
     sources:
       - type: archive
         url: {tarball-url}
