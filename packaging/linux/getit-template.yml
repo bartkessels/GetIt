@@ -1,7 +1,8 @@
 app-id: net.bartkessels.getit
 runtime: org.kde.Platform
+runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
-command: GetIt
+command: {binary-name}
 finish-args:
   - --share=ipc
   - --socket=x11
