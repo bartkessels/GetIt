@@ -3,7 +3,7 @@ name: Build Linux Flatpak
 on:
   create:
     tags:
-      - v*
+      - 'v*'
 
 env:
   BUILD_TYPE: Release
@@ -15,8 +15,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Update apt
+        run: sudo apt update && sudo apt upgrade -y
       - name: Install dependencies
-        run: apt install boost qt ninja cmake
+        run: sudo apt install -y libboost-all-dev qt5-default ninja-build cmake flatpak-builder flatpak
       - name: Create GetIt flatpak
         run: zsh ./packaging/linux/package.sh
       - name: Upload GetIt flatpak as build artifact

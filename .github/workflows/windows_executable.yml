@@ -3,7 +3,7 @@ name: Build Windows executable
 on:
   create:
     tags:
-      - v*
+      - 'v*'
 
 env:
   BUILD_TYPE: Release
@@ -15,13 +15,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Add VCPKG installation path to PATH variable
-      run: $Env:PATH += ";C:\vcpkg"
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v2.14.0
     - name: Install dependencies (Choco)
-      run: choco install -y qtcreator qt5-default ninja cmake
+      run: choco install -y ninja cmake
     - name: Install dependencies (VCPKG)
-      run: vcpkg install boost
+      run: vcpkg install openssl-windows:x64-windows boost-date-time:x64-windows-static boost-regex:x64-windows-static boost-system:x64-windows-static boost-interprocess:x64-windows-static boost-thread:x64-windows-static boost-chrono:x64-windows-static
+    - name: System wide VCPKG integrations
+      run: vcpkg integrate install
+    - name: Add VCPKG and Qt installation path to PATH variable
+      run: $Env:PATH += ";C:\vcpkg;${{env.Qt5_Dir}}"
     - name: Create GetIt executable
+      env:
+        CMAKE_PREFIX_PATH: ${{env.Qt5_Dir}}
       run: ./packaging/windows/package.ps1
     - name: Upload Windows executable as build artifact
       uses: actions/upload-artifact@v3.0.0
