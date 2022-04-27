@@ -25,6 +25,7 @@ jobs:
       run: vcpkg integrate install
     - name: Add VCPKG and Qt installation path to PATH variable
       run: $Env:PATH += ";C:\vcpkg;${{env.Qt5_Dir}}"
+    - uses: TheMrMilchmann/setup-msvc-dev@v1.0.0
     - name: Create GetIt executable
       env:
         CMAKE_PREFIX_PATH: ${{env.Qt5_Dir}}
