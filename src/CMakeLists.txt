@@ -38,6 +38,7 @@ set(SOURCEFILES
 
     presentation/highlighters/SyntaxHighlighter.cpp
 
+    presentation/windows/VariablesWindow/VariablesWindowController.cpp
     presentation/windows/VariablesWindow/VariablesWindow.cpp
     presentation/windows/MainWindow.cpp
 

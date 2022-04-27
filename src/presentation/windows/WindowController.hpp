@@ -1,0 +1,8 @@
+//
+// Created by Bart Kessels on 27/04/2022.
+//
+
+#ifndef GETIT_WINDOWCONTROLLER_HPP
+#define GETIT_WINDOWCONTROLLER_HPP
+
+#endif //GETIT_WINDOWCONTROLLER_HPP
