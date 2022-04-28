@@ -133,6 +133,8 @@ The following variables can be set through the `-D<variable>=` flag for the `cma
   * This is to tell what target is used by VCPKG, set it to `-DVCPKG_TARGET_TRIPLET="x64-windows-static"`
 * `Boost_INCLUDE_DIR`
   * When you're getting the message that the `Boost_INCLUDE_DIR` isn't set, set it to `-DBoost_INCLUDE_DIR="C:\\vcpk\\installed\\x64-windows-static\\include"`
+* `OPENSSL_INCLUDE_DIR`
+  * When you're getting the message that the `OPENSSL_INCLUDE_DIR` isn't set, set it to `-DOPENSSL_INCLUDE_DIR="C:\\vcpk\\installed\\x64-windows-static\\include"`
 
 ```powershell
 C:\GetIt> cmake . -G `"Visual Studio 17 2022`"
@@ -165,10 +167,10 @@ This is not completed yet, there is going to be a script to generate a flatpak b
 ## 4.3 Windows
 
 Build the Windows executable by running the following commands. This will build GetIt and add all the required 
-dependencies in the executable.
+dependencies in the executable. Please refer to the building section of Windows when you're getting error messages.
 
 ```powershell
-C:\GetIt> cmake . -G `"Visual Studio 17 2022`"
+C:\GetIt> cmake . -G `"Visual Studio 17 2022`" -Dpackaging=true
 C:\GetIt> msbuild GetIt.sln -property:Configuration=Release
 
 # Add the Qt dependencies to the executable
