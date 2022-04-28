@@ -26,17 +26,17 @@ jobs:
     - name: System wide VCPKG integrations
       run: vcpkg integrate install
     - name: Add VCPKG and Qt installation path to PATH variable
-      run: $Env:PATH += ";C:\vcpkg;${{env.Qt5_Dir}}"
+      run: $Env:PATH += ';C:\vcpkg;${{env.Qt5_Dir}}'
     - name: Create GetIt solution
       env:
         CMAKE_PREFIX_PATH: ${{env.Qt5_Dir}}
-        CMAKE_TOOLCHAIN_FILE: "C:\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake"
-        CMAKE_CXX_FLAGS: "-w"
-        VCPKG_TARGET_TRIPLET: "x64-windows-static"
-        Boost_INCLUDE_DIR: "C:\\vcpkg\\installed\\x64-windows-static\\include"
-        OPENSSL_INCLUDE_DIR: "C:\\vcpkg\\installed\\x64-windows-static\\include"
+        CMAKE_TOOLCHAIN_FILE: 'C:\vcpkg\scripts\buildsystems\vcpkg.cmake'
+        CMAKE_CXX_FLAGS: '-w'
+        VCPKG_TARGET_TRIPLET: 'x64-windows-static'
+        Boost_INCLUDE_DIR: 'C:\vcpkg\installedx64-windows-staticinclude'
+        OPENSSL_INCLUDE_DIR: 'C:\vcpkg\installed\x64-windows-static\include'
         packaging: true
-      run: cmake . -G `"Visual Studio 17 2022`" -DBoost_INCLUDE_DIR="C:\\vcpkg\\installed\\x64-windows-static\\include" -DOPENSSL_INCLUDE_DIR="C:\\vcpkg\\installed\\x64-windows-static\\include"
+      run: cmake . -G 'Visual Studio 17 2022'
     - name: Build GetIt
       run: msbuild GetIt.sln -property:Configuration=Release
     - name: Add Qt dependencies to built executable
