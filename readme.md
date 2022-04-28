@@ -121,18 +121,28 @@ or double-clicking the file through your file browser.
 
 ## 3.3 Windows
 
-__NOT TESTED YET!__
+The following variables can be set through the `-D<variable>=` flag for the `cmake` command.
 
-The following steps have not been tested yet, if you follow these steps, and it works, please open a PR
-to remove this warning. If these steps don't work, and you've got a working solution. Please also open a PR to
-include your steps here.
+* `CMAKE_PREFIX_PATH`
+  * If CMake can't find the Qt libraries add the location of the Qt directory to this property: `-DCMAKE_PREFIX_PATH=C:\Qt5` 
+* `CMAKE_TOOLCHAIN_FILE`
+  * When using VCPKG to install dependencies like Boost, use this flag to tell CMake where to locate these packkages: `-DCMAKE_TOOLCHAIN_FILE=C:\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake`
+* `CMAKE_CXX_FLAGS`
+  * When you're getting a lot of warnings but they're not neccessary ignore them with `-DCMAKE_CXX_FLAGS="-w"`, or enable them all with `-DCMAKE_CXX_FLAGS="-Wall"`
+* `VCPKG_TARGET_TRIPLET`
+  * This is to tell what target is used by VCPKG, set it to `-DVCPKG_TARGET_TRIPLET="x64-windows-static"`
+* `Boost_INCLUDE_DIR`
+  * When you're getting the message that the `Boost_INCLUDE_DIR` isn't set, set it to `-DBoost_INCLUDE_DIR="C:\\vcpk\\installed\\x64-windows-static\\include"`
 
-```bash
-$ cmake . -G Ninja
-$ ninja GetIt
+```powershell
+C:\GetIt> cmake . -G `"Visual Studio 17 2022`"
+C:\GetIt> msbuild GetIt.sln -property:Configuration=Release
 ```
 
 This will create the `./bin/GetIt.exe` executable. It can be executed by double-clicking the file from Explorer.
+
+Please note that this app bundle does __NOT__ include the dependencies or the Qt framework. When you move
+the executable to a different location on your computer (or another computer altogether) the application might not start.
 
 # 4. Package
 
@@ -154,7 +164,16 @@ This is not completed yet, there is going to be a script to generate a flatpak b
 
 ## 4.3 Windows
 
-This is not completed yet, there is going to be a script to generate a Windows executable file.
+Build the Windows executable by running the following commands. This will build GetIt and add all the required 
+dependencies in the executable.
+
+```powershell
+C:\GetIt> cmake . -G `"Visual Studio 17 2022`"
+C:\GetIt> msbuild GetIt.sln -property:Configuration=Release
+
+# Add the Qt dependencies to the executable
+C:\GetIt> windeployqt bin\GetIt.exe
+```
 
 # 5. Automated testing
 
