@@ -25,10 +25,23 @@ jobs:
       run: vcpkg integrate install
     - name: Add VCPKG and Qt installation path to PATH variable
       run: $Env:PATH += ";C:\vcpkg;${{env.Qt5_Dir}}"
-    - name: Create GetIt executable
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
+    - name: Create GetIt solution
       env:
         CMAKE_PREFIX_PATH: ${{env.Qt5_Dir}}
-      run: ./packaging/windows/package.ps1
+        CMAKE_TOOLCHAIN_FILE: "C:\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake"
+        CMAKE_CXX_FLAGS: "-w"
+        VCPKG_TARGET_TRIPLET: "x64-windows-static"
+        Boost_INCLUDE_DIR: "C:\\vcpkg\\installed\\x64-windows-static\\include"
+        packaging: true
+      run: cmake . -G `"Visual Studio 17 2022`"
+    - name: Build GetIt
+      run: msbuild GetIt.sln -property:Configuration=Release
+    - name: Add Qt dependencies to built executable
+      run: windeployqt ./bin/GetIt.exe
+    - name: Zip GetIt executable
+      run: 7z a -tzip getit.zip ./bin/GetIt.exe
     - name: Upload Windows executable as build artifact
       uses: actions/upload-artifact@v3.0.0
       with:
