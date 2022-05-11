@@ -105,11 +105,10 @@ the bundle to a different location on your computer (or another computer altoget
 
 ## 3.2 Linux
 
-__NOT TESTED YET!__
+The following variables can be set through the `-D<variable>=` flag for the `cmake` command.
 
-The following steps have not been tested yet, if you follow these steps, and it works, please open a PR
-to remove this warning. If these steps don't work, and you've got a working solution. Please also open a PR to
-include your steps here.
+* `CMAKE_CXX_FLAGS`
+  * When you're getting a lot of warnings but they're not neccessary ignore them with `-DCMAKE_CXX_FLAGS="-w"`, or enable them all with `-DCMAKE_CXX_FLAGS="-Wall"`
 
 ```bash
 $ cmake . -G Ninja
@@ -162,7 +161,21 @@ multiple systems.
 
 ## 4.2 Linux
 
-This is not completed yet, there is going to be a script to generate a flatpak bundle.
+Build the flatpak bundle by running the following commands. This create the flatpak bundle that
+you can run if you have the flatpak runtime installed.
+
+Please refer to the building section of Linux when you're getting an error message.
+
+```bash
+# Prepare the flatpak template
+$ cmake -G Ninja -Dpackaging=true
+
+# Create the flatpak repository for our bundle
+$ flatpak-builder --repo=getit_repo getit ./packaging/linux/getit.yml
+
+# Create the bundle itself
+$ flatpak build-bundle getit_repo getit.flatpak net.bartkessels.getit
+```
 
 ## 4.3 Windows
 
