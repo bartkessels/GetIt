@@ -33,7 +33,7 @@ jobs:
         CMAKE_TOOLCHAIN_FILE: 'C:\vcpkg\scripts\buildsystems\vcpkg.cmake'
         CMAKE_CXX_FLAGS: '-w'
         VCPKG_TARGET_TRIPLET: 'x64-windows-static'
-        Boost_INCLUDE_DIR: 'C:\vcpkg\installedx64-windows-staticinclude'
+        Boost_INCLUDE_DIR: 'C:\vcpkg\installedx64-windows-static\include'
         OPENSSL_INCLUDE_DIR: 'C:\vcpkg\installed\x64-windows-static\include'
         packaging: true
       run: cmake . -G 'Visual Studio 17 2022'
