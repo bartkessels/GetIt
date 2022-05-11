@@ -19,21 +19,28 @@ jobs:
         run: sudo apt update && sudo apt upgrade -y
       - name: Install dependencies
         run: sudo apt install -y libboost-all-dev qt5-default ninja-build cmake flatpak-builder flatpak
-      - name: Create GetIt flatpak
-        run: zsh ./packaging/linux/package.sh
+      - name: Prepare flatpak template
+        env:
+          CMAKE_CXX_FLAGS: '-w'
+          packaging: true
+        run:  cmake .  -G Ninja
+      - name: Repair flatpak installation
+        run: flatpak repair
+      - name: Create flatpak repository for GetIt
+        run: flatpak-builder --repo=getit_repo getit ./packaging/linux/getit.yml
+      - name: Create flatpak bundle
+        run: flatpak build-bundle getit_repo getit.flatpak net.bartkessels.getit
+      - name: Zip flatpak bundle
+        run: zip -rT getit.zip ./bin/getit.flatpak >> /dev/null
       - name: Upload GetIt flatpak as build artifact
         uses: actions/upload-artifact@v3.0.0
         with:
           name: GetIt-Linux-Flatpak.zip
           path: ./getit.zip
-      - name: Upload Linux flatpak as release artifact
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
         with:
-          upload_url: https://github.com/bartkessels/GetIt/releases/latest
-          asset_path: ./getit.zip
-          asset_name: GetIt-Linux-Flatpak.zip
-          asset_content_type: application/zip
-
-
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./getit.zip
+          asset_name: GetIt-Linux-x64.zip
+          tag: ${{ github.ref }}
