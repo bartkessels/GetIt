@@ -20,10 +20,7 @@ jobs:
       - name: Install dependencies
         run: sudo apt install -y libboost-all-dev qt5-default ninja-build cmake flatpak-builder flatpak
       - name: Prepare flatpak template
-        env:
-          CMAKE_CXX_FLAGS: '-w'
-          packaging: true
-        run:  cmake .  -G Ninja
+        run:  cmake .  -G Ninja -Dpackaging=true
       - name: Repair flatpak installation
         run: flatpak repair
       - name: Create flatpak repository for GetIt
