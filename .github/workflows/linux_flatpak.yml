@@ -21,8 +21,8 @@ jobs:
         run: sudo apt install -y libboost-all-dev qt5-default ninja-build cmake flatpak-builder flatpak
       - name: Prepare flatpak template
         run:  cmake .  -G Ninja -Dpackaging=true
-      - name: Repair flatpak installation
-        run: flatpak repair
+      - name: Add Flathub to flatpak refs
+        run: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
       - name: Install Qt/Kde runtime
         run: flatpak install flathub org.kde.Platform//5.15-21.08
       - name: Install Qt/Kde SDK
