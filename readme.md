@@ -92,6 +92,11 @@ aren't required.
 
 ## 3.1 MacOS
 
+The following variables can be set through the `-D<variable>=` flag for the `cmake` command.
+
+* `CMAKE_CXX_FLAGS`
+  * When you're getting a lot of warnings but they're not neccessary ignore them with `-DCMAKE_CXX_FLAGS="-w"`, or enable them all with `-DCMAKE_CXX_FLAGS="-Wall"`
+
 ```bash
 # Disable warnings as error, these warning are from the CppRestSdk dependency
 $ cmake . -G Ninja -D CMAKE_CXX_FLAGS="-w"
@@ -152,8 +157,17 @@ the executable to a different location on your computer (or another computer alt
 Build the MacOS app bundle with all dependencies and framework included by running the `package.sh` script
 in the MacOS packaging folder.
 
+Please refer to the building section of MacOS when you're getting an error message.
+
 ```bash
-$ zsh ./packaging/macos/package.sh
+# Create the project files
+$ cmake . -G Ninja -Dpackaging=true
+
+# Generate the MacOS Bundle
+$ ninja GetIt
+
+# Copy the icon of GetIt to the app bundle
+$ cp ./packaging/macos/icons/getit.icns ./bin/GetIt.app/Contents/Resources
 ```
 
 This will create the `./bin/GetIt.app` app bundle with all required dependencies. This file can be distributed across
@@ -168,7 +182,7 @@ Please refer to the building section of Linux when you're getting an error messa
 
 ```bash
 # Prepare the flatpak template
-$ cmake -G Ninja -Dpackaging=true
+$ cmake . -G Ninja -Dpackaging=true
 
 # Create the flatpak repository for our bundle
 $ flatpak-builder --repo=getit_repo getit ./packaging/linux/getit.yml
