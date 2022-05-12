@@ -23,6 +23,8 @@ jobs:
       run: ninja GetIt
     - name: Link Qt to app bundle
       run: macdeployqt ./bin/GetIt.app -timestamp -libpath=./_deps
+    - name: Copy icon to MacOS Bundle
+      run: cp ./packaging/macos/icons/getit.icns ./bin/GetIt.app/Contents/Resources
     - name: Zip MacOS Bundle
       run: zip -rT getit.zip ./bin/GetIt.app >> /dev/null
     - name: Upload MacOS bundle as build artifact
