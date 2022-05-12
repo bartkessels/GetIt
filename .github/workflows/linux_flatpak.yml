@@ -23,8 +23,10 @@ jobs:
         run:  cmake .  -G Ninja -Dpackaging=true
       - name: Repair flatpak installation
         run: flatpak repair
-      - name: Install Qt runtime and SDK
-        run: flatpak install org.kde.Platform org.kde.Sdk
+      - name: Install Qt/Kde runtime
+        run: flatpak install flathub org.kde.Platform//5.15-21.08
+      - name: Install Qt/Kde SDK
+        run: flatpak install flathub org.kde.Sdk//5.15-21.08       
       - name: Create flatpak repository for GetIt
         run: flatpak-builder --repo=getit_repo getit ./packaging/linux/getit.yml
       - name: Create flatpak bundle
