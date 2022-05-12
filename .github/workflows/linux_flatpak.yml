@@ -22,7 +22,7 @@ jobs:
       - name: Prepare flatpak template
         run:  cmake .  -G Ninja -Dpackaging=true
       - name: Add Flathub to flatpak refs
-        run: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        run: flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
       - name: Install Qt/Kde runtime
         run: flatpak install flathub org.kde.Platform//5.15-21.08
       - name: Install Qt/Kde SDK
