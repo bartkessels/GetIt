@@ -16,10 +16,12 @@ set(CMAKE_EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/build)
 # Subdirectories
 add_subdirectory(third_party)
 add_subdirectory(src)
-add_subdirectory(tests)
 
 # Only build packages when the -Dpackaging=true flag is set
 IF (packaging)
     add_subdirectory(packaging)
+ELSE()
+    # Only build test project when packaging is disabled
+    add_subdirectory(tests)
 ENDIF()
 
