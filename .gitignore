@@ -14,6 +14,7 @@ CMakeScripts/
 .ninja*
 *.ninja
 *.zip
+*.tar.gz*
 
 .DS_Store
 *.cbp
@@ -23,3 +24,4 @@ CMakeScripts/
 MakeFile
 *Cache*
 getit
+.flatpak-builder
