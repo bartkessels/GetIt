@@ -7,6 +7,8 @@ on:
 
 env:
   BUILD_TYPE: Release
+  SDK_VERSION: 6.2
+  ARCHITECTURE: x86_64
 
 jobs:
   build:
@@ -24,9 +26,9 @@ jobs:
       - name: Add Flathub to flatpak refs
         run: flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
       - name: Install Qt/Kde runtime
-        run: flatpak install --user flathub org.kde.Platform/5.15-21.08
+        run: flatpak install --user -y flathub runtime/org.kde.Platform/${{env.ARCHITECTURE}}/${{env.SDK_VERSION}}
       - name: Install Qt/Kde SDK
-        run: flatpak install --user flathub org.kde.Sdk/5.15-21.08       
+        run: flatpak install --user -y flathub runtime/org.kde.Sdk/${{env.ARCHITECTURE}}/${{env.SDK_VERSION}}      
       - name: Create flatpak repository for GetIt
         run: flatpak-builder --repo=getit_repo getit ./packaging/linux/getit.yml
       - name: Create flatpak bundle
