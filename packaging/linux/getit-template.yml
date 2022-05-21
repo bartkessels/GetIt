@@ -16,6 +16,10 @@ modules:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -Dpackaging=true
     sources:
+      - type: git
+        url: https://github.com/microsoft/cpprestsdk.git
+      - type: git
+        url: https://github.com/nlohmann/json.git
       - type: archive
         url: {tarball-url}
         sha256: {tarball-hash}
