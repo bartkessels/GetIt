@@ -88,7 +88,7 @@ aren't required.
 - [CMake](https://cmake.org)
   - Cross-platform build tool generator
 
-If you set the `use_installed_dependencies` flag when running the `cmake` command, you also need the following dependencies. __Note that this is NOT required by default__.
+If you set the `use_installed_dependencies` flag to `true` when running the `cmake` command, you also need the following dependencies. __Note that this is NOT required by default__.
 
 - [CppRestSDK](https://github.com/microsoft/cpprestsdk)
   - The library used to make HTTP calls
@@ -102,7 +102,7 @@ If you set the `use_installed_dependencies` flag when running the `cmake` comman
 The following variables can be set through the `-D<variable>=` flag for the `cmake` command.
 
 * `use_installed_dependencies`
-  * If you've got all GetIt dependencies installed, use this variable to make sure that CMake won't download the dependencies.
+  * If you've got all GetIt dependencies installed, set this variable to `true` to make sure that CMake won't download the dependencies. The default value is `false`.
 * `CMAKE_CXX_FLAGS`
   * When you're getting a lot of warnings but they're not neccessary ignore them with `-DCMAKE_CXX_FLAGS="-w"`, or enable them all with `-DCMAKE_CXX_FLAGS="-Wall"`
 
@@ -122,7 +122,7 @@ the bundle to a different location on your computer (or another computer altoget
 The following variables can be set through the `-D<variable>=` flag for the `cmake` command.
 
 * `use_installed_dependencies`
-  * If you've got all GetIt dependencies installed, use this variable to make sure that CMake won't download the dependencies.
+  * If you've got all GetIt dependencies installed, set this variable to `true` to make sure that CMake won't download the dependencies. The default value is `false`.
 * `CMAKE_CXX_FLAGS`
   * When you're getting a lot of warnings but they're not neccessary ignore them with `-DCMAKE_CXX_FLAGS="-w"`, or enable them all with `-DCMAKE_CXX_FLAGS="-Wall"`
 
@@ -139,7 +139,7 @@ or double-clicking the file through your file browser.
 The following variables can be set through the `-D<variable>=` flag for the `cmake` command.
 
 * `use_installed_dependencies`
-  * If you've got all GetIt dependencies installed, use this variable to make sure that CMake won't download the dependencies.
+  * If you've got all GetIt dependencies installed, set this variable to `true` to make sure that CMake won't download the dependencies. The default value is `false`.
 * `CMAKE_PREFIX_PATH`
   * If CMake can't find the Qt libraries add the location of the Qt directory to this property: `-DCMAKE_PREFIX_PATH=C:\Qt5` 
 * `CMAKE_TOOLCHAIN_FILE`
