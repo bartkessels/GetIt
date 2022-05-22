@@ -3,31 +3,30 @@ include(FetchContent)
 
 # Build dependencies
 
+
 # ------------------------------------------------------------------------------
 # Cpp rest SDK
-SET(BUILD_TESTS OFF)
-SET(BUILD_SAMPLES OFF)
 
-FetchContent_Declare(
+IF (NOT cpprest_FOUND)
+    FetchContent_Declare(
         extern_restsdk
 
         GIT_REPOSITORY https://github.com/microsoft/cpprestsdk.git
         GIT_TAG        2.10.18)
-FetchContent_MakeAvailable(extern_restsdk)
-
-SET(BUILD_TESTS ON)
-SET(BUILD_SAMPLES ON)
+    FetchContent_MakeAvailable(extern_restsdk)
+ENDIF()
 
 # ------------------------------------------------------------------------------
 # JSON
-SET(JSON_BuildTests OFF)
 
-FetchContent_Declare(
+IF (NOT test)
+    FetchContent_Declare(
         extern_json
 
         GIT_REPOSITORY https://github.com/nlohmann/json.git
         GIT_TAG        v3.10.5)
-FetchContent_MakeAvailable(extern_json)
+    FetchContent_MakeAvailable(extern_json)
+ENDIF()
 
 IF (NOT packaging) # Test dependencies
 
