@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies (Choco)
       run: choco install -y ninja cmake
     - name: Install dependencies (VCPKG)
-      run: vcpkg install zlib:x64-windows-static openssl-windows:x64-windows-static boost-date-time:x64-windows-static boost-regex:x64-windows-static boost-system:x64-windows-static boost-interprocess:x64-windows-static boost-thread:x64-windows-static boost-chrono:x64-windows-static
+      run: vcpkg install zlib:x64-windows-static openssl-windows:x64-windows-static boost-date-time:x64-windows-static boost-regex:x64-windows-static boost-system:x64-windows-static boost-interprocess:x64-windows-static boost-thread:x64-windows-static boost-chrono:x64-windows-static cpprestsdk:x64-windows-static
     - name: System wide VCPKG integrations
       run: vcpkg integration install
     - name: Add VCPKG and Qt installation path to PATH variable
