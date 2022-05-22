@@ -24,13 +24,13 @@ jobs:
     - name: Install dependencies (Choco)
       run: choco install -y ninja cmake
     - name: Install dependencies (VCPKG)
-      run: vcpkg install zlib:x64-windows-static openssl-windows:x64-windows-static boost-date-time:x64-windows-static boost-regex:x64-windows-static boost-system:x64-windows-static boost-interprocess:x64-windows-static boost-thread:x64-windows-static boost-chrono:x64-windows-static cpprestsdk:x64-windows-static
+      run: vcpkg install boost-system:x64-windows-static cpprestsdk:x64-windows-static nlohmann-json:x64-windows-static
     - name: System wide VCPKG integrations
       run: vcpkg integrate install
     - name: Add VCPKG and Qt installation path to PATH variable
       run: $Env:PATH += ';C:\vcpkg;${{env.VCPKG_INCLUDE_DIR}};${{env.Qt5_Dir}}'
     - name: Create GetIt solution
-      run: cmake . -G 'Visual Studio 17 2022' -Dpackaging=true -DCMAKE_CXX_FLAGS='/w' -DCMAKE_PREFIX_PATH=${{env.Qt5_Dir}} -DCMAKE_TOOLCHAIN_FILE=${{env.VCPKG_CMAKE_TOOLCHAIN}} -DVCPKG_TARGET_TRIPLET='x64-windows-static' -DBoost_INCLUDE_DIR=${{env.VCPKG_INCLUDE_DIR}} -DOPENSSL_INCLUDE_DIR=${{env.VCPKG_INCLUDE_DIR}} -DZLIB_INCLUDE_DIR=${{env.VCPKG_INCLUDE_DIR}}
+      run: cmake . -G 'Visual Studio 17 2022' -Dpackaging=true -Duse_installed_dependencies=true -DCMAKE_CXX_FLAGS='/w' -DCMAKE_PREFIX_PATH=${{env.Qt5_Dir}} -DCMAKE_TOOLCHAIN_FILE=${{env.VCPKG_CMAKE_TOOLCHAIN}} -DVCPKG_TARGET_TRIPLET='x64-windows-static' -DBoost_INCLUDE_DIR=${{env.VCPKG_INCLUDE_DIR}}
     - name: Build GetIt
       run: msbuild GetIt.sln -property:Configuration=Release
     - name: Add Qt dependencies to built executable
