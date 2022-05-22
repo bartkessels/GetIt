@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: sudo apt install -y libboost-all-dev qt5-default ninja-build cmake flatpak-builder flatpak
       - name: Prepare flatpak template
-        run:  cmake .  -G Ninja -Dpackaging=true
+        run:  cmake . -G Ninja -Dpackaging=true
       - name: Add Flathub to flatpak refs
         run: flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
       - name: Install Qt/Kde runtime
