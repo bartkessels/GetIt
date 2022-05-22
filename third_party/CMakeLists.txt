@@ -19,7 +19,7 @@ ENDIF()
 # ------------------------------------------------------------------------------
 # JSON
 
-IF (NOT test)
+IF (NOT nlohmann_json_FOUND)
     FetchContent_Declare(
         extern_json
 
