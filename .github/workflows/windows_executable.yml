@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies (Choco)
       run: choco install -y ninja cmake
     - name: Install dependencies (VCPKG)
-      run: vcpkg install boost-system:x64-windows-static cpprestsdk:x64-windows-static nlohmann-json:x64-windows-static
+      run: vcpkg install boost-system:x64-windows-static boost-format:x64-windows-static cpprestsdk:x64-windows-static nlohmann-json:x64-windows-static
     - name: System wide VCPKG integrations
       run: vcpkg integrate install
     - name: Add VCPKG and Qt installation path to PATH variable
