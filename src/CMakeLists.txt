@@ -5,7 +5,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-find_package(Boost COMPONENTS system format REQUIRED)
+find_package(Boost COMPONENTS system REQUIRED)
 
 # Try to use Qt6 if it's available, otherwise
 # fall back to Qt5
@@ -58,7 +58,7 @@ install(TARGETS ${CMAKE_PROJECT_NAME}
 )
 
 # Link libraries
-target_link_libraries(${CMAKE_PROJECT_NAME} Boost::system Boost::format)
+target_link_libraries(${CMAKE_PROJECT_NAME} Boost::system)
 target_link_libraries(${CMAKE_PROJECT_NAME} cpprest)
 target_link_libraries(${CMAKE_PROJECT_NAME} nlohmann_json)
 
