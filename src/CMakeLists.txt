@@ -9,7 +9,7 @@ find_package(Boost COMPONENTS system REQUIRED)
 
 if (use_installed_dependencies)
     find_package(nlohmann_json REQUIRED)
-    find_package(cpprest REQUIRED)
+    find_package(cpprestsdk REQUIRED)
 endif()
 
 if (UseQt6)
