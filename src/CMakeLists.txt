@@ -7,9 +7,10 @@ set(CMAKE_AUTORCC ON)
 
 find_package(Boost COMPONENTS system REQUIRED)
 
-# Try to use Qt6 if it's available, otherwise
-# fall back to Qt5
-option(UseQt6 "Enable this if you want to use Qt6, instead of Qt5" no)
+if (use_installed_dependencies)
+    find_package(nlohmann_json REQUIRED)
+    find_package(cpprest REQUIRED)
+endif()
 
 if (UseQt6)
     find_package(Qt6 COMPONENTS Widgets REQUIRED)

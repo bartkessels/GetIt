@@ -9,7 +9,7 @@ project(GetIt
 # Arguments
 OPTION(use_installed_dependencies "Use installed dependencies from the system" false)
 OPTION(packaging "Build the packages for GetIt" false)
-OPTION(UseQt6 "Use Qt6 instead of Qt5" false)
+option(UseQt6 "Enable this if you want to use Qt6 instead of Qt5" false)
 
 # General project setup
 set(CMAKE_CXX_STANDARD 17)
