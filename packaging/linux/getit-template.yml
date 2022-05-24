@@ -20,7 +20,17 @@ modules:
     sources:
       - type: archive
         url: https://boostorg.jfrog.io/artifactory/main/release/1.79.0/source/boost_1_79_0.tar.bz2
-        sha256: "475d589d51a7f8b3ba2ba4eda022b170e562ca3b760ee922c146b6c65856ef39"
+        sha256: 475d589d51a7f8b3ba2ba4eda022b170e562ca3b760ee922c146b6c65856ef39
+
+  - name: Nlohman-Json
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_CXX_FLAGS='-w'
+      - -DJSON_BuildTests=off
+      - -DJSON_Diagnostics=off
+    sources:
+      - type: git
+        url: https://github.com/nlohmann/json.git
 
   - name: CppRestSDK
     buildsystem: cmake-ninja
@@ -34,21 +44,11 @@ modules:
       - type: git
         url: https://github.com/microsoft/cpprestsdk.git
 
-  - name: Nlohman-Json
-    buildsystem: cmake-ninja
-    config-opts:
-      - -DCMAKE_CXX_FLAGS='-w'
-      - -DJSON_BuildTests=off
-      - -DJSON_Diagnostics=off
-    sources:
-      - type: git
-        url: https://github.com/nlohmann/json.git
-
   - name: GetIt
     buildsystem: simple
     builddir: true
     build-commands:
-      - cmake . -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -Dpackaging=true -Duse_installed_dependencies=true -DUseQt6=true -DCMAKE_CXX_FLAGS=-w
+      - cmake . -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -Dpackaging=true -Duse_installed_dependencies=true -DUseQt6=true -DCMAKE_CXX_FLAGS=-w -DCMAKE_PREFIX_PATH=./include
       - ninja GetIt
     sources:
       - type: git
