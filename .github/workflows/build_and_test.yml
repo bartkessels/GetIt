@@ -42,4 +42,6 @@ jobs:
     - name: Run tests
       run: ./bin/getit_tests
     - uses: codecov/codecov-action@v2.1.0
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
     
