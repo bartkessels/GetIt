@@ -34,7 +34,9 @@ jobs:
         $devenv = & vswhere.exe '-property' productPath
         Start-Process -FilePath $devenv -ArgumentList 'GetIt.sln /Build' -Wait
     - name: Add Qt dependencies to built executable
-      run: windeployqt ./bin/GetIt.exe
+      run: |
+        $windeployqt = '${{env.Qt5_Dir}}\bin\windeployqt.exe'
+        Start-Process -Filepath $windeployqt -AgumentList './bin/GetIt.exe'
     - name: Zip GetIt executable
       run: 7z a -tzip getit.zip ./bin/GetIt.exe
     - name: Upload Windows executable as build artifact
