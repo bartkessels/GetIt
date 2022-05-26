@@ -36,7 +36,7 @@ jobs:
     - name: Add Qt dependencies to built executable
       run: |
         $windeployqt = '${{env.Qt5_Dir}}\bin\windeployqt.exe'
-        Start-Process -Filepath $windeployqt -AgumentList './bin/GetIt.exe'
+        Start-Process -Filepath $windeployqt -ArgumentList './bin/GetIt.exe'
     - name: Zip GetIt executable
       run: 7z a -tzip getit.zip ./bin/GetIt.exe
     - name: Upload Windows executable as build artifact
