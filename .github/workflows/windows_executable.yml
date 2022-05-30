@@ -32,11 +32,11 @@ jobs:
     - name: Build GetIt
       run: |
         $devenv = & vswhere.exe '-property' productPath
-        Start-Process -FilePath $devenv -ArgumentList 'GetIt.sln /Build' -Wait
+        & $devenv GetIt.sln /Build
     - name: Add Qt dependencies to built executable
       run: |
         $windeployqt = '${{env.Qt5_Dir}}\bin\windeployqt.exe'
-        Start-Process -Filepath $windeployqt -ArgumentList './bin/GetIt.exe' -Wait
+        & $windeployqt ./bin/GetIt.exe
     - name: Zip GetIt executable
       run: 7z a -tzip getit.zip ./bin/GetIt.exe
     - name: Upload Windows executable as build artifact
