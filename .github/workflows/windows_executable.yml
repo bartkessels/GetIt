@@ -7,8 +7,9 @@ on:
 
 env:
   BUILD_TYPE: Release
-  VCPKG_CMAKE_TOOLCHAIN: 'C:\vcpkg\scripts\buildsystems\vcpkg.cmake'
-  VCPKG_INCLUDE_DIR: 'C:\vcpkg\installed\x64-windows-static\include'
+  VCPKG_CMAKE_TOOLCHAIN: C:\vcpkg\scripts\buildsystems\vcpkg.cmake
+  VCPKG_INCLUDE_DIR: C:\vcpkg\installed\x64-windows-static\include
+  MSBUILD_PATH: C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\devenv.com
 
 jobs:
   build:
@@ -30,9 +31,8 @@ jobs:
     - name: Create GetIt solution
       run: cmake . -G 'Visual Studio 17 2022' -Dpackaging=true -Duse_installed_dependencies=true -DCMAKE_CXX_FLAGS='/w' -DCMAKE_PREFIX_PATH=${{env.Qt5_Dir}} -DCMAKE_TOOLCHAIN_FILE=${{env.VCPKG_CMAKE_TOOLCHAIN}} -DVCPKG_TARGET_TRIPLET='x64-windows-static' -DBoost_INCLUDE_DIR=${{env.VCPKG_INCLUDE_DIR}}
     - name: Build GetIt
-      run: |
-        $devenv = & vswhere.exe '-property' productPath
-        & $devenv GetIt.sln /Build
+      shell: cmd
+      run: "%MSBUILD_PATH%" GetIt.sln /Build
     - name: Add Qt dependencies to built executable
       run: |
         $windeployqt = '${{env.Qt5_Dir}}\bin\windeployqt.exe'
