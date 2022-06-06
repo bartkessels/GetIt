@@ -6,6 +6,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
 find_package(Boost COMPONENTS system REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 if (use_installed_dependencies)
     find_package(nlohmann_json REQUIRED)
@@ -60,6 +61,7 @@ install(TARGETS ${CMAKE_PROJECT_NAME}
 
 # Link libraries
 target_link_libraries(${CMAKE_PROJECT_NAME} Boost::system)
+target_link_libraries(${CMAKE_PROJECT_NAME} OpenSSL::SSL OpenSSL::Crypto)
 target_link_libraries(${CMAKE_PROJECT_NAME} cpprest)
 target_link_libraries(${CMAKE_PROJECT_NAME} nlohmann_json::nlohmann_json)
 
