@@ -34,9 +34,8 @@ jobs:
       shell: cmd
       run: "%MSBUILD_PATH% GetIt.sln /Build"
     - name: Add Qt dependencies to built executable
-      run: |
-        $windeployqt = '${{env.Qt5_Dir}}\bin\windeployqt.exe'
-        & $windeployqt ./bin/GetIt.exe
+      shell: cmd
+      run: "%env.Qt5_Dir%\\bin\\windeployqt.exe bin\\GetIt.exe"
     - name: Zip GetIt executable
       run: 7z a -tzip getit.zip ./bin/GetIt.exe
     - name: Upload Windows executable as build artifact
