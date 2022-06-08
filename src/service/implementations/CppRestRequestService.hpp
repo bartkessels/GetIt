@@ -5,7 +5,6 @@
 #include <memory>
 #include <list>
 
-#include "domain/contracts/Transformation.hpp"
 #include "domain/models/Request.hpp"
 #include "domain/models/Response.hpp"
 #include "service/implementations/BaseRequestService.hpp"
@@ -19,6 +18,7 @@ namespace getit::service::implementations
         public:
             ~CppRestRequestService() override = default;
 
+        protected:
             std::future<std::shared_ptr<Response>> sendRequest(std::shared_ptr<Request> request) override;
     };
 }

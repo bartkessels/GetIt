@@ -53,7 +53,6 @@ add_executable(
         ../resources/resources.qrc
 )
 
-
 install(TARGETS ${CMAKE_PROJECT_NAME}
         RUNTIME
         DESTINATION bin

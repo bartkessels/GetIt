@@ -10,8 +10,6 @@
 #include "domain/implementations/RawRequestBody.hpp"
 #include "domain/transformations/VariablesTransformation.hpp"
 
-#include <iostream>
-
 using namespace getit::domain::models;
 using namespace getit::domain::implementations;
 using namespace getit::domain::transformations;
@@ -64,9 +62,6 @@ TEST_CASE("VariablesTransformation.transform")
         // Act
         const auto& result = sut->transform(request);
         const auto& resultBody = std::dynamic_pointer_cast<FormDataRequestBody>(result->getBody());
-
-        std::cout << "first: " << resultBody->getElements().end()->first << std::endl;
-        std::cout << "second: " << resultBody->getElements().end()->second << std::endl;
 
         // Assert
         REQUIRE(expectedElements == resultBody->getElements());
@@ -122,8 +117,6 @@ TEST_CASE("VariablesTransformation.transform")
 
         // Act
         const auto& result = sut->transform(request);
-
-        std::cout << result->getBody()->getBody();
 
         // Assert
         REQUIRE(expectedBody == result->getBody()->getBody());

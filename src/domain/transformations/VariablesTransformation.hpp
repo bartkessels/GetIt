@@ -3,7 +3,7 @@
 #include <memory>
 #include <list>
 
-#include "domain/contracts/Transformation.hpp"
+#include "domain/contracts/RequestTransformation.hpp"
 #include "domain/implementations/FormDataRequestBody.hpp"
 #include "domain/implementations/RawRequestBody.hpp"
 #include "domain/models/Request.hpp"
@@ -11,7 +11,7 @@
 
 namespace getit::domain::transformations
 {
-    class VariablesTransformation : public contracts::Transformation
+    class VariablesTransformation : public contracts::RequestTransformation
     {
         public:
             explicit VariablesTransformation(std::list<std::shared_ptr<models::Variable>>   variables);
