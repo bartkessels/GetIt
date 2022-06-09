@@ -17,8 +17,16 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install dependencies
       run: brew install boost qt ninja cmake
-    - name: Create GetIt bundle
-      run: zsh ./packaging/macos/package.sh
+    - name: Create GetIt project
+      run: cmake . -G Ninja -Dpackaging=true -DUseQt6=true -DCMAKE_CXX_FLAGS="-w"
+    - name: Create GetIt Bundle
+      run: ninja GetIt
+    - name: Link Qt to app bundle
+      run: macdeployqt ./bin/GetIt.app -timestamp -libpath=./_deps
+    - name: Copy icon to MacOS Bundle
+      run: cp ./packaging/macos/icons/getit.icns ./bin/GetIt.app/Contents/Resources
+    - name: Zip MacOS Bundle
+      run: zip -rT getit.zip ./bin/GetIt.app >> /dev/null
     - name: Upload MacOS bundle as build artifact
       uses: actions/upload-artifact@v3.0.0
       with:
