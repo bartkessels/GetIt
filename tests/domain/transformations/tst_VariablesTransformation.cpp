@@ -14,6 +14,8 @@ using namespace getit::domain::models;
 using namespace getit::domain::implementations;
 using namespace getit::domain::transformations;
 
+#include <iostream>
+
 TEST_CASE("VariablesTransformation.transform")
 {
     SECTION("replaces all variables in the uri")

@@ -2,31 +2,24 @@
 
 using namespace getit::domain::models;
 
-void Request::setMethod(const std::string& method)
+void Request::setMethod(std::string method)
 {
     this->method = method;
 }
 
-void Request::setUri(const std::string& uri)
+void Request::setUri(std::string uri)
 {
     this->uri = uri;
 }
 
-void Request::addHeader(const std::string& header, const std::string& value)
+void Request::addHeader(std::string header, std::string value)
 {
     this->headers.emplace(header, value);
 }
 
-void Request::setVariables(std::list<std::shared_ptr<Variable>> variables)
+void Request::setHeaders(std::map<std::string, std::string> headers)
 {
-    this->variables = variables;
-}
-
-void Request::setHeaders(const std::map<std::string, std::string>& headers)
-{
-    for (const auto& [header, value] : headers) {
-        this->addHeader(header, value);
-    }
+    this->headers = headers;
 }
 
 void Request::setBody(std::shared_ptr<RequestBody> body)
@@ -42,11 +35,6 @@ std::string Request::getMethod()
 std::string Request::getUri()
 {
     return this->uri;
-}
-
-std::list<std::shared_ptr<Variable>> Request::getVariables()
-{
-    return this->variables;
 }
 
 std::map<std::string, std::string> Request::getHeaders()

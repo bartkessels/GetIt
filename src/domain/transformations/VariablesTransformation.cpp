@@ -1,12 +1,10 @@
 #include "domain/transformations/VariablesTransformation.hpp"
 
-#include <utility>
-
 using namespace getit::domain::transformations;
 using namespace getit::domain::implementations;
 using namespace getit::domain::models;
 
-VariablesTransformation::VariablesTransformation(std::list<std::shared_ptr<models::Variable>>   variables):
+VariablesTransformation::VariablesTransformation(std::list<std::shared_ptr<models::Variable>> variables):
     variables(std::move(variables))
 {
 
@@ -37,7 +35,7 @@ std::shared_ptr<Request> VariablesTransformation::transformHeaders(std::shared_p
     std::map<std::string, std::string> headers;
 
     for (const auto& header : request->getHeaders()) {
-        headers.emplace(transformPair(header, variable));
+        headers.insert(transformPair(header, variable));
     }
 
     request->setHeaders(headers);
@@ -61,11 +59,11 @@ std::shared_ptr<FormDataRequestBody> VariablesTransformation::transformFormdataB
     std::map<std::string, std::string> files;
 
     for (const auto& element : body->getElements()) {
-        elements.emplace(transformPair(element, variable));
+        elements.insert(transformPair(element, variable));
     }
 
     for (const auto& file : body->getFiles()) {
-        files.emplace(transformPair(file, variable));
+        files.insert(transformPair(file, variable));
     }
 
     body->setElements(elements);

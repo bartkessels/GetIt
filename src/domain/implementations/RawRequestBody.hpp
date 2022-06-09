@@ -23,6 +23,6 @@ namespace getit::domain::implementations
             std::string body;
             std::string contentType;
 
-            const std::string DEFAULT_CONTENT_TYPE = "text/plain";
+            static inline const std::string DEFAULT_CONTENT_TYPE = "text/plain";
     };
 }

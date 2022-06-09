@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <list>
+#include <utility>
 
 #include "domain/contracts/RequestTransformation.hpp"
 #include "domain/implementations/FormDataRequestBody.hpp"
@@ -14,7 +15,7 @@ namespace getit::domain::transformations
     class VariablesTransformation : public contracts::RequestTransformation
     {
         public:
-            explicit VariablesTransformation(std::list<std::shared_ptr<models::Variable>>   variables);
+            explicit VariablesTransformation(std::list<std::shared_ptr<models::Variable>> variables);
             ~VariablesTransformation() override = default;
 
             std::shared_ptr<domain::models::Request> transform(std::shared_ptr<domain::models::Request> request) override;
