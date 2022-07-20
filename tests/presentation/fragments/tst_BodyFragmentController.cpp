@@ -8,7 +8,6 @@
 using namespace getit;
 using namespace getit::domain::implementations;
 using namespace getit::presentation::fragments;
-using trompeloeil::_;
 
 class BodyFragmentViewMock: public IBodyFragmentView
 {

@@ -2,21 +2,12 @@
 #include <trompeloeil.hpp>
 #include <memory>
 
-#include "data/exceptions/NoAvailableRepositoryException.hpp"
 #include "data/factories/RequestRepositoryFactory.hpp"
 #include "data/repositories/RequestRepository.hpp"
 #include "domain/factories/RequestFactory.hpp"
-#include "domain/implementations/FormDataRequestBody.hpp"
 #include "domain/implementations/RawRequestBody.hpp"
-#include "domain/models/Request.hpp"
 
 using namespace getit::data::factories;
-
-class RequestMock: public getit::domain::models::Request
-{
-    public:
-        MAKE_MOCK0(getBody, std::shared_ptr<getit::domain::models::RequestBody>());
-};
 
 TEST_CASE("RequestRepositoryFactory.getRepository")
 {
