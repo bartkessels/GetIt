@@ -1,21 +1,11 @@
 #include "presentation/windows/MainWindow.hpp"
 #include "./ui_MainWindow.h"
 
-using namespace getit::data::contracts;
-using namespace getit::domain::contracts;
+using namespace getit::presentation;
 using namespace getit::presentation::windows;
-using namespace getit::service::contracts;
 
-MainWindow::MainWindow(
-        std::shared_ptr<RequestFactory> requestFactory,
-        std::shared_ptr<RequestServiceFactory> requestServiceFactory,
-        std::shared_ptr<RequestRepositoryFactory> requestRepositoryFactory,
-        QWidget* parent
-):
+MainWindow::MainWindow(QWidget* parent):
     QMainWindow(parent),
-    requestFactory(std::move(requestFactory)),
-    requestServiceFactory(std::move(requestServiceFactory)),
-    requestRepositoryFactory(std::move(requestRepositoryFactory)),
     ui(new Ui::MainWindow())
 {
     this->ui->setupUi(this);
@@ -37,43 +27,29 @@ MainWindow::~MainWindow()
     delete this->ui;
 }
 
-std::shared_ptr<getit::domain::models::Request> MainWindow::getRequest()
+void MainWindow::setViewModel(std::shared_ptr<IMainWindowViewModel> viewModel)
 {
-    auto method = ui->method->currentText().toStdString();
-    auto uri = ui->uri->text().toStdString();
-    auto headers = headersController->getContent();
-    auto request = requestFactory->getRequest(method, uri, headers);
-
-    request->setBody(bodyController->getContent());
-
-    return request;
+    this->viewModel = viewModel;
 }
 
-void MainWindow::setRequest(const std::shared_ptr<getit::domain::models::Request>& request)
+void MainWindow::updateState(std::shared_ptr<states::RequestState> state)
 {
-    ui->method->setCurrentText(QString::fromStdString(request->getMethod()));
-    ui->uri->setText(QString::fromStdString(request->getUri()));
-
-    bodyController->setContent(request->getBody());
-    headersController->setContent(request->getHeaders());
-}
-
-void MainWindow::sendRequest()
-{
-    const auto& requestService = requestServiceFactory->getRequestService();
-    auto request = getRequest();
-
-    QThread::create([this, requestService, request] {
-        try
-        {
-            auto response = requestService->send(request).get();
-            emit responseReceived(response);
-        }
-        catch(const std::exception& e)
-        {
-            emit errorOccurred(e.what());
-        }
-    })->start();
+    if (auto error = std::dynamic_pointer_cast<states::Error>(state))
+    {
+        emit errorOccurred(error->message);
+    }
+    else if (auto fileOpened = std::dynamic_pointer_cast<states::FileOpened>(state))
+    {
+        emit setRequest(fileOpened->request);
+    }
+    else if (std::dynamic_pointer_cast<states::Sending>(state))
+    {
+        // Loading
+    }
+    else if (auto sent = std::dynamic_pointer_cast<states::Sent>(state))
+    {
+        emit setResponse(sent->response);
+    }
 }
 
 void MainWindow::registerControllers()
@@ -91,23 +67,46 @@ void MainWindow::registerControllers()
     ui->tabs->addTab(responseView, "Response");
 }
 
-void MainWindow::saveRequest()
+void MainWindow::sendRequest()
 {
-    if (saveLocation.empty())
-        saveRequestAs();
+    auto method = ui->method->currentText().toStdString();
+    auto uri = ui->uri->text().toStdString();
+    auto headers = headersController->getContent();
+    auto body = bodyController->getContent();
 
-    const auto& request = getRequest();
-    const auto& repository = requestRepositoryFactory->getRepository();
-
-    repository->saveRequest(saveLocation, request);
+    this->viewModel->sendRequest(method, uri, headers, body);
 }
 
-void MainWindow::saveRequestAs()
+void MainWindow::setRequest(const std::shared_ptr<domain::models::Request>& request)
 {
-    const auto& filePath = QFileDialog::getSaveFileUrl(this, "Save GetIt Request", QUrl(), "*.getit");
+    ui->method->setCurrentText(QString::fromStdString(request->getMethod()));
+    ui->uri->setText(QString::fromStdString(request->getUri()));
+    headersController->setContent(request->getHeaders());
+    bodyController->setContent(request->getBody());
+}
 
-    if (!filePath.isEmpty())
+void MainWindow::setResponse(const std::shared_ptr<domain::models::Response>& response)
+{
+    responseController->setContent(response);
+}
+
+void MainWindow::saveRequest()
+{
+    if (saveLocation.empty()) {
+        const auto& filePath = QFileDialog::getSaveFileUrl(this, "Save GetIt Request", QUrl(), "*.getit");
+
+        if (filePath.isEmpty())
+            return;
+
         saveLocation = filePath.toLocalFile().toStdString();
+    }
+
+    auto method = ui->method->currentText().toStdString();
+    auto uri = ui->uri->text().toStdString();
+    auto headers = headersController->getContent();
+    auto body = bodyController->getContent();
+
+    this->viewModel->saveRequest(method, uri, headers, body, saveLocation);
 }
 
 void MainWindow::openRequest()
@@ -118,9 +117,7 @@ void MainWindow::openRequest()
         return;
 
     saveLocation = filePath.toLocalFile().toStdString();
-    const auto& repository = requestRepositoryFactory->getRepository();
-    const auto& request = repository->loadRequest(saveLocation);
-    setRequest(request);
+    this->viewModel->openRequest(saveLocation);
 }
 
 void MainWindow::displayErrorMessage(const std::string& errorMessage)
