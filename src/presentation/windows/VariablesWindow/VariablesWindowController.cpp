@@ -26,7 +26,7 @@ std::list<std::string> VariablesWindowController::getCollections()
 
 std::list<std::shared_ptr<Variable>> VariablesWindowController::getVariables(const std::string& collection)
 {
-    const auto& iterator = getVariables().find(collection);
+    auto iterator = getVariables().find(collection);
 
     if (iterator != getVariables().end())
         return iterator->second;

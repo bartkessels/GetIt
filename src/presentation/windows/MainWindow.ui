@@ -159,8 +159,16 @@
     </property>
     <addaction name="menuItemViewVariables"/>
    </widget>
+   <widget class="QMenu" name="menuVariable_collections">
+    <property name="title">
+     <string>Variable collections</string>
+    </property>
+    <addaction name="actionCreate_new"/>
+    <addaction name="separator"/>
+   </widget>
    <addaction name="menuItemFile"/>
    <addaction name="menuView"/>
+   <addaction name="menuVariable_collections"/>
   </widget>
   <action name="menuItemNewRawRequest">
    <property name="text">
@@ -196,6 +204,11 @@
   <action name="menuItemViewVariables">
    <property name="text">
     <string>Variables</string>
+   </property>
+  </action>
+  <action name="actionCreate_new">
+   <property name="text">
+    <string>Create new</string>
    </property>
   </action>
  </widget>
