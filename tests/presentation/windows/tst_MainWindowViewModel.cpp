@@ -1,6 +1,7 @@
 #include <catch2/catch.hpp>
 #include <trompeloeil.hpp>
 
+#include <exception>
 #include <future>
 #include <map>
 #include <memory>
@@ -294,15 +295,12 @@ TEST_CASE("MainWindowViewModel.sendRequest")
         ALLOW_CALL(*requestFactory, getRequest(trompeloeil::_, trompeloeil::_, trompeloeil::_))
             .RETURN(std::make_shared<domain::models::Request>());
         ALLOW_CALL(*requestService, send(trompeloeil::_))
-            .THROW(data::exceptions::NoAvailableRepositoryException());
+            .THROW(std::exception());
 
         // Act
         sut->sendRequest("", "", {}, nullptr);
 
         // Assert
         REQUIRE(std::dynamic_pointer_cast<presentation::states::Error>(view->state));
-
-        const auto& actualState = std::dynamic_pointer_cast<presentation::states::Error>(view->state);
-        REQUIRE(actualState->message == data::exceptions::NoAvailableRepositoryException::message);
     }
 }
