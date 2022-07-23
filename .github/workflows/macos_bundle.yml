@@ -18,7 +18,7 @@ jobs:
     - name: Install dependencies
       run: brew install boost qt ninja cmake
     - name: Create GetIt project
-      run: cmake . -G Ninja -Dpackaging=true -Duse_qt6=true -DCMAKE_CXX_FLAGS="-w"
+      run: cmake . -G Ninja -Dpackaging=true -Duse_qt6=true -Duse_installed_dependencies=true -DCMAKE_CXX_FLAGS="-w"
     - name: Create GetIt Bundle
       run: ninja GetIt
     - name: Link Qt to app bundle
