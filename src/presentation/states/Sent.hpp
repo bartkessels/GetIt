@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <utility>
 
 #include "domain/models/Response.hpp"
 #include "presentation/states/RequestState.hpp"

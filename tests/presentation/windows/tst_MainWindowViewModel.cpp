@@ -8,15 +8,10 @@
 
 #include "data/contracts/RequestRepositoryFactory.hpp"
 #include "data/exceptions/NoAvailableRepositoryException.hpp"
-
 #include "domain/contracts/RequestFactory.hpp"
-
 #include "domain/models/Request.hpp"
-#include "domain/models/RequestBody.hpp"
-
 #include "presentation/windows/IMainWindow.hpp"
 #include "presentation/windows/MainWindowViewModel.hpp"
-
 #include "service/contracts/RequestService.hpp"
 #include "service/contracts/RequestServiceFactory.hpp"
 
@@ -71,21 +66,21 @@ class MainWindowStub: public IMainWindow
 
 TEST_CASE("MainWindowViewModel.openRequest")
 {
-    auto requestFactory = std::make_shared<RequestFactoryMock>();
-    auto requestServiceFactory = std::make_shared<RequestServiceFactoryMock>();
-    auto requestRepositoryFactory = std::make_shared<RequestRepositoryFactoryMock>();
+    const auto& requestFactory = std::make_shared<RequestFactoryMock>();
+    const auto& requestServiceFactory = std::make_shared<RequestServiceFactoryMock>();
+    const auto& requestRepositoryFactory = std::make_shared<RequestRepositoryFactoryMock>();
 
     SECTION("updates the state to FileOpened")
     {
         // Arrange
-        auto view = std::make_shared<MainWindowStub>();
-        auto requestService = std::make_shared<RequestServiceMock>();
-        auto requestRepository = std::make_shared<RequestRepositoryMock>();
+        const auto& view = std::make_shared<MainWindowStub>();
+        const auto& requestService = std::make_shared<RequestServiceMock>();
+        const auto& requestRepository = std::make_shared<RequestRepositoryMock>();
 
         const auto& sut = std::make_unique<MainWindowViewModel>(requestFactory, requestServiceFactory,
                                                                 requestRepositoryFactory, view);
 
-        auto expectedRequest = std::make_shared<Request>();
+        const auto& expectedRequest = std::make_shared<Request>();
         expectedRequest->setMethod("PUT");
         expectedRequest->setUri("://success");
 
@@ -107,9 +102,9 @@ TEST_CASE("MainWindowViewModel.openRequest")
     SECTION("updates the state to Error when an exception is thrown")
     {
         // Arrange
-        auto view = std::make_shared<MainWindowStub>();
-        auto requestService = std::make_shared<RequestServiceMock>();
-        auto requestRepository = std::make_shared<RequestRepositoryMock>();
+        const auto& view = std::make_shared<MainWindowStub>();
+        const auto& requestService = std::make_shared<RequestServiceMock>();
+        const auto& requestRepository = std::make_shared<RequestRepositoryMock>();
 
         const auto& sut = std::make_unique<MainWindowViewModel>(requestFactory, requestServiceFactory,
                                                                 requestRepositoryFactory, view);
@@ -145,14 +140,14 @@ TEST_CASE("MainWindowViewModel.saveRequest")
     SECTION("builds the request using the request factory and adds the body to the request")
     {
         // Arrange
-        auto view = std::make_shared<MainWindowStub>();
-        auto requestService = std::make_shared<RequestServiceMock>();
-        auto requestRepository = std::make_shared<RequestRepositoryMock>();
+        const auto& view = std::make_shared<MainWindowStub>();
+        const auto& requestService = std::make_shared<RequestServiceMock>();
+        const auto& requestRepository = std::make_shared<RequestRepositoryMock>();
 
         const auto& sut = std::make_unique<MainWindowViewModel>(requestFactory, requestServiceFactory,
                                                                 requestRepositoryFactory, view);
 
-        auto expectedRequest = std::make_shared<Request>();
+        const auto& expectedRequest = std::make_shared<Request>();
         expectedRequest->setMethod("PUT");
         expectedRequest->setUri("://success");
 
@@ -181,9 +176,9 @@ TEST_CASE("MainWindowViewModel.saveRequest")
     SECTION("updates the state to Error when an exception is thrown")
     {
         // Arrange
-        auto view = std::make_shared<MainWindowStub>();
-        auto requestService = std::make_shared<RequestServiceMock>();
-        auto requestRepository = std::make_shared<RequestRepositoryMock>();
+        const auto& view = std::make_shared<MainWindowStub>();
+        const auto& requestService = std::make_shared<RequestServiceMock>();
+        const auto& requestRepository = std::make_shared<RequestRepositoryMock>();
 
         const auto& sut = std::make_unique<MainWindowViewModel>(requestFactory, requestServiceFactory,
                                                                 requestRepositoryFactory, view);
@@ -208,12 +203,12 @@ TEST_CASE("MainWindowViewModel.saveRequest")
 
 TEST_CASE("MainWindowViewModel.sendRequest")
 {
-    const auto &requestFactory = std::make_shared<RequestFactoryMock>();
-    const auto &requestServiceFactory = std::make_shared<RequestServiceFactoryMock>();
-    const auto &requestRepositoryFactory = std::make_shared<RequestRepositoryFactoryMock>();
+    const auto& requestFactory = std::make_shared<RequestFactoryMock>();
+    const auto& requestServiceFactory = std::make_shared<RequestServiceFactoryMock>();
+    const auto& requestRepositoryFactory = std::make_shared<RequestRepositoryFactoryMock>();
 
-    const auto &requestService = std::make_shared<RequestServiceMock>();
-    const auto &requestRepository = std::make_shared<RequestRepositoryMock>();
+    const auto& requestService = std::make_shared<RequestServiceMock>();
+    const auto& requestRepository = std::make_shared<RequestRepositoryMock>();
 
     ALLOW_CALL(*requestServiceFactory, getRequestService()).RETURN(requestService);
     ALLOW_CALL(*requestRepositoryFactory, getRepository()).RETURN(requestRepository);
@@ -221,14 +216,14 @@ TEST_CASE("MainWindowViewModel.sendRequest")
     SECTION("builds the request using the request factory and adds the body to the request")
     {
         // Arrange
-        auto view = std::make_shared<MainWindowStub>();
-        auto requestService = std::make_shared<RequestServiceMock>();
-        auto requestRepository = std::make_shared<RequestRepositoryMock>();
+        const auto& view = std::make_shared<MainWindowStub>();
+        const auto& requestService = std::make_shared<RequestServiceMock>();
+        const auto& requestRepository = std::make_shared<RequestRepositoryMock>();
 
         const auto& sut = std::make_unique<MainWindowViewModel>(requestFactory, requestServiceFactory,
                                                                 requestRepositoryFactory, view);
 
-        auto expectedRequest = std::make_shared<Request>();
+        const auto& expectedRequest = std::make_shared<Request>();
         expectedRequest->setMethod("PUT");
         expectedRequest->setUri("://success");
 
@@ -257,14 +252,14 @@ TEST_CASE("MainWindowViewModel.sendRequest")
     SECTION("updates the state to Sent when the request is sent")
     {
         // Arrange
-        auto view = std::make_shared<MainWindowStub>();
-        auto requestService = std::make_shared<RequestServiceMock>();
-        auto requestRepository = std::make_shared<RequestRepositoryMock>();
+        const auto& view = std::make_shared<MainWindowStub>();
+        const auto& requestService = std::make_shared<RequestServiceMock>();
+        const auto& requestRepository = std::make_shared<RequestRepositoryMock>();
 
         const auto& sut = std::make_unique<MainWindowViewModel>(requestFactory, requestServiceFactory,
                                                                 requestRepositoryFactory, view);
 
-        auto expectedResponse = std::make_shared<domain::models::Response>();
+        const auto& expectedResponse = std::make_shared<domain::models::Response>();
         expectedResponse->body = "Success!";
 
         ALLOW_CALL(*requestServiceFactory, getRequestService()).RETURN(requestService);
@@ -287,9 +282,9 @@ TEST_CASE("MainWindowViewModel.sendRequest")
     SECTION("updates the state to Error when an exception is thrown")
     {
         // Arrange
-        auto view = std::make_shared<MainWindowStub>();
-        auto requestService = std::make_shared<RequestServiceMock>();
-        auto requestRepository = std::make_shared<RequestRepositoryMock>();
+        const auto& view = std::make_shared<MainWindowStub>();
+        const auto& requestService = std::make_shared<RequestServiceMock>();
+        const auto& requestRepository = std::make_shared<RequestRepositoryMock>();
 
         const auto& sut = std::make_unique<MainWindowViewModel>(requestFactory, requestServiceFactory,
                                                                 requestRepositoryFactory, view);
@@ -311,9 +306,3 @@ TEST_CASE("MainWindowViewModel.sendRequest")
         REQUIRE(actualState->message == data::exceptions::NoAvailableRepositoryException::message);
     }
 }
-
-// Send request ->
-//
-//  builds the request using the request factory and adds the body to the request
-//
-//  updates the state to Error when an exception is thrown

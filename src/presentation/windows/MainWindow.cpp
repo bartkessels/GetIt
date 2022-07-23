@@ -34,11 +34,11 @@ void MainWindow::setViewModel(std::shared_ptr<IMainWindowViewModel> viewModel)
 
 void MainWindow::updateState(std::shared_ptr<states::RequestState> state)
 {
-    if (auto error = std::dynamic_pointer_cast<states::Error>(state))
+    if (const auto& error = std::dynamic_pointer_cast<states::Error>(state))
     {
         emit errorOccurred(error->message);
     }
-    else if (auto fileOpened = std::dynamic_pointer_cast<states::FileOpened>(state))
+    else if (const auto& fileOpened = std::dynamic_pointer_cast<states::FileOpened>(state))
     {
         emit setRequest(fileOpened->request);
     }
@@ -46,7 +46,7 @@ void MainWindow::updateState(std::shared_ptr<states::RequestState> state)
     {
         // Loading
     }
-    else if (auto sent = std::dynamic_pointer_cast<states::Sent>(state))
+    else if (const auto& sent = std::dynamic_pointer_cast<states::Sent>(state))
     {
         emit setResponse(sent->response);
     }
@@ -69,10 +69,10 @@ void MainWindow::registerControllers()
 
 void MainWindow::sendRequest()
 {
-    auto method = ui->method->currentText().toStdString();
-    auto uri = ui->uri->text().toStdString();
-    auto headers = headersController->getContent();
-    auto body = bodyController->getContent();
+    const auto& method = ui->method->currentText().toStdString();
+    const auto& uri = ui->uri->text().toStdString();
+    const auto& headers = headersController->getContent();
+    const auto& body = bodyController->getContent();
 
     this->viewModel->sendRequest(method, uri, headers, body);
 }
@@ -101,10 +101,10 @@ void MainWindow::saveRequest()
         saveLocation = filePath.toLocalFile().toStdString();
     }
 
-    auto method = ui->method->currentText().toStdString();
-    auto uri = ui->uri->text().toStdString();
-    auto headers = headersController->getContent();
-    auto body = bodyController->getContent();
+    const auto& method = ui->method->currentText().toStdString();
+    const auto& uri = ui->uri->text().toStdString();
+    const auto& headers = headersController->getContent();
+    const auto& body = bodyController->getContent();
 
     this->viewModel->saveRequest(method, uri, headers, body, saveLocation);
 }
