@@ -61,8 +61,7 @@ void MainWindowViewModel::openRequest(const std::string& location)
         const auto& request = repository->loadRequest(location);
         view->updateState(std::make_shared<states::FileOpened>(request));
     }
-    catch(const std::exception& e)
-    {
+    catch(const std::exception& e) {
         this->view->updateState(std::make_shared<states::Error>(e.what()));
     }
 }

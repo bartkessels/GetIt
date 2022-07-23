@@ -124,6 +124,6 @@ TEST_CASE("RawRequestRepository.loadRequest")
         REQUIRE(actualBody->getContentType() == expectedContentType);
         REQUIRE(actualBody->getBody() == expectedBody);
 
-//        std::remove(filePath);
+        std::remove(filePath);
     }
 }
