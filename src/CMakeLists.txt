@@ -42,6 +42,7 @@ set(SOURCEFILES
     presentation/highlighters/SyntaxHighlighter.cpp
 
     presentation/windows/MainWindow.cpp
+    presentation/windows/MainWindowViewModel.cpp
 
     service/factories/RequestServiceFactory.cpp
     service/implementations/CppRestRequestService.cpp

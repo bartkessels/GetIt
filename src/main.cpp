@@ -4,6 +4,7 @@
 #include "data/factories/RequestRepositoryFactory.hpp"
 #include "domain/factories/RequestFactory.hpp"
 #include "presentation/windows/MainWindow.hpp"
+#include "presentation/windows/MainWindowViewModel.hpp"
 #include "service/factories/RequestServiceFactory.hpp"
 
 using namespace getit;
@@ -22,11 +23,10 @@ int main(int argc, char** args)
     QApplication::setApplicationDisplayName(appName);
     QApplication::setApplicationName(appName);
 
-    const auto& window = std::make_shared<presentation::windows::MainWindow>(
-            requestFactory,
-            requestServiceFactory,
-            requestRepositoryFactory
-        );
+    const auto& window = std::make_shared<presentation::windows::MainWindow>();
+    const auto& viewModel = std::make_shared<presentation::windows::MainWindowViewModel>(
+            requestFactory, requestServiceFactory, requestRepositoryFactory, window);
+    window->setViewModel(viewModel);
     window->show();
 
     return QApplication::exec();
