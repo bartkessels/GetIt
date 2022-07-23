@@ -9,7 +9,6 @@
 
 using namespace getit;
 using namespace getit::presentation::fragments;
-using trompeloeil::_;
 
 class ResponseFragmentViewMock: public IResponseFragmentView
 {
@@ -72,8 +71,8 @@ TEST_CASE("ResponseFragmentController.setContent")
     {
         // Arrange
         ALLOW_CALL(*view, clearHeaders());
-        ALLOW_CALL(*view, setHeaders(_));
-        ALLOW_CALL(*view, setBody(_));
+        ALLOW_CALL(*view, setHeaders(trompeloeil::_));
+        ALLOW_CALL(*view, setBody(trompeloeil::_));
 
         const auto& response = std::make_shared<domain::models::Response>();
 
@@ -88,7 +87,7 @@ TEST_CASE("ResponseFragmentController.setContent")
     {
         // Arrange
         ALLOW_CALL(*view, clearHeaders());
-        ALLOW_CALL(*view, setBody(_));
+        ALLOW_CALL(*view, setBody(trompeloeil::_));
 
         std::map<std::string, std::string> expectedHeaders = {
                 { "Content-Type", "application/json" },
@@ -109,7 +108,7 @@ TEST_CASE("ResponseFragmentController.setContent")
     {
         // Arrange
         trompeloeil::sequence seq;
-        ALLOW_CALL(*view, setBody(_));
+        ALLOW_CALL(*view, setBody(trompeloeil::_));
 
         std::map<std::string, std::string> expectedHeaders = {
                 { "Content-Type", "application/json" },
@@ -131,8 +130,8 @@ TEST_CASE("ResponseFragmentController.setContent")
     {
         // Arrange
         ALLOW_CALL(*view, clearHeaders());
-        ALLOW_CALL(*view, setHeaders(_));
-        ALLOW_CALL(*view, setBody(_));
+        ALLOW_CALL(*view, setHeaders(trompeloeil::_));
+        ALLOW_CALL(*view, setBody(trompeloeil::_));
 
         const auto& expectedBody = "This is my response body";
 

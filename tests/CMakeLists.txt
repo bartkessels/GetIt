@@ -21,6 +21,8 @@ set(SOURCEFILES
     ../src/presentation/fragments/HeadersFragment/HeadersFragmentController.cpp
     ../src/presentation/fragments/ResponseFragment/ResponseFragmentController.cpp
 
+    ../src/presentation/windows/MainWindowViewModel.cpp
+
     ../src/service/factories/RequestServiceFactory.cpp
     ../src/service/implementations/CppRestRequestService.cpp
 )
@@ -40,6 +42,8 @@ set(TESTFILES
     presentation/fragments/tst_BodyFragmentController.cpp
     presentation/fragments/tst_HeadersFragmentController.cpp
     presentation/fragments/tst_ResponseFragmentController.cpp
+
+    presentation/windows/tst_MainWindowViewModel.cpp
 
     presentation/highlighters/tst_JsonSyntaxHighlighterRule.cpp
 
