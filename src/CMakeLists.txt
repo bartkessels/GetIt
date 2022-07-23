@@ -13,7 +13,7 @@ if (use_installed_dependencies)
     find_package(cpprestsdk REQUIRED)
 endif()
 
-if (UseQt6)
+if (use_qt6)
     find_package(Qt6 COMPONENTS Widgets REQUIRED)
 else()
     find_package(Qt5 COMPONENTS Widgets REQUIRED)
