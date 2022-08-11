@@ -36,6 +36,7 @@ matter what platform you use, and it's completely open source.
 - [5. Automated testing](#5-automated-testing)
 - [6. Contribute](#6-contribute)
   - [6.1 Branching strategy](#61-branching-strategy)
+- [7. Create a new release](#7-create-a-new-release)
 
 # 1. Overview
 
@@ -266,3 +267,33 @@ a stale development branch. However we do have some guidelines:
 - If you're contributing a __bug fix__ use the `bugfix/<bug-name>` naming convention
 - If you're contributing to __documentation__ use the `documentation/<type-of-documentation>` naming convention
 - If you're contributing a __small fix__, like a version bump to a dependency, use the `hotfix/<hotfix-type>-<name>` naming convention
+
+# 7. Create a new release
+
+To create a new release of GetIt, edit the `CmakeLists.txt` file and update the `VERSION` parameter of the `project` function. For versioning GetIt uses
+semantic versioning. Which, given the documentation on [semver.org](https://semver.org), means that the version number consists of MAJOR.MINOR.PATCH.
+
+When creating a release of GetIt check what kind of changes have been applied since the previous version and categorize these in one of the following segments:
+
+1. Incompatible API change, or a user interface change
+2. New functionality which doesn't break existing functionality
+3. Bug fix
+
+These can be mapped on the semantic versioning scheme in the following ways:
+
+* Update the __MAJOR__ version when you've made a __breaking change__ either in the interfaces or in the UI.
+* Update the __MINOR__ version when a __new feature__ is introduced
+* Update the __PATCH__ version when a __bug is resolved__
+
+When you've updated the version in `CMakeLists.txt` create a new tag in Git using the
+following structure: `vMAJOR.MINOR.PATCH`. For version 5 with a bugfix this would be `v5.0.1`.
+
+This can be created using the following Git-command:
+
+```bash
+$ git tag -a v5.0.1
+$ git push -u origin v5.0.1
+```
+
+This will create the tag locally and then push it to Github which in turn will kick off the required
+pipelines to create the new release and add the build artifacts.
