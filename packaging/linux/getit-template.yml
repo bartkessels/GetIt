@@ -48,7 +48,7 @@ modules:
     buildsystem: simple
     builddir: true
     build-commands:
-      - cmake . -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -Dpackaging=true -Duse_installed_dependencies=true -Duse_qt6=true -DCMAKE_CXX_FLAGS=-w -DCMAKE_PREFIX_PATH=./include
+      - cmake . -G Ninja -Dpackaging=true -Duse_installed_dependencies=true -Duse_qt6=true -DCMAKE_CXX_FLAGS=-w -DCMAKE_PREFIX_PATH=./include
       - ninja GetIt
     sources:
       - type: git
