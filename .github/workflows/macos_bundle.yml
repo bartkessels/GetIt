@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: brew install boost qt ninja cmake
+      run: brew install boost qt ninja cmake openssl
     - name: Create GetIt project
       run: cmake . -G Ninja -Dpackaging=true -Duse_qt6=true -Duse_installed_dependencies=true -DCMAKE_CXX_FLAGS="-w"
     - name: Create GetIt Bundle
