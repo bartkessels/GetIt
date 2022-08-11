@@ -10,7 +10,7 @@ env:
   VCPKG_CMAKE_TOOLCHAIN: C:\vcpkg\scripts\buildsystems\vcpkg.cmake
   VCPKG_INCLUDE_DIR: C:\vcpkg\installed\x64-windows-static\include
   MSBUILD_PATH: C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\devenv.com
-  OPENSSL_ROOT_DIR: ${{env.VCPKG_INCLUDE_DIR}}
+  OPENSSL_ROOT_DIR: C:\vcpkg\installed\x64-windows-static\include
 
 jobs:
   build:
