@@ -1,5 +1,5 @@
 app-id: net.bartkessels.getit
-runtime: org.kde.Platform
+runtime: org.kde.Platform/freedesktop
 runtime-version: '6.2'
 default-branch: main
 sdk: org.kde.Sdk
