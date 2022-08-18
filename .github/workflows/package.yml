@@ -1,4 +1,4 @@
-name: package
+name: Package GetIt for all platforms
 on:
   create:
     tags:
