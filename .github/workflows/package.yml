@@ -38,11 +38,11 @@ jobs:
         with:
             location: ${{env.msys}}
             msystem: mingw64
-            install: mingw-w64-x86_64-openssl openssl-dev mingw-w64-x86_64-boost mingw-w64-x86_64-ninja
+            install: mingw-w64-x86_64-openssl mingw-w64-x86_64-boost mingw-w64-x86_64-ninja
 
       - name: Brew install openssl
         if: matrix.os == 'macos-latest'
-        run: brew install openssl boost
+        run: brew install openssl boost ninja
 
       - name: Checkout repository
         uses: actions/checkout@v2
