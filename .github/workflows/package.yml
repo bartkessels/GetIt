@@ -25,6 +25,7 @@ jobs:
             artifact_name: GetIt_x64-Windows.zip
 
     runs-on: ${{matrix.os}}
+    continue-on-error: true
     steps:
       - name: Install Qt
         uses: jurplel/install-qt-action@v2
@@ -37,7 +38,7 @@ jobs:
         with:
             location: ${{env.msys}}
             msystem: mingw64
-            install: mingw-w64-x86_64-openssl openssl-dev mingw-w64-x86_64-boost
+            install: mingw-w64-x86_64-openssl openssl-dev mingw-w64-x86_64-boost mingw-w64-x86_64-ninja
 
       - name: Brew install openssl
         if: matrix.os == 'macos-latest'
