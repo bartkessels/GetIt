@@ -33,3 +33,24 @@ ELSE()
     add_subdirectory(tests)
 ENDIF()
 
+IF(APPLE)
+    SET(qt_version "Qt6")
+    execute_process(COMMAND brew --prefix OUTPUT_STRIP_TRAILING_WHITESPACE
+            OUTPUT_VARIABLE BREW_PREFIX ERROR_QUIET)
+
+    IF(NOT Qt6_DIR AND use_installed_dependencies)
+        set(Qt6_DIR ${BREW_PREFIX}/opt/${qt_version}/lib/cmake/${qt_version})
+    ENDIF()
+
+    IF(NOT OPENSSL_ROOT_DIR AND use_installed_dependencies)
+        set(OPENSSL_ROOT_DIR ${BREW_PREFIX}/opt/openssl@1.1)
+    ENDIF()
+ELSEIF(WIN32)
+    IF(NOT Qt5_DIR)
+        set(Qt5_DIR "C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5")
+    ENDIF()
+
+    IF(NOT OPENSSL_ROOT_DIR)
+        set(OPENSSL_ROOT_DIR $ENV{PROGRAMFILES}/OpenSSL-Win64)
+    ENDIF()
+ENDIF()
