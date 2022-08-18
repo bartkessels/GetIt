@@ -1,9 +1,8 @@
 name: package
-
 on:
   create:
     tags:
-      - 'v*'push
+      - 'v*'
 
 jobs:
   package:
