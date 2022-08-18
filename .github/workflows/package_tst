@@ -1,0 +1,76 @@
+name: Package GetIt for all platforms
+on:
+  create:
+    tags:
+      - 'v*'
+
+jobs:
+  package:
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            generator: Ninja
+            openssl_root: /usr
+            artifact_name: GetIt_x64-Linux.tar.gz
+
+          - os: macos-latest
+            generator: Ninja
+            openssl_root: /usr/local/opt/openssl@3
+            artifact_name: GetIt_x64-MacOS.zip
+
+          - os: windows-latest
+            generator: MinGW Makefiles
+            openssl_root: D:\msys2\msys64\mingw64
+            artifact_name: GetIt_x64-Windows.zip
+
+    runs-on: ${{matrix.os}}
+    steps:
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+            arch: win64_mingw81
+
+      - name: Setup msys
+        if: matrix.os == 'windows-latest'
+        uses: msys2/setup-msys2@v2
+        with:
+            location: ${{env.msys}}
+            msystem: mingw64
+            install: mingw-w64-x86_64-openssl openssl-dev mingw-w64-x86_64-boost
+
+      - name: Brew install openssl
+        if: matrix.os == 'macos-latest'
+        run: brew install openssl boost
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+            fetch-depth: 0
+
+      - name: Build GetIt
+        run: cmake . -G ${{matrix.generator}} -Dpackaging=true -DCMAKE_CXX_FLAGS='-w'
+
+      - name: Add Qt dependencies to Windows executable and zip the executable
+        if: matrix.os == 'windows-latest'
+        run: |
+          $windeployqt = '${{env.Qt5_Dir}}\bin\windeployqt.exe'
+          & $windeployqt ./bin/GetIt.exe
+          7z a -tzip ${{matrix.artifact_name}} ./bin/GetIt.exe
+
+      - name: Add Qt dependencies to MacOS bundle and zip the bundle
+        if: matrix.os == 'macos-latest'
+        run: |
+          macdeployqt ./bin/GetIt.app -timestamp -libpath=./_deps
+          cp ./packaging/macos/icons/getit.icns ./bin/GetIt.app/Contents/Resources
+          zip -rT ${{matrix.artifact_name}} ./bin/GetIt.app >> /dev/null
+
+      - name: Upload zip-file as build artifact
+        uses: ctions/upload-release-asset@1
+        env:
+            GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          upload:url: https://github.com/bartkessels/GetIt/releases/latest
+          asset_path: ${{matrix.artifact_name}}
+          asset_name: ${{matrix.artifact_name}}
+          asset_content_type: application/zip
