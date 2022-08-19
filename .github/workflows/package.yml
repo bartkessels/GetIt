@@ -30,6 +30,17 @@ jobs:
     runs-on: ${{matrix.os}}
     continue-on-error: true
     steps:
+      - name: Create a new release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          release_name: ${{ github.ref }}
+          tag_name: ${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
       - name: Install Qt
         uses: jurplel/install-qt-action@v2
         with:
