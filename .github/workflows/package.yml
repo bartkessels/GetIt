@@ -20,7 +20,7 @@ jobs:
             artifact_name: GetIt_x64-MacOS.zip
 
           - os: windows-latest
-            generator: MinGW Makefiles
+            generator: Ninja
             openssl_root: D:\msys2\msys64\mingw64
             artifact_name: GetIt_x64-Windows.zip
 
@@ -32,7 +32,7 @@ jobs:
         with:
             arch: win64_mingw81
 
-      - name: Setup msys
+      - name: Install Windows dependencies
         if: matrix.os == 'windows-latest'
         uses: msys2/setup-msys2@v2
         with:
@@ -40,17 +40,24 @@ jobs:
             msystem: mingw64
             install: mingw-w64-x86_64-openssl mingw-w64-x86_64-boost mingw-w64-x86_64-ninja
 
-      - name: Brew install openssl
+      - name: Install MacOS dependencies
         if: matrix.os == 'macos-latest'
         run: brew install openssl boost ninja
+        
+      - name: Install Linux dependencies
+        if: matrix.os == 'ubuntu-latest'
+        run: apt install -y openssl-dev boost-dev cmake ninja
 
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
             fetch-depth: 0
 
+      - name: Create GetIt project
+        run: cmake . -G "${{matrix.generator}}" -Dpackaging=true -DCMAKE_CXX_FLAGS='-w'
+        
       - name: Build GetIt
-        run: cmake . -G ${{matrix.generator}} -Dpackaging=true -DCMAKE_CXX_FLAGS='-w'
+        run: ninja GetIt
 
       - name: Add Qt dependencies to Windows executable and zip the executable
         if: matrix.os == 'windows-latest'
