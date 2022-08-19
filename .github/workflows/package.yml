@@ -24,7 +24,7 @@ jobs:
           - os: windows-latest
             generator: Ninja
             openssl_root: D:\msys2\msys64\mingw64
-            boost_include_dir: D:\msys2\msys64\mingw64\include
+            boost_include_dir: D:\msys2\msys64\include
             artifact_name: GetIt_x64-MacOS.zip
 
     runs-on: ${{matrix.os}}
