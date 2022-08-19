@@ -27,7 +27,7 @@ jobs:
           - os: windows-latest
             generator: Ninja
             openssl_root: D:\msys2\msys64\mingw64
-            test_command: & bin/getit_tests.exe
+            test_command: '& bin/getit_tests.exe'
 
     runs-on: ${{matrix.os}}
     steps:
