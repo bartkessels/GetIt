@@ -12,17 +12,17 @@ jobs:
           - os: ubuntu-latest
             generator: Ninja
             openssl_root: /usr
-            artifact_name: GetIt_x64-Linux.tar.gz
+            boost_include_dir: /usr/boost/include
 
           - os: macos-latest
             generator: Ninja
             openssl_root: /usr/local/opt/openssl@3
-            artifact_name: GetIt_x64-MacOS.zip
+            boost_include_dir: /usr/local/opt/boost/include
 
           - os: windows-latest
             generator: Ninja
             openssl_root: D:\msys2\msys64\mingw64
-            artifact_name: GetIt_x64-Windows.zip
+            boost_include_dir: D:\boost\lib
 
     runs-on: ${{matrix.os}}
     continue-on-error: true
@@ -54,7 +54,7 @@ jobs:
             fetch-depth: 0
 
       - name: Create GetIt project
-        run: cmake . -G "${{matrix.generator}}" -Dpackaging=true -DCMAKE_CXX_FLAGS='-w' -DOPENSSL_ROOT_DIR=${{matrix.openssl_root}}
+        run: cmake . -G "${{matrix.generator}}" -Dpackaging=true -DCMAKE_CXX_FLAGS='-w' -DOPENSSL_ROOT_DIR=${{matrix.openssl_root}} -DBoost_INCLUDE_DIR=${{matrix.boost_include_dir}}
         
       - name: Build GetIt
         run: ninja GetIt
