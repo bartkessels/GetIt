@@ -54,7 +54,7 @@ jobs:
             fetch-depth: 0
 
       - name: Create GetIt project
-        run: cmake . -G "${{matrix.generator}}" -Dpackaging=true -DCMAKE_CXX_FLAGS='-w'
+        run: cmake . -G "${{matrix.generator}}" -Dpackaging=true -DCMAKE_CXX_FLAGS='-w' -DOPENSSL_ROOT_DIR=${{matrix.openssl_root}}
         
       - name: Build GetIt
         run: ninja GetIt
