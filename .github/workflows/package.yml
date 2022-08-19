@@ -22,7 +22,7 @@ jobs:
           - os: windows-latest
             generator: Ninja
             openssl_root: D:\msys2\msys64\mingw64
-            boost_include_dir: D:\boost\lib
+            boost_include_dir: D:\msys2\msys64\mingw64\boost
 
     runs-on: ${{matrix.os}}
     continue-on-error: true
