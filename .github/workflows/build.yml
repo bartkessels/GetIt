@@ -50,7 +50,7 @@ jobs:
 
       - name: Install Linux dependencies
         if: matrix.os == 'ubuntu-latest'
-        run: sudo apt install -y libboost-all-dev libssl-dev cmake ninja
+        run: sudo apt install -y libboost-all-dev libssl-dev cmake ninja-build
 
       - name: Checkout repository
         uses: actions/checkout@v2
