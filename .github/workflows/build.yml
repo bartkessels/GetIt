@@ -29,7 +29,7 @@ jobs:
           - os: windows-latest
             generator: Ninja
             openssl_root: D:\msys2\msys64\mingw64
-            boost_include_dir: D:\msys2\msys64\mingw64\bin
+            boost_include_dir: D:\msys2\msys64\mingw64\include
             test_command: '& bin/getit_tests.exe'
 
     runs-on: ${{matrix.os}}
