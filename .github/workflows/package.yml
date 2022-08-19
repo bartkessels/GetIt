@@ -33,6 +33,11 @@ jobs:
       - name: Create a new release
         uses: actions/create-release@v1
         id: create_release
+        # Use specific OS to create the release,
+        # otherwise the release will be created for
+        # every platform in which case the succeeding
+        # platforms will fail to continue.
+        if: matrix.os == 'windows-latest'
         with:
           draft: false
           prerelease: false
