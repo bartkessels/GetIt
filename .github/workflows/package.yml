@@ -71,7 +71,7 @@ jobs:
         uses: MarkusJx/install-boost@v2.3.1
         with:
           platform_version: ${{matrix.os}}"
-          boost_version: ${{env.BOOST_VERSION||
+          boost_version: ${{env.BOOST_VERSION}}
 
       - name: Checkout repository
         uses: actions/checkout@v2
