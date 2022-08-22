@@ -66,7 +66,7 @@ target_link_libraries(${CMAKE_PROJECT_NAME} OpenSSL::SSL OpenSSL::Crypto)
 target_link_libraries(${CMAKE_PROJECT_NAME} cpprest)
 target_link_libraries(${CMAKE_PROJECT_NAME} nlohmann_json::nlohmann_json)
 
-if (UseQt6)
+if (use_qt6)
     target_link_libraries(${CMAKE_PROJECT_NAME} Qt::Widgets)
 else()
     target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Widgets)

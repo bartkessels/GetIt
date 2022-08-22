@@ -27,7 +27,11 @@ ENDIF()
 
 # Only build packages when the -Dpackaging=true flag is set
 IF (packaging)
+    set(CMAKE_BUILD_TYPE Release)
+    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
     add_subdirectory(packaging)
+    include(CPack)
 ELSE()
     # Only build test project when packaging is disabled
     add_subdirectory(tests)

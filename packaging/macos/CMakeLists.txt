@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 
+set(CPACK_BUNDLE_NAME ${CMAKE_PROJECT_NAME})
+set(CPACK_GENERATOR "DragNDrop")
+set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES RUNTIME_DEST ${CMAKE_BINARY_DIR})
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES MACOSX_BUNDLE TRUE)
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME ${CMAKE_PROJECT_NAME})
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES MACOSX_BUNDLE_COPYRIGHT "Bart Kessels")
@@ -8,3 +11,17 @@ set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES MACOSX_BUNDLE_GUI_IDENTIF
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES MACOSX_BUNDLE_INFO_STRING ${CMAKE_PROJECT_DESCRIPTION})
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES MACOSX_BUNDLE_LONG_VERSION_STRING ${CMAKE_PROJECT_VERSION})
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES MACOSX_BUNDLE_SHORT_VERSION_STRING ${CMAKE_PROJECT_VERSION_MAJOR})
+
+get_target_property(qmake_executable Qt5::qmake IMPORTED_LOCATION)
+get_filename_component(_qt_bin_dir "${qmake_executable}" DIRECTORY)
+find_program(MACDEPLOYQT_BIN macdeployqt HINT "${_qt_bin_dir}")
+
+# Link Qt dependencies to GetIt.app bundle
+add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD
+    COMMAND ${MACDEPLOYQT_BIN} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_PROJECT_NAME}} -always-overwrite
+)
+
+# Copy icon into GetIt.app bundle
+add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD
+    COMMAND cp ${CMAKE_BINARY_DIR}/packaging/macos/icons/getit.icns ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_PROJECT_NAME}/Contents/Resources
+)

@@ -101,7 +101,7 @@ If you set the `use_installed_dependencies` flag to `true` when running the `cma
 The following variables can be set through the `-D<variable>=` flag for the `cmake` command.
 
 * `use_qt6`
-  * If you've got Qt6 installed, use this flag to force the use of Qt6. Otherwise CMake will try to locate Qt5. The default value is `false`.c
+  * If you've got Qt6 installed, use this flag to force the use of Qt6. Otherwise CMake will try to locate Qt5. The default value is `false`.
 * `use_installed_dependencies`
   * If you've got all GetIt dependencies installed, set this variable to `true` to make sure that CMake won't download the dependencies. The default value is `false`.
 * `CMAKE_CXX_FLAGS`
