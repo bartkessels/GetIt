@@ -17,17 +17,17 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-latest
+          - os: ubuntu-22.04
             generator: Ninja
             openssl_root: /usr
             test_command: ./bin/getit_tests
 
-          - os: macos-latest
+          - os: macos-11
             generator: Ninja
             openssl_root: /usr/local/opt/openssl@3
             test_command: ./bin/getit_tests
 
-          - os: windows-latest
+          - os: windows-2022
             generator: Ninja
             openssl_root: D:\msys2\msys64\mingw64
             test_command: '& bin/getit_tests.exe'
