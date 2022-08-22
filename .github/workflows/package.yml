@@ -12,19 +12,16 @@ jobs:
           - os: ubuntu-latest
             generator: Ninja
             openssl_root: /usr
-            boost_include_dir: /usr/boost/include
             artifact_name: GetIt_x64-Linux.tar.gz
 
           - os: macos-latest
             generator: Ninja
             openssl_root: /usr/local/opt/openssl@3
-            boost_include_dir: /usr/local/opt/boost/include
             artifact_name: GetIt_x64-MacOS.zip
 
           - os: windows-latest
             generator: Ninja
             openssl_root: D:\msys2\msys64\mingw64
-            boost_include_dir: D:\msys2\msys64\include
             artifact_name: GetIt_x64-MacOS.zip
 
     runs-on: ${{matrix.os}}
