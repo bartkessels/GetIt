@@ -17,28 +17,20 @@ jobs:
           - os: ubuntu-latest
             generator: Ninja
             openssl_root: /usr
-            boost_include_dir: /usr/boost/include
             test_command: ./bin/getit_tests
 
           - os: macos-latest
             generator: Ninja
             openssl_root: /usr/local/opt/openssl@3
-            boost_include_dir: /usr/local/opt/boost/include
             test_command: ./bin/getit_tests
 
           - os: windows-latest
             generator: Ninja
             openssl_root: D:\msys2\msys64\mingw64
-            boost_include_dir: D:\msys2\msys64\mingw64\include
             test_command: '& bin/getit_tests.exe'
 
     runs-on: ${{matrix.os}}
     steps:
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v2
-        with:
-          arch: win64_mingw81
-
       - name: Install Windows dependencies
         if: matrix.os == 'windows-latest'
         uses: msys2/setup-msys2@v2
@@ -54,6 +46,17 @@ jobs:
       - name: Install Linux dependencies
         if: matrix.os == 'ubuntu-latest'
         run: sudo apt install -y libboost-all-dev libssl-dev cmake ninja-build
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          arch: win64_mingw81
+
+      - name: Install boost
+        uses: MarkusJx/install-boost@v2.3.1
+        with:
+          platform_version: ${{matrix.os}}"
+          boost_version: "1.73.0"
 
       - name: Checkout repository
         uses: actions/checkout@v2

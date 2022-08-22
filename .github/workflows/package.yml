@@ -43,11 +43,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v2
-        with:
-            arch: win64_mingw81
-
       - name: Install Windows dependencies
         if: matrix.os == 'windows-latest'
         uses: msys2/setup-msys2@v2
@@ -63,6 +58,11 @@ jobs:
       - name: Install Linux dependencies
         if: matrix.os == 'ubuntu-latest'
         run: sudo apt install -y libssl-dev cmake ninja-build
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          arch: win64_mingw81
         
       - name: Install boost
         uses: MarkusJx/install-boost@v2.3.1
