@@ -83,8 +83,8 @@ jobs:
             -Dpackaging=true\
             -DCMAKE_CXX_FLAGS='-w'\
             -DOPENSSL_ROOT_DIR=${{matrix.openssl_root}}\
-            -DBoost_INCLUDE_DIR=${{steps.install-boost.outputs.BOOST_ROOT}}/include\
-            -DBoost_LIBRARY_DIRS=${{steps.install-boost.outputs.BOOST_ROOT}}/lib
+          -DBoost_INCLUDE_DIR=${{github.workspace}}/${{steps.install-boost.outputs.BOOST_ROOT}}/include\
+          -DBoost_LIBRARY_DIRS=${{github.workspace}}/${{steps.install-boost.outputs.BOOST_ROOT}}/lib
         
       - name: Build GetIt
         run: ninja GetIt
