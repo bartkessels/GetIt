@@ -68,7 +68,7 @@ jobs:
           arch: win64_mingw81
         
       - name: Install boost
-        uses: MarkusJx/install-boost@v2.3.1
+        uses: MarkusJx/install-boost@v2.4.0
         with:
           boost_version: "${{env.BOOST_VERSION}}"
 
@@ -77,15 +77,15 @@ jobs:
         with:
             fetch-depth: 0
 
-
-#//https://github.com/boostorg/beast/issues/2402
       - name: Create GetIt project
         run: |
           cmake . -G "${{matrix.generator}}"\
             -Dpackaging=true\
             -DCMAKE_CXX_FLAGS='-w'\
-            -DOPENSSL_ROOT_DIR=${{matrix.openssl_root}}/include\
-          -DBOOST_ROOT=${{github.workspace}}/${{steps.install-boost.outputs.BOOST_ROOT}}\
+            -DBoost_INCLUDE_DIR=${{steps.install-boost.outputs.BOOST_ROOT}}/include\
+            -DBoost_LIBRARY_DIRS=${{steps.install-boost.outputs.BOOST_ROOT}}/lib
+        env:
+          BOOST_ROOT: ${{ steps.install-boost.outputs.BOOST_ROOT }}
         
       - name: Build GetIt
         run: ninja GetIt
