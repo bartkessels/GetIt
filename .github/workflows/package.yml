@@ -71,6 +71,7 @@ jobs:
           arch: win64_mingw81
 
       - name: Install boost
+        id: install-boost
         uses: MarkusJx/install-boost@v2.4.0
         with:
           platform_version: "${{matrix.os_version}}"
