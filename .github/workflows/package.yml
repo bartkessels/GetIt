@@ -12,17 +12,20 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-latest
+          - os: ubuntu-22.04
+            os_version: 22.04
             generator: Ninja
             openssl_root: /usr
             artifact_name: GetIt_x64-Linux.tar.gz
 
-          - os: macos-latest
+          - os: macos-12
+            os_version: 12
             generator: Ninja
             openssl_root: /usr/local/opt/openssl@3
             artifact_name: GetIt_x64-MacOS.zip
 
-          - os: windows-latest
+          - os: windows-2022
+            os_version: 2022
             generator: Ninja
             openssl_root: D:\msys2\msys64\mingw64
             artifact_name: GetIt_x64-MacOS.zip
@@ -37,7 +40,7 @@ jobs:
         # otherwise the release will be created for
         # every platform in which case the succeeding
         # platforms will fail to continue.
-        if: matrix.os == 'windows-latest'
+        if: contains(matrix.os, 'windows')
         with:
           draft: false
           prerelease: false
@@ -47,7 +50,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
       - name: Install Windows dependencies
-        if: matrix.os == 'windows-latest'
+        if: contains(matrix.os, 'windows')
         uses: msys2/setup-msys2@v2
         with:
             location: ${{env.msys}}
@@ -55,11 +58,11 @@ jobs:
             install: mingw-w64-x86_64-openssl mingw-w64-x86_64-ninja
 
       - name: Install MacOS dependencies
-        if: matrix.os == 'macos-latest'
+        if: contains(matrix.os, 'macos')
         run: brew install openssl ninja
         
       - name: Install Linux dependencies
-        if: matrix.os == 'ubuntu-latest'
+        if: contains(matrix.os, 'ubuntu')
         run: sudo apt install -y libssl-dev cmake ninja-build
 
       - name: Install Qt
@@ -70,6 +73,7 @@ jobs:
       - name: Install boost
         uses: MarkusJx/install-boost@v2.4.0
         with:
+          platform_version: ${{matrix.os_version}}
           boost_version: "${{env.BOOST_VERSION}}"
 
       - name: Checkout repository
@@ -91,14 +95,14 @@ jobs:
         run: ninja GetIt
 
       - name: Add Qt dependencies to Windows executable and zip the executable
-        if: matrix.os == 'windows-latest'
+        if: contains(matrix.os, 'windows')
         run: |
           $windeployqt = '${{env.Qt5_Dir}}\bin\windeployqt.exe'
           & $windeployqt ./bin/GetIt.exe
           7z a -tzip ${{matrix.artifact_name}} ./bin/GetIt.exe
 
       - name: Add Qt dependencies to MacOS bundle and zip the bundle
-        if: matrix.os == 'macos-latest'
+        if: contains(matrix.os, 'macos')
         run: |
           macdeployqt ./bin/GetIt.app -timestamp -libpath=./_deps
           cp ./packaging/macos/icons/getit.icns ./bin/GetIt.app/Contents/Resources
