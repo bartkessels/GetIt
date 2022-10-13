@@ -91,7 +91,8 @@ jobs:
             -Dpackaging=true\
             -DCMAKE_CXX_FLAGS='-w'\
             -DBoost_INCLUDE_DIR=${{steps.install-boost.outputs.BOOST_ROOT}}/include\
-            -DBoost_LIBRARY_DIRS=${{steps.install-boost.outputs.BOOST_ROOT}}/lib
+            -DBoost_LIBRARY_DIRS=${{steps.install-boost.outputs.BOOST_ROOT}}/lib\
+            -DCMAKE_PREFIX_PATH=${{steps.install-boost.outputs.BOOST_ROOT}}/include
         env:
           BOOST_ROOT: ${{ steps.install-boost.outputs.BOOST_ROOT }}
 
