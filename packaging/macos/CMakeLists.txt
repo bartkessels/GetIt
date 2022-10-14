@@ -12,7 +12,12 @@ set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES MACOSX_BUNDLE_INFO_STRING
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES MACOSX_BUNDLE_LONG_VERSION_STRING ${CMAKE_PROJECT_VERSION})
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES MACOSX_BUNDLE_SHORT_VERSION_STRING ${CMAKE_PROJECT_VERSION_MAJOR})
 
-get_target_property(qmake_executable Qt5::qmake IMPORTED_LOCATION)
+if (use_qt6)
+    get_target_property(qmake_executable Qt::qmake IMPORTED_LOCATION)
+else()
+    get_target_property(qmake_executable Qt5::qmake IMPORTED_LOCATION)
+endif()
+
 get_filename_component(_qt_bin_dir "${qmake_executable}" DIRECTORY)
 find_program(MACDEPLOYQT_BIN macdeployqt HINT "${_qt_bin_dir}")
 
