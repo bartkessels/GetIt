@@ -32,7 +32,7 @@ jobs:
     - name: Install boost
       run: sudo apt update && sudo apt install -yq libboost-all-dev
     - name: Install Qt5
-      run: sudo apt update && sudo apt install -yq build-essential libgl1-mesa-dev qt5-default
+      run: sudo apt update && sudo apt install -yq build-essential libgl1-mesa-dev qt6-base-dev
     - name: Install CMake
       run: sudo apt update && sudo apt install -yq cmake
     - name: Run CMake
