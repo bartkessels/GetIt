@@ -142,7 +142,7 @@ Build the MacOS app bundle with all dependencies and framework included by runni
 in the MacOS packaging folder.
 
 ```sh
-. ./packaging/macos/package.sh
+sh ./packaging/macos/package.sh
 ```
 
 This will create the `./bin/GetIt.app` app bundle with all required dependencies. This file can be distributed across
