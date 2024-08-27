@@ -92,10 +92,10 @@ aren't required.
 
 ## 3.1 MacOS
 
-```bash
+```sh
 # Disable warnings as error, these warning are from the CppRestSdk dependency
-$ cmake . -G Ninja -D CMAKE_CXX_FLAGS="-w"
-$ ninja GetIt
+cmake . -G Ninja -D CMAKE_CXX_FLAGS="-w"
+ninja GetIt
 ```
 
 This will create the `./bin/GetIt.app` file. This can be executed by double-clicking it in Finder.
@@ -111,9 +111,9 @@ The following steps have not been tested yet, if you follow these steps, and it 
 to remove this warning. If these steps don't work, and you've got a working solution. Please also open a PR to
 include your steps here.
 
-```bash
-$ cmake . -G Ninja
-$ ninja GetIt
+```sh
+cmake . -G Ninja
+ninja GetIt
 ```
 
 This will create the `./bin/GetIt` binary file. It can be executed by either running `./bin/GetIt` from the terminal
@@ -127,9 +127,9 @@ The following steps have not been tested yet, if you follow these steps, and it 
 to remove this warning. If these steps don't work, and you've got a working solution. Please also open a PR to
 include your steps here.
 
-```bash
-$ cmake . -G Ninja
-$ ninja GetIt
+```sh
+cmake . -G Ninja
+ninja GetIt
 ```
 
 This will create the `./bin/GetIt.exe` executable. It can be executed by double-clicking the file from Explorer.
@@ -141,8 +141,8 @@ This will create the `./bin/GetIt.exe` executable. It can be executed by double-
 Build the MacOS app bundle with all dependencies and framework included by running the `package.sh` script
 in the MacOS packaging folder.
 
-```bash
-$ zsh ./packaging/macos/package.sh
+```sh
+sh ./packaging/macos/package.sh
 ```
 
 This will create the `./bin/GetIt.app` app bundle with all required dependencies. This file can be distributed across
@@ -164,12 +164,12 @@ a PR or when directly pushing to the main branch (which should __NEVER__ be done
 
 To execute these tests manually you need to specify the `getit_tests` build target.
 
-```bash
-$ cmake . -G Ninja
-$ ninja getit_tests
+```sh
+cmake . -G Ninja
+ninja getit_tests
 
 # Execute the test cases
-$ ./bin/getit_tests
+./bin/getit_tests
 ```
 
 This will generate an application that will test GetIt when executed.
